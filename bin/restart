@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Restart and recompile ♻️
+set -eu -o pipefail
+
+bin/compile
+docker compose restart

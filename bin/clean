@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Burninate everything 💣
+set -eu -o pipefail
+
+docker compose exec web mvn clean
+docker compose rm --force --stop -v

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Console output 📓
+set -eu -o pipefail
+
+echo "Stop following output with $(tput setaf 2)^C$(tput sgr0)"
+docker compose logs --follow

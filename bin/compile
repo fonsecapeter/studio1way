@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Compile
+set -eu -o pipefail
+
+docker compose run --rm web mvn package -DskipTests

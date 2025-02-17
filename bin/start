@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Start the dev server 🎬
+set -eu -o pipefail
+
+bin/compile
+docker compose up --detach --remove-orphans
+bin/status
+bin/logs

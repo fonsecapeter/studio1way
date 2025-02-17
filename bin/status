@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Check container health 🌡
+set -eu -o pipefail
+
+docker compose ps
+echo "Open in browser with $(tput setaf 2)bin/open$(tput sgr0)"
