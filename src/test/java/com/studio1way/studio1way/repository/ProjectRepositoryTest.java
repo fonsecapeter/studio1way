@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class ProjectRepositoryTest {
@@ -19,7 +19,8 @@ public class ProjectRepositoryTest {
     @Test
     public void testAllProjects() {
         List<Project> projects = projectRepository.findAll();
-        assertThat(projects.size()).isEqualTo(1);
+        assertEquals(projects.size(), 1);
+        assertEquals(projects.get(0).getId(), "my-brain");
     }
 
 }
