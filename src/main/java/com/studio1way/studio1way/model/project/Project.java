@@ -34,7 +34,7 @@ public class Project {
         return this.name;
     }
 
-    public ProjectLink[] getProjectLink() {
+    public ProjectLink[] getLinks() {
         return this.links;
     }
 

@@ -26,9 +26,9 @@ public enum ProjectCategory {
             return "digital";
         }
     },
-    SCULPTURE {
+    THREE_D_PRINTING {
         public String toString() {
-            return "sculpture";
+            return "3d printing";
         }
     }
 }
