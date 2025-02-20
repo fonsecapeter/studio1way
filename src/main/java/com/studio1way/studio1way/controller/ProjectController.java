@@ -3,14 +3,14 @@ package com.studio1way.studio1way.controller;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class ProjectController {
 
     private final ProjectService projectService;
@@ -20,8 +20,13 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @GetMapping("/projects")
-    public List<Project> listProjects() {
-        return projectService.allProjects();
+    @QueryMapping
+    public List<Project> projects() {
+        return projectService.findAll();
+    }
+
+    @QueryMapping
+    public Optional<Project> projectById(@Argument String id) {
+        return projectService.findById(id);
     }
 }

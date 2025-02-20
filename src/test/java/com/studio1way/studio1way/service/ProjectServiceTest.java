@@ -12,8 +12,10 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 public class ProjectServiceTest {
@@ -25,31 +27,40 @@ public class ProjectServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
+        Project project = new Project(
+            "test-project",
+            "Test Project",
+            new ProjectLink[] {
+                new ProjectLink(
+                     "https://something.com",
+                     "examples"
+                )
+            },
+            LocalDate.now(),
+            ProjectCategory.PAINTING,
+            "A test project."
+        );
+        when(projectRepository.findAll()).thenReturn(List.of(project));
+        when(projectRepository.findById(anyString())).thenReturn(null);
+        when(projectRepository.findById("test-project")).thenReturn(Optional.of(project));
     }
 
     @Test
-    public void testAllProjects () {
-        when(projectRepository.findAll()).thenReturn(
-            List.of(
-                new Project(
-                    "test-project",
-                    "Test Project",
-                    new ProjectLink[] {
-                        new ProjectLink(
-                             "https://something.com",
-                             "examples"
-                        )
-                    },
-                    LocalDate.now(),
-                    ProjectCategory.PAINTING,
-                    "A test project."
-                )
-            )
-        );
-
-        List<Project> projects = projectService.allProjects();
+    public void testFindAll() {
+        List<Project> projects = projectService.findAll();
         assertEquals(projects.size(), 1);
         assertEquals(projects.get(0).getId(), "test-project");
     }
 
+    @Test
+    public void testFindByIdFound() {
+        Optional<Project> project = projectService.findById("test-project");
+        assertEquals(project.get().getId(), "test-project");
+    }
+
+    @Test
+    public void testFindByIdNotFound() {
+        Optional<Project> project = projectService.findById("something-bogus");
+        assertNull(project);
+    }
 }

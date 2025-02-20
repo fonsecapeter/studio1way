@@ -31,6 +31,19 @@ public class ProjectRepository extends InMemoryReadOnlyRepository<Project, Strin
                     LocalDate.now(),
                     ProjectCategory.THREE_D_PRINTING,
                     "I used to run MRIs at UCSF."
+               ),
+                new Project(
+                    "workbench",
+                    "Workbench",
+                    new ProjectLink[] {
+                        new ProjectLink(
+                            "https://www.behance.net/gallery/203419849/Workbench",
+                            "behance"
+                        )
+                    },
+                    LocalDate.now(),
+                    ProjectCategory.WOODWORKING,
+                    "Always wanted one of these."
                )
            )
        );
