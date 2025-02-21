@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.ProjectCategory;
 import com.studio1way.studio1way.model.project.ProjectLink;
-import com.studio1way.studio1way.repository.ProjectRepository;
+import com.studio1way.studio1way.repository.project.ProjectRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +32,7 @@ public class ProjectServiceTest {
             "test-project",
             "Test Project",
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
-            LocalDate.now(),
+            "2025",
             ProjectCategory.PAINTING,
             "A test project."
         );

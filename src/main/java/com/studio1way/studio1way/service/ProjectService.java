@@ -1,7 +1,7 @@
 package com.studio1way.studio1way.service;
 
 import com.studio1way.studio1way.model.project.Project;
-import com.studio1way.studio1way.repository.ProjectRepository;
+import com.studio1way.studio1way.repository.project.ProjectRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

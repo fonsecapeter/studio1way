@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.repository.project.ProjectRepository;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;

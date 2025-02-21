@@ -34,7 +34,7 @@ public class ProjectControllerTests {
             "test-project",
             "Test Project",
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
-            LocalDate.now(),
+            "2025-01-01",
             ProjectCategory.PAINTING,
             "A test project."
         );

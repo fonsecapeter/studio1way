@@ -9,6 +9,8 @@ public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, 
 
     private final List<T> data = new ArrayList<>();
 
+    public InMemoryReadOnlyRepository() {}
+
     public InMemoryReadOnlyRepository(List<T> initialData) {
         this.data.addAll(initialData);
     }
@@ -34,5 +36,9 @@ public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, 
     @Override
     public List<T> findAll() {
         return new ArrayList<>(data);
+    }
+
+    private void loadData(List<T> newData) {
+        this.data.addAll(newData);
     }
 }
