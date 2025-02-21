@@ -30,5 +30,5 @@ public enum ProjectCategory {
         public String toString() {
             return "3d printing";
         }
-    }
+    },
 }

@@ -9,5 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatusController {
 
     @GetMapping
-    public String getStatus() { return "🥞"; }
+    public String getStatus() {
+        return "🥞";
+    }
 }

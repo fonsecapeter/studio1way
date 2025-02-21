@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, ID> {
+
     private final List<T> data = new ArrayList<>();
 
     public InMemoryReadOnlyRepository(List<T> initialData) {
@@ -14,15 +15,20 @@ public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, 
 
     @Override
     public Optional<T> findById(ID id) {
-        return data.stream().filter(
-            item -> {
+        return data
+            .stream()
+            .filter(item -> {
                 try {
                     return item.getClass().getMethod("getId").invoke(item).equals(id);
-                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                } catch (
+                    IllegalAccessException
+                    | InvocationTargetException
+                    | NoSuchMethodException e
+                ) {
                     throw new RuntimeException(e);
                 }
-            }
-        ).findFirst();
+            })
+            .findFirst();
     }
 
     @Override

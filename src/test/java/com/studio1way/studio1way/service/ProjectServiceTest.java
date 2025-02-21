@@ -1,26 +1,27 @@
 package com.studio1way.studio1way.service;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.ProjectCategory;
 import com.studio1way.studio1way.model.project.ProjectLink;
 import com.studio1way.studio1way.repository.ProjectRepository;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-
 public class ProjectServiceTest {
+
     @InjectMocks
     private ProjectService projectService;
+
     @Mock
     private ProjectRepository projectRepository;
 
@@ -30,12 +31,7 @@ public class ProjectServiceTest {
         Project project = new Project(
             "test-project",
             "Test Project",
-            new ProjectLink[] {
-                new ProjectLink(
-                     "https://something.com",
-                     "examples"
-                )
-            },
+            new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             LocalDate.now(),
             ProjectCategory.PAINTING,
             "A test project."

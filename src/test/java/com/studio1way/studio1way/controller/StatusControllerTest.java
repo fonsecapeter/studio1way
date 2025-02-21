@@ -15,10 +15,8 @@ public class StatusControllerTest {
 
     @Test
     public void testGetStatus() throws Exception {
-        mockMvc.perform(
-            MockMvcRequestBuilders.get("/_status")
-        ).andExpect(
-                MockMvcResultMatchers.status().isOk()
-        );
+        mockMvc
+            .perform(MockMvcRequestBuilders.get("/_status"))
+            .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }

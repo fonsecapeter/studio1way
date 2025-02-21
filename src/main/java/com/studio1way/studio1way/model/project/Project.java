@@ -3,6 +3,7 @@ package com.studio1way.studio1way.model.project;
 import java.time.LocalDate;
 
 public class Project {
+
     private final String id;
     private final String name;
     private final ProjectLink[] links;
@@ -11,12 +12,12 @@ public class Project {
     private final String description;
 
     public Project(
-            String id,
-            String name,
-            ProjectLink[] links,
-            LocalDate date,
-            ProjectCategory category,
-            String description
+        String id,
+        String name,
+        ProjectLink[] links,
+        LocalDate date,
+        ProjectCategory category,
+        String description
     ) {
         this.id = id;
         this.name = name;
@@ -46,7 +47,7 @@ public class Project {
         return this.category.toString();
     }
 
-    public String getDescription () {
+    public String getDescription() {
         return this.description;
     }
 }
