@@ -8,9 +8,7 @@ import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.ProjectCategory;
 import com.studio1way.studio1way.model.project.ProjectLink;
 import com.studio1way.studio1way.repository.project.ProjectRepository;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -38,7 +36,7 @@ public class ProjectServiceTest {
         );
         when(projectRepository.findAll()).thenReturn(List.of(project));
         when(projectRepository.findById(anyString())).thenReturn(null);
-        when(projectRepository.findById("test-project")).thenReturn(Optional.of(project));
+        when(projectRepository.findById("test-project")).thenReturn(project);
     }
 
     @Test
@@ -50,13 +48,13 @@ public class ProjectServiceTest {
 
     @Test
     public void testFindByIdFound() {
-        Optional<Project> project = projectService.findById("test-project");
-        assertEquals(project.get().getId(), "test-project");
+        Project project = projectService.findById("test-project");
+        assertEquals(project.getId(), "test-project");
     }
 
     @Test
     public void testFindByIdNotFound() {
-        Optional<Project> project = projectService.findById("something-bogus");
+        Project project = projectService.findById("something-bogus");
         assertNull(project);
     }
 }

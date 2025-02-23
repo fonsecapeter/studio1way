@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.repository.project.ProjectRepository;
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,13 +26,13 @@ public class ProjectRepositoryTest {
 
     @Test
     public void testFindByIdFound() {
-        Optional<Project> project = projectRepository.findById("workbench");
-        assertEquals(project.get().getId(), "workbench");
+        Project project = projectRepository.findById("workbench");
+        assertEquals(project.getId(), "workbench");
     }
 
     @Test
     public void testFindByIdNotFound() {
-        Optional<Project> project = projectRepository.findById("something-bogus");
-        assertThat(project).isEmpty();
+        Project project = projectRepository.findById("something-bogus");
+        assertThat(project).isNull();
     }
 }

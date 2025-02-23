@@ -6,9 +6,7 @@ import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.ProjectCategory;
 import com.studio1way.studio1way.model.project.ProjectLink;
 import com.studio1way.studio1way.service.ProjectService;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -40,9 +38,7 @@ public class ProjectControllerTests {
         );
         Mockito.when(projectService.findAll()).thenReturn(List.of(project));
         Mockito.when(projectService.findById(anyString())).thenReturn(null);
-        Mockito
-            .when(projectService.findById("test-project"))
-            .thenReturn(Optional.of(project));
+        Mockito.when(projectService.findById("test-project")).thenReturn(project);
     }
 
     @Test

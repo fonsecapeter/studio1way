@@ -3,7 +3,6 @@ package com.studio1way.studio1way.controller;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.service.ProjectService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -25,7 +24,7 @@ public class ProjectController {
     }
 
     @QueryMapping
-    public Optional<Project> projectById(@Argument String id) {
+    public Project projectById(@Argument String id) {
         return projectService.findById(id);
     }
 }

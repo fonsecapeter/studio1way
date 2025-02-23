@@ -1,18 +1,18 @@
 type Query {
-    projects: [Project]
-    projectById(id: String): Project
+    projects: [Project]!
+    projectById(id: String!): Project
 }
 
 type Project {
-    id: ID
-    name: String
-    links: [ProjectLink]
-    date: String
-    category: String
-    description: String
+    id: ID!
+    name: String!
+    links: [ProjectLink!]!
+    date: String!
+    category: String!
+    description: String!
 }
 
 type ProjectLink {
-    url: String
-    text: String
+    url: String!
+    text: String!
 }
