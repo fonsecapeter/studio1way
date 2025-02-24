@@ -1,0 +1,72 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: docker build -t "studio1way/web:${CIRCLE_SHA1:0}" .
+      - run:
+          name: Save image as tar
+          command: |
+            docker image save -o "images/studio1way_web_${CIRCLE_SHA1}" "studio1way/web:${CIRCLE_SHA1:0}"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - images
+
+  test:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - run:
+          name: Load image
+          command: |
+            docker image load < "images/studio1way_web_${CIRCLE_SHA1}"
+      - run:
+          name: Test
+          command: |
+            docker run "studio1way/web:${CIRCLE_SHA1}" bin/test
+
+  deploy:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - setup_remote_docker
+      - run:
+          name: Load image
+          command: |
+            docker image load < "images/studio1way_web_${CIRCLE_SHA1}"
+      - run:
+          name: Retag for deployment
+          command: |
+            docker tag "studio1way/web:${CIRCLE_SHA1}" "registry.heroku.com/${HEROKU_APP_NAME}/web"
+      - run:
+          name: Deploy
+          command: bin/deploy-ci
+
+
+workflows:
+  run-jobs:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - main

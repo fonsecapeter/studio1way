@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Ship it (Run in TravisCI or locally `env $(cat .secrets | xargs) bin/deploy`)
+set -eu -o pipefail
+
+HEROKU_CONTAINER_REGISTRY="registry.heroku.com/${HEROKU_APP_NAME}/web"
+
+docker build --tag \
+  "${HEROKU_CONTAINER_REGISTRY}" \
+  .
+
+bin/deploy-ci
