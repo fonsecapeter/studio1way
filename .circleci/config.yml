@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Test
           command: |
-            docker run "studio1way/web:${CIRCLE_SHA1}" bin/test
+            docker run "studio1way/web:${CIRCLE_SHA1}" mvn test
 
   deploy:
     docker:
