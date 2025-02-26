@@ -27,7 +27,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build image
-          command: docker build -t "studio1way/frontend:${CIRCLE_SHA1:0}" ./frontend
+          command: docker build -t "studio1way/frontend:${CIRCLE_SHA1:0}" -f ./frontend/Dockerfile .
       - run:
           name: Save image as tar
           command: |
@@ -67,7 +67,7 @@ jobs:
       - run:
           name: Test
           command: |
-            docker run "studio1way/frontend:${CIRCLE_SHA1}" npm test
+            docker run "studio1way/frontend:${CIRCLE_SHA1}" npm test-ci
 
   deploy:
     docker:

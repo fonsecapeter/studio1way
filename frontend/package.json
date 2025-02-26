@@ -7,6 +7,8 @@
     "build": "npm run clean-static && webpack-cli --mode production --config=config/webpack/prod.js",
     "build-with-stats": "npm run clean-static && webpack-cli --mode production --config=config/webpack/prod.js --profile --json > static/raw_stats.json",
     "clean-static": "rm -rfd src/main/resources/static/*",
+    "lint": "npx eslint src && tsc --skipLibCheck",
+    "lint-fix": "npx eslint src --fix",
     "start-dev": "webpack serve --config=config/webpack/dev.js",
     "test": "jest --config=jest.config.js",
     "test-ci": "npm run lint && npm run test"
