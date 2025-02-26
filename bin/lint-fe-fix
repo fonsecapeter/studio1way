@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Automatically fix TSX code style 🔧
+set -eu -o pipefail
+
+docker compose run --rm frontend npm run lint-fix
