@@ -67,7 +67,7 @@ jobs:
       - run:
           name: Test
           command: |
-            docker run "studio1way/frontend:${CIRCLE_SHA1}" npm test-ci
+            docker run "studio1way/frontend:${CIRCLE_SHA1}" npm run test-ci
 
   deploy:
     docker:
