@@ -2,15 +2,15 @@
   "name": "studio1way",
   "version": "0.1.0",
   "description": "studio 1way website",
-  "main": "src/index.tsx",
+  "main": "/app/frontend/src/index.tsx",
   "scripts": {
-    "build": "npm run clean-static && webpack-cli --mode production --config=config/webpack/prod.js",
-    "build-with-stats": "npm run clean-static && webpack-cli --mode production --config=config/webpack/prod.js --profile --json > static/raw_stats.json",
-    "clean-static": "rm -rfd src/main/resources/static/*",
-    "lint": "npx eslint src && tsc --skipLibCheck",
-    "lint-fix": "npx eslint src --fix",
-    "start-dev": "webpack serve --config=config/webpack/dev.js",
-    "test": "jest --config=jest.config.js",
+    "build": "npm run clean-static && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
+    "build-with-stats": "npm run clean-static && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js --profile --json > /app/src/main/resources/static/raw_stats.json",
+    "clean-static": "rm -rfd /app/src/main/resources/static/*",
+    "lint": "npx eslint /app/frontend/src && tsc --skipLibCheck",
+    "lint-fix": "npx eslint /app/frontend/src --fix",
+    "start-dev": "webpack serve --config=/app/frontend/config/webpack/dev.js",
+    "test": "jest --config=/app/frontend/jest.config.js",
     "test-ci": "npm run lint && npm run test"
   },
   "repository": {
