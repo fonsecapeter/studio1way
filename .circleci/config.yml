@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Save image as tar
           command: |
-            docker image save -o "images/studio1way_web_${CIRCLE_SHA1}" "studio1way/web:${CIRCLE_SHA1:0}"
+            mkdir -p images && docker image save -o "images/studio1way_web_${CIRCLE_SHA1}" "studio1way/web:${CIRCLE_SHA1:0}"
       - persist_to_workspace:
           root: .
           paths:
@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Save image as tar
           command: |
-            docker image save -o "images/studio1way_frontend_${CIRCLE_SHA1}" "studio1way/frontend:${CIRCLE_SHA1:0}"
+            mkdir -p images && docker image save -o "images/studio1way_frontend_${CIRCLE_SHA1}" "studio1way/frontend:${CIRCLE_SHA1:0}"
       - persist_to_workspace:
           root: .
           paths:
