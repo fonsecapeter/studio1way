@@ -2,4 +2,4 @@
 # Compile
 set -eu -o pipefail
 
-docker compose run --rm web mvn package -DskipTests
+docker compose run --rm web ./mvnw package -DskipTests

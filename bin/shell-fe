@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run bash in frontend container 🐢
+set -eu -o pipefail
+
+docker compose run --rm frontend bash

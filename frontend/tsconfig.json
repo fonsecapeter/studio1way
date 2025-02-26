@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
+    "module": "esnext",
+    "jsx": "react",
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ],
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom"
+    ],
+  },
+  "include": ["/app/frontend/src/**/*"]
+}

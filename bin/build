@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Build and run the web server ⚙️
+# Build and run ⚙️
 set -e -o pipefail
 
-# npm run build
 docker compose up --detach --remove-orphans --build
 echo "Check your logs with $(tput setaf 2)bin/logs$(tput sgr0)"
