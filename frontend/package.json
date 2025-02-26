@@ -4,8 +4,8 @@
   "description": "studio 1way website",
   "main": "/app/frontend/src/index.tsx",
   "scripts": {
-    "build": "npm run clean-static && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
-    "build-with-stats": "npm run clean-static && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js --profile --json > /app/src/main/resources/static/raw_stats.json",
+    "build": "webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
+    "build-with-stats": "webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js --profile --json > /app/src/main/resources/static/raw_stats.json",
     "clean-static": "rm -rfd /app/src/main/resources/static/*",
     "lint": "npx eslint /app/frontend/src && tsc --skipLibCheck",
     "lint-fix": "npx eslint /app/frontend/src --fix",

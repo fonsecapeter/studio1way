@@ -1,68 +1,68 @@
 // webpack webpack-bundle-analyzer webpack-cli webpack-dev-server webpack-merge uglifyjs-webpack-plugin
 
 // shared config (dev and prod)
-const webpack = require('webpack');
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const { resolve } = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.x'],
+    extensions: [".ts", ".tsx", ".js", ".x"],
   },
-  context: resolve(__dirname, '../../src'),
+  context: "/app/frontend",
   entry: [
-    './index.tsx',
+    "./src/index.tsx",
   ],
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader', 'source-map-loader'],
+        use: ["babel-loader", "source-map-loader"],
         exclude: /node_modules/,
       },
       {
         test: /\.tsx?$/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'postcss-loader',
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
         ],
       },
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'postcss-loader',
-          'sass-loader',
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
+          "sass-loader",
         ],
       },
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i, // images
-        use: ['file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]'],
+        use: ["file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]"],
       },
       {
         test: /\.(otf)$/i, // fonts
-        use: ['file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]'],
+        use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
       },
       {
         test: /\.(ttf)$/i, // fonts
-        use: ['file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]'],
+        use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
       },
       {
         test: /\.(pdf)$/i, // resume
-        use: ['file-loader?hash=sha512&digest=hex&name=resume/[hash].[ext]'],
+        use: ["file-loader?hash=sha512&digest=hex&name=resume/[hash].[ext]"],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
-      favicon: 'assets/img/favicon.ico',
+      template: "./src/index.html",
+      favicon: "./src/assets/img/favicon.ico",
     }),
   ],
   performance: {
@@ -70,20 +70,20 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].[contenthash].bundle.min.js',
-    chunkFilename: 'js/[name].[contenthash].bundle.min.js',
-    path: resolve(__dirname, '../../src/main/resources/static'),
-    publicPath: '/',
+    filename: "js/[name].[contenthash].bundle.min.js",
+    chunkFilename: "js/[name].[contenthash].bundle.min.js",
+    path: "/app/src/main/resources/static",
+    publicPath: "/",
   },
   optimization: {
-    chunkIds: 'named',
-    moduleIds: 'named',
+    chunkIds: "named",
+    moduleIds: "named",
     runtimeChunk: {
-      name: 'manifest',
+      name: "manifest",
     },
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
     },
   },
-  devtool: 'source-map',
+  devtool: "source-map",
 };
