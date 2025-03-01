@@ -2,5 +2,4 @@
 # Build and run ⚙️
 set -e -o pipefail
 
-docker compose up --detach --remove-orphans --build
-echo "Check your logs with $(tput setaf 2)bin/logs$(tput sgr0)"
+docker compose build

@@ -5,4 +5,4 @@ set -eu -o pipefail
 bin/compile
 docker compose up --detach --remove-orphans
 bin/status
-bin/logs
+echo "Check your logs with $(tput setaf 2)bin/logs$(tput sgr0)"

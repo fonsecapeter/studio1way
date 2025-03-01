@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Check TSX code style and static types 📋
+# Check frontend code style and static types 📋
 set -eu -o pipefail
 
 docker compose run --rm frontend npm run lint

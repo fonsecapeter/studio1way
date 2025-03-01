@@ -8,7 +8,7 @@ public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, 
 
     public InMemoryReadOnlyRepository() {}
 
-    public InMemoryReadOnlyRepository(LinkedHashMap<String, T> initialData) {
+    public InMemoryReadOnlyRepository(Map<String, T> initialData) {
         this.data.putAll(initialData);
     }
 

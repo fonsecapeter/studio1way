@@ -1,9 +1,8 @@
-// webpack webpack-bundle-analyzer webpack-cli webpack-dev-server webpack-merge uglifyjs-webpack-plugin
-
 // shared config (dev and prod)
 const webpack = require("webpack");
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 
 module.exports = {
   resolve: {
@@ -59,15 +58,16 @@ module.exports = {
       },
     ],
   },
+  performance: {
+    hints: false,
+  },
   plugins: [
+    new webpack.EnvironmentPlugin(["API_URL"]),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       favicon: "./src/assets/img/favicon.ico",
     }),
   ],
-  performance: {
-    hints: false,
-  },
 
   output: {
     filename: "js/[name].[contenthash].bundle.min.js",

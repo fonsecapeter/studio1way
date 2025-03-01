@@ -5,10 +5,11 @@ import com.studio1way.studio1way.model.project.Project;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ProjectResourceLoader {
 
-    public static LinkedHashMap<String, Project> allProjects() {
+    public static Map<String, Project> allProjects() {
         ObjectMapper objectMapper = new ObjectMapper();
         LinkedHashMap<String, Project> projects = new LinkedHashMap<>();
         Project project;

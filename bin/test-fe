@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Run TSX unit tests 🧪️
+# Run frontend unit tests 🧪️
 set -e -o pipefail
 
-docker compose run --rm frontend npm test
+docker compose run --rm frontend npm run test
+

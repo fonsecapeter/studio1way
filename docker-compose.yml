@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        API_URL_ARG: ${API_URL}
+    env_file: .env
     environment:
       PORT: 8081
     volumes:
@@ -21,6 +24,9 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
+      args:
+        API_URL_ARG: ${API_URL}
+    env_file: .env
     volumes:
       - .:/app/
     ports:
