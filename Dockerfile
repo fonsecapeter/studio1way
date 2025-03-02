@@ -5,20 +5,21 @@ COPY . /app
 WORKDIR /app/frontend
 RUN npm install
 RUN npm run build
-RUN ls /app/src/main/resources/static
 
-FROM maven:3.9.9-eclipse-temurin-23 AS deps
+FROM eclipse-temurin:23-jdk AS deps
 COPY . /app
 WORKDIR /app
-RUN mvn dependency:go-offline -B
+RUN ./mvnw dependency:go-offline -B
 
-FROM maven:3.9.9-eclipse-temurin-23 AS builder
+FROM eclipse-temurin:23-jdk AS builder
 COPY . /app
 WORKDIR /app
+COPY --from=frontend-builder /app/src/main/resources/static /app/src/main/resources/static
 COPY --from=deps /root/.m2/repository /root/.m2/repository
-RUN mvn package -DskipTests
+RUN ./mvnw dependency:go-offline -B
+RUN ./mvnw package -DskipTests
 
-FROM  maven:3.9.9-eclipse-temurin-23 AS final
+FROM  eclipse-temurin:23-jdk AS final
 COPY . /app
 WORKDIR /app
 COPY --from=frontend-builder /app/src/main/resources/static /app/src/main/resources/static

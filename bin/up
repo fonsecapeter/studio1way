@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start the dev server 🎬
+# Start the app (build if needed) 🎬
 set -eu -o pipefail
 
 bin/compile

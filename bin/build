@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# Build and run ⚙️
-set -e -o pipefail
-
-docker compose build

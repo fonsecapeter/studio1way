@@ -2,4 +2,4 @@
 # Run unit tests 🧪️
 set -e -o pipefail
 
-docker compose run --rm web mvn test
+docker compose run --rm web ./mvnw test
