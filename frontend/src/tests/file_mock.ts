@@ -1,1 +1,1 @@
-module.exports = 'not-a-real-file';
+module.exports = "not-a-real-file";

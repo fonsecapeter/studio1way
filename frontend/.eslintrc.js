@@ -3,7 +3,7 @@ module.exports = {
     node: true,
     browser: true,
   },
-  extends: "airbnb-typescript",
+  extends: ["airbnb-typescript", "prettier"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     "project": ["/app/frontend/tsconfig.json"]
@@ -12,14 +12,17 @@ module.exports = {
     "@typescript-eslint",
     "promise",
     "import",
+    "prettier"
   ],
   rules: {
     "comma-dangle": "off",
     "global-require": "off",
     "import/prefer-default-export": "off",
+    "prettier/prettier": "error",
     "react/destructuring-assignmen": "off",
     "react/jsx-filename-extension": "off",
     "react/require-default-props": "off",
     "react/prop-types": "off",
+    "quotes": [2, "double", { "avoidEscape": true }],
   }
 };
