@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Test
           command: |
-            docker run "studio1way/web:${CIRCLE_SHA1}" mvn test
+            docker run "studio1way/web:${CIRCLE_SHA1}" ./mvnw test
 
   test-frontend:
     docker:
