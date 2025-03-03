@@ -39,8 +39,6 @@
     "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.4.15",
     "babel-loader": "^8.2.5",
-    "babel-plugin-dynamic-import-node": "^2.3.3",
-    "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^5.2.7",
     "eslint": "^8.57.1",
