@@ -9,5 +9,23 @@
   ],
   "date": "2016",
   "category": "WOODWORKING",
-  "description": "Always wanted one of these."
+  "description": "Always wanted one of these.",
+  "materials": ["varnish", "on pine"],
+  "images": [
+    {
+      "path": "workbench/main",
+      "ext": "jpg",
+      "alt": "wood workbench"
+    },
+    {
+      "path": "workbench/signature",
+      "ext": "jpg",
+      "alt": "signature on bottom"
+    },
+    {
+      "path": "workbench/plan",
+      "ext": "jpg",
+      "alt": "drawing of building plan"
+    }
+  ]
 }

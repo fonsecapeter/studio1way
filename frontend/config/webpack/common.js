@@ -2,6 +2,7 @@
 const webpack = require("webpack");
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 
 module.exports = {
@@ -40,22 +41,7 @@ module.exports = {
           "sass-loader",
         ],
       },
-      {
-        test: /\.(jpe?g|png|gif|svg|ico)$/i, // images
-        use: ["file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]"],
-      },
-      {
-        test: /\.(otf)$/i, // fonts
-        use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
-      },
-      {
-        test: /\.(ttf)$/i, // fonts
-        use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
-      },
-      {
-        test: /\.(pdf)$/i, // resume
-        use: ["file-loader?hash=sha512&digest=hex&name=resume/[hash].[ext]"],
-      },
+
     ],
   },
   performance: {
@@ -67,6 +53,11 @@ module.exports = {
       template: "./src/index.html",
       favicon: "./src/assets/img/favicon.ico",
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/assets/img", to: "img"},
+      ]
+    })
   ],
 
   output: {

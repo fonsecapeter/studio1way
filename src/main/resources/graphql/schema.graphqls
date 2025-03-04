@@ -10,9 +10,18 @@ type Project {
     date: String!
     category: String!
     description: String!
+    materials: [String!]!
+    images: [ProjectImage!]!
 }
 
 type ProjectLink {
     url: String!
     text: String!
+}
+
+type ProjectImage {
+    full: String!
+    half: String!
+    quarter: String!
+    alt: String!
 }

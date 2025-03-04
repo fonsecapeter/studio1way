@@ -1,18 +1,37 @@
 package com.studio1way.studio1way.model.project;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDate;
+import com.studio1way.studio1way.model.project.fields.ProjectImage;
+import com.studio1way.studio1way.model.project.fields.ProjectLink;
 
 public class Project {
+
+    public enum Category {
+        PAINTING("painting"),
+        WOODWORKING("woodworking"),
+        CERAMIC("ceramic"),
+        PHOTOGRAPHY("photo"),
+        DIGITAL("digital"),
+        THREE_D_PRINTING("3d printing");
+
+        private final String value;
+
+        private Category(String value) {
+            this.value = value;
+        }
+
+        public String toString() {
+            return value;
+        }
+    }
 
     private String id;
     private String name;
     private ProjectLink[] links;
     private String date;
-    private ProjectCategory category;
+    private Category category;
     private String description;
+    private String[] materials;
+    private ProjectImage[] images;
 
     public Project() {}
 
@@ -21,8 +40,10 @@ public class Project {
         String name,
         ProjectLink[] links,
         String date,
-        ProjectCategory category,
-        String description
+        Category category,
+        String description,
+        String[] materials,
+        ProjectImage[] images
     ) {
         this.id = id;
         this.name = name;
@@ -30,6 +51,8 @@ public class Project {
         this.date = date;
         this.category = category;
         this.description = description;
+        this.materials = materials;
+        this.images = images;
     }
 
     public String getId() {
@@ -52,7 +75,7 @@ public class Project {
         return this.links;
     }
 
-    public void setLinks() {
+    public void setLinks(ProjectLink[] links) {
         this.links = links;
     }
 
@@ -69,7 +92,7 @@ public class Project {
     }
 
     public void setCategory(String category) {
-        this.category = ProjectCategory.valueOf(category);
+        this.category = Category.valueOf(category);
     }
 
     public String getDescription() {
@@ -78,5 +101,21 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String[] getMaterials() {
+        return this.materials;
+    }
+
+    public void setMaterials(String[] materials) {
+        this.materials = materials;
+    }
+
+    public ProjectImage[] getImages() {
+        return images;
+    }
+
+    public void setImages(ProjectImage[] images) {
+        this.images = images;
     }
 }

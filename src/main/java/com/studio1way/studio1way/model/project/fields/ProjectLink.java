@@ -1,4 +1,4 @@
-package com.studio1way.studio1way.model.project;
+package com.studio1way.studio1way.model.project.fields;
 
 public class ProjectLink {
 

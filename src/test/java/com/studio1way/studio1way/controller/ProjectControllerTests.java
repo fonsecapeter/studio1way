@@ -3,8 +3,8 @@ package com.studio1way.studio1way.controller;
 import static org.mockito.ArgumentMatchers.anyString;
 
 import com.studio1way.studio1way.model.project.Project;
-import com.studio1way.studio1way.model.project.ProjectCategory;
-import com.studio1way.studio1way.model.project.ProjectLink;
+import com.studio1way.studio1way.model.project.fields.ProjectImage;
+import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.service.ProjectService;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,8 +33,12 @@ public class ProjectControllerTests {
             "Test Project",
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025-01-01",
-            ProjectCategory.PAINTING,
-            "A test project."
+            Project.Category.PAINTING,
+            "A test project.",
+            new String[] { "void" },
+            new ProjectImage[] {
+                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test image"),
+            }
         );
         Mockito.when(projectService.findAll()).thenReturn(List.of(project));
         Mockito.when(projectService.findById(anyString())).thenReturn(null);
@@ -45,12 +49,12 @@ public class ProjectControllerTests {
     public void testProjects() throws Exception {
         String document =
             """
-                    query {
-                        projects {
-                            id
-                        }
+                query {
+                    projects {
+                        id
                     }
-                """;
+                }
+            """;
 
         GraphQlTester.Response resp = graphQlTester.document(document).execute();
         resp.path("data.projects").entityList(Project.class).hasSize(1);
@@ -61,12 +65,12 @@ public class ProjectControllerTests {
     public void testProjectByIdFound() throws Exception {
         String document =
             """
-                    query {
-                        projectById(id: "test-project") {
-                            name
-                        }
+                query {
+                    projectById(id: "test-project") {
+                        name
                     }
-                """;
+                }
+            """;
 
         graphQlTester
             .document(document)
@@ -80,12 +84,12 @@ public class ProjectControllerTests {
     public void testProjectByIdNotFound() throws Exception {
         String document =
             """
-                    query {
-                        projectById(id: "something-bogus") {
-                            name
-                        }
+                query {
+                    projectById(id: "something-bogus") {
+                        name
                     }
-                """;
+                }
+            """;
 
         graphQlTester.document(document).execute().path("data.projectById").valueIsNull();
     }

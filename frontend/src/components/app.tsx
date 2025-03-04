@@ -11,6 +11,11 @@ const GET_PROJECTS = gql`
         url
         text
       }
+      materials
+      images {
+          quarter
+          alt
+      }
     }
   }
 `;
@@ -21,7 +26,7 @@ const App = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
 
-  const projects = data.projects.map(({ id, name, description, links }) => (
+  const projects = data.projects.map(({ id, name, description, links, materials, images }) => (
     <div key={id}>
       <h3>{name}</h3>
       <p>{description}</p>
@@ -34,6 +39,12 @@ const App = () => {
           </li>
         ))}
       </ul>
+      {materials.map((material, idx) => (
+          <p key={idx}>{material}</p>
+      ))}
+      {images.map((image, idx) => (
+        <img key={idx} alt={image.alt} src={image.quarter} />
+      ))}
     </div>
   ));
   return (

@@ -9,5 +9,23 @@
   ],
   "date": "2016",
   "category": "THREE_D_PRINTING",
-  "description": "I used to run MRIs at UCSF."
+  "description": "I used to run MRIs at UCSF.",
+  "materials": ["plastic"],
+  "images": [
+    {
+      "path": "brain/main",
+      "ext": "jpg",
+      "alt": "peter's brain"
+    },
+    {
+      "path": "brain/in_situ",
+      "ext": "jpg",
+      "alt": "peter's brain in closet"
+    },
+    {
+      "path": "brain/render",
+      "ext": "png",
+      "alt": "peter's brain as a digital rendering"
+    }
+  ]
 }

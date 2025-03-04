@@ -5,8 +5,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.studio1way.studio1way.model.project.Project;
-import com.studio1way.studio1way.model.project.ProjectCategory;
-import com.studio1way.studio1way.model.project.ProjectLink;
+import com.studio1way.studio1way.model.project.fields.ProjectImage;
+import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.repository.project.ProjectRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,8 +31,12 @@ public class ProjectServiceTest {
             "Test Project",
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025",
-            ProjectCategory.PAINTING,
-            "A test project."
+            Project.Category.PAINTING,
+            "A test project.",
+            new String[] { "void" },
+            new ProjectImage[] {
+                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test image"),
+            }
         );
         when(projectRepository.findAll()).thenReturn(List.of(project));
         when(projectRepository.findById(anyString())).thenReturn(null);
