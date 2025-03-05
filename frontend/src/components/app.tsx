@@ -13,8 +13,8 @@ const GET_PROJECTS = gql`
       }
       materials
       images {
-          quarter
-          alt
+        quarter
+        alt
       }
     }
   }
@@ -26,27 +26,29 @@ const App = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
 
-  const projects = data.projects.map(({ id, name, description, links, materials, images }) => (
-    <div key={id}>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <ul>
-        {links.map(({ url, text }) => (
-          <li key={url}>
-            <a href={url} target="_blank">
-              {text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      {materials.map((material, idx) => (
+  const projects = data.projects.map(
+    ({ id, name, description, links, materials, images }) => (
+      <div key={id}>
+        <h3>{name}</h3>
+        <p>{description}</p>
+        <ul>
+          {links.map(({ url, text }) => (
+            <li key={url}>
+              <a href={url} target="_blank">
+                {text}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {materials.map((material, idx) => (
           <p key={idx}>{material}</p>
-      ))}
-      {images.map((image, idx) => (
-        <img key={idx} alt={image.alt} src={image.quarter} />
-      ))}
-    </div>
-  ));
+        ))}
+        {images.map((image, idx) => (
+          <img key={idx} alt={image.alt} src={image.quarter} />
+        ))}
+      </div>
+    ),
+  );
   return (
     <>
       <h1>WIP</h1>
