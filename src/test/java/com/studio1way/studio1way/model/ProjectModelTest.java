@@ -1,6 +1,7 @@
 package com.studio1way.studio1way.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -75,5 +76,6 @@ public class ProjectModelTest {
         }
         """;
         Project pojoProject = objectMapper.readValue(jsonProject, Project.class);
+        assertTrue(pojoProject.equals(project));
     }
 }

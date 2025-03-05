@@ -1,5 +1,7 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import java.util.Objects;
+
 public class ProjectImage {
 
     public enum Extension {
@@ -67,5 +69,17 @@ public class ProjectImage {
 
     public String getQuarter() {
         return String.format("%s/%s/25.%s", IMG_PATH, path, ext.toString());
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        ProjectImage otherProjectImage = (ProjectImage) other;
+        return (
+            Objects.equals(path, otherProjectImage.getPath()) &&
+            Objects.equals(this.getExt(), otherProjectImage.getExt()) &&
+            Objects.equals(alt, otherProjectImage.getAlt())
+        );
     }
 }

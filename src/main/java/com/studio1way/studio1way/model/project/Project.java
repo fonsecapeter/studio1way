@@ -2,6 +2,8 @@ package com.studio1way.studio1way.model.project;
 
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Project {
 
@@ -117,5 +119,22 @@ public class Project {
 
     public void setImages(ProjectImage[] images) {
         this.images = images;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Project otherProject = (Project) other;
+        return (
+            Objects.equals(id, otherProject.getId()) &&
+            Objects.equals(name, otherProject.getName()) &&
+            Arrays.equals(links, otherProject.getLinks()) &&
+            Objects.equals(date, otherProject.getDate()) &&
+            Objects.equals(this.getCategory(), otherProject.getCategory()) &&
+            Objects.equals(description, otherProject.getDescription()) &&
+            Arrays.equals(materials, otherProject.getMaterials()) &&
+            Arrays.equals(images, otherProject.getImages())
+        );
     }
 }
