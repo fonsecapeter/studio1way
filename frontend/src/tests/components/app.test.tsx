@@ -21,6 +21,15 @@ const mocks = [
                 text: "test",
               },
             ],
+            materials: ["void"],
+            images: [
+              {
+                full: "img/projects/test/main/100.png",
+                half: "img/projects/test/main/50.png",
+                quarter: "img/projects/test/main/25.png",
+                alt: "photo of the void",
+              },
+            ],
           },
           {
             id: "another-test-project",
@@ -30,6 +39,15 @@ const mocks = [
               {
                 url: "https://www.somethingelse.org",
                 text: "test",
+              },
+            ],
+            materials: ["oil", "on void"],
+            images: [
+              {
+                full: "img/projects/another-test/main/100.png",
+                half: "img/projects/another-test/main/50.png",
+                quarter: "img/projects/another-test/main/25.png",
+                alt: "painting of the void",
               },
             ],
           },
