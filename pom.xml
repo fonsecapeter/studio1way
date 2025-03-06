@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>21</java.version>
 		<plugin.prettier.goal>write</plugin.prettier.goal>
 	</properties>
 	<dependencies>
