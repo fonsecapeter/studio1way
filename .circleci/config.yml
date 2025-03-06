@@ -111,16 +111,18 @@ jobs:
 workflows:
   run-jobs:
     jobs:
-      - build-web
+      - build-web-prod
+      - build-web-test
       - build-frontend
       - test-web:
           requires:
-            - build-web
+            - build-web-test
       - test-frontend:
           requires:
             - build-frontend
       - deploy:
           requires:
+            - build-web-prod
             - test-web
             - test-frontend
           filters:
