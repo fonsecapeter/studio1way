@@ -9,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build image
-          command: docker build --target=prod -t "studio1way/web:test_${CIRCLE_SHA1:0}" .
+          command: docker build --target=prod -t "studio1way/web:prod_${CIRCLE_SHA1:0}" .
       - run:
           name: Save image as tar
           command: |
