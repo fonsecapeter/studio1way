@@ -19,7 +19,7 @@ COPY --from=frontend-builder /app/src/main/resources/static /app/src/main/resour
 RUN ./mvnw dependency:go-offline -B
 RUN ./mvnw clean package -DskipTests
 
-FROM  eclipse-temurin:21-jdk AS prod
+FROM  eclipse-temurin:21-jre AS prod
 COPY . /app
 WORKDIR /app
 COPY --from=builder /root/.m2/repository /root/.m2/repository
