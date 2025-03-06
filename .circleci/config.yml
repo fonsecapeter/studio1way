@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build-web:
+  build-web-prod:
     docker:
       - image: cimg/base:2023.08
     steps:
@@ -9,11 +9,29 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build image
-          command: docker build --target=prod -t "studio1way/web:${CIRCLE_SHA1:0}" .
+          command: docker build --target=prod -t "studio1way/web:test_${CIRCLE_SHA1:0}" .
       - run:
           name: Save image as tar
           command: |
-            mkdir -p images && docker image save -o "images/studio1way_web_${CIRCLE_SHA1}" "studio1way/web:${CIRCLE_SHA1:0}"
+            mkdir -p images && docker image save -o "images/studio1way_web_prod_${CIRCLE_SHA1}" "studio1way/web:prod_${CIRCLE_SHA1:0}"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - images
+
+  build-web-test:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: docker build --target=dev -t "studio1way/web:test_${CIRCLE_SHA1:0}" .
+      - run:
+          name: Save image as tar
+          command: |
+            mkdir -p images && docker image save -o "images/studio1way_web_test_${CIRCLE_SHA1}" "studio1way/web:test_${CIRCLE_SHA1:0}"
       - persist_to_workspace:
           root: .
           paths:
@@ -47,11 +65,11 @@ jobs:
       - run:
           name: Load image
           command: |
-            docker image load < "images/studio1way_web_${CIRCLE_SHA1}"
+            docker image load < "images/studio1way_web_test_${CIRCLE_SHA1}"
       - run:
           name: Test
           command: |
-            docker run "studio1way/web:${CIRCLE_SHA1}" ./mvnw test
+            docker run "studio1way/web:test_${CIRCLE_SHA1}" ./mvnw test
 
   test-frontend:
     docker:
@@ -80,11 +98,11 @@ jobs:
       - run:
           name: Load image
           command: |
-            docker image load < "images/studio1way_web_${CIRCLE_SHA1}"
+            docker image load < "images/studio1way_web_prod_${CIRCLE_SHA1}"
       - run:
           name: Retag for deployment
           command: |
-            docker tag "studio1way/web:${CIRCLE_SHA1}" "registry.heroku.com/${HEROKU_APP_NAME}/web"
+            docker tag "studio1way/web:prod_${CIRCLE_SHA1}" "registry.heroku.com/${HEROKU_APP_NAME}/web"
       - run:
           name: Deploy
           command: bin/deploy-ci
