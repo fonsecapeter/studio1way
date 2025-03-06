@@ -41,7 +41,10 @@ module.exports = {
           "sass-loader",
         ],
       },
-
+      {
+        test: /\.(ttf)$/i, // fonts
+        use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
+      },
     ],
   },
   performance: {
