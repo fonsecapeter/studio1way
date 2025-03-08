@@ -1,6 +1,11 @@
 {
   "id": "workbench",
   "name": "Workbench",
+  "icon": {
+    "path": "workbench/main",
+    "ext": "jpg",
+    "alt": "wood workbench"
+  },
   "links": [
     {
       "url": "https://www.behance.net/gallery/203419849/Workbench",

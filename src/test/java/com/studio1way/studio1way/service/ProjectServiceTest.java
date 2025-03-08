@@ -29,6 +29,7 @@ public class ProjectServiceTest {
         Project project = new Project(
             "test-project",
             "Test Project",
+            new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025",
             Project.Category.PAINTING,

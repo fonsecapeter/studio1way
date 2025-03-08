@@ -1,6 +1,11 @@
 {
   "id": "my-brain",
   "name": "My Brain",
+  "icon": {
+    "path": "brain/main",
+    "ext": "jpg",
+    "alt": "peter's brain"
+  },
   "links": [
     {
       "url": "https://www.behance.net/gallery/41763273/My-Brain",

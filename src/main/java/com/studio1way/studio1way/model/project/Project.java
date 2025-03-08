@@ -28,6 +28,7 @@ public class Project {
 
     private String id;
     private String name;
+    private ProjectImage icon;
     private ProjectLink[] links;
     private String date;
     private Category category;
@@ -40,6 +41,7 @@ public class Project {
     public Project(
         String id,
         String name,
+        ProjectImage icon,
         ProjectLink[] links,
         String date,
         Category category,
@@ -49,6 +51,7 @@ public class Project {
     ) {
         this.id = id;
         this.name = name;
+        this.icon = icon;
         this.links = links;
         this.date = date;
         this.category = category;
@@ -71,6 +74,14 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ProjectImage getIcon() {
+        return this.icon;
+    }
+
+    public void setIcon(ProjectImage icon) {
+        this.icon = icon;
     }
 
     public ProjectLink[] getLinks() {
@@ -129,6 +140,7 @@ public class Project {
         return (
             Objects.equals(id, otherProject.getId()) &&
             Objects.equals(name, otherProject.getName()) &&
+            Objects.equals(icon, otherProject.getIcon()) &&
             Arrays.equals(links, otherProject.getLinks()) &&
             Objects.equals(date, otherProject.getDate()) &&
             Objects.equals(this.getCategory(), otherProject.getCategory()) &&

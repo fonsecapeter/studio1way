@@ -6,6 +6,7 @@ type Query {
 type Project {
     id: ID!
     name: String!
+    icon: ProjectImage!
     links: [ProjectLink!]!
     date: String!
     category: String!

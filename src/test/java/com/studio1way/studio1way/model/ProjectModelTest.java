@@ -23,6 +23,7 @@ public class ProjectModelTest {
             new Project(
                 "test-project",
                 "Test Project",
+                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
                 new ProjectLink[] { new ProjectLink("https://something.com", "example") },
                 "2025",
                 Project.Category.PAINTING,
@@ -56,6 +57,11 @@ public class ProjectModelTest {
         {
           "id": "test-project",
           "name": "Test Project",
+          "icon": {
+            "path": "some/path",
+            "ext": "png",
+            "alt": "test icon"
+          },
           "links": [
             {
               "url": "https://something.com",
