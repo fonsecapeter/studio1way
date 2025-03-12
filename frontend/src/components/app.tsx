@@ -1,15 +1,17 @@
 import React from "react";
+import logo from '../assets/img/logo.png';
 import AppRoutes from "../routes";
+import Nav from "./nav/index";
 
 export const App = () => (
   <div className="main-wrapper">
     <div className="left-column">
-      {/* <img
+      <img
         src={logo}
         className="logo"
         alt="P. Fonseca"
-      /> */}
-      {/* <Nav /> */}
+      />
+      <Nav />
     </div>
     <div className="right-column">
       <AppRoutes />

@@ -1,0 +1,45 @@
+@use '../utils/variables';
+
+.main-wrapper {
+  margin: 40px auto;
+  max-width: 1000px;
+  min-width: 280px;
+}
+
+.left-column {
+  margin: 0 40px;
+  padding: 0 20px;
+  width: variables.$left-column-width;
+  box-sizing: border-box;
+}
+
+.right-column {
+  margin: 0 auto;
+  padding: 25px 40px 0;
+  max-width: variables.$max-responsive-content-width;
+}
+
+.hidden {
+  display: none;
+}
+
+.logo {
+  display: block;
+  margin: 0;
+  padding: 20px 0;
+  width: 180px;
+}
+
+@media only screen and (min-width: variables.$responsive-width) {
+  .left-column {
+    height: 100%;
+    margin: 0;
+    position: fixed;
+    text-align: start;
+  }
+
+  .right-column {
+    margin-left: variables.$left-column-width;
+    max-width: none;
+  }
+}

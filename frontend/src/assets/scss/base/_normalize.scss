@@ -1,4 +1,4 @@
-@use "utils/variables";
+@use "../utils/variables";
 
 body {
   background: variables.$hecka-light-gray;
@@ -8,4 +8,13 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
+}
+
+a {
+  color: variables.$blue;
+  text-decoration: none;
+
+  &:hover {
+    color: variables.$green;
+  }
 }

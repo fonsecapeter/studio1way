@@ -42,6 +42,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i, // images
+        use: ['file-loader?hash=sha512&digest=hex&name=img/[hash].[ext]'],
+      },
+      {
         test: /\.(ttf)$/i, // fonts
         use: ["file-loader?hash=sha512&digest=hex&name=fonts/[hash].[ext]"],
       },
