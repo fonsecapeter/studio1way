@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/img/logo.png";
+import logo from "../assets/img/logo.svg";
 import AppRoutes from "../routes";
 import Nav from "./nav/index";
 
