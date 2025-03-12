@@ -4,14 +4,14 @@
   "description": "studio 1way website",
   "main": "/app/frontend/src/index.tsx",
   "scripts": {
-    "build": "npx generate && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
+    "build": "npm run generate && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
     "clean-static": "rm -rfd /app/src/main/resources/static/*",
     "generate": "graphql-codegen",
     "lint": "npx eslint /app/frontend/src && tsc --skipLibCheck && prettier --check /app/frontend/src/assets/scss",
     "lint-fix": "npx eslint /app/frontend/src --fix && prettier --write /app/frontend/src/assets/scss",
-    "start-dev": "npx generate && webpack serve --config=/app/frontend/config/webpack/dev.js",
+    "start-dev": "npm run generate && webpack serve --config=/app/frontend/config/webpack/dev.js",
     "test": "jest --config=/app/frontend/jest.config.js",
-    "test-ci": "npx generate && npm run lint && npm run test"
+    "test-ci": "npm run generate && npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
