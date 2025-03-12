@@ -11,7 +11,7 @@
     "lint-fix": "npx eslint /app/frontend/src --fix && prettier --write /app/frontend/src/assets/scss",
     "start-dev": "npm run generate && webpack serve --config=/app/frontend/config/webpack/dev.js",
     "test": "jest --config=/app/frontend/jest.config.js",
-    "test-ci": "npm run generate && npm run lint && npm run test"
+    "test-ci": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
