@@ -2,9 +2,9 @@ import { MockedProvider } from "@apollo/client/testing";
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import {
-  PortfolioContainer,
+  WoodProjectsContainer,
   GET_PROJECTS,
-} from "../../../containers/portfolio";
+} from "../../../containers/wood/projects";
 
 const mocks = [
   {
@@ -40,11 +40,11 @@ const mocks = [
   },
 ];
 
-describe("PortfolioContainer", () => {
+describe("WoodProjectsContainer", () => {
   beforeEach(() => {
     render(
       <MockedProvider mocks={mocks}>
-        <PortfolioContainer />
+        <WoodProjectsContainer />
       </MockedProvider>,
     );
   });

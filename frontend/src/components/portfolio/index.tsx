@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { PortfolioItem } from "./item";
 import { ProjectItemFragment } from "../../__generated__/types";
-import "../../assets/scss/portfolio.scss";
 
 interface PortfolioProps {
   readonly title: string;

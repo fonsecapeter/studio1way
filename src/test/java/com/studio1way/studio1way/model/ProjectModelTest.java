@@ -26,7 +26,7 @@ public class ProjectModelTest {
                 new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
                 new ProjectLink[] { new ProjectLink("https://something.com", "example") },
                 "2025",
-                Project.Category.PAINTING,
+                Project.Category.PAINT,
                 "A test project.",
                 new String[] { "void" },
                 new ProjectImage[] {
@@ -69,7 +69,7 @@ public class ProjectModelTest {
             }
           ],
           "date": "2025",
-          "category": "PAINTING",
+          "category": "PAINT",
           "description": "A test project.",
           "materials": ["void"],
           "images": [

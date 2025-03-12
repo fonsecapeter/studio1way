@@ -3,11 +3,39 @@ import { Route, Routes } from "react-router-dom";
 import OhNoErrorBoundary from "./components/common/error";
 import NotFound from "./components/common/not_found";
 
-const LoadablePortfolio = lazy(
+const LoadableTheStudio = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/portfolio/index"
+      "./components/the_studio/index"
+    ),
+);
+const LoadableCeramicsProjects = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/ceramics/projects"
+    ),
+);
+const LoadablePaintProjects = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/paint/projects"
+    ),
+);
+const LoadableWoodProjects = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/wood/projects"
+    ),
+);
+const LoadableOtherProjects = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/other/projects"
     ),
 );
 
@@ -16,7 +44,12 @@ const AppRoutes = () => {
     <OhNoErrorBoundary>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<LoadablePortfolio />} />
+          <Route path="/" element={<LoadableTheStudio />} />
+          <Route path="/the-studio" element={<LoadableTheStudio />} />
+          <Route path="/ceramics" element={<LoadableCeramicsProjects />} />
+          <Route path="/paint" element={<LoadablePaintProjects />} />
+          <Route path="/wood" element={<LoadableWoodProjects />} />
+          <Route path="/other" element={<LoadableOtherProjects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

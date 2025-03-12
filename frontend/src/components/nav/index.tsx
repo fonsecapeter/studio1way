@@ -5,12 +5,11 @@ import NavLink from "./link";
 
 const Nav = () => {
   const location = useLocation();
-  const ABOUT = "about";
-  const SOMETHING_ELSE = "something_else";
-  const links = [ABOUT, SOMETHING_ELSE];
+  const THE_STUDIO = "The Studio";
+  const links = [THE_STUDIO, "Ceramics", "Paint", "Wood", "Other"];
   let path = window.location.pathname;
   if (path.length === 0) {
-    path = ABOUT;
+    path = THE_STUDIO;
   }
   useEffect(() => {
     path = window.location.pathname;

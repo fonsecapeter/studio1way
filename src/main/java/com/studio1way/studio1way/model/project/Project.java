@@ -8,12 +8,10 @@ import java.util.Objects;
 public class Project {
 
     public enum Category {
-        PAINTING("painting"),
-        WOODWORKING("woodworking"),
-        CERAMIC("ceramic"),
-        PHOTOGRAPHY("photo"),
-        DIGITAL("digital"),
-        THREE_D_PRINTING("3d printing");
+        PAINT("paint"),
+        WOOD("wood"),
+        CERAMICS("ceramics"),
+        OTHER("other");
 
         private final String value;
 

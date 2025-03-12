@@ -32,7 +32,7 @@ public class ProjectServiceTest {
             new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025",
-            Project.Category.PAINTING,
+            Project.Category.PAINT,
             "A test project.",
             new String[] { "void" },
             new ProjectImage[] {
