@@ -3,5 +3,5 @@
 set -eu -o pipefail
 
 docker compose run --rm web ./mvnw clean
-docker compose run --rm frontend npm run clean-static
+docker compose run --rm frontend npm run clean
 docker compose rm --force --stop -v

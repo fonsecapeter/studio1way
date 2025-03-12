@@ -5,7 +5,7 @@
   "main": "/app/frontend/src/index.tsx",
   "scripts": {
     "build": "npm run generate && webpack-cli --mode production --config=/app/frontend/config/webpack/prod.js",
-    "clean-static": "rm -rfd /app/src/main/resources/static/*",
+    "clean": "rm -rfd /app/src/main/resources/static/* /app/frontend/src/__generated__/*",
     "generate": "graphql-codegen",
     "lint": "npx eslint /app/frontend/src && tsc --skipLibCheck && prettier --check /app/frontend/src/assets/scss",
     "lint-fix": "npx eslint /app/frontend/src --fix && prettier --write /app/frontend/src/assets/scss",

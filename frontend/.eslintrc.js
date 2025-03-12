@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
   },
   extends: ["airbnb-typescript", "prettier"],
+  ignorePatterns: ["src/__generated__/*"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     "project": ["/app/frontend/tsconfig.json"]
