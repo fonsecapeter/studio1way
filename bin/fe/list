@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# List all commands 📋
+# List front-end commands 📋
 set -eu -o pipefail
 
-printf "\n$(tput setaf 6)main:$(tput sgr0)\n"
-for file in bin/*; do
+printf "\n$(tput setaf 6)front-end:$(tput sgr0)\n"
+
+for file in bin/fe/*; do
   if [ -d $file ]; then
     continue
   fi
@@ -24,11 +25,4 @@ for file in bin/*; do
     "  $(tput setaf 2)%.24s$(tput sgr0)%s\n" \
     "${name}$(tput setaf 8)............................" \
     "${description}"
-done
-
-for dir in bin/*; do
-  if [ -f $dir ]; then
-    continue
-  fi
-  "${dir}/list"
 done
