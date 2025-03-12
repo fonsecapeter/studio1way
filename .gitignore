@@ -7,6 +7,7 @@ target/
 ### Frontend ###
 frontend/node_modules/
 frontend/coverage/
+frontend/src/__generated__/
 src/main/resources/static/*
 
 ### STS ###

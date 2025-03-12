@@ -1,0 +1,54 @@
+@use "../../utils/cards";
+@use "../../utils/variables";
+
+.portfolio {
+  &-list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 0 10px;
+
+    &::after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+  }
+
+  &-item {
+    @include cards.shadow-interactive;
+    float: left;
+    margin: 0 10px 20px;
+    width: 320px;
+    margin-bottom: 25px;
+
+    &-icon {
+      @include cards.card-top;
+
+      &-image {
+        @include cards.card-top;
+        display: block;
+        margin: auto;
+        width: 100%;
+        min-height: 100px;
+      }
+    }
+
+    &-content {
+      @include cards.card-bottom;
+    }
+
+    &-title {
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

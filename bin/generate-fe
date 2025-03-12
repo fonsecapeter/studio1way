@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Generate graphl types 📋
+set -eu -o pipefail
+
+docker compose run --rm frontend npm run generate
