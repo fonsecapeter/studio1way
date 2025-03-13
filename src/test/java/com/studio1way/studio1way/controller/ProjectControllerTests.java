@@ -34,9 +34,7 @@ public class ProjectControllerTests {
             new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025-01-01",
-            Project.Category.PAINT,
             "A test project.",
-            new String[] { "void" },
             new ProjectImage[] {
                 new ProjectImage("some/path", ProjectImage.Extension.PNG, "test image"),
             }

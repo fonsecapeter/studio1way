@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class ProjectImage {
 
+    private final String IMG_PATH = "/img/projects";
+
     public enum Extension {
         JPG("jpg"),
         PNG("png"),
@@ -12,12 +14,12 @@ public class ProjectImage {
 
         private final String value;
 
-        private Extension(String value) {
+        Extension(String value) {
             this.value = value;
         }
 
         public String toString() {
-            return this.value;
+            return value;
         }
     }
 
@@ -25,18 +27,16 @@ public class ProjectImage {
     private Extension ext;
     private String alt;
 
-    private final String IMG_PATH = "/img/projects";
-
     public ProjectImage() {}
 
     public ProjectImage(String path, Extension ext, String alt) {
-        this.path = path;
-        this.ext = ext;
-        this.alt = alt;
+        setPath(path);
+        setExt(ext);
+        setAlt(alt);
     }
 
     public String getPath() {
-        return this.path;
+        return path;
     }
 
     public void setPath(String path) {
@@ -44,11 +44,15 @@ public class ProjectImage {
     }
 
     public String getExt() {
-        return this.ext.toString();
+        return ext.toString();
     }
 
-    public void setExtension(String ext) {
+    public void setExt(String ext) {
         this.ext = Extension.valueOf(ext);
+    }
+
+    public void setExt(Extension ext) {
+        this.ext = ext;
     }
 
     public String getAlt() {
@@ -78,7 +82,7 @@ public class ProjectImage {
         ProjectImage otherProjectImage = (ProjectImage) other;
         return (
             Objects.equals(path, otherProjectImage.getPath()) &&
-            Objects.equals(this.getExt(), otherProjectImage.getExt()) &&
+            Objects.equals(getExt(), otherProjectImage.getExt()) &&
             Objects.equals(alt, otherProjectImage.getAlt())
         );
     }

@@ -3,7 +3,7 @@
   "name": "My Brain",
   "icon": {
     "path": "brain/main",
-    "ext": "jpg",
+    "ext": "JPG",
     "alt": "peter's brain"
   },
   "links": [
@@ -13,23 +13,21 @@
     }
   ],
   "date": "2016",
-  "category": "OTHER",
   "description": "I used to run MRIs at UCSF.",
-  "materials": ["plastic"],
   "images": [
     {
       "path": "brain/main",
-      "ext": "jpg",
+      "ext": "JPG",
       "alt": "peter's brain"
     },
     {
       "path": "brain/in_situ",
-      "ext": "jpg",
+      "ext": "JPG",
       "alt": "peter's brain in closet"
     },
     {
       "path": "brain/render",
-      "ext": "png",
+      "ext": "PNG",
       "alt": "peter's brain as a digital rendering"
     }
   ]

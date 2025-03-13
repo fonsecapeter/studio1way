@@ -3,7 +3,7 @@
   "name": "Workbench",
   "icon": {
     "path": "workbench/main",
-    "ext": "jpg",
+    "ext": "JPG",
     "alt": "wood workbench"
   },
   "links": [
@@ -13,23 +13,21 @@
     }
   ],
   "date": "2016",
-  "category": "WOOD",
   "description": "Always wanted one of these.",
-  "materials": ["varnish", "on pine"],
   "images": [
     {
       "path": "workbench/main",
-      "ext": "jpg",
+      "ext": "JPG",
       "alt": "wood workbench"
     },
     {
       "path": "workbench/signature",
-      "ext": "jpg",
+      "ext": "JPG",
       "alt": "signature on bottom"
     },
     {
       "path": "workbench/plan",
-      "ext": "jpg",
+      "ext": "JPG",
       "alt": "drawing of building plan"
     }
   ]

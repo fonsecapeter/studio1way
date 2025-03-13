@@ -2,36 +2,21 @@ package com.studio1way.studio1way.model.project;
 
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Project {
-
-    public enum Category {
-        PAINT("paint"),
-        WOOD("wood"),
-        CERAMICS("ceramics"),
-        OTHER("other");
-
-        private final String value;
-
-        private Category(String value) {
-            this.value = value;
-        }
-
-        public String toString() {
-            return value;
-        }
-    }
 
     private String id;
     private String name;
     private ProjectImage icon;
     private ProjectLink[] links;
+
     private String date;
-    private Category category;
+
     private String description;
-    private String[] materials;
     private ProjectImage[] images;
 
     public Project() {}
@@ -42,24 +27,20 @@ public class Project {
         ProjectImage icon,
         ProjectLink[] links,
         String date,
-        Category category,
         String description,
-        String[] materials,
         ProjectImage[] images
     ) {
-        this.id = id;
-        this.name = name;
-        this.icon = icon;
-        this.links = links;
-        this.date = date;
-        this.category = category;
-        this.description = description;
-        this.materials = materials;
-        this.images = images;
+        setId(id);
+        setName(name);
+        setIcon(icon);
+        setLinks(links);
+        setDate(date);
+        setDescription(description);
+        setImages(images);
     }
 
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -67,7 +48,7 @@ public class Project {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -75,7 +56,7 @@ public class Project {
     }
 
     public ProjectImage getIcon() {
-        return this.icon;
+        return icon;
     }
 
     public void setIcon(ProjectImage icon) {
@@ -83,7 +64,7 @@ public class Project {
     }
 
     public ProjectLink[] getLinks() {
-        return this.links;
+        return links;
     }
 
     public void setLinks(ProjectLink[] links) {
@@ -91,35 +72,24 @@ public class Project {
     }
 
     public String getDate() {
-        return this.date;
+        return date;
     }
 
     public void setDate(String date) {
+        if (!Pattern.matches("\\d{4}(-\\d{2}(-\\d{2})?)?", date)) {
+            throw new IllegalArgumentException(
+                String.format("Date %s must match yyyy[-mm[-dd]] format", date)
+            );
+        }
         this.date = date;
     }
 
-    public String getCategory() {
-        return this.category.toString();
-    }
-
-    public void setCategory(String category) {
-        this.category = Category.valueOf(category);
-    }
-
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String[] getMaterials() {
-        return this.materials;
-    }
-
-    public void setMaterials(String[] materials) {
-        this.materials = materials;
     }
 
     public ProjectImage[] getImages() {
@@ -136,15 +106,13 @@ public class Project {
         if (other == null || getClass() != other.getClass()) return false;
         Project otherProject = (Project) other;
         return (
-            Objects.equals(id, otherProject.getId()) &&
-            Objects.equals(name, otherProject.getName()) &&
-            Objects.equals(icon, otherProject.getIcon()) &&
-            Arrays.equals(links, otherProject.getLinks()) &&
-            Objects.equals(date, otherProject.getDate()) &&
-            Objects.equals(this.getCategory(), otherProject.getCategory()) &&
-            Objects.equals(description, otherProject.getDescription()) &&
-            Arrays.equals(materials, otherProject.getMaterials()) &&
-            Arrays.equals(images, otherProject.getImages())
+            Objects.equals(getId(), otherProject.getId()) &&
+            Objects.equals(getName(), otherProject.getName()) &&
+            Objects.equals(getIcon(), otherProject.getIcon()) &&
+            Arrays.equals(getLinks(), otherProject.getLinks()) &&
+            Objects.equals(getDate(), otherProject.getDate()) &&
+            Objects.equals(getDescription(), otherProject.getDescription()) &&
+            Arrays.equals(getImages(), otherProject.getImages())
         );
     }
 }

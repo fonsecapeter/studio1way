@@ -10,8 +10,8 @@ public class ProjectLink {
     public ProjectLink() {}
 
     public ProjectLink(String url, String text) {
-        this.url = url;
-        this.text = text;
+        setUrl(url);
+        setText(text);
     }
 
     public String getUrl() {

@@ -9,9 +9,7 @@ type Project {
     icon: ProjectImage!
     links: [ProjectLink!]!
     date: String!
-    category: String!
     description: String!
-    materials: [String!]!
     images: [ProjectImage!]!
 }
 

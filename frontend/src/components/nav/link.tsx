@@ -7,7 +7,7 @@ interface NavLinkProps {
   readonly active: boolean;
 }
 
-const slugify = (words: string): string =>
+export const slugify = (words: string): string =>
   words
     .toLowerCase()
     .trim()
@@ -18,7 +18,7 @@ const slugify = (words: string): string =>
 const capitalize = (word: string): string =>
   word.charAt(0).toUpperCase() + word.slice(1);
 
-const NavLink = ({ name, active }: NavLinkProps) => {
+export const NavLink = ({ name, active }: NavLinkProps) => {
   const text = capitalize(name);
   if (active) {
     return <span className="nav-link-active">{text}</span>;
