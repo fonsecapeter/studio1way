@@ -45,14 +45,14 @@ public class ProjectServiceTest {
     @Test
     public void testFindAll() {
         List<Project> projects = projectService.findAll();
-        assertEquals(projects.size(), 1);
-        assertEquals(projects.get(0).getId(), "test-project");
+        assertEquals(1, projects.size());
+        assertEquals("test-project", projects.get(0).getId());
     }
 
     @Test
     public void testFindByIdFound() {
         Project project = projectService.findById("test-project");
-        assertEquals(project.getId(), "test-project");
+        assertEquals("test-project", project.getId());
     }
 
     @Test

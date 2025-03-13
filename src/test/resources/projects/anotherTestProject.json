@@ -1,0 +1,24 @@
+{
+  "id": "another-test-project",
+  "name": "Another Test Project",
+  "icon": {
+    "path": "some/other/path",
+    "ext": "PNG",
+    "alt": "another test icon"
+  },
+  "links": [
+    {
+      "url": "https://somethingelse.com",
+      "text": "another example"
+    }
+  ],
+  "date": "2024",
+  "description": "A similar, but different test project.",
+  "images": [
+    {
+      "path": "some/other/path",
+      "ext": "PNG",
+      "alt": "another test image"
+    }
+  ]
+}
