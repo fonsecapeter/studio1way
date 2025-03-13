@@ -74,9 +74,9 @@ public class ProjectTest {
     @Test
     public void testProjectImageSizes() {
         ProjectImage image = project.getImages()[0];
-        assertEquals(image.getFull(), "/img/projects/some/path/100.png");
-        assertEquals(image.getHalf(), "/img/projects/some/path/50.png");
-        assertEquals(image.getQuarter(), "/img/projects/some/path/25.png");
+        assertEquals("/img/projects/some/path/100.png", image.getFull());
+        assertEquals("/img/projects/some/path/50.png", image.getHalf());
+        assertEquals("/img/projects/some/path/25.png", image.getQuarter());
     }
 
     @Test

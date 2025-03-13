@@ -80,39 +80,4 @@ public class WoodWorkTest {
         WoodWork pojoWoodWork = objectMapper.readValue(jsonWoodWork, WoodWork.class);
         assertTrue(pojoWoodWork.equals(woodWork));
     }
-
-    @Test
-    public void testProjectImageSizes() {
-        ProjectImage image = woodWork.getImages()[0];
-        assertEquals(image.getFull(), "/img/projects/some/path/100.png");
-        assertEquals(image.getHalf(), "/img/projects/some/path/50.png");
-        assertEquals(image.getQuarter(), "/img/projects/some/path/25.png");
-    }
-
-    @Test
-    public void testDateFormatIsValidated() {
-        String[] validDates = { "2024", "2024-01", "2024-01-01" };
-        String[] invalidDates = {
-            "2025/01/01",
-            "25-01-01",
-            "2025-1",
-            "2025-01-1",
-            "January First, 2025",
-        };
-        for (String validDate : validDates) {
-            woodWork.setDate(validDate);
-        }
-        for (String invalidDate : invalidDates) {
-            assertThrows(
-                IllegalArgumentException.class,
-                () -> {
-                    woodWork.setDate(invalidDate);
-                },
-                String.format(
-                    "Expected %s to fail validation, but it passed",
-                    invalidDate
-                )
-            );
-        }
-    }
 }
