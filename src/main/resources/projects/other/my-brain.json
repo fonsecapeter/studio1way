@@ -1,0 +1,39 @@
+{
+  "id": "my-brain",
+  "name": "My Brain",
+  "icon": {
+    "path": "other/brain/animation",
+    "ext": "GIF",
+    "alt": "peter's brain spinning"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/41763273/My-Brain",
+      "text": "behance"
+    }
+  ],
+  "date": "2016",
+  "description": "I used to run MRIs at UCSF.",
+  "images": [
+    {
+      "path": "other/brain/animation",
+      "ext": "GIF",
+      "alt": "peter's brain spinning"
+    },
+    {
+      "path": "other/brain/main",
+      "ext": "JPG",
+      "alt": "peter's brain at rest"
+    },
+    {
+      "path": "other/brain/in_situ",
+      "ext": "JPG",
+      "alt": "peter's brain in closet"
+    },
+    {
+      "path": "other/brain/render",
+      "ext": "PNG",
+      "alt": "peter's brain as a digital rendering"
+    }
+  ]
+}

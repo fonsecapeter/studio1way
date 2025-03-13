@@ -1,0 +1,44 @@
+{
+  "id": "1way-dunks",
+  "name": "1Way Dunks",
+  "icon": {
+    "path": "other/1way_dunks/animation",
+    "ext": "GIF",
+    "alt": "customer sneaker animation"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/41763273/My-Brain",
+      "text": "behance"
+    }
+  ],
+  "date": "2024-11",
+  "description": "Custom sneakers.",
+  "images": [
+    {
+      "path": "other/1way_dunks/main",
+      "ext": "JPG",
+      "alt": "custom sneakers on some scaffolding"
+    },
+    {
+      "path": "other/1way_dunks/animation",
+      "ext": "GIF",
+      "alt": "customer sneaker animation"
+    },
+    {
+      "path": "other/1way_dunks/inside",
+      "ext": "JPG",
+      "alt": "inside view"
+    },
+    {
+      "path": "other/1way_dunks/outside",
+      "ext": "JPG",
+      "alt": "outside view"
+    },
+    {
+      "path": "other/1way_dunks/back",
+      "ext": "JPG",
+      "alt": "back view with \"1WAY\" embroidered on pull-tab"
+    }
+  ]
+}

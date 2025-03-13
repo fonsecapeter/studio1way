@@ -10,7 +10,7 @@ public class ProjectImage {
         JPG("jpg"),
         PNG("png"),
         SVG("svg"),
-        GIF("png");
+        GIF("gif");
 
         private final String value;
 

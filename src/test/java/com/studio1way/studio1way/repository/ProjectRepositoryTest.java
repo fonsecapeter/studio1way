@@ -22,13 +22,13 @@ public class ProjectRepositoryTest {
         assertEquals(2, projects.size());
         // ordered by date DESC
         assertEquals("my-brain", projects.get(projects.size() - 1).getId());
-        assertEquals("workbench", projects.get(projects.size() - 2).getId());
+        assertEquals("1way-dunks", projects.get(projects.size() - 2).getId());
     }
 
     @Test
     public void testFindByIdFound() {
-        Project project = projectRepository.findById("workbench");
-        assertEquals("workbench", project.getId());
+        Project project = projectRepository.findById("my-brain");
+        assertEquals("my-brain", project.getId());
     }
 
     @Test

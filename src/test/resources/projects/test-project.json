@@ -1,0 +1,24 @@
+{
+  "id": "test-project",
+  "name": "Test Project",
+  "icon": {
+    "path": "some/path",
+    "ext": "PNG",
+    "alt": "test icon"
+  },
+  "links": [
+    {
+      "url": "https://something.com",
+      "text": "example"
+    }
+  ],
+  "date": "2025",
+  "description": "A test project.",
+  "images": [
+    {
+      "path": "some/path",
+      "ext": "PNG",
+      "alt": "test image"
+    }
+  ]
+}

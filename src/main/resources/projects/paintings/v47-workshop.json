@@ -1,0 +1,29 @@
+{
+  "id": "v47-workshop",
+  "name": "Vintage47 Workshop",
+  "icon": {
+    "path": "paintings/v47_workshop/main",
+    "ext": "JPG",
+    "alt": "painting of workshop in the woods"
+  },
+  "links": [],
+  "date": "2024-09-04",
+  "description": "My first employer.",
+  "images": [
+    {
+      "path": "paintings/v47_workshop/main",
+      "ext": "JPG",
+      "alt": "painting of workshop in the woods"
+    },
+    {
+      "path": "paintings/v47_workshop/in_situ",
+      "ext": "JPG",
+      "alt": "painting on easel"
+    }
+  ],
+  "surface": "canvas",
+  "medium": "acrylic",
+  "varnished": true,
+  "height": 18,
+  "width": 14
+}

@@ -1,0 +1,39 @@
+{
+  "id": "workbench",
+  "name": "Workbench",
+  "icon": {
+    "path": "woodworks/workbench/main",
+    "ext": "JPG",
+    "alt": "wood workbench"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/203419849/Workbench",
+      "text": "behance"
+    }
+  ],
+  "date": "2024-05-18",
+  "description": "Always wanted one of these.",
+  "images": [
+    {
+      "path": "woodworks/workbench/main",
+      "ext": "JPG",
+      "alt": "wood workbench"
+    },
+    {
+      "path": "woodowrks/workbench/signature",
+      "ext": "JPG",
+      "alt": "signature on bottom"
+    },
+    {
+      "path": "woodworks/workbench/plan",
+      "ext": "JPG",
+      "alt": "drawing of building plan"
+    }
+  ],
+  "materials": "3/4\\\" 7ply AC fir + matching fir 2X4s",
+  "finish": "PASTE_WAX",
+  "height": 37.5,
+  "width": 48,
+  "depth": 24
+}

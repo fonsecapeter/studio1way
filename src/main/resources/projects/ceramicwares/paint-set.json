@@ -1,0 +1,24 @@
+{
+  "id": "paint-set",
+  "name": "Paint Set",
+  "icon": {
+    "path": "ceramicwares/paint_set/main",
+    "ext": "JPG",
+    "alt": "handmade mini paint palette with cup and brush-rest"
+  },
+  "links": [],
+  "date": "2024-07-22",
+  "description": "A gift for myself.",
+  "images": [
+    {
+      "path": "ceramicwares/paint_set/main",
+      "ext": "JPG",
+      "alt": "handmade mini paint palette with cup and brush-rest"
+    }
+  ],
+  "clayBody": "WHITE_STONEWARE",
+  "glaze": "cream",
+  "height": 3,
+  "width": 6,
+  "depth": 3
+}

@@ -15,7 +15,7 @@ public class ProjectRepository extends InMemoryReadOnlyRepository<Project, Strin
 
     public ProjectRepository() {
         super(
-            new ProjectResourceLoader<Project>("/app/src/main/resources/projects/")
+            new ProjectResourceLoader<Project>("/app/src/main/resources/projects/other/")
                 .allProjects()
         );
     }

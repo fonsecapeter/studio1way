@@ -1,0 +1,48 @@
+{
+  "id": "shop-class-shelf",
+  "name": "Shop Class Shelf",
+  "icon": {
+    "path": "woodworks/shop_class_shelf/animation",
+    "ext": "GIF",
+    "alt": "spinning small wood shelf"
+  },
+  "links": [
+    {
+      "text": "instagram",
+      "url": "https://www.instagram.com/peternfonseca/p/C8dohpqNEmD",
+    },
+    {
+      "url": "https://www.behance.net/gallery/201460551/Shop-Class-Shelf",
+      "text": "behance"
+    }
+  ],
+  "date": "2003",
+  "description": "Some of my really early work.",
+  "images": [
+    {
+      "path": "woodworks/shop_class_shelf/animation",
+      "ext": "GIF",
+      "alt": "spinning small wood shelf"
+    },
+    {
+      "path": "woodworks/shop_class_shelf/main",
+      "ext": "JPG",
+      "alt": "small wood shelf"
+    },
+    {
+      "path": "woodworks/shop_class_shelf/edges",
+      "ext": "GIF",
+      "alt": "close-up of hand-rounded edges"
+    },
+    {
+      "path": "woodworks/shop_class_shelf/signature",
+      "ext": "GIF",
+      "alt": "peter fonseca period 2 written on shelf in pencil"
+    }
+  ],
+  "materials": "pine",
+  "finish": "VARNISH",
+  "height": 24,
+  "width": 12,
+  "depth": 3
+}

@@ -1,0 +1,29 @@
+{
+  "id": "paris",
+  "name": "Paris",
+  "icon": {
+    "path": "paintings/paris/main",
+    "ext": "JPG",
+    "alt": "painting of Neha walking through Paris"
+  },
+  "links": [],
+  "date": "2025",
+  "description": "It was rainy.",
+  "images": [
+    {
+      "path": "paintings/paris/main",
+      "ext": "JPG",
+      "alt": "painting of Neha walking through Paris"
+    },
+    {
+      "path": "paintings/paris/in_progress",
+      "ext": "JPG",
+      "alt": "workbench with paint supplies and painting"
+    }
+  ],
+  "surface": "canvas",
+  "medium": "OIL",
+  "varnished": false,
+  "height": 12.5,
+  "width": 12
+}
