@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Project {
+public class Project implements Comparable<Project> {
 
     private String id;
     private String name;
@@ -98,6 +98,12 @@ public class Project {
 
     public void setImages(ProjectImage[] images) {
         this.images = images;
+    }
+
+    @Override
+    public int compareTo(Project other) {
+        // Newest first
+        return other.date.compareTo(date);
     }
 
     @Override
