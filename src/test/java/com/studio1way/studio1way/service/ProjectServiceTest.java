@@ -23,28 +23,29 @@ public class ProjectServiceTest {
     @Mock
     private ProjectRepository projectRepository;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        Project project = new Project(
-            "test-project",
-            "Test Project",
+    private Project project = new Project(
+        "test-project",
+        "Test Project",
+        new ProjectImage(
+            "paintings/v47_workshop/main",
+            ProjectImage.Extension.JPG,
+            "test icon"
+        ),
+        new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
+        "2025",
+        "A test project.",
+        new ProjectImage[] {
             new ProjectImage(
                 "paintings/v47_workshop/main",
                 ProjectImage.Extension.JPG,
-                "test icon"
+                "test image"
             ),
-            new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
-            "2025",
-            "A test project.",
-            new ProjectImage[] {
-                new ProjectImage(
-                    "paintings/v47_workshop/main",
-                    ProjectImage.Extension.JPG,
-                    "test image"
-                ),
-            }
-        );
+        }
+    );
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
         when(projectRepository.findAll()).thenReturn(List.of(project));
         when(projectRepository.findById(anyString())).thenReturn(null);
         when(projectRepository.findById("test-project")).thenReturn(project);
@@ -54,18 +55,18 @@ public class ProjectServiceTest {
     public void testFindAll() {
         List<Project> projects = projectService.findAll();
         assertEquals(1, projects.size());
-        assertEquals("test-project", projects.get(0).getId());
+        assertTrue(projects.get(0).equals(project));
     }
 
     @Test
     public void testFindByIdFound() {
-        Project project = projectService.findById("test-project");
-        assertEquals("test-project", project.getId());
+        Project loadedProject = projectService.findById("test-project");
+        assertTrue(loadedProject.equals(project));
     }
 
     @Test
     public void testFindByIdNotFound() {
-        Project project = projectService.findById("something-bogus");
-        assertNull(project);
+        Project loadedProject = projectService.findById("something-bogus");
+        assertNull(loadedProject);
     }
 }
