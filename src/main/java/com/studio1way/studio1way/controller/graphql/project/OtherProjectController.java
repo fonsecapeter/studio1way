@@ -1,4 +1,4 @@
-package com.studio1way.studio1way.controller;
+package com.studio1way.studio1way.controller.graphql.project;
 
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.service.ProjectService;
@@ -9,22 +9,22 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ProjectController {
+public class OtherProjectController {
 
     private final ProjectService projectService;
 
     @Autowired
-    public ProjectController(ProjectService projectService) {
+    public OtherProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
 
     @QueryMapping
-    public List<Project> projects() {
+    public List<Project> otherProjects() {
         return projectService.findAll();
     }
 
     @QueryMapping
-    public Project projectById(@Argument String id) {
+    public Project otherProject(@Argument String id) {
         return projectService.findById(id);
     }
 }

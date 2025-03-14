@@ -2,10 +2,10 @@ package com.studio1way.studio1way.controller;
 
 import static org.mockito.ArgumentMatchers.anyString;
 
-import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.model.project.CeramicWare;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
-import com.studio1way.studio1way.service.ProjectService;
+import com.studio1way.studio1way.service.CeramicWareService;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,62 +18,72 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 @AutoConfigureGraphQlTester
-public class ProjectControllerTests {
+public class CeramicWareControllerTests {
 
     @Autowired
     private GraphQlTester graphQlTester;
 
     @MockitoBean
-    private ProjectService projectService;
+    private CeramicWareService ceramicWareService;
 
     @BeforeEach
     public void setUp() {
-        Project project = new Project(
-            "test-project",
-            "Test Project",
+        CeramicWare ceramicWare = new CeramicWare(
+            "test-ceramicWare",
+            "Test CeramicWare",
             new ProjectImage(
-                "paintings/v47_workshop/main",
+                "ceramicwares/espresso_cup/main",
                 ProjectImage.Extension.JPG,
                 "test icon"
             ),
-            new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
-            "2025-01-01",
-            "A test project.",
+            new ProjectLink[] { new ProjectLink("https://something.com", "example") },
+            "2025",
+            "A test ceramicWare.",
             new ProjectImage[] {
                 new ProjectImage(
-                    "paintings/v47_workshop/main",
+                    "ceramicwares/espresso_cup/main",
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),
-            }
+            },
+            CeramicWare.ClayBody.GRAY_STONEWARE,
+            "cream",
+            4f,
+            2f,
+            2f
         );
-        Mockito.when(projectService.findAll()).thenReturn(List.of(project));
-        Mockito.when(projectService.findById(anyString())).thenReturn(null);
-        Mockito.when(projectService.findById("test-project")).thenReturn(project);
+        Mockito.when(ceramicWareService.findAll()).thenReturn(List.of(ceramicWare));
+        Mockito.when(ceramicWareService.findById(anyString())).thenReturn(null);
+        Mockito
+            .when(ceramicWareService.findById("test-ceramicWare"))
+            .thenReturn(ceramicWare);
     }
 
     @Test
-    public void testProjects() throws Exception {
+    public void testCeramicWares() throws Exception {
         String document =
             """
                 query {
-                    projects {
+                    ceramicWares {
                         id
                     }
                 }
             """;
 
         GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.projects").entityList(Project.class).hasSize(1);
-        resp.path("data.projects[0].id").entity(String.class).isEqualTo("test-project");
+        resp.path("data.ceramicWares").entityList(CeramicWare.class).hasSize(1);
+        resp
+            .path("data.ceramicWares[0].id")
+            .entity(String.class)
+            .isEqualTo("test-ceramicWare");
     }
 
     @Test
-    public void testProjectByIdFound() throws Exception {
+    public void testCeramicWareByIdFound() throws Exception {
         String document =
             """
                 query {
-                    projectById(id: "test-project") {
+                    ceramicWare(id: "test-ceramicWare") {
                         name
                     }
                 }
@@ -82,22 +92,22 @@ public class ProjectControllerTests {
         graphQlTester
             .document(document)
             .execute()
-            .path("data.projectById.name")
+            .path("data.ceramicWare.name")
             .entity(String.class)
-            .isEqualTo("Test Project");
+            .isEqualTo("Test CeramicWare");
     }
 
     @Test
-    public void testProjectByIdNotFound() throws Exception {
+    public void testCeramicWareByIdNotFound() throws Exception {
         String document =
             """
                 query {
-                    projectById(id: "something-bogus") {
+                    ceramicWare(id: "something-bogus") {
                         name
                     }
                 }
             """;
 
-        graphQlTester.document(document).execute().path("data.projectById").valueIsNull();
+        graphQlTester.document(document).execute().path("data.ceramicWare").valueIsNull();
     }
 }

@@ -27,7 +27,7 @@ public class CeramicWareServiceTest {
         "test-ceramicWare",
         "Test CeramicWare",
         new ProjectImage(
-            "paintings/v47_workshop/main",
+            "ceramicwares/espresso_cup/main",
             ProjectImage.Extension.JPG,
             "test icon"
         ),
@@ -36,7 +36,7 @@ public class CeramicWareServiceTest {
         "A test ceramicWare.",
         new ProjectImage[] {
             new ProjectImage(
-                "paintings/v47_workshop/main",
+                "ceramicwares/espresso_cup/main",
                 ProjectImage.Extension.JPG,
                 "test image"
             ),

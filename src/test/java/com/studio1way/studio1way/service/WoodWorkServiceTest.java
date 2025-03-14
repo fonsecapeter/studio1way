@@ -27,7 +27,7 @@ public class WoodWorkServiceTest {
         "test-woodWork",
         "Test WoodWork",
         new ProjectImage(
-            "paintings/v47_workshop/main",
+            "woodworks/shop_class_shelf/main",
             ProjectImage.Extension.JPG,
             "test icon"
         ),
@@ -36,7 +36,7 @@ public class WoodWorkServiceTest {
         "A test woodWork.",
         new ProjectImage[] {
             new ProjectImage(
-                "paintings/v47_workshop/main",
+                "woodworks/shop_class_shelf/main",
                 ProjectImage.Extension.JPG,
                 "test image"
             ),

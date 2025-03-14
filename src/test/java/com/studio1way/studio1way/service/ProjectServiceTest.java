@@ -26,17 +26,13 @@ public class ProjectServiceTest {
     private Project project = new Project(
         "test-project",
         "Test Project",
-        new ProjectImage(
-            "paintings/v47_workshop/main",
-            ProjectImage.Extension.JPG,
-            "test icon"
-        ),
+        new ProjectImage("others/my_brain/main", ProjectImage.Extension.JPG, "test icon"),
         new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
         "2025",
         "A test project.",
         new ProjectImage[] {
             new ProjectImage(
-                "paintings/v47_workshop/main",
+                "others/my_brain/main",
                 ProjectImage.Extension.JPG,
                 "test image"
             ),

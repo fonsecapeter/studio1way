@@ -22,7 +22,7 @@ public class CeramicWareTest {
                 "test-ceramicWare",
                 "Test CeramicWare",
                 new ProjectImage(
-                    "paintings/v47_workshop/main",
+                    "ceramicwares/espresso_cup/main",
                     ProjectImage.Extension.JPG,
                     "test icon"
                 ),
@@ -31,7 +31,7 @@ public class CeramicWareTest {
                 "A test ceramicWare.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "paintings/v47_workshop/main",
+                        "ceramicwares/espresso_cup/main",
                         ProjectImage.Extension.JPG,
                         "test image"
                     ),
@@ -55,7 +55,7 @@ public class CeramicWareTest {
           "id": "test-ceramicWare",
           "name": "Test CeramicWare",
           "icon": {
-            "path": "paintings/v47_workshop/main",
+            "path": "ceramicwares/espresso_cup/main",
             "ext": "JPG",
             "alt": "test icon"
           },
@@ -69,7 +69,7 @@ public class CeramicWareTest {
           "description": "A test ceramicWare.",
           "images": [
             {
-              "path": "paintings/v47_workshop/main",
+              "path": "ceramicwares/espresso_cup/main",
               "ext": "JPG",
               "alt": "test image"
             }

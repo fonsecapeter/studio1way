@@ -1,6 +1,56 @@
 type Query {
-    projects: [Project]!
-    projectById(id: String!): Project
+    otherProjects: [Project]!
+    otherProject(id: String!): Project
+    paintings: [Painting]!
+    painting(id: String!): Painting
+    ceramicWares: [CeramicWare]!
+    ceramicWare(id: String!): CeramicWare
+    woodWorks: [WoodWork]!
+    woodWork(id: String!): WoodWork
+}
+
+type WoodWork {
+    id: ID!
+    name: String!
+    icon: ProjectImage!
+    links: [ProjectLink!]!
+    date: String!
+    description: String!
+    images: [ProjectImage!]!
+    materials: String!
+    finish: String!
+    height: Float!
+    width: Float!
+    depth: Float!
+}
+
+type CeramicWare {
+    id: ID!
+    name: String!
+    icon: ProjectImage!
+    links: [ProjectLink!]!
+    date: String!
+    description: String!
+    images: [ProjectImage!]!
+    clayBody: String!
+    glaze: String!
+    height: Float!
+    width: Float!
+    depth: Float!
+}
+
+type Painting {
+    id: ID!
+    name: String!
+    icon: ProjectImage!
+    links: [ProjectLink!]!
+    date: String!
+    description: String!
+    images: [ProjectImage!]!
+    surface: String!
+    varnished: Boolean!
+    height: Float!
+    width: Float!
 }
 
 type Project {

@@ -22,7 +22,7 @@ public class WoodWorkTest {
                 "test-woodWork",
                 "Test WoodWork",
                 new ProjectImage(
-                    "paintings/v47_workshop/main",
+                    "woodworks/shop_class_shelf/main",
                     ProjectImage.Extension.JPG,
                     "test icon"
                 ),
@@ -31,7 +31,7 @@ public class WoodWorkTest {
                 "A test woodWork.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "paintings/v47_workshop/main",
+                        "woodworks/shop_class_shelf/main",
                         ProjectImage.Extension.JPG,
                         "test image"
                     ),
@@ -55,7 +55,7 @@ public class WoodWorkTest {
           "id": "test-woodWork",
           "name": "Test WoodWork",
           "icon": {
-            "path": "paintings/v47_workshop/main",
+            "path": "woodworks/shop_class_shelf/main",
             "ext": "JPG",
             "alt": "test icon"
           },
@@ -69,7 +69,7 @@ public class WoodWorkTest {
           "description": "A test woodWork.",
           "images": [
             {
-              "path": "paintings/v47_workshop/main",
+              "path": "woodworks/shop_class_shelf/main",
               "ext": "JPG",
               "alt": "test image"
             }
