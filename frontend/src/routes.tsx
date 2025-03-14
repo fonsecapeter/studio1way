@@ -39,6 +39,7 @@ const LoadableOtherProjects = lazy(
     ),
 );
 
+// Update changes in src/main/java/com/studio1way/studio1way/controller/SPAPathsController.java
 const AppRoutes = () => {
   return (
     <OhNoErrorBoundary>

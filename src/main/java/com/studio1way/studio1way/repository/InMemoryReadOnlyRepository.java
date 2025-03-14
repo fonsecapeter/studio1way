@@ -4,6 +4,8 @@ import java.util.*;
 
 public class InMemoryReadOnlyRepository<T, ID> implements ReadOnlyRepository<T, ID> {
 
+    // As Repository so each app can share a single bean across threads
+
     private final LinkedHashMap<String, T> data = new LinkedHashMap<>();
 
     public InMemoryReadOnlyRepository() {}

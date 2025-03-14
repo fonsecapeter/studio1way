@@ -51,7 +51,10 @@ public class ProjectResourceLoaderTest {
     @BeforeEach
     public void setUp() {
         projects =
-            new ProjectResourceLoader<Project>("/app/src/test/resources/projects/")
+            new ProjectResourceLoader<Project>(
+                Project.class,
+                "/app/src/test/resources/projects/"
+            )
                 .allProjects();
     }
 

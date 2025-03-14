@@ -1,6 +1,5 @@
 package com.studio1way.studio1way.repository.project.resources;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -11,10 +10,11 @@ import java.util.*;
 
 public class ProjectResourceLoader<T extends Project> {
 
-    private final TypeReference<T> typeReference = new TypeReference<T>() {};
+    private final Class<T> resourceType;
     private final String resourceDir;
 
-    public ProjectResourceLoader(String resourceDir) {
+    public ProjectResourceLoader(Class<T> resourceType, String resourceDir) {
+        this.resourceType = resourceType;
         this.resourceDir = resourceDir;
     }
 
@@ -38,11 +38,12 @@ public class ProjectResourceLoader<T extends Project> {
         T project;
         for (File file : files) {
             try {
-                project = objectMapper.readValue(file, typeReference);
+                project = objectMapper.readValue(file, resourceType);
             } catch (IOException err) {
                 throw new RuntimeException(
                     String.format(
-                        "Error loading project resource: %s",
+                        "Error loading project resource: %s %s",
+                        resourceType,
                         file.getAbsolutePath()
                     ),
                     err
