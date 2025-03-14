@@ -1,26 +1,26 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { PROJECT_ITEM_FRAGMENT } from "../../components/portfolio/item";
+import { OTHER_PROJECT_ITEM_FRAGMENT } from "../../components/portfolio/item";
 import Portfolio from "../../components/portfolio/index";
 import "../../assets/scss/other.scss";
 
-export const GET_PROJECTS = gql`
-  query projects {
-    projects {
-      ...ProjectItem
+export const OTHER_PROJECTS = gql`
+  query otherProjects {
+    otherProjects {
+      ...OtherProjectItem
     }
   }
 
-  ${PROJECT_ITEM_FRAGMENT}
+  ${OTHER_PROJECT_ITEM_FRAGMENT}
 `;
 
 export const OtherProjectsContainer = () => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, error, data } = useQuery(OTHER_PROJECTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <Portfolio title="WIP" projects={data.projects} data-testid="other" />;
+  return <Portfolio title="Other Projects" projects={data.otherProjects} />;
 };
 
 export default OtherProjectsContainer;

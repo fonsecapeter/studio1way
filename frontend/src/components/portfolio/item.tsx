@@ -1,9 +1,39 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import { ProjectItemFragment } from "../../__generated__/types";
+import { OtherProjectItemFragment } from "../../__generated__/types";
 
-export const PROJECT_ITEM_FRAGMENT = gql`
-  fragment ProjectItem on Project {
+export const CERAMIC_WARE_ITEM_FRAGMENT = gql`
+  fragment CeramicWareItem on CeramicWare {
+    id
+    icon {
+      half
+      alt
+    }
+    name
+  }
+`;
+export const OTHER_PROJECT_ITEM_FRAGMENT = gql`
+  fragment OtherProjectItem on OtherProject {
+    id
+    icon {
+      half
+      alt
+    }
+    name
+  }
+`;
+export const PAINTING_ITEM_FRAGMENT = gql`
+  fragment PaintingItem on Painting {
+    id
+    icon {
+      half
+      alt
+    }
+    name
+  }
+`;
+export const WOOD_WORK_ITEM_FRAGMENT = gql`
+  fragment WoodWorkItem on WoodWork {
     id
     icon {
       half
@@ -14,7 +44,7 @@ export const PROJECT_ITEM_FRAGMENT = gql`
 `;
 
 interface CodeProps {
-  readonly project: ProjectItemFragment;
+  readonly project: OtherProjectItemFragment;
 }
 
 export const PortfolioItem = ({ project }: CodeProps) => (

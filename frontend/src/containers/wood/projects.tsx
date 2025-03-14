@@ -1,26 +1,26 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { PROJECT_ITEM_FRAGMENT } from "../../components/portfolio/item";
+import { WOOD_WORK_ITEM_FRAGMENT } from "../../components/portfolio/item";
 import Portfolio from "../../components/portfolio/index";
 import "../../assets/scss/wood.scss";
 
-export const GET_PROJECTS = gql`
-  query projects {
-    projects {
-      ...ProjectItem
+export const WOOD_WORKS = gql`
+  query woodWorks {
+    woodWorks {
+      ...WoodWorkItem
     }
   }
 
-  ${PROJECT_ITEM_FRAGMENT}
+  ${WOOD_WORK_ITEM_FRAGMENT}
 `;
 
 export const WoodProjectsContainer = () => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, error, data } = useQuery(WOOD_WORKS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <Portfolio title="WIP" projects={data.projects} data-testid="wood" />;
+  return <Portfolio title="Wood" projects={data.woodWorks} />;
 };
 
 export default WoodProjectsContainer;

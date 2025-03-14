@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect, useState } from "react";
 import { PortfolioItem } from "./item";
-import { ProjectItemFragment } from "../../__generated__/types";
+import { OtherProjectItemFragment } from "../../__generated__/types";
 
 interface PortfolioProps {
   readonly title: string;
-  readonly projects: ProjectItemFragment[];
+  readonly projects: OtherProjectItemFragment[];
 }
 
 export const Portfolio = ({ title, projects }: PortfolioProps) => (

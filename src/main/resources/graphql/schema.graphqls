@@ -1,6 +1,6 @@
 type Query {
-    otherProjects: [Project]!
-    otherProject(id: String!): Project
+    otherProjects: [OtherProject]!
+    otherProject(id: String!): OtherProject
     paintings: [Painting]!
     painting(id: String!): Painting
     ceramicWares: [CeramicWare]!
@@ -9,7 +9,7 @@ type Query {
     woodWork(id: String!): WoodWork
 }
 
-type WoodWork {
+type WoodWork implements Project {
     id: ID!
     name: String!
     icon: ProjectImage!
@@ -24,7 +24,7 @@ type WoodWork {
     depth: Float!
 }
 
-type CeramicWare {
+type CeramicWare implements Project {
     id: ID!
     name: String!
     icon: ProjectImage!
@@ -39,7 +39,7 @@ type CeramicWare {
     depth: Float!
 }
 
-type Painting {
+type Painting implements Project {
     id: ID!
     name: String!
     icon: ProjectImage!
@@ -53,7 +53,17 @@ type Painting {
     width: Float!
 }
 
-type Project {
+type OtherProject implements Project {
+    id: ID!
+    name: String!
+    icon: ProjectImage!
+    links: [ProjectLink!]!
+    date: String!
+    description: String!
+    images: [ProjectImage!]!
+}
+
+interface Project {
     id: ID!
     name: String!
     icon: ProjectImage!

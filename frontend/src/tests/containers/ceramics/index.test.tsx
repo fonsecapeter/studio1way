@@ -3,21 +3,21 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import {
   CeramicsProjectsContainer,
-  GET_PROJECTS,
+  CERAMIC_WARES,
 } from "../../../containers/ceramics/projects";
 
 const mocks = [
   {
     request: {
-      query: GET_PROJECTS,
+      query: CERAMIC_WARES,
     },
     result: {
       data: {
-        projects: [
+        ceramicWares: [
           {
-            __typename: "Project",
+            __typename: "CeramicWare",
             id: "test-project",
-            name: "A Test Project",
+            name: "A Test CeramicWare",
             icon: {
               __typename: "ProjectImage",
               half: "img/projects/test/main/50.png",
@@ -25,9 +25,9 @@ const mocks = [
             },
           },
           {
-            __typename: "Project",
+            __typename: "CeramicWare",
             id: "another-test-project",
-            name: "Another Test Project",
+            name: "Another Test CeramicWare",
             icon: {
               __typename: "ProjectImage",
               half: "img/projects/another-test/main/50.png",
@@ -50,9 +50,9 @@ describe("CeramicsProjectsContainer", () => {
   });
 
   it("passes projects to the Portfolio component", async () => {
-    const testProjectEl = await screen.findByText("A Test Project");
+    const testProjectEl = await screen.findByText("A Test CeramicWare");
     const anotherTestProjectEl = await screen.findByText(
-      "Another Test Project",
+      "Another Test CeramicWare",
     );
     expect(testProjectEl).toBeInTheDocument();
     expect(anotherTestProjectEl).toBeInTheDocument();

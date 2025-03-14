@@ -1,26 +1,26 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { PROJECT_ITEM_FRAGMENT } from "../../components/portfolio/item";
+import { PAINTING_ITEM_FRAGMENT } from "../../components/portfolio/item";
 import Portfolio from "../../components/portfolio/index";
 import "../../assets/scss/paint.scss";
 
-export const GET_PROJECTS = gql`
-  query projects {
-    projects {
-      ...ProjectItem
+export const PAINTINGS = gql`
+  query paintings {
+    paintings {
+      ...PaintingItem
     }
   }
 
-  ${PROJECT_ITEM_FRAGMENT}
+  ${PAINTING_ITEM_FRAGMENT}
 `;
 
 export const PaintProjectsContainer = () => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, error, data } = useQuery(PAINTINGS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <Portfolio title="WIP" projects={data.projects} data-testid="paint" />;
+  return <Portfolio title="Paintings" projects={data.paintings} />;
 };
 
 export default PaintProjectsContainer;

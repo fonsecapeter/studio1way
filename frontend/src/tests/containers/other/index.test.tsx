@@ -3,19 +3,19 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import {
   OtherProjectsContainer,
-  GET_PROJECTS,
+  OTHER_PROJECTS,
 } from "../../../containers/other/projects";
 
 const mocks = [
   {
     request: {
-      query: GET_PROJECTS,
+      query: OTHER_PROJECTS,
     },
     result: {
       data: {
-        projects: [
+        otherProjects: [
           {
-            __typename: "Project",
+            __typename: "OtherProject",
             id: "test-project",
             name: "A Test Project",
             icon: {
@@ -25,7 +25,7 @@ const mocks = [
             },
           },
           {
-            __typename: "Project",
+            __typename: "OtherProject",
             id: "another-test-project",
             name: "Another Test Project",
             icon: {
