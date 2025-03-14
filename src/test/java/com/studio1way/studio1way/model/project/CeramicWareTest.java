@@ -21,14 +21,18 @@ public class CeramicWareTest {
             new CeramicWare(
                 "test-ceramicWare",
                 "Test CeramicWare",
-                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
+                new ProjectImage(
+                    "paintings/v47_workshop/main",
+                    ProjectImage.Extension.JPG,
+                    "test icon"
+                ),
                 new ProjectLink[] { new ProjectLink("https://something.com", "example") },
                 "2025",
                 "A test ceramicWare.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "some/path",
-                        ProjectImage.Extension.PNG,
+                        "paintings/v47_workshop/main",
+                        ProjectImage.Extension.JPG,
                         "test image"
                     ),
                 },
@@ -51,8 +55,8 @@ public class CeramicWareTest {
           "id": "test-ceramicWare",
           "name": "Test CeramicWare",
           "icon": {
-            "path": "some/path",
-            "ext": "PNG",
+            "path": "paintings/v47_workshop/main",
+            "ext": "JPG",
             "alt": "test icon"
           },
           "links": [
@@ -65,8 +69,8 @@ public class CeramicWareTest {
           "description": "A test ceramicWare.",
           "images": [
             {
-              "path": "some/path",
-              "ext": "PNG",
+              "path": "paintings/v47_workshop/main",
+              "ext": "JPG",
               "alt": "test image"
             }
           ],

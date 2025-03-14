@@ -97,6 +97,17 @@ public class Project implements Comparable<Project> {
     }
 
     public void setImages(ProjectImage[] images) {
+        for (ProjectImage image : images) {
+            if (!image.valid()) {
+                throw new IllegalArgumentException(
+                    String.format(
+                        "No image with path=%s ext=%s found",
+                        image.getPath(),
+                        image.getExt()
+                    )
+                );
+            }
+        }
         this.images = images;
     }
 

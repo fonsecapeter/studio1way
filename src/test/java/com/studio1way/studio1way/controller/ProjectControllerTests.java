@@ -31,12 +31,20 @@ public class ProjectControllerTests {
         Project project = new Project(
             "test-project",
             "Test Project",
-            new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
+            new ProjectImage(
+                "paintings/v47_workshop/main",
+                ProjectImage.Extension.JPG,
+                "test icon"
+            ),
             new ProjectLink[] { new ProjectLink("https://something.com", "examples") },
             "2025-01-01",
             "A test project.",
             new ProjectImage[] {
-                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test image"),
+                new ProjectImage(
+                    "paintings/v47_workshop/main",
+                    ProjectImage.Extension.JPG,
+                    "test image"
+                ),
             }
         );
         Mockito.when(projectService.findAll()).thenReturn(List.of(project));

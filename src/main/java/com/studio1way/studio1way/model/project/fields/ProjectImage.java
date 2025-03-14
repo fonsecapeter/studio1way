@@ -1,10 +1,12 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ProjectImage {
 
     private final String IMG_PATH = "/img/projects";
+    private final String ABS_PATH = "/app/frontend/src/assets/";
 
     public enum Extension {
         JPG("jpg"),
@@ -73,6 +75,14 @@ public class ProjectImage {
 
     public String getQuarter() {
         return String.format("%s/%s/25.%s", IMG_PATH, path, ext.toString());
+    }
+
+    public Boolean valid() {
+        return (
+            new File(String.format("%s/%s", ABS_PATH, getFull())).exists() ||
+            new File(String.format("%s/%s", ABS_PATH, getHalf())).exists() ||
+            new File(String.format("%s/%s", ABS_PATH, getQuarter())).exists()
+        );
     }
 
     @Override

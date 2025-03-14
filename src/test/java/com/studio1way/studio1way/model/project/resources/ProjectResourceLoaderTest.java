@@ -18,20 +18,28 @@ public class ProjectResourceLoaderTest {
     private final Project testProject = new Project(
         "test-project",
         "Test Project",
-        new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
+        new ProjectImage(
+            "paintings/v47_workshop/main",
+            ProjectImage.Extension.JPG,
+            "test icon"
+        ),
         new ProjectLink[] { new ProjectLink("https://something.com", "example") },
         "2025",
         "A test project.",
         new ProjectImage[] {
-            new ProjectImage("some/path", ProjectImage.Extension.PNG, "test image"),
+            new ProjectImage(
+                "paintings/v47_workshop/main",
+                ProjectImage.Extension.JPG,
+                "test image"
+            ),
         }
     );
     private final Project anotherTestProject = new Project(
         "another-test-project",
         "Another Test Project",
         new ProjectImage(
-            "some/other/path",
-            ProjectImage.Extension.PNG,
+            "paintings/v47_workshop/main",
+            ProjectImage.Extension.JPG,
             "another test icon"
         ),
         new ProjectLink[] {
@@ -41,8 +49,8 @@ public class ProjectResourceLoaderTest {
         "A similar, but different test project.",
         new ProjectImage[] {
             new ProjectImage(
-                "some/other/path",
-                ProjectImage.Extension.PNG,
+                "paintings/v47_workshop/main",
+                ProjectImage.Extension.JPG,
                 "another test image"
             ),
         }

@@ -2,8 +2,8 @@
   "id": "test-project",
   "name": "Test Project",
   "icon": {
-    "path": "some/path",
-    "ext": "PNG",
+    "path": "paintings/v47_workshop/main",
+    "ext": "JPG",
     "alt": "test icon"
   },
   "links": [
@@ -16,8 +16,8 @@
   "description": "A test project.",
   "images": [
     {
-      "path": "some/path",
-      "ext": "PNG",
+      "path": "paintings/v47_workshop/main",
+      "ext": "JPG",
       "alt": "test image"
     }
   ]

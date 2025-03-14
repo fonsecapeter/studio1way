@@ -21,14 +21,18 @@ public class PaintingTest {
             new Painting(
                 "test-painting",
                 "Test Painting",
-                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
+                new ProjectImage(
+                    "paintings/v47_workshop/main",
+                    ProjectImage.Extension.JPG,
+                    "test icon"
+                ),
                 new ProjectLink[] { new ProjectLink("https://something.com", "example") },
                 "2025",
                 "A test painting.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "some/path",
-                        ProjectImage.Extension.PNG,
+                        "paintings/v47_workshop/main",
+                        ProjectImage.Extension.JPG,
                         "test image"
                     ),
                 },
@@ -51,8 +55,8 @@ public class PaintingTest {
           "id": "test-painting",
           "name": "Test Painting",
           "icon": {
-            "path": "some/path",
-            "ext": "PNG",
+            "path": "paintings/v47_workshop/main",
+            "ext": "JPG",
             "alt": "test icon"
           },
           "links": [
@@ -65,8 +69,8 @@ public class PaintingTest {
           "description": "A test painting.",
           "images": [
             {
-              "path": "some/path",
-              "ext": "PNG",
+              "path": "paintings/v47_workshop/main",
+              "ext": "JPG",
               "alt": "test image"
             }
           ],

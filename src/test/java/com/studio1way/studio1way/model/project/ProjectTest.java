@@ -21,14 +21,18 @@ public class ProjectTest {
             new Project(
                 "test-project",
                 "Test Project",
-                new ProjectImage("some/path", ProjectImage.Extension.PNG, "test icon"),
+                new ProjectImage(
+                    "paintings/v47_workshop/main",
+                    ProjectImage.Extension.JPG,
+                    "test icon"
+                ),
                 new ProjectLink[] { new ProjectLink("https://something.com", "example") },
                 "2025",
                 "A test project.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "some/path",
-                        ProjectImage.Extension.PNG,
+                        "paintings/v47_workshop/main",
+                        ProjectImage.Extension.JPG,
                         "test image"
                     ),
                 }
@@ -46,8 +50,8 @@ public class ProjectTest {
           "id": "test-project",
           "name": "Test Project",
           "icon": {
-            "path": "some/path",
-            "ext": "PNG",
+            "path": "paintings/v47_workshop/main",
+            "ext": "JPG",
             "alt": "test icon"
           },
           "links": [
@@ -60,8 +64,8 @@ public class ProjectTest {
           "description": "A test project.",
           "images": [
             {
-              "path": "some/path",
-              "ext": "PNG",
+              "path": "paintings/v47_workshop/main",
+              "ext": "JPG",
               "alt": "test image"
             }
           ]
@@ -72,15 +76,7 @@ public class ProjectTest {
     }
 
     @Test
-    public void testProjectImageSizes() {
-        ProjectImage image = project.getImages()[0];
-        assertEquals("/img/projects/some/path/100.png", image.getFull());
-        assertEquals("/img/projects/some/path/50.png", image.getHalf());
-        assertEquals("/img/projects/some/path/25.png", image.getQuarter());
-    }
-
-    @Test
-    public void testDateFormatIsValidated() {
+    public void testDateFormatIsValidatedInSetter() {
         String[] validDates = { "2024", "2024-01", "2024-01-01" };
         String[] invalidDates = {
             "2025/01/01",
@@ -104,5 +100,46 @@ public class ProjectTest {
                 )
             );
         }
+    }
+
+    @Test
+    public void testImagePathsAreValidatedInSetter() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                project.setImages(
+                    new ProjectImage[] {
+                        new ProjectImage(
+                            "some/path",
+                            ProjectImage.Extension.PNG,
+                            "path that doesnt exist"
+                        ),
+                    }
+                );
+            }
+        );
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                project.setImages(
+                    new ProjectImage[] {
+                        new ProjectImage(
+                            "paintings/v47_workshop/main",
+                            ProjectImage.Extension.PNG,
+                            "path that exist but with a different ext"
+                        ),
+                    }
+                );
+            }
+        );
+        project.setImages(
+            new ProjectImage[] {
+                new ProjectImage(
+                    "paintings/v47_workshop/main",
+                    ProjectImage.Extension.JPG,
+                    "this exists and should work"
+                ),
+            }
+        );
     }
 }
