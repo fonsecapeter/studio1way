@@ -25,6 +25,7 @@ Check it out at [studio1way.com](https://www.studio1way.com)
 Requires [docker](https://www.docker.com/community-edition)
 
 - `bin/up`
-- `bin/logs`
-- Open `http://localhost:8080`
-- See other helpful commands at `bin/list`
+- `bin/open` or visit `http://localhost:8080`
+- `bin/test`
+- `bin/fe/test`
+- See other commands at `bin/list`
