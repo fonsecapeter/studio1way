@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Generate 50% and 25% images from path/to/100
+# arg1 = path
+# arg2 = file extension
+set -eu -o pipefail
+
+if [ ! -d "${1}" ]; then
+  echo "img dir doesn't exit"
+  exit 1
+fi
+if [ "${1: -1}" == "/" ]; then
+  echo "don't use a trailing `/` in your path"
+  exit 1
+fi
+full_size_path=$(ls ${1}/100.*)
+if [ -z "${full_size_path}" ]; then
+    echo "no 100.* file found in ${1}"
+    exit 1
+fi
+ext="${full_size_path##*.}"
+
+echo "magick ${1}/100.${ext} -resize 50% ${1}/50.${ext}"
+magick "${1}/100.${ext}" -resize 50% "${1}/50.${ext}"
+echo "magick ${1}/100.${ext} -resize 25% ${1}/25.${ext}"
+magick "${1}/100.${ext}" -resize 25% "${1}/25.${ext}"
+
+tree -h "${1}"
