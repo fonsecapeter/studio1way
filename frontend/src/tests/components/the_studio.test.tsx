@@ -9,7 +9,7 @@ describe("TheStudio", () => {
       render(
         <MemoryRouter>
           <TheStudio />
-        </MemoryRouter>
+        </MemoryRouter>,
       );
     });
 

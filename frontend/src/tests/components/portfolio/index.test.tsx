@@ -45,5 +45,11 @@ describe("Portfolio", () => {
     it("renders each project icon", () => {
       expect(screen.getAllByAltText("fake image").length).toBe(2);
     });
+
+    it("renders a button back to the category philosophy", () => {
+      const linkElement = screen.getByRole("link", { name: /PHILOSOPHY/i });
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement.getAttribute("href")).toBe("/");
+    });
   });
 });
