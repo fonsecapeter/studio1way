@@ -9,11 +9,11 @@ describe("TheStudio", () => {
     });
 
     it("renders a page title", () => {
-      expect(screen.getByText("The Studio")).toBeInTheDocument();
+      expect(screen.getByText("The Studio of P. Fonseca")).toBeInTheDocument();
     });
 
-    it("renders a todo", () => {
-      expect(screen.getByText("TODO: some info here")).toBeInTheDocument();
+    it("renders a description", () => {
+      expect(screen.getByText(/art is everywhere/i)).toBeInTheDocument();
     });
   });
 });

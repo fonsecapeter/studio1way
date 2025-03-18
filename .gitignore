@@ -41,3 +41,6 @@ build/
 ### Vim ###
 *.swp
 *.swo
+
+### OSX ###
+**/.DS_Store
