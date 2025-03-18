@@ -10,11 +10,18 @@ const LoadableTheStudio = lazy(
       "./components/the_studio/index"
     ),
 );
+const LoadableCeramicsDepartment = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./components/ceramics/department"
+    ),
+);
 const LoadableCeramicsLanding = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/ceramics/index"
+      "./components/ceramics/landing"
     ),
 );
 const LoadableCeramicsProjects = lazy(
@@ -52,13 +59,13 @@ const AppRoutes = () => {
     <OhNoErrorBoundary>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<LoadableTheStudio />} />
+          <Route index element={<LoadableTheStudio />} />
           <Route path="/the-studio" element={<LoadableTheStudio />} />
-          <Route path="/ceramics" element={<LoadableCeramicsLanding />} />
-          <Route
-            path="/ceramics/projects"
-            element={<LoadableCeramicsProjects />}
-          />
+          <Route path="/ceramics" element={<LoadableCeramicsDepartment />}>
+            <Route index element={<LoadableCeramicsLanding />} />
+            <Route path="projects" element={<LoadableCeramicsProjects />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
           <Route path="/paint" element={<LoadablePaintProjects />} />
           <Route path="/wood" element={<LoadableWoodProjects />} />
           <Route path="/other" element={<LoadableOtherProjects />} />

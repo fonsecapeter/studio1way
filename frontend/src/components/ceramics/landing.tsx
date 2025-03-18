@@ -11,8 +11,8 @@ import onShelfPath from "../../assets/img/web/ceramics/on_shelf/50.jpg";
 export const CeramicsLanding = () => (
   <div>
     <div className="landing-title-row">
-      <h1 className="page-title">Ceramics</h1>
-      <Link to={"/ceramics/projects"}>
+      <h1 className="page-title">Ceramics Philosophy</h1>
+      <Link to="projects">
         <button className="button-link">PORTFOLIO →</button>
       </Link>
     </div>

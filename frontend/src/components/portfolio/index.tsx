@@ -9,25 +9,22 @@ interface PortfolioProps {
   readonly projects: OtherProjectItemFragment[];
 }
 
-export const Portfolio = ({ title, projects }: PortfolioProps) => {
-  let parentPath = window.location.pathname.split("/").slice(0, -1).join("/");
-  return (
-    <div>
-      <div className="landing-title-row">
-        <h1 className="page-title">{title}</h1>
-        <Link to={parentPath}>
-          <button className="button-link">← BACK</button>
-        </Link>
-      </div>
-      <div className="portfolio-list">
-        <div className="portfolio-column">
-          {projects.map((project) => (
-            <PortfolioItem project={project} key={project.name} />
-          ))}
-        </div>
+export const Portfolio = ({ title, projects }: PortfolioProps) => (
+  <div>
+    <div className="landing-title-row">
+      <h1 className="page-title">{title}</h1>
+      <Link to="..">
+        <button className="button-link">← PHILOSOPHY</button>
+      </Link>
+    </div>
+    <div className="portfolio-list">
+      <div className="portfolio-column">
+        {projects.map((project) => (
+          <PortfolioItem project={project} key={project.name} />
+        ))}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Portfolio;

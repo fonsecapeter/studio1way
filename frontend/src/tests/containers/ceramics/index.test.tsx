@@ -1,5 +1,6 @@
 import { MockedProvider } from "@apollo/client/testing";
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import {
   CeramicsProjectsContainer,
@@ -44,7 +45,9 @@ describe("CeramicsProjectsContainer", () => {
   beforeEach(() => {
     render(
       <MockedProvider mocks={mocks}>
-        <CeramicsProjectsContainer />
+        <MemoryRouter>
+          <CeramicsProjectsContainer />
+        </MemoryRouter>
       </MockedProvider>,
     );
   });

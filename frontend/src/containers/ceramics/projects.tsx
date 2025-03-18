@@ -20,7 +20,7 @@ export const CeramicsProjectsContainer = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <Portfolio title="Ceramics" projects={data.ceramicWares} />;
+  return <Portfolio title="Ceramic Wares" projects={data.ceramicWares} />;
 };
 
 export default CeramicsProjectsContainer;

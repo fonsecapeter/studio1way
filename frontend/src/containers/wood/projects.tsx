@@ -20,7 +20,7 @@ export const WoodProjectsContainer = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <Portfolio title="Wood" projects={data.woodWorks} />;
+  return <Portfolio title="Wood Works" projects={data.woodWorks} />;
 };
 
 export default WoodProjectsContainer;
