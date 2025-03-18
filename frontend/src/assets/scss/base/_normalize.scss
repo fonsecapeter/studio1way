@@ -18,3 +18,20 @@ a {
     color: variables.$green;
   }
 }
+
+button {
+  font-family:
+    "Brass Mono", monospace; // some user-agent stylesheets mess up buttons
+}
+
+ul {
+  margin: 40px;
+}
+
+li {
+  margin: 20px;
+}
+
+p {
+  margin: 40px;
+}

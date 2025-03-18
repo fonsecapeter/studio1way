@@ -58,11 +58,11 @@ module.exports = {
     new webpack.EnvironmentPlugin(["API_URL"]),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      favicon: "./src/assets/img/favicon.ico",
+      favicon: "./src/assets/img/web/favicon.ico",
     }),
     new CopyPlugin({
       patterns: [
-        { from: "./src/assets/img", to: "img"},
+        { from: "./src/assets/img/projects", to: "img/projects"},
       ]
     })
   ],

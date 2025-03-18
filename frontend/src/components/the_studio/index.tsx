@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
-import studioInsidePath from "../../assets/img/the_studio/inside/50.jpg";
-import studioSawPath from "../../assets/img/the_studio/saw/50.jpg";
-import studioShelfPath from "../../assets/img/the_studio/shelf/50.jpg";
-import studioSignPath from "../../assets/img/the_studio/sign/50.jpg";
+import { Link } from "react-router-dom";
+import studioInsidePath from "../../assets/img/web/the_studio/inside/50.jpg";
+import studioSawPath from "../../assets/img/web/the_studio/saw/50.jpg";
+import studioShelfPath from "../../assets/img/web/the_studio/shelf/50.jpg";
+import studioSignPath from "../../assets/img/web/the_studio/sign/50.jpg";
 
 export const TheStudio = () => (
   <div>
@@ -11,24 +12,34 @@ export const TheStudio = () => (
     <img className="full-width" src={studioSignPath} alt="Studio 1Way sign" />
     <p>
       Studio 1Way is all about breaking out of rigid paths and finding new ones.
-      I think art is everywhere and more accessible than people think.
     </p>
+    <p>I think art is everywhere and more accessible than people think.</p>
     <img className="full-width" src={studioShelfPath} alt="Studio shelves" />
-    <p>
-      The studio itself may be limited to 10 square feet, but it's ideas are
-      much bigger.
-    </p>
+    <p>The studio itself may be limited to 10 square feet</p>
+    <p>but it's ideas are much bigger.</p>
     <img
       className="full-width"
       src={studioInsidePath}
       alt="Inside the studio"
     />
+    <p>We have several departments:</p>
+    <ul>
+      <li>
+        <Link to="/ceramics">Ceramics</Link>
+      </li>
+      <li>
+        <Link to="/paint">Painting</Link>
+      </li>
+      <li>
+        <Link to="/wood">Woodworking</Link>
+      </li>
+    </ul>
     <p>
-      We have several departments, including Ceramics, Painting, Woodworking,
-      and more to come.
+      As well as a selection of{" "}
+      <Link to="/other">experimental, uncategoried pieces.</Link>
     </p>
     <img className="full-width" src={studioSawPath} alt="Plywood mid-sawing" />
-    <p>So have a look around and do reach out for any inquiries.</p>
+    <p>So have a look around and do reach out with any inquiries.</p>
   </div>
 );
 
