@@ -10,18 +10,18 @@ const LoadableTheStudio = lazy(
       "./components/the_studio/index"
     ),
 );
-const LoadableCeramicsDepartment = lazy(
+const LoadableDepartment = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/ceramics/department"
+      "./components/department/index"
     ),
 );
-const LoadableCeramicsLanding = lazy(
+const LoadableCeramicsPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/ceramics/landing"
+      "./components/ceramics/philosophy"
     ),
 );
 const LoadableCeramicsProjects = lazy(
@@ -36,6 +36,13 @@ const LoadablePaintProjects = lazy(
     import(
       /* webpackPrefetch: true */
       "./containers/paint/projects"
+    ),
+);
+const LoadableWoodPhilosophy = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./components/wood/philosophy"
     ),
 );
 const LoadableWoodProjects = lazy(
@@ -61,13 +68,17 @@ const AppRoutes = () => {
         <Routes>
           <Route index element={<LoadableTheStudio />} />
           <Route path="/the-studio" element={<LoadableTheStudio />} />
-          <Route path="/ceramics" element={<LoadableCeramicsDepartment />}>
-            <Route index element={<LoadableCeramicsLanding />} />
+          <Route path="/ceramics" element={<LoadableDepartment />}>
+            <Route index element={<LoadableCeramicsPhilosophy />} />
             <Route path="projects" element={<LoadableCeramicsProjects />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/paint" element={<LoadablePaintProjects />} />
-          <Route path="/wood" element={<LoadableWoodProjects />} />
+          <Route path="/wood" element={<LoadableDepartment />}>
+            <Route index element={<LoadableWoodPhilosophy />} />
+            <Route path="projects" element={<LoadableWoodProjects />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
           <Route path="/other" element={<LoadableOtherProjects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

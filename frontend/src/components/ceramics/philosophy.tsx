@@ -8,7 +8,7 @@ import dentPath from "../../assets/img/web/ceramics/dent/50.jpg";
 import inHandPath from "../../assets/img/web/ceramics/in_hand/50.jpg";
 import onShelfPath from "../../assets/img/web/ceramics/on_shelf/50.jpg";
 
-export const CeramicsLanding = () => (
+export const CeramicsPhilosophy = () => (
   <div>
     <div className="landing-title-row">
       <h1 className="page-title">Ceramics Philosophy</h1>
@@ -65,4 +65,4 @@ export const CeramicsLanding = () => (
   </div>
 );
 
-export default CeramicsLanding;
+export default CeramicsPhilosophy;

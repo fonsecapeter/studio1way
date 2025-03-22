@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import studioInsidePath from "../../assets/img/web/the_studio/inside/50.jpg";
-import studioSawPath from "../../assets/img/web/the_studio/saw/50.jpg";
+import studioClockPath from "../../assets/img/web/the_studio/clock/50.jpg";
 import studioShelfPath from "../../assets/img/web/the_studio/shelf/50.jpg";
 import studioSignPath from "../../assets/img/web/the_studio/sign/50.jpg";
 
@@ -38,7 +38,11 @@ export const TheStudio = () => (
       As well as a selection of{" "}
       <Link to="/other">experimental, uncategoried pieces.</Link>
     </p>
-    <img className="full-width" src={studioSawPath} alt="Plywood mid-sawing" />
+    <img
+      className="full-width"
+      src={studioClockPath}
+      alt="Clock on small shelf with roll of expired film"
+    />
     <p>So have a look around and do reach out with any inquiries.</p>
   </div>
 );
