@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PortfolioItem } from "./item";
-import { OtherProjectItemFragment } from "../../__generated__/types";
+import { OtherProjectItemFragment } from "../../../__generated__/types";
 
 interface PortfolioProps {
   readonly title: string;

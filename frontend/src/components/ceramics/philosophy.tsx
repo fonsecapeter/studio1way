@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../assets/scss/ceramics.scss";
 import bowlStampPath from "../../assets/img/web/ceramics/bowl_stamp/50.jpg";
 import coffeeCupPath from "../../assets/img/web/ceramics/coffee_cup/50.jpg";
 import dentPath from "../../assets/img/web/ceramics/dent/50.jpg";

@@ -14,7 +14,7 @@ const LoadableDepartment = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/department/index"
+      "./components/common/department"
     ),
 );
 const LoadableCeramicsPhilosophy = lazy(

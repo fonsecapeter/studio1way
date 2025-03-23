@@ -1,6 +1,6 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import { OtherProjectItemFragment } from "../../__generated__/types";
+import { OtherProjectItemFragment } from "../../../__generated__/types";
 
 export const CERAMIC_WARE_ITEM_FRAGMENT = gql`
   fragment CeramicWareItem on CeramicWare {

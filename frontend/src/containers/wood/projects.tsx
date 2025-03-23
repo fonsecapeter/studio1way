@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { WOOD_WORK_ITEM_FRAGMENT } from "../../components/portfolio/item";
-import Portfolio from "../../components/portfolio/index";
+import { WOOD_WORK_ITEM_FRAGMENT } from "../../components/common/portfolio/item";
+import Portfolio from "../../components/common/portfolio/index";
 
 export const WOOD_WORKS = gql`
   query woodWorks {
