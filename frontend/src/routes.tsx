@@ -31,6 +31,13 @@ const LoadableCeramicsProjects = lazy(
       "./containers/ceramics/projects"
     ),
 );
+const LoadablePaintPhilosophy = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./components/paint/philosophy"
+    ),
+);
 const LoadablePaintProjects = lazy(
   () =>
     import(
@@ -73,7 +80,11 @@ const AppRoutes = () => {
             <Route path="projects" element={<LoadableCeramicsProjects />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="/paint" element={<LoadablePaintProjects />} />
+          <Route path="/paint" element={<LoadableDepartment />}>
+            <Route index element={<LoadablePaintPhilosophy />} />
+            <Route path="projects" element={<LoadablePaintProjects />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
           <Route path="/wood" element={<LoadableDepartment />}>
             <Route index element={<LoadableWoodPhilosophy />} />
             <Route path="projects" element={<LoadableWoodProjects />} />

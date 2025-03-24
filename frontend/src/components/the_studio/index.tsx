@@ -43,7 +43,7 @@ export const TheStudio = () => (
       src={studioClockPath}
       alt="Clock on small shelf with roll of expired film"
     />
-    <p>So have a look around and do reach out with any inquiries.</p>
+    <p>There isn't just one way, this is 1 Way.</p>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import PortfolioItem from "../../../components/common/portfolio/item";
+import PortfolioItem from "../../../../components/common/portfolio/item";
 
 describe("PortfolioItem", () => {
   beforeEach(() => {
