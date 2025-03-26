@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.io.IOException;
@@ -38,9 +39,7 @@ public class CeramicWareTest {
                 },
                 CeramicWare.ClayBody.GRAY_STONEWARE,
                 "cream",
-                4f,
-                2f,
-                2f
+                new Project3Dimension(4f, 2f, 2f)
             );
     }
 
@@ -76,9 +75,11 @@ public class CeramicWareTest {
           ],
           "clayBody": "GRAY_STONEWARE",
           "glaze": "cream",
-          "height": 4,
-          "width": 2,
-          "depth": 2
+          "dimensions": {
+            "height": 4,
+            "width": 2,
+            "depth": 2
+          }
         }
         """;
         CeramicWare pojoCeramicWare = objectMapper.readValue(

@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.studio1way.studio1way.model.project.CeramicWare;
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.repository.project.CeramicWareRepository;
@@ -43,9 +44,7 @@ public class CeramicWareServiceTest {
         },
         CeramicWare.ClayBody.GRAY_STONEWARE,
         "cream",
-        4f,
-        2f,
-        2f
+        new Project3Dimension(4f, 2f, 2f)
     );
 
     @BeforeEach

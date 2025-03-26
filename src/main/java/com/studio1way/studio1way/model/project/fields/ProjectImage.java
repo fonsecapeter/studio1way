@@ -91,9 +91,9 @@ public class ProjectImage {
         if (other == null || getClass() != other.getClass()) return false;
         ProjectImage otherProjectImage = (ProjectImage) other;
         return (
-            Objects.equals(path, otherProjectImage.getPath()) &&
+            Objects.equals(getPath(), otherProjectImage.getPath()) &&
             Objects.equals(getExt(), otherProjectImage.getExt()) &&
-            Objects.equals(alt, otherProjectImage.getAlt())
+            Objects.equals(getAlt(), otherProjectImage.getAlt())
         );
     }
 }

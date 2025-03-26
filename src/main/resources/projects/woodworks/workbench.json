@@ -33,7 +33,9 @@
   ],
   "materials": "3/4\\\" 7ply AC fir + matching fir 2X4s",
   "finish": "PASTE_WAX",
-  "height": 37.5,
-  "width": 48,
-  "depth": 24
+  "dimensions": {
+    "height": 37.5,
+    "width": 48,
+    "depth": 24
+  }
 }

@@ -3,6 +3,7 @@ package com.studio1way.studio1way.controller;
 import static org.mockito.ArgumentMatchers.anyString;
 
 import com.studio1way.studio1way.model.project.CeramicWare;
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.service.CeramicWareService;
@@ -48,9 +49,7 @@ public class CeramicWareControllerTests {
             },
             CeramicWare.ClayBody.GRAY_STONEWARE,
             "cream",
-            4f,
-            2f,
-            2f
+            new Project3Dimension(4f, 2f, 2f)
         );
         Mockito.when(ceramicWareService.findAll()).thenReturn(List.of(ceramicWare));
         Mockito.when(ceramicWareService.findById(anyString())).thenReturn(null);

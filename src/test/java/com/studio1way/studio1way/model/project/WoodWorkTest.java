@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.io.IOException;
@@ -38,9 +39,7 @@ public class WoodWorkTest {
                 },
                 "3/4\" 7ply AC Fir",
                 WoodWork.Finish.PASTE_WAX,
-                12f,
-                6.75f,
-                2.5f
+                new Project3Dimension(12f, 6.75f, 2.5f)
             );
     }
 
@@ -76,9 +75,11 @@ public class WoodWorkTest {
           ],
           "materials": "3/4\\\" 7ply AC Fir",
           "finish": "PASTE_WAX",
-          "height": 12,
-          "width": 6.75,
-          "depth": 2.5
+          "dimensions": {
+              "height": 12,
+              "width": 6.75,
+              "depth": 2.5
+          }
         }
         """;
         WoodWork pojoWoodWork = objectMapper.readValue(jsonWoodWork, WoodWork.class);

@@ -24,6 +24,8 @@
   "surface": "canvas",
   "medium": "ACRYLIC",
   "varnished": true,
-  "height": 18,
-  "width": 14
+  "dimensions": {
+    "height": 18,
+    "width": 14
+  }
 }

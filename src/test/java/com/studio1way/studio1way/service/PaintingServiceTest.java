@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.studio1way.studio1way.model.project.Painting;
+import com.studio1way.studio1way.model.project.fields.Project2Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.repository.project.PaintingRepository;
@@ -44,8 +45,7 @@ public class PaintingServiceTest {
         "canvas",
         Painting.Medium.OIL,
         false,
-        12.5f,
-        12f
+        new Project2Dimension(12.5f, 12f)
     );
 
     @BeforeEach

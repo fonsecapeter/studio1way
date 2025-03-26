@@ -3,6 +3,7 @@ package com.studio1way.studio1way.controller;
 import static org.mockito.ArgumentMatchers.anyString;
 
 import com.studio1way.studio1way.model.project.WoodWork;
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.service.WoodWorkService;
@@ -48,9 +49,7 @@ public class WoodWorkControllerTests {
             },
             "3/4\" 7ply AC Fir",
             WoodWork.Finish.PASTE_WAX,
-            12f,
-            6.75f,
-            2.5f
+            new Project3Dimension(12f, 6.75f, 2.5f)
         );
         Mockito.when(woodWorkService.findAll()).thenReturn(List.of(woodWork));
         Mockito.when(woodWorkService.findById(anyString())).thenReturn(null);

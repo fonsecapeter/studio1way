@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.studio1way.studio1way.model.project.fields.Project2Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.io.IOException;
@@ -39,8 +40,7 @@ public class PaintingTest {
                 "canvas",
                 Painting.Medium.OIL,
                 false,
-                12.5f,
-                12f
+                new Project2Dimension(12.5f, 12f)
             );
     }
 
@@ -77,8 +77,10 @@ public class PaintingTest {
           "surface": "canvas",
           "medium": "OIL",
           "varnished": false,
-          "height": 12.5,
-          "width": 12
+          "dimensions": {
+              "height": 12.5,
+              "width": 12
+          }
         }
         """;
         Painting pojoPainting = objectMapper.readValue(jsonPainting, Painting.class);

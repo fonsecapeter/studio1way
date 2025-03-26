@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.util.Objects;
@@ -24,9 +25,7 @@ public class CeramicWare extends Project {
 
     private ClayBody clayBody;
     private String glaze;
-    private Float height; // inches
-    private Float width; // inches
-    private Float depth; // inches
+    private Project3Dimension dimensions;
 
     public CeramicWare() {}
 
@@ -40,16 +39,12 @@ public class CeramicWare extends Project {
         ProjectImage[] images,
         ClayBody clayBody,
         String glaze,
-        Float height,
-        Float width,
-        Float depth
+        Project3Dimension dimensions
     ) {
         super(id, name, icon, links, date, description, images);
         setClayBody(clayBody);
         setGlaze(glaze);
-        setHeight(height);
-        setWidth(width);
-        setDepth(depth);
+        setDimensions(dimensions);
     }
 
     public String getClayBody() {
@@ -72,28 +67,12 @@ public class CeramicWare extends Project {
         this.glaze = glaze;
     }
 
-    public Float getHeight() {
-        return height;
+    public Project3Dimension getDimensions() {
+        return dimensions;
     }
 
-    public void setHeight(Float height) {
-        this.height = height;
-    }
-
-    public Float getWidth() {
-        return width;
-    }
-
-    public void setWidth(Float width) {
-        this.width = width;
-    }
-
-    public Float getDepth() {
-        return depth;
-    }
-
-    public void setDepth(Float depth) {
-        this.depth = depth;
+    public void setDimensions(Project3Dimension dimensions) {
+        this.dimensions = dimensions;
     }
 
     @Override
@@ -105,9 +84,7 @@ public class CeramicWare extends Project {
             super.equals(otherCeramicWare) &&
             Objects.equals(getGlaze(), otherCeramicWare.getGlaze()) &&
             Objects.equals(getClayBody(), otherCeramicWare.getClayBody()) &&
-            Objects.equals(getHeight(), otherCeramicWare.getHeight()) &&
-            Objects.equals(getWidth(), otherCeramicWare.getWidth()) &
-            Objects.equals(getDepth(), otherCeramicWare.getDepth())
+            Objects.equals(getDimensions(), otherCeramicWare.getDimensions())
         );
     }
 }

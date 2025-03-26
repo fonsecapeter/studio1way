@@ -18,7 +18,9 @@
   ],
   "clayBody": "WHITE_STONEWARE",
   "glaze": "cream",
-  "height": 3,
-  "width": 6,
-  "depth": 3
+  "dimensions": {
+    "height": 3,
+    "width": 6,
+    "depth": 3
+  }
 }

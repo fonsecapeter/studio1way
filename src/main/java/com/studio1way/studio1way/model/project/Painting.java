@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.studio1way.studio1way.model.project.fields.Project2Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.util.Objects;
@@ -28,8 +29,7 @@ public class Painting extends Project {
     private String surface;
     private Medium medium;
     private Boolean varnished;
-    private Float height; // inches
-    private Float width; // inches
+    private Project2Dimension dimensions;
 
     public Painting() {}
 
@@ -44,15 +44,13 @@ public class Painting extends Project {
         String surface,
         Medium medium,
         Boolean varnished,
-        Float height,
-        Float width
+        Project2Dimension dimensions
     ) {
         super(id, name, icon, links, date, description, images);
         setSurface(surface);
         setMedium(medium);
         setVarnished(varnished);
-        setHeight(height);
-        setWidth(width);
+        setDimensions(dimensions);
     }
 
     public String getSurface() {
@@ -83,20 +81,12 @@ public class Painting extends Project {
         this.varnished = varnished;
     }
 
-    public Float getHeight() {
-        return height;
+    public Project2Dimension getDimensions() {
+        return dimensions;
     }
 
-    public void setHeight(Float height) {
-        this.height = height;
-    }
-
-    public Float getWidth() {
-        return width;
-    }
-
-    public void setWidth(Float width) {
-        this.width = width;
+    public void setDimensions(Project2Dimension dimensions) {
+        this.dimensions = dimensions;
     }
 
     @Override
@@ -109,8 +99,7 @@ public class Painting extends Project {
             Objects.equals(getSurface(), otherPainting.getSurface()) &&
             Objects.equals(getMedium(), otherPainting.getMedium()) &&
             Objects.equals(getVarnished(), otherPainting.getVarnished()) &&
-            Objects.equals(getHeight(), otherPainting.getHeight()) &&
-            Objects.equals(getWidth(), otherPainting.getWidth())
+            Objects.equals(getDimensions(), otherPainting.getDimensions())
         );
     }
 }

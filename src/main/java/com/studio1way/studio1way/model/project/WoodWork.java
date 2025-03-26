@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.util.Objects;
@@ -24,9 +25,7 @@ public class WoodWork extends Project {
 
     private String materials;
     private Finish finish;
-    private Float height; // inches
-    private Float width; // inches
-    private Float depth; // inches
+    private Project3Dimension dimensions;
 
     public WoodWork() {}
 
@@ -40,16 +39,12 @@ public class WoodWork extends Project {
         ProjectImage[] images,
         String materials,
         Finish finish,
-        Float height,
-        Float width,
-        Float depth
+        Project3Dimension dimensions
     ) {
         super(id, name, icon, links, date, description, images);
         setMaterials(materials);
         setFinish(finish);
-        setHeight(height);
-        setWidth(width);
-        setDepth(depth);
+        setDimensions(dimensions);
     }
 
     public String getMaterials() {
@@ -72,28 +67,12 @@ public class WoodWork extends Project {
         this.finish = finish;
     }
 
-    public Float getHeight() {
-        return height;
+    public Project3Dimension getDimensions() {
+        return dimensions;
     }
 
-    public void setHeight(Float height) {
-        this.height = height;
-    }
-
-    public Float getWidth() {
-        return width;
-    }
-
-    public void setWidth(Float width) {
-        this.width = width;
-    }
-
-    public Float getDepth() {
-        return depth;
-    }
-
-    public void setDepth(Float depth) {
-        this.depth = depth;
+    public void setDimensions(Project3Dimension dimensions) {
+        this.dimensions = dimensions;
     }
 
     @Override
@@ -105,9 +84,7 @@ public class WoodWork extends Project {
             super.equals(otherWoodWork) &&
             Objects.equals(getMaterials(), otherWoodWork.getMaterials()) &&
             Objects.equals(getFinish(), otherWoodWork.getFinish()) &&
-            Objects.equals(getHeight(), otherWoodWork.getHeight()) &&
-            Objects.equals(getWidth(), otherWoodWork.getWidth()) &&
-            Objects.equals(getDepth(), otherWoodWork.getDepth())
+            Objects.equals(getDimensions(), otherWoodWork.getDimensions())
         );
     }
 }

@@ -42,7 +42,9 @@
   ],
   "materials": "pine",
   "finish": "VARNISH",
-  "height": 24,
-  "width": 12,
-  "depth": 3
+  "dimensions": {
+    "height": 24,
+    "width": 12,
+    "depth": 3
+  }
 }

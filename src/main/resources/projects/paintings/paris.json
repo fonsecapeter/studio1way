@@ -24,6 +24,8 @@
   "surface": "canvas",
   "medium": "OIL",
   "varnished": false,
-  "height": 12.5,
-  "width": 12
+  "dimensions": {
+    "height": 12.5,
+    "width": 12
+  }
 }
