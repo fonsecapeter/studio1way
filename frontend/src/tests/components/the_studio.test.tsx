@@ -19,4 +19,10 @@ describe("TheStudio", () => {
   it("renders a description", () => {
     expect(screen.getByText(/art is everywhere/i)).toBeInTheDocument();
   });
+
+  it("links to personal website", () => {
+    expect(
+      screen.getByText("↑ about the artist ↑").parentElement,
+    ).toHaveAttribute("href", "https://peternfonseca.com");
+  });
 });

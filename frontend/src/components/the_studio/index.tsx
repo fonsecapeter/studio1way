@@ -5,10 +5,16 @@ import studioInsidePath from "../../assets/img/web/the_studio/inside/50.jpg";
 import studioClockPath from "../../assets/img/web/the_studio/clock/50.jpg";
 import studioShelfPath from "../../assets/img/web/the_studio/shelf/50.jpg";
 import studioSignPath from "../../assets/img/web/the_studio/sign/50.jpg";
+import studioOneWaySignPath from "../../assets/img/web/the_studio/one_way_sign/50.jpg";
 
 export const TheStudio = () => (
   <div>
-    <h1 className="page-title">The Studio of P. Fonseca</h1>
+    <div className="landing-title-row">
+      <h1 className="page-title">The Studio of P. Fonseca</h1>
+      <a href="https://peternfonseca.com" target="_blank">
+        <button className="button-link">↑ about the artist ↑</button>
+      </a>
+    </div>
     <img className="full-width" src={studioSignPath} alt="Studio 1Way sign" />
     <p>
       Studio 1Way is all about breaking out of rigid paths and finding new ones.
@@ -44,6 +50,11 @@ export const TheStudio = () => (
       alt="Clock on small shelf with roll of expired film"
     />
     <p>There isn't just one way, this is 1 Way.</p>
+    <img
+      className="full-width"
+      src={studioOneWaySignPath}
+      alt="P. Fonseca holding a literal one-way sign while skateboarding"
+    />
   </div>
 );
 
