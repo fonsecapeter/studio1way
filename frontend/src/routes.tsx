@@ -112,8 +112,10 @@ const AppRoutes = () => {
           <Route path="/the-studio" element={<LoadableTheStudio />} />
           <Route path="/ceramics" element={<LoadableDepartment />}>
             <Route index element={<LoadableCeramicsPhilosophy />} />
-            <Route path="projects" element={<LoadableCeramicsProjects />}>
-            </Route>
+            <Route
+              path="projects"
+              element={<LoadableCeramicsProjects />}
+            ></Route>
             <Route
               path="project/:projectId"
               element={<LoadableCeramicWareDetail />}

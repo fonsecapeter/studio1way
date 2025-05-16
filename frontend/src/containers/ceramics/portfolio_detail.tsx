@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
 import { PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT } from "../../components/common/portfolio/detail";
@@ -16,12 +16,14 @@ export const CERAMIC_WARE_BY_ID = gql`
 `;
 
 type PortfolioDetailContainerParams = {
-  projectId: string,
+  projectId: string;
 };
 
 export const CeramicsProjectsContainer = () => {
   const { projectId } = useParams<PortfolioDetailContainerParams>();
-  const { loading, error, data } = useQuery(CERAMIC_WARE_BY_ID, { variables: { projectId } });
+  const { loading, error, data } = useQuery(CERAMIC_WARE_BY_ID, {
+    variables: { projectId },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;

@@ -56,7 +56,7 @@ export const PortfolioItem = ({ project }: CodeProps) => (
           className="portfolio-item-icon-image"
           src={project.icon.half}
           alt={project.icon.alt}
-          />
+        />
       </div>
       <div className="portfolio-item-content">
         <h3 className="portfolio-item-title">{project.name}</h3>
