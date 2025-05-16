@@ -1,17 +1,17 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { PAINTING_ITEM_FRAGMENT } from "../../components/common/portfolio/item";
+import { PORTFOLIO_INDEX_PAINTING_FRAGMENT } from "../../components/common/portfolio/index";
 import Portfolio from "../../components/common/portfolio/index";
 
 export const PAINTINGS = gql`
   query paintings {
     paintings {
-      ...PaintingItem
+      ...PortfolioIndexPainting
     }
   }
 
-  ${PAINTING_ITEM_FRAGMENT}
+  ${PORTFOLIO_INDEX_PAINTING_FRAGMENT}
 `;
 
 export const PaintProjectsContainer = () => {

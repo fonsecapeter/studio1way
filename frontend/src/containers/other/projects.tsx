@@ -1,17 +1,17 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { OTHER_PROJECT_ITEM_FRAGMENT } from "../../components/common/portfolio/item";
+import { PORTFOLIO_INDEX_OTHER_PROJECT_FRAGMENT } from "../../components/common/portfolio/index";
 import Portfolio from "../../components/common/portfolio/index";
 
 export const OTHER_PROJECTS = gql`
   query otherProjects {
     otherProjects {
-      ...OtherProjectItem
+      ...PortfolioIndexOtherProject
     }
   }
 
-  ${OTHER_PROJECT_ITEM_FRAGMENT}
+  ${PORTFOLIO_INDEX_OTHER_PROJECT_FRAGMENT}
 `;
 
 export const OtherProjectsContainer = () => {

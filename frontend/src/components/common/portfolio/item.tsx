@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
-import { OtherProjectItemFragment } from "../../../__generated__/types";
+import { PortfolioIndexOtherProjectFragment } from "../../../__generated__/types";
 
-export const CERAMIC_WARE_ITEM_FRAGMENT = gql`
-  fragment CeramicWareItem on CeramicWare {
+export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
+  fragment PortfolioItemCeramicWare on CeramicWare {
     id
     icon {
       half
@@ -12,8 +13,8 @@ export const CERAMIC_WARE_ITEM_FRAGMENT = gql`
     name
   }
 `;
-export const OTHER_PROJECT_ITEM_FRAGMENT = gql`
-  fragment OtherProjectItem on OtherProject {
+export const PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT = gql`
+  fragment PortfolioItemOtherProject on OtherProject {
     id
     icon {
       half
@@ -22,8 +23,8 @@ export const OTHER_PROJECT_ITEM_FRAGMENT = gql`
     name
   }
 `;
-export const PAINTING_ITEM_FRAGMENT = gql`
-  fragment PaintingItem on Painting {
+export const PORTFOLIO_ITEM_PAINTING_FRAGMENT = gql`
+  fragment PortfolioItemPainting on Painting {
     id
     icon {
       half
@@ -32,8 +33,8 @@ export const PAINTING_ITEM_FRAGMENT = gql`
     name
   }
 `;
-export const WOOD_WORK_ITEM_FRAGMENT = gql`
-  fragment WoodWorkItem on WoodWork {
+export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
+  fragment PortfolioItemWoodWork on WoodWork {
     id
     icon {
       half
@@ -44,22 +45,24 @@ export const WOOD_WORK_ITEM_FRAGMENT = gql`
 `;
 
 interface CodeProps {
-  readonly project: OtherProjectItemFragment;
+  readonly project: PortfolioIndexOtherProjectFragment;
 }
 
 export const PortfolioItem = ({ project }: CodeProps) => (
-  <div className="portfolio-item">
-    <div className="portfolio-item-icon">
-      <img
-        className="portfolio-item-icon-image"
-        src={project.icon.half}
-        alt={project.icon.alt}
-      />
+  <Link to={`../project/${project.id}`}>
+    <div className="portfolio-item">
+      <div className="portfolio-item-icon">
+        <img
+          className="portfolio-item-icon-image"
+          src={project.icon.half}
+          alt={project.icon.alt}
+          />
+      </div>
+      <div className="portfolio-item-content">
+        <h3 className="portfolio-item-title">{project.name}</h3>
+      </div>
     </div>
-    <div className="portfolio-item-content">
-      <h3 className="portfolio-item-title">{project.name}</h3>
-    </div>
-  </div>
+  </Link>
 );
 
 export default PortfolioItem;

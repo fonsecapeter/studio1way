@@ -1,17 +1,17 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import { CERAMIC_WARE_ITEM_FRAGMENT } from "../../components/common/portfolio/item";
+import { PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT } from "../../components/common/portfolio/index";
 import Portfolio from "../../components/common/portfolio/index";
 
 export const CERAMIC_WARES = gql`
   query ceramicWares {
     ceramicWares {
-      ...CeramicWareItem
+      ...PortfolioIndexCeramicWare
     }
   }
 
-  ${CERAMIC_WARE_ITEM_FRAGMENT}
+  ${PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT}
 `;
 
 export const CeramicsProjectsContainer = () => {

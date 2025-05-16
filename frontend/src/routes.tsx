@@ -31,6 +31,13 @@ const LoadableCeramicsProjects = lazy(
       "./containers/ceramics/projects"
     ),
 );
+const LoadableCeramicWareDetail = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/ceramics/portfolio_detail"
+    ),
+);
 const LoadablePaintPhilosophy = lazy(
   () =>
     import(
@@ -43,6 +50,13 @@ const LoadablePaintProjects = lazy(
     import(
       /* webpackPrefetch: true */
       "./containers/paint/projects"
+    ),
+);
+const LoadablePaintingDetail = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/paint/portfolio_detail"
     ),
 );
 const LoadableWoodPhilosophy = lazy(
@@ -59,6 +73,13 @@ const LoadableWoodProjects = lazy(
       "./containers/wood/projects"
     ),
 );
+const LoadableWoodWorkDetail = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/wood/portfolio_detail"
+    ),
+);
 const LoadableOtherPhilosophy = lazy(
   () =>
     import(
@@ -73,6 +94,13 @@ const LoadableOtherProjects = lazy(
       "./containers/other/projects"
     ),
 );
+const LoadableOtherProjectDetail = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/other/portfolio_detail"
+    ),
+);
 
 // Update changes in src/main/java/com/studio1way/studio1way/controller/SPAPathsController.java
 const AppRoutes = () => {
@@ -84,22 +112,39 @@ const AppRoutes = () => {
           <Route path="/the-studio" element={<LoadableTheStudio />} />
           <Route path="/ceramics" element={<LoadableDepartment />}>
             <Route index element={<LoadableCeramicsPhilosophy />} />
-            <Route path="projects" element={<LoadableCeramicsProjects />} />
+            <Route path="projects" element={<LoadableCeramicsProjects />}>
+            </Route>
+            <Route
+              path="project/:projectId"
+              element={<LoadableCeramicWareDetail />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/paint" element={<LoadableDepartment />}>
             <Route index element={<LoadablePaintPhilosophy />} />
             <Route path="projects" element={<LoadablePaintProjects />} />
+            <Route
+              path="project/:projectId"
+              element={<LoadablePaintingDetail />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/wood" element={<LoadableDepartment />}>
             <Route index element={<LoadableWoodPhilosophy />} />
             <Route path="projects" element={<LoadableWoodProjects />} />
+            <Route
+              path="project/:projectId"
+              element={<LoadableWoodWorkDetail />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/other" element={<LoadableDepartment />}>
             <Route index element={<LoadableOtherPhilosophy />} />
             <Route path="projects" element={<LoadableOtherProjects />} />
+            <Route
+              path="project/:projectId"
+              element={<LoadableOtherProjectDetail />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="*" element={<NotFound />} />

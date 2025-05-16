@@ -1,12 +1,12 @@
 type Query {
     otherProjects: [OtherProject]!
-    otherProject(id: String!): OtherProject
+    otherProject(id: ID!): OtherProject
     paintings: [Painting]!
-    painting(id: String!): Painting
+    painting(id: ID!): Painting
     ceramicWares: [CeramicWare]!
-    ceramicWare(id: String!): CeramicWare
+    ceramicWare(id: ID!): CeramicWare
     woodWorks: [WoodWork]!
-    woodWork(id: String!): WoodWork
+    woodWork(id: ID!): WoodWork
 }
 
 type WoodWork implements Project {
