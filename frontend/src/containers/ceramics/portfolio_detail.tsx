@@ -19,7 +19,7 @@ type PortfolioDetailContainerParams = {
   projectId: string;
 };
 
-export const CeramicsProjectsContainer = () => {
+export const CeramicsPortfolioDetailContainer = () => {
   const { projectId } = useParams<PortfolioDetailContainerParams>();
   const { loading, error, data } = useQuery(CERAMIC_WARE_BY_ID, {
     variables: { projectId },
@@ -30,4 +30,4 @@ export const CeramicsProjectsContainer = () => {
   return <PortfolioDetail project={data.ceramicWare} />;
 };
 
-export default CeramicsProjectsContainer;
+export default CeramicsPortfolioDetailContainer;
