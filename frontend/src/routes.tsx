@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import OhNoErrorBoundary from "./components/common/error";
 import NotFound from "./components/common/not_found";
 
-const LoadableTheStudio = lazy(
+const LoadableStudioPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/the_studio/index"
+      "./components/philosophy/studio_philosophy"
     ),
 );
 const LoadableDepartment = lazy(
@@ -21,84 +21,84 @@ const LoadableCeramicsPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/ceramics/philosophy"
+      "./components/philosophy/ceramics_philosophy"
     ),
 );
-const LoadableCeramicsProjects = lazy(
+const LoadableCeramicsPortfolioIndexContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/ceramics/projects"
+      "./containers/portfolio/index/ceramics"
     ),
 );
-const LoadableCeramicWareDetail = lazy(
+const LoadableCeramicWareProjectDetailContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/ceramics/portfolio_detail"
+      "./containers/portfolio/detail/ceramic_ware"
     ),
 );
 const LoadablePaintPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/paint/philosophy"
+      "./components/philosophy/paint_philosophy"
     ),
 );
-const LoadablePaintProjects = lazy(
+const LoadablePaintPortfolioIndexContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/paint/projects"
+      "./containers/portfolio/index/paint"
     ),
 );
-const LoadablePaintingDetail = lazy(
+const LoadablePaintingProjectDetailContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/paint/portfolio_detail"
+      "./containers/portfolio/detail/painting"
     ),
 );
 const LoadableWoodPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/wood/philosophy"
+      "./components/philosophy/wood_philosophy"
     ),
 );
-const LoadableWoodProjects = lazy(
+const LoadableWoodPortfolioIndexContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/wood/projects"
+      "./containers/portfolio/index/wood"
     ),
 );
-const LoadableWoodWorkDetail = lazy(
+const LoadableWoodWorkProjectDetailContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/wood/portfolio_detail"
+      "./containers/portfolio/detail/wood_work"
     ),
 );
 const LoadableOtherPhilosophy = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./components/other/philosophy"
+      "./components/philosophy/other_philosophy"
     ),
 );
-const LoadableOtherProjects = lazy(
+const LoadableOtherPortfolioIndexContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/other/projects"
+      "./containers/portfolio/index/other"
     ),
 );
-const LoadableOtherProjectDetail = lazy(
+const LoadableOtherProjectDetailContainer = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "./containers/other/portfolio_detail"
+      "./containers/portfolio/detail/other_project"
     ),
 );
 
@@ -108,44 +108,53 @@ const AppRoutes = () => {
     <OhNoErrorBoundary>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route index element={<LoadableTheStudio />} />
-          <Route path="/the-studio" element={<LoadableTheStudio />} />
+          <Route index element={<LoadableStudioPhilosophy />} />
+          <Route path="/the-studio" element={<LoadableStudioPhilosophy />} />
           <Route path="/ceramics" element={<LoadableDepartment />}>
             <Route index element={<LoadableCeramicsPhilosophy />} />
             <Route
               path="projects"
-              element={<LoadableCeramicsProjects />}
+              element={<LoadableCeramicsPortfolioIndexContainer />}
             ></Route>
             <Route
               path="project/:projectId"
-              element={<LoadableCeramicWareDetail />}
+              element={<LoadableCeramicWareProjectDetailContainer />}
             />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/paint" element={<LoadableDepartment />}>
             <Route index element={<LoadablePaintPhilosophy />} />
-            <Route path="projects" element={<LoadablePaintProjects />} />
+            <Route
+              path="projects"
+              element={<LoadablePaintPortfolioIndexContainer />}
+            />
             <Route
               path="project/:projectId"
-              element={<LoadablePaintingDetail />}
+              element={<LoadablePaintingProjectDetailContainer />}
             />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/wood" element={<LoadableDepartment />}>
             <Route index element={<LoadableWoodPhilosophy />} />
-            <Route path="projects" element={<LoadableWoodProjects />} />
+            <Route
+              path="projects"
+              element={<LoadableWoodPortfolioIndexContainer />}
+            />
             <Route
               path="project/:projectId"
-              element={<LoadableWoodWorkDetail />}
+              element={<LoadableWoodWorkProjectDetailContainer />}
             />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/other" element={<LoadableDepartment />}>
             <Route index element={<LoadableOtherPhilosophy />} />
-            <Route path="projects" element={<LoadableOtherProjects />} />
+            <Route
+              path="projects"
+              element={<LoadableOtherPortfolioIndexContainer />}
+            />
             <Route
               path="project/:projectId"
-              element={<LoadableOtherProjectDetail />}
+              element={<LoadableOtherProjectDetailContainer />}
             />
             <Route path="*" element={<NotFound />} />
           </Route>

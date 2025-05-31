@@ -41,6 +41,7 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           <button className="button-link">← PORTFOLIO</button>
         </Link>
       </div>
+      <p>🚧 this part of the site under construction 🚧</p>
     </div>
   );
 };
