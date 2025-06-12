@@ -20,42 +20,50 @@ export const CeramicsPhilosophy = () => (
       src={onShelfPath}
       alt="3 Clay cups on a shelf"
     />
-    <p>
-      All studio ceramic wares are made by hand in carefully chosen materials:
-    </p>
-    <ul>
-      <li>
-        A gray stoneware clay-body that looks like the beautiful, skateable
-        cement paving San Francisco.
-      </li>
-      <li>A clear glaze that protects + presents it fully.</li>
-    </ul>
+    <div className="philosophy-text">
+      <p>
+        All studio ceramic wares are made by hand in carefully chosen materials:
+      </p>
+      <ul>
+        <li>
+          A gray stoneware clay-body that looks like the beautiful, skateable
+          cement paving San Francisco.
+        </li>
+        <li>A clear glaze that protects + presents it fully.</li>
+      </ul>
+    </div>
     <img
       className="full-width"
       src={coffeeCupPath}
       alt="Ceramic cup full of coffee"
     />
-    <p>
-      The studio approach to ceramics strives for exacting attention to detail
-      and form.
-    </p>
+    <div className="philosophy-text">
+      <p>
+        The studio approach to ceramics strives for exacting attention to detail
+        and form.
+      </p>
+    </div>
     <img
       className="full-width"
       src={bowlStampPath}
       alt="Studio 1Way makers mark stamped into bottom of bowl"
     />
-    <p>But imperfections are cherished.</p>
-    <p>
-      They tell story of how these objects came to be and the hands that made
-      them.
-    </p>
+    <div className="philosophy-text">
+      <p>But imperfections are cherished.</p>
+      <p>
+        They tell story of how these objects came to be and the hands that made
+        them.
+      </p>
+    </div>
     <img
       className="full-width"
       src={inHandPath}
       alt="Bottom of clay cup in hand"
     />
-    <p>Durability is a must as the artist has a habit of dropping things.</p>
-    <p>There will be no delicate, thin walls here.</p>
+    <div className="philosophy-text">
+      <p>Durability is a must as the artist has a habit of dropping things.</p>
+      <p>There will be no delicate, thin walls here.</p>
+    </div>
     <img
       className="full-width"
       src={dentPath}

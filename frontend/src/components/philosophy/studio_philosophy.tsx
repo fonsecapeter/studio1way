@@ -16,40 +16,49 @@ export const StudioPhilosophy = () => (
       </a>
     </div>
     <img className="full-width" src={studioSignPath} alt="Studio 1Way sign" />
-    <p>
-      Studio 1Way is all about breaking out of rigid paths and finding new ones.
-    </p>
-    <p>I think art is everywhere and more accessible than people think.</p>
+    <div className="philosophy-text">
+      <p>
+        Studio 1Way is all about breaking out of rigid paths and finding new
+        ones.
+      </p>
+      <p>I think art is everywhere and more accessible than people think.</p>
+    </div>
     <img className="full-width" src={studioShelfPath} alt="Studio shelves" />
-    <p>The studio itself may be limited to 10 square feet</p>
-    <p>but it's ideas are much bigger.</p>
+    <div className="philosophy-text">
+      <p>The studio itself may be limited to 10 square feet</p>
+      <p>but it's ideas are much bigger.</p>
+    </div>
     <img
       className="full-width"
       src={studioInsidePath}
       alt="Inside the studio"
     />
-    <p>We have several departments:</p>
-    <ul>
-      <li>
-        <Link to="/ceramics">Ceramics</Link>
-      </li>
-      <li>
-        <Link to="/paint">Painting</Link>
-      </li>
-      <li>
-        <Link to="/wood">Woodworking</Link>
-      </li>
-    </ul>
-    <p>
-      As well as a selection of{" "}
-      <Link to="/other">experimental, uncategoried pieces.</Link>
-    </p>
+    <div className="philosophy-text">
+      <p>We have several departments:</p>
+      <ul>
+        <li>
+          <Link to="/ceramics">Ceramics</Link>
+        </li>
+        <li>
+          <Link to="/paint">Painting</Link>
+        </li>
+        <li>
+          <Link to="/wood">Woodworking</Link>
+        </li>
+      </ul>
+      <p>
+        As well as a selection of{" "}
+        <Link to="/other">experimental, uncategoried pieces.</Link>
+      </p>
+    </div>
     <img
       className="full-width"
       src={studioClockPath}
       alt="Clock on small shelf with roll of expired film"
     />
-    <p>There isn't just one way, this is 1 Way.</p>
+    <div className="philosophy-text">
+      <p>There isn't just one way, this is 1 Way.</p>
+    </div>
     <img
       className="full-width"
       src={studioOneWaySignPath}

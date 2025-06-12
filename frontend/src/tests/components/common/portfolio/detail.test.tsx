@@ -7,6 +7,8 @@ import { Department } from "../../../../components/common/department";
 describe("PortfolioDetail", () => {
   const PROJECT = {
     name: "A Test Project",
+    date: "2025-06-12",
+    description: "For which to run tests against",
   };
   describe("when given a valid project", () => {
     beforeEach(() => {
@@ -24,8 +26,12 @@ describe("PortfolioDetail", () => {
       );
     });
 
-    it("renders the name", async () => {
+    it("renders the base project text fields", async () => {
       expect(screen.getByText("A Test Project")).toBeInTheDocument();
+      expect(
+        screen.getByText("For which to run tests against"),
+      ).toBeInTheDocument();
+      expect(screen.getByText("2025-06-12")).toBeInTheDocument();
     });
 
     it("renders a button back to the category porfolio", () => {

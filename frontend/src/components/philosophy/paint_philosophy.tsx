@@ -19,20 +19,26 @@ export const PaintPhilosophy = () => (
       src={canvasBackPath}
       alt="Back of canvas with Studio 1 Way written on it"
     />
-    <p>The term painting is used liberally within the studio.</p>
+    <div className="philosophy-text">
+      <p>The term painting is used liberally within the studio.</p>
+    </div>
     <img
       className="full-width"
       src={parisInProgressPath}
       alt="Painting on workbench mid-process"
     />
-    <p>Of course there are your standard oil or acrylic paintings.</p>
+    <div className="philosophy-text">
+      <p>Of course there are your standard oil or acrylic paintings.</p>
+    </div>
     <img
       className="full-width"
       src={paintSetPath}
       alt="handmade ceramic paint set"
     />
-    <p>But we also work in watercolors, pastels, sharpies, and whiteout.</p>
-    <p>Whatever gets the job done.</p>
+    <div className="philosophy-text">
+      <p>But we also work in watercolors, pastels, sharpies, and whiteout.</p>
+      <p>Whatever gets the job done.</p>
+    </div>
     <img
       className="full-width"
       src={qRCodePath}

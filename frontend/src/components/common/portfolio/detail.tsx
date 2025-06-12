@@ -7,24 +7,32 @@ import { PortfolioDetailOtherProjectFragment } from "../../../__generated__/type
 export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioDetailCeramicWare on CeramicWare {
     name
+    date
+    description
   }
 `;
 
 export const PORTFOLIO_DETAIL_OTHER_PROJECT_FRAGMENT = gql`
   fragment PortfolioDetailOtherProject on OtherProject {
     name
+    date
+    description
   }
 `;
 
 export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
   fragment PortfolioDetailPainting on Painting {
     name
+    date
+    description
   }
 `;
 
 export const PORTFOLIO_DETAIL_WOOD_WORK_FRAGMENT = gql`
   fragment PortfolioDetailWoodWork on WoodWork {
     name
+    date
+    description
   }
 `;
 
@@ -41,6 +49,10 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           <button className="button-link">← PORTFOLIO</button>
         </Link>
       </div>
+      <div>
+        <p>{project.date}</p>
+      </div>
+      <p>{project.description}</p>
       <p>🚧 this part of the site under construction 🚧</p>
     </div>
   );

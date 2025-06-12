@@ -15,21 +15,29 @@ export const WoodPhilosophy = () => (
       </Link>
     </div>
     <img className="full-width" src={sawPath} alt="Hand saw mid-cut" />
-    <p>In the studio, we work mostly with humble hand-tools.</p>
+    <div className="philosophy-text">
+      <p>In the studio, we work mostly with humble hand-tools.</p>
+    </div>
     <img
       className="full-width"
       src={reclaimedPlywoodPath}
       alt="Gnarly looking plywood mid-block-planing"
     />
-    <p>And equally humble materials, often reclaimed or salvaged.</p>
+    <div className="philosophy-text">
+      <p>And equally humble materials, often reclaimed or salvaged.</p>
+    </div>
     <img className="full-width" src={lumberPath} alt="Hand saw mid-cut" />
-    <p>Work is left thoughtfully unpolished, but properly finished.</p>
+    <div className="philosophy-text">
+      <p>Work is left thoughtfully unpolished, but properly finished.</p>
+    </div>
     <img
       className="full-width"
       src={roundedEdgesPath}
       alt="Close up of hand-rounded edges"
     />
-    <p>It should be clear that this is a hand-made item.</p>
+    <div className="philosophy-text">
+      <p>It should be clear that this is a hand-made item.</p>
+    </div>
   </div>
 );
 
