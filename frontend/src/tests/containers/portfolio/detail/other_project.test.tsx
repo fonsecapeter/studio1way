@@ -19,6 +19,17 @@ const mocks = [
         otherProject: {
           __typename: "OtherProject",
           name: "A Test Project",
+          date: "2025-11-29",
+          description: "An experiment",
+          images: [
+            {
+              full: "test-100",
+              half: "test-50",
+              quarter: "test-25",
+              alt: "test-alt",
+              neverOverlap: true,
+            },
+          ],
         },
       },
     },

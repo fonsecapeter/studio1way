@@ -1,0 +1,42 @@
+@use "../../../utils/cards";
+@use "../../../utils/variables";
+
+.image-modal {
+  &-background {
+    background-color: variables.$black;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &-close-button {
+    @include cards.shadow-interactive;
+    background-color: variables.$black;
+    border: 0;
+    border-radius: 4px;
+    color: variables.$white;
+    font-size: 20px;
+    margin: 0;
+    padding: 4px 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    &:focus {
+      color: variables.$yellow;
+    }
+  }
+
+  &-top-gap {
+    padding-top: 60px;
+  }
+
+  &-full-size-image {
+    max-width: 100%;
+  }
+}

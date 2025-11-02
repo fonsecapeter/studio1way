@@ -1,0 +1,38 @@
+@use "../../../utils/variables";
+
+.image-placeholder {
+  background-color: variables.$black;
+  border-radius: 4px;
+  overflow: hidden;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  &-round {
+    background-color: variables.$black;
+    border-radius: 50%;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  &-scrolling-arrow {
+    white-space: nowrap;
+    animation: scroll 2s linear infinite;
+    font-size: 16px;
+    overflow: hidden;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+    height: 20px;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}

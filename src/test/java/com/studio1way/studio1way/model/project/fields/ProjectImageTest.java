@@ -29,4 +29,16 @@ public class ProjectImageTest {
         image.setPath("paintings/v47_workshop/main");
         assertTrue(image.valid());
     }
+
+    @Test
+    public void testNeverOverlapDefaultsToFalse() {
+        assertFalse(image.getNeverOverlap());
+        ProjectImage dontOverlapMe = new ProjectImage(
+            "some/path",
+            ProjectImage.Extension.PNG,
+            "An X button will cover important details",
+            true
+        );
+        assertTrue(dontOverlapMe.getNeverOverlap());
+    }
 }

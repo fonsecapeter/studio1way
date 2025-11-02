@@ -83,4 +83,5 @@ type ProjectImage {
     half: String!
     quarter: String!
     alt: String!
+    neverOverlap: Boolean!
 }

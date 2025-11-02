@@ -9,6 +9,15 @@ describe("PortfolioDetail", () => {
     name: "A Test Project",
     date: "2025-06-12",
     description: "For which to run tests against",
+    images: [
+      {
+        full: "test-100",
+        half: "test-50",
+        quarter: "test-25",
+        alt: "test-alt",
+        neverOverlap: false,
+      },
+    ],
   };
   describe("when given a valid project", () => {
     beforeEach(() => {
