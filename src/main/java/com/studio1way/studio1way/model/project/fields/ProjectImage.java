@@ -28,8 +28,16 @@ public class ProjectImage {
     private String path;
     private Extension ext;
     private String alt;
+    private Boolean neverOverlap = false;
 
     public ProjectImage() {}
+
+    public ProjectImage(String path, Extension ext, String alt, Boolean neverOverlap) {
+        setPath(path);
+        setExt(ext);
+        setAlt(alt);
+        setNeverOverlap(neverOverlap);
+    }
 
     public ProjectImage(String path, Extension ext, String alt) {
         setPath(path);
@@ -65,6 +73,14 @@ public class ProjectImage {
         this.alt = alt;
     }
 
+    public Boolean getNeverOverlap() {
+        return neverOverlap;
+    }
+
+    public void setNeverOverlap(Boolean neverOverlap) {
+        this.neverOverlap = neverOverlap;
+    }
+
     public String getFull() {
         return String.format("%s/%s/100.%s", IMG_PATH, path, ext.toString());
     }
@@ -93,7 +109,8 @@ public class ProjectImage {
         return (
             Objects.equals(getPath(), otherProjectImage.getPath()) &&
             Objects.equals(getExt(), otherProjectImage.getExt()) &&
-            Objects.equals(getAlt(), otherProjectImage.getAlt())
+            Objects.equals(getAlt(), otherProjectImage.getAlt()) &&
+            Objects.equals(getNeverOverlap(), otherProjectImage.getNeverOverlap())
         );
     }
 }

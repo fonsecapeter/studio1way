@@ -18,7 +18,18 @@ const mocks = [
       data: {
         painting: {
           __typename: "Painting",
-          name: "A Test Project",
+          name: "A Test Painting",
+          date: "2025-11-29",
+          description: "Painting of a test",
+          images: [
+            {
+              full: "test-100",
+              half: "test-50",
+              quarter: "test-25",
+              alt: "test-alt",
+              neverOverlap: false,
+            },
+          ],
         },
       },
     },
@@ -44,7 +55,7 @@ describe("PaintingProjectDetailContainer", () => {
   });
 
   it("passes a project to the detail component", async () => {
-    const testProjectEl = await screen.findByText("A Test Project");
+    const testProjectEl = await screen.findByText("A Test Painting");
     expect(testProjectEl).toBeInTheDocument();
   });
 });

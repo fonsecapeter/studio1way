@@ -18,7 +18,18 @@ const mocks = [
       data: {
         woodWork: {
           __typename: "WoodWork",
-          name: "A Test Project",
+          name: "A Test Shelf",
+          date: "2025-11-29",
+          description: "Can never have too many shelves",
+          images: [
+            {
+              full: "test-100",
+              half: "test-50",
+              quarter: "test-25",
+              alt: "test-alt",
+              neverOverlap: false,
+            },
+          ],
         },
       },
     },
@@ -44,7 +55,7 @@ describe("WoodWorkProjectDetailContainer", () => {
   });
 
   it("passes a project to the detail component", async () => {
-    const testProjectEl = await screen.findByText("A Test Project");
+    const testProjectEl = await screen.findByText("A Test Shelf");
     expect(testProjectEl).toBeInTheDocument();
   });
 });
