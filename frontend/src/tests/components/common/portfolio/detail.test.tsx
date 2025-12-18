@@ -3,23 +3,26 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { PortfolioDetail } from "../../../../components/common/portfolio/detail";
 import { Department } from "../../../../components/common/department";
+import { PortfolioDetailOtherProjectFragment } from "../../../../__generated__/types";
 
 describe("PortfolioDetail", () => {
-  const PROJECT = {
-    name: "A Test Project",
-    date: "2025-06-12",
-    description: "For which to run tests against",
-    images: [
-      {
-        full: "test-100",
-        half: "test-50",
-        quarter: "test-25",
-        alt: "test-alt",
-        neverOverlap: false,
-      },
-    ],
-  };
-  describe("when given a valid project", () => {
+  let project: PortfolioDetailOtherProjectFragment;
+  describe("when given a project", () => {
+    project = {
+      name: "A Test Project",
+      date: "2025-06-12",
+      description: "For which to run tests against",
+      images: [
+        {
+          full: "test-100",
+          half: "test-50",
+          quarter: "test-25",
+          alt: "test-alt",
+          neverOverlap: false,
+          animation: null,
+        },
+      ],
+    };
     beforeEach(() => {
       render(
         <MemoryRouter initialEntries={["/something/project/a_test_project"]}>
@@ -27,7 +30,7 @@ describe("PortfolioDetail", () => {
             <Route path="/something" element={<Department />}>
               <Route
                 path="project/a_test_project"
-                element={<PortfolioDetail project={PROJECT} />}
+                element={<PortfolioDetail project={project} />}
               />
             </Route>
           </Routes>
@@ -47,6 +50,11 @@ describe("PortfolioDetail", () => {
       const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
       expect(linkElement).toBeInTheDocument();
       expect(linkElement.getAttribute("href")).toBe("/something/projects");
+    });
+
+    it("renders a carousel", () => {
+      const mainImageElement = screen.getByTestId("carousel-main-image");
+      expect(mainImageElement).toHaveAttribute("src", "test-50");
     });
   });
 });

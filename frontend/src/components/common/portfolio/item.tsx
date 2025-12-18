@@ -9,6 +9,9 @@ export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
     icon {
       half
       alt
+      animation {
+        half
+      }
     }
     name
   }
@@ -19,6 +22,9 @@ export const PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT = gql`
     icon {
       half
       alt
+      animation {
+        half
+      }
     }
     name
   }
@@ -29,6 +35,9 @@ export const PORTFOLIO_ITEM_PAINTING_FRAGMENT = gql`
     icon {
       half
       alt
+      animation {
+        half
+      }
     }
     name
   }
@@ -39,6 +48,9 @@ export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
     icon {
       half
       alt
+      animation {
+        half
+      }
     }
     name
   }
@@ -48,21 +60,24 @@ interface CodeProps {
   readonly project: PortfolioIndexOtherProjectFragment;
 }
 
-export const PortfolioItem = ({ project }: CodeProps) => (
-  <Link to={`../project/${project.id}`}>
-    <div className="portfolio-item">
-      <div className="portfolio-item-icon">
-        <img
-          className="portfolio-item-icon-image"
-          src={project.icon.half}
-          alt={project.icon.alt}
-        />
+export const PortfolioItem = ({ project }: CodeProps) => {
+  const iconSrc = project.icon.animation?.half ?? project.icon.half;
+  return (
+    <Link to={`../project/${project.id}`}>
+      <div className="portfolio-item">
+        <div className="portfolio-item-icon">
+          <img
+            className="portfolio-item-icon-image"
+            src={iconSrc}
+            alt={project.icon.alt}
+          />
+        </div>
+        <div className="portfolio-item-content">
+          <h3 className="portfolio-item-title">{project.name}</h3>
+        </div>
       </div>
-      <div className="portfolio-item-content">
-        <h3 className="portfolio-item-title">{project.name}</h3>
-      </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
 
 export default PortfolioItem;

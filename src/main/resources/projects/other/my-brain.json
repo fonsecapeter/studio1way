@@ -2,9 +2,13 @@
   "id": "my-brain",
   "name": "My Brain",
   "icon": {
-    "path": "others/my_brain/animation",
+    "path": "others/my_brain/main",
     "ext": "GIF",
-    "alt": "peter's brain spinning"
+    "alt": "peter's brain spinning",
+    "animation": {
+      "path": "others/my_brain/main/animation",
+      "alt": "peter's brain spinning"
+    }
   },
   "links": [
     {
@@ -16,14 +20,13 @@
   "description": "I used to run MRIs at UCSF.",
   "images": [
     {
-      "path": "others/my_brain/animation",
-      "ext": "GIF",
-      "alt": "peter's brain spinning"
-    },
-    {
       "path": "others/my_brain/main",
       "ext": "JPG",
-      "alt": "peter's brain at rest"
+      "alt": "peter's brain at rest",
+      "animation": {
+        "path": "others/my_brain/main/animation",
+        "alt": "peter's brain spinning"
+      }
     },
     {
       "path": "others/my_brain/in_situ",

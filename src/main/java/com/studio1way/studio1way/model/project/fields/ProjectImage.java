@@ -29,8 +29,21 @@ public class ProjectImage {
     private Extension ext;
     private String alt;
     private Boolean neverOverlap = false;
+    private ProjectAnimation animation;
 
     public ProjectImage() {}
+
+    public ProjectImage(
+        String path,
+        Extension ext,
+        String alt,
+        ProjectAnimation animation
+    ) {
+        setPath(path);
+        setExt(ext);
+        setAlt(alt);
+        setAnimation(animation);
+    }
 
     public ProjectImage(String path, Extension ext, String alt, Boolean neverOverlap) {
         setPath(path);
@@ -81,6 +94,18 @@ public class ProjectImage {
         this.neverOverlap = neverOverlap;
     }
 
+    public ProjectAnimation getAnimation() {
+        return animation;
+    }
+
+    public void setAnimation(ProjectAnimation animation) {
+        this.animation = animation;
+    }
+
+    private boolean hasAnimation() {
+        return getAnimation() != null;
+    }
+
     public String getFull() {
         return String.format("%s/%s/100.%s", IMG_PATH, path, ext.toString());
     }
@@ -94,6 +119,9 @@ public class ProjectImage {
     }
 
     public Boolean valid() {
+        if (hasAnimation() && !getAnimation().valid()) {
+            return false;
+        }
         return (
             new File(String.format("%s/%s", ABS_PATH, getFull())).exists() ||
             new File(String.format("%s/%s", ABS_PATH, getHalf())).exists() ||
@@ -110,7 +138,8 @@ public class ProjectImage {
             Objects.equals(getPath(), otherProjectImage.getPath()) &&
             Objects.equals(getExt(), otherProjectImage.getExt()) &&
             Objects.equals(getAlt(), otherProjectImage.getAlt()) &&
-            Objects.equals(getNeverOverlap(), otherProjectImage.getNeverOverlap())
+            Objects.equals(getNeverOverlap(), otherProjectImage.getNeverOverlap()) &&
+            Objects.equals(getAnimation(), otherProjectImage.getAnimation())
         );
     }
 }

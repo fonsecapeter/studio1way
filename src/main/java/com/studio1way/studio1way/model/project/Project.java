@@ -101,7 +101,7 @@ public class Project implements Comparable<Project> {
             if (!image.valid()) {
                 throw new IllegalArgumentException(
                     String.format(
-                        "No image with path=%s ext=%s found",
+                        "Image with path=%s ext=%s is not valid",
                         image.getPath(),
                         image.getExt()
                     )
