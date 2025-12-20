@@ -1,4 +1,5 @@
 type Query {
+    projects: [Project]!
     otherProjects: [OtherProject]!
     otherProject(id: ID!): OtherProject
     paintings: [Painting]!

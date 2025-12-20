@@ -6,7 +6,7 @@ import { NavLink, slugify } from "./link";
 const Nav = () => {
   const location = useLocation();
   const THE_STUDIO = "The Studio";
-  const links = [THE_STUDIO, "Ceramics", "Paint", "Wood", "Other"];
+  const links = [THE_STUDIO, "Portfolio", "Ceramics", "Paint", "Wood", "Other"];
   let path = window.location.pathname.replace("/", "");
   if (path.length === 0) {
     path = slugify(THE_STUDIO);

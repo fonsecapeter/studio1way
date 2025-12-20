@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
-import com.studio1way.studio1way.service.ProjectService;
+import com.studio1way.studio1way.service.OtherProjectService;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ public class OtherProjectControllerTests {
     private GraphQlTester graphQlTester;
 
     @MockitoBean
-    private ProjectService projectService;
+    private OtherProjectService projectService;
 
     @BeforeEach
     public void setUp() {

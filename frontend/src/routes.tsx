@@ -17,6 +17,13 @@ const LoadableDepartment = lazy(
       "./components/common/department"
     ),
 );
+const LoadablePortfolioIndexContainer = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "./containers/portfolio/index/projects"
+    ),
+);
 const LoadableCeramicsPhilosophy = lazy(
   () =>
     import(
@@ -110,6 +117,10 @@ const AppRoutes = () => {
         <Routes>
           <Route index element={<LoadableStudioPhilosophy />} />
           <Route path="/the-studio" element={<LoadableStudioPhilosophy />} />
+          <Route
+            path="/portfolio"
+            element={<LoadablePortfolioIndexContainer />}
+          />
           <Route path="/ceramics" element={<LoadableDepartment />}>
             <Route index element={<LoadableCeramicsPhilosophy />} />
             <Route

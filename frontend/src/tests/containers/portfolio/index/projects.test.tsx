@@ -3,18 +3,60 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import {
-  PaintPortfolioIndexContainer,
-  PAINTINGS,
-} from "../../../../containers/portfolio/index/paint";
+  ProjectsPortfolioIndexContainer,
+  PROJECTS,
+} from "../../../../containers/portfolio/index/projects";
 
 const mocks = [
   {
     request: {
-      query: PAINTINGS,
+      query: PROJECTS,
     },
     result: {
       data: {
-        paintings: [
+        projects: [
+          {
+            __typename: "CeramicWare",
+            id: "test-project",
+            name: "A Test CeramicWare",
+            icon: {
+              __typename: "ProjectImage",
+              half: "img/projects/test/main/50.png",
+              alt: "photo of the void",
+              animation: null,
+            },
+            images: [
+              {
+                full: "img/projects/test/main/100.png",
+                half: "img/projects/test/main/50.png",
+                quarter: "img/projects/test/main/25.png",
+                alt: "photo of the void",
+                neverOverlap: false,
+                animation: null,
+              },
+            ],
+          },
+          {
+            __typename: "WoodWork",
+            id: "test-project",
+            name: "A Test WoodWork",
+            icon: {
+              __typename: "ProjectImage",
+              half: "img/projects/test/main/50.png",
+              alt: "photo of the void",
+              animation: null,
+            },
+            images: [
+              {
+                full: "img/projects/test/main/100.png",
+                half: "img/projects/test/main/50.png",
+                quarter: "img/projects/test/main/25.png",
+                alt: "photo of the void",
+                neverOverlap: false,
+                animation: null,
+              },
+            ],
+          },
           {
             __typename: "Painting",
             id: "test-project",
@@ -37,9 +79,9 @@ const mocks = [
             ],
           },
           {
-            __typename: "Painting",
+            __typename: "OtherProject",
             id: "another-test-project",
-            name: "Another Test Painting",
+            name: "A Test Project",
             icon: {
               __typename: "ProjectImage",
               half: "img/projects/another-test/main/50.png",
@@ -71,23 +113,25 @@ const mocks = [
   },
 ];
 
-describe("PaintPortfolioIndexContainer", () => {
+describe("PorfolioPortfolioIndexContainer", () => {
   beforeEach(() => {
     render(
       <MockedProvider mocks={mocks}>
         <MemoryRouter>
-          <PaintPortfolioIndexContainer />
+          <ProjectsPortfolioIndexContainer />
         </MemoryRouter>
       </MockedProvider>,
     );
   });
 
   it("passes projects to the Portfolio component", async () => {
-    const testProjectEl = await screen.findByText("A Test Painting");
-    const anotherTestProjectEl = await screen.findByText(
-      "Another Test Painting",
-    );
+    const testCeramicWareEl = await screen.findByText("A Test CeramicWare");
+    const testWoodWorkEl = await screen.findByText("A Test WoodWork");
+    const testPaintingEl = await screen.findByText("A Test Painting");
+    const testProjectEl = await screen.findByText("A Test Project");
+    expect(testCeramicWareEl).toBeInTheDocument();
+    expect(testWoodWorkEl).toBeInTheDocument();
+    expect(testPaintingEl).toBeInTheDocument();
     expect(testProjectEl).toBeInTheDocument();
-    expect(anotherTestProjectEl).toBeInTheDocument();
   });
 });

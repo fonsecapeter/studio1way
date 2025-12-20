@@ -27,9 +27,9 @@ const mocks = [
             },
             images: [
               {
-                full: "img/projects/test/100.png",
-                half: "img/projects/test/50.png",
-                quarter: "img/projects/test/25.png",
+                full: "img/projects/test/main/100.png",
+                half: "img/projects/test/main/50.png",
+                quarter: "img/projects/test/main/25.png",
                 alt: "photo of the void",
                 neverOverlap: false,
                 animation: null,
