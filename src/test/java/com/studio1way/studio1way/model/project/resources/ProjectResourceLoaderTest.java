@@ -3,6 +3,7 @@ package com.studio1way.studio1way.model.project.resources;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.model.project.fields.ProjectAnimation;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.repository.project.resources.ProjectResourceLoader;
@@ -51,7 +52,11 @@ public class ProjectResourceLoaderTest {
             new ProjectImage(
                 "paintings/v47_workshop/main",
                 ProjectImage.Extension.JPG,
-                "another test image"
+                "another test image",
+                new ProjectAnimation(
+                    "woodworks/shop_class_shelf/main/animation",
+                    "a test animation"
+                )
             ),
         }
     );

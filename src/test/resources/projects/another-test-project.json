@@ -18,7 +18,11 @@
     {
       "path": "paintings/v47_workshop/main",
       "ext": "JPG",
-      "alt": "another test image"
+      "alt": "another test image",
+      "animation": {
+        "path": "woodworks/shop_class_shelf/main/animation",
+        "alt": "a test animation"
+      }
     }
   ]
 }

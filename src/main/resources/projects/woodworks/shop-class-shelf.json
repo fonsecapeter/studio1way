@@ -2,9 +2,13 @@
   "id": "shop-class-shelf",
   "name": "Shop Class Shelf",
   "icon": {
-    "path": "woodworks/shop_class_shelf/animation",
+    "path": "woodworks/shop_class_shelf/main",
     "ext": "GIF",
-    "alt": "spinning small wood shelf"
+    "alt": "spinning small wood shelf",
+    "animation": {
+      "path": "woodworks/shop_class_shelf/main/animation",
+      "alt": "spinning small wood shelf"
+    }
   },
   "links": [
     {
@@ -20,14 +24,13 @@
   "description": "Some of my really early work.",
   "images": [
     {
-      "path": "woodworks/shop_class_shelf/animation",
-      "ext": "GIF",
-      "alt": "spinning small wood shelf"
-    },
-    {
       "path": "woodworks/shop_class_shelf/main",
       "ext": "JPG",
-      "alt": "small wood shelf"
+      "alt": "small wood shelf",
+      "animation": {
+        "path": "woodworks/shop_class_shelf/main/animation",
+        "alt": "spinning small wood shelf"
+      }
     },
     {
       "path": "woodworks/shop_class_shelf/edges",

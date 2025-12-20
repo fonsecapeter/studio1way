@@ -2,9 +2,13 @@
   "id": "1way-dunks",
   "name": "1Way Dunks",
   "icon": {
-    "path": "others/1way_dunks/animation",
+    "path": "others/1way_dunks/main",
     "ext": "GIF",
-    "alt": "customer sneaker animation"
+    "alt": "customer sneaker animation",
+    "animation": {
+      "path": "others/1way_dunks/main/animation",
+      "alt": "customer sneaker animation"
+    }
   },
   "links": [
     {
@@ -18,12 +22,11 @@
     {
       "path": "others/1way_dunks/main",
       "ext": "JPG",
-      "alt": "custom sneakers on some scaffolding"
-    },
-    {
-      "path": "others/1way_dunks/animation",
-      "ext": "GIF",
-      "alt": "customer sneaker animation"
+      "alt": "custom sneakers on some scaffolding",
+      "animation": {
+        "path": "others/1way_dunks/main/animation",
+        "alt": "customer sneaker animation"
+      }
     },
     {
       "path": "others/1way_dunks/inside",

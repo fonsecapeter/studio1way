@@ -28,6 +28,7 @@ const mocks = [
               quarter: "test-25",
               alt: "test-alt",
               neverOverlap: false,
+              animation: null,
             },
           ],
         },

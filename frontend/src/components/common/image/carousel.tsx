@@ -20,6 +20,7 @@ const Carousel = ({ images }: CarouselProps) => {
 
   let mainImage: ProjectImage | null = null;
   let laneImages: LaneImage[] = [];
+  let mainImageContainerClass = "carousel-image-main-container";
   let laneImageClass = "carousel-lane-image";
   if (images.length > 4) {
     laneImageClass = "carousel-lane-image-mini";
@@ -33,8 +34,31 @@ const Carousel = ({ images }: CarouselProps) => {
     }
   });
   invariant(mainImage !== null, "Carousel must have at least one image");
+  const mainImageSrc = mainImage.animation?.full ?? mainImage.half;
+  const mainImageAlt = mainImage.animation?.alt ?? mainImage.alt;
   if (laneImages.length == 1) {
-    laneImages = [];
+    return (
+      <>
+        <img
+          data-testid="carousel-main-image"
+          className="carousel-image-solo"
+          src={mainImageSrc}
+          alt={`${mainImageAlt} (large)`}
+          onClick={() => setIsModalOpen(true)}
+        />
+        <ImageModal
+          isOpen={isModalOpen}
+          closeModal={() => setIsModalOpen(false)}
+          withTopGap={mainImage.neverOverlap}
+        >
+          <img
+            className="image-modal-full-size-image"
+            src={mainImage.full}
+            alt={`${mainImage.alt}`}
+          />
+        </ImageModal>
+      </>
+    );
   }
   // preload main version of lane images on first load so they're ready
   // for carousel clicking
@@ -46,13 +70,13 @@ const Carousel = ({ images }: CarouselProps) => {
   }, []);
   return (
     <>
-      <div className="carousel-image-main-container" data-testid="carousel">
+      <div className={mainImageContainerClass}>
         {isPreloaded ? (
           <img
             className="carousel-image-main"
             data-testid="carousel-main-image"
-            src={mainImage.half}
-            alt={`${mainImage.alt} (large)`}
+            src={mainImageSrc}
+            alt={`${mainImageAlt} (large)`}
             onClick={() => setIsModalOpen(true)}
           />
         ) : (

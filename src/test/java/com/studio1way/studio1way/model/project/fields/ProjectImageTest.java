@@ -13,20 +13,49 @@ public class ProjectImageTest {
 
     @BeforeEach
     public void setUp() {
-        image = new ProjectImage("some/path", ProjectImage.Extension.JPG, "test image");
+        image =
+            new ProjectImage(
+                "paintings/v47_workshop/main",
+                ProjectImage.Extension.JPG,
+                "test image"
+            );
     }
 
     @Test
     public void testSizes() {
-        assertEquals("/img/projects/some/path/100.jpg", image.getFull());
-        assertEquals("/img/projects/some/path/50.jpg", image.getHalf());
-        assertEquals("/img/projects/some/path/25.jpg", image.getQuarter());
+        assertEquals(
+            "/img/projects/paintings/v47_workshop/main/100.jpg",
+            image.getFull()
+        );
+        assertEquals("/img/projects/paintings/v47_workshop/main/50.jpg", image.getHalf());
+        assertEquals(
+            "/img/projects/paintings/v47_workshop/main/25.jpg",
+            image.getQuarter()
+        );
     }
 
     @Test
     public void testValidChecksForFileLocation() {
+        assertTrue(image.valid());
+        image.setPath("some/fake/path");
         assertFalse(image.valid());
-        image.setPath("paintings/v47_workshop/main");
+    }
+
+    @Test
+    public void testValidChecksForAnimation() {
+        image.setAnimation(
+            new ProjectAnimation(
+                "woodworks/some/fake/animation",
+                "animation that doesnt exist"
+            )
+        );
+        assertFalse(image.valid());
+        image.setAnimation(
+            new ProjectAnimation(
+                "woodworks/shop_class_shelf/main/animation",
+                "valid animation"
+            )
+        );
         assertTrue(image.valid());
     }
 
