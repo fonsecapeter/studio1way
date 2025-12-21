@@ -65,7 +65,10 @@ describe("PortfolioItem", () => {
 
     it("renders the icon animation", () => {
       const iconElement = screen.getByAltText("fake cup image");
-      expect(iconElement).toHaveAttribute("src", "test_cup_img/animation/50.gif");
+      expect(iconElement).toHaveAttribute(
+        "src",
+        "test_cup_img/animation/50.gif",
+      );
     });
 
     it("links to the ceramics detail page", () => {
