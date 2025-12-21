@@ -31,13 +31,6 @@ const LoadableCeramicsPhilosophy = lazy(
       "./components/philosophy/ceramics_philosophy"
     ),
 );
-const LoadableCeramicsPortfolioIndexContainer = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "./containers/portfolio/index/ceramics"
-    ),
-);
 const LoadableCeramicWareProjectDetailContainer = lazy(
   () =>
     import(
@@ -50,13 +43,6 @@ const LoadablePaintPhilosophy = lazy(
     import(
       /* webpackPrefetch: true */
       "./components/philosophy/paint_philosophy"
-    ),
-);
-const LoadablePaintPortfolioIndexContainer = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "./containers/portfolio/index/paint"
     ),
 );
 const LoadablePaintingProjectDetailContainer = lazy(
@@ -73,13 +59,6 @@ const LoadableWoodPhilosophy = lazy(
       "./components/philosophy/wood_philosophy"
     ),
 );
-const LoadableWoodPortfolioIndexContainer = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "./containers/portfolio/index/wood"
-    ),
-);
 const LoadableWoodWorkProjectDetailContainer = lazy(
   () =>
     import(
@@ -92,13 +71,6 @@ const LoadableOtherPhilosophy = lazy(
     import(
       /* webpackPrefetch: true */
       "./components/philosophy/other_philosophy"
-    ),
-);
-const LoadableOtherPortfolioIndexContainer = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "./containers/portfolio/index/other"
     ),
 );
 const LoadableOtherProjectDetailContainer = lazy(
@@ -124,10 +96,6 @@ const AppRoutes = () => {
           <Route path="/ceramics" element={<LoadableDepartment />}>
             <Route index element={<LoadableCeramicsPhilosophy />} />
             <Route
-              path="projects"
-              element={<LoadableCeramicsPortfolioIndexContainer />}
-            ></Route>
-            <Route
               path="project/:projectId"
               element={<LoadableCeramicWareProjectDetailContainer />}
             />
@@ -135,10 +103,6 @@ const AppRoutes = () => {
           </Route>
           <Route path="/paint" element={<LoadableDepartment />}>
             <Route index element={<LoadablePaintPhilosophy />} />
-            <Route
-              path="projects"
-              element={<LoadablePaintPortfolioIndexContainer />}
-            />
             <Route
               path="project/:projectId"
               element={<LoadablePaintingProjectDetailContainer />}
@@ -148,10 +112,6 @@ const AppRoutes = () => {
           <Route path="/wood" element={<LoadableDepartment />}>
             <Route index element={<LoadableWoodPhilosophy />} />
             <Route
-              path="projects"
-              element={<LoadableWoodPortfolioIndexContainer />}
-            />
-            <Route
               path="project/:projectId"
               element={<LoadableWoodWorkProjectDetailContainer />}
             />
@@ -159,10 +119,6 @@ const AppRoutes = () => {
           </Route>
           <Route path="/other" element={<LoadableDepartment />}>
             <Route index element={<LoadableOtherPhilosophy />} />
-            <Route
-              path="projects"
-              element={<LoadableOtherPortfolioIndexContainer />}
-            />
             <Route
               path="project/:projectId"
               element={<LoadableOtherProjectDetailContainer />}

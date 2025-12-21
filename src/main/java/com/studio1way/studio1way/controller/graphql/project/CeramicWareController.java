@@ -19,11 +19,6 @@ public class CeramicWareController {
     }
 
     @QueryMapping
-    public List<CeramicWare> ceramicWares() {
-        return ceramicWareService.findAll();
-    }
-
-    @QueryMapping
     public CeramicWare ceramicWare(@Argument String id) {
         return ceramicWareService.findById(id);
     }

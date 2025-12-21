@@ -24,7 +24,7 @@ describe("WoodPhilosophy", () => {
   it("links to portfolio", () => {
     expect(screen.getByText("PORTFOLIO →").parentElement).toHaveAttribute(
       "href",
-      "/wood/projects",
+      "/portfolio/?dept=wood",
     );
   });
 });

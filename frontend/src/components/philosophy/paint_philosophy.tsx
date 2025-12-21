@@ -5,12 +5,13 @@ import canvasBackPath from "../../assets/img/web/paint/canvas_back/50.jpg";
 import paintSetPath from "../../assets/img/web/paint/paint_set/50.jpg";
 import parisInProgressPath from "../../assets/img/web/paint/paris_in_progress/50.jpg";
 import qRCodePath from "../../assets/img/web/paint/qr_code/50.jpg";
+import { DEPARTMENT } from "../../utils";
 
 export const PaintPhilosophy = () => (
   <div>
     <div className="landing-title-row">
       <h1 className="page-title">Painting Philosophy</h1>
-      <Link to="projects">
+      <Link to={`/portfolio/?dept=${DEPARTMENT.PAINT}`}>
         <button className="button-link">PORTFOLIO →</button>
       </Link>
     </div>

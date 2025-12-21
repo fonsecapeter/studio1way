@@ -24,7 +24,7 @@ describe("PaintPhilosophy", () => {
   it("links to portfolio", () => {
     expect(screen.getByText("PORTFOLIO →").parentElement).toHaveAttribute(
       "href",
-      "/paint/projects",
+      "/portfolio/?dept=paint",
     );
   });
 });

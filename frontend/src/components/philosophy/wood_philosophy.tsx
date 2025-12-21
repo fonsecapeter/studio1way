@@ -5,12 +5,13 @@ import lumberPath from "../../assets/img/web/wood/lumber/50.jpg";
 import reclaimedPlywoodPath from "../../assets/img/web/wood/reclaimed_plywood/50.jpg";
 import sawPath from "../../assets/img/web/wood/saw/50.jpg";
 import roundedEdgesPath from "../../assets/img/web/wood/rounded_edges/50.jpg";
+import { DEPARTMENT } from "../../utils";
 
 export const WoodPhilosophy = () => (
   <div>
     <div className="landing-title-row">
       <h1 className="page-title">Wood Philosophy</h1>
-      <Link to="projects">
+      <Link to={`/portfolio/?dept=${DEPARTMENT.WOOD}`}>
         <button className="button-link">PORTFOLIO →</button>
       </Link>
     </div>

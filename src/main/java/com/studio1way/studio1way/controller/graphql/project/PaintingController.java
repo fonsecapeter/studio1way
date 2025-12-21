@@ -19,11 +19,6 @@ public class PaintingController {
     }
 
     @QueryMapping
-    public List<Painting> paintings() {
-        return paintingService.findAll();
-    }
-
-    @QueryMapping
     public Painting painting(@Argument String id) {
         return paintingService.findById(id);
     }

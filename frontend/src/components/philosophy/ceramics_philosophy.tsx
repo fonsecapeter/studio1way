@@ -6,12 +6,13 @@ import coffeeCupPath from "../../assets/img/web/ceramics/coffee_cup/50.jpg";
 import dentPath from "../../assets/img/web/ceramics/dent/50.jpg";
 import inHandPath from "../../assets/img/web/ceramics/in_hand/50.jpg";
 import onShelfPath from "../../assets/img/web/ceramics/on_shelf/50.jpg";
+import { DEPARTMENT } from "../../utils";
 
 export const CeramicsPhilosophy = () => (
   <div>
     <div className="landing-title-row">
       <h1 className="page-title">Ceramics Philosophy</h1>
-      <Link to="projects">
+      <Link to={`/portfolio/?dept=${DEPARTMENT.CERAMICS}`}>
         <button className="button-link">PORTFOLIO →</button>
       </Link>
     </div>

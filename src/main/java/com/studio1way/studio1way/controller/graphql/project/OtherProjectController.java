@@ -19,11 +19,6 @@ public class OtherProjectController {
     }
 
     @QueryMapping
-    public List<Project> otherProjects() {
-        return projectService.findAll();
-    }
-
-    @QueryMapping
     public Project otherProject(@Argument String id) {
         return projectService.findById(id);
     }

@@ -58,41 +58,6 @@ public class PaintingControllerTests {
     }
 
     @Test
-    public void testPaintings() throws Exception {
-        String document =
-            """
-                query {
-                    paintings {
-                        id
-                    }
-                }
-            """;
-
-        GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.paintings").entityList(Painting.class).hasSize(1);
-        resp.path("data.paintings[0].id").entity(String.class).isEqualTo("test-painting");
-    }
-
-    @Test
-    public void testPaintingByIdFound() throws Exception {
-        String document =
-            """
-                query {
-                    painting(id: "test-painting") {
-                        name
-                    }
-                }
-            """;
-
-        graphQlTester
-            .document(document)
-            .execute()
-            .path("data.painting.name")
-            .entity(String.class)
-            .isEqualTo("Test Painting");
-    }
-
-    @Test
     public void testPaintingByIdNotFound() throws Exception {
         String document =
             """

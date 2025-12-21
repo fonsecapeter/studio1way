@@ -1,0 +1,9 @@
+.filter-dropdown {
+  margin-bottom: 20px;
+
+  &-options {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
