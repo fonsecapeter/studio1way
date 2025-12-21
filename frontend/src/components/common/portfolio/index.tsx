@@ -3,13 +3,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { PortfolioItem } from "./item";
-import { PortfolioIndexOtherProjectFragment } from "../../../__generated__/types";
+import {
+  PortfolioIndexOtherProjectFragment,
+  PortfolioIndexPaintingFragment,
+  PortfolioIndexCeramicWareFragment,
+  PortfolioIndexWoodWorkFragment,
+} from "../../../__generated__/types";
 import {
   PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT,
   PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT,
   PORTFOLIO_ITEM_PAINTING_FRAGMENT,
   PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT,
 } from "./item";
+
+export type PortfolioIndexProjectFragment =
+  | PortfolioIndexOtherProjectFragment
+  | PortfolioIndexPaintingFragment
+  | PortfolioIndexCeramicWareFragment
+  | PortfolioIndexWoodWorkFragment;
 
 export const PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioIndexCeramicWare on CeramicWare {
@@ -49,7 +60,7 @@ export const PORTFOLIO_INDEX_WOOD_WORK_FRAGMENT = gql`
 
 interface PortfolioProps {
   readonly title: string;
-  readonly projects: PortfolioIndexOtherProjectFragment[];
+  readonly projects: PortfolioIndexProjectFragment[];
 }
 
 export const Portfolio = ({ title, projects }: PortfolioProps) => (

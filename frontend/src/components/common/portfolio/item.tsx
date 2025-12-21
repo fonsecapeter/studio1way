@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
-import { PortfolioIndexOtherProjectFragment } from "../../../__generated__/types";
+import { PortfolioIndexProjectFragment } from "./index";
+
+const enum Category {
+  CERAMIC_WARE = "CeramicWare",
+  PAINTING = "Painting",
+  WOOD_WORK = "WoodWork",
+  OTHER = "OtherProject",
+}
 
 export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioItemCeramicWare on CeramicWare {
@@ -57,13 +64,28 @@ export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
 `;
 
 interface CodeProps {
-  readonly project: PortfolioIndexOtherProjectFragment;
+  readonly project: PortfolioIndexProjectFragment;
 }
 
 export const PortfolioItem = ({ project }: CodeProps) => {
   const iconSrc = project.icon.animation?.half ?? project.icon.half;
+  let detailPath;
+  switch (project.__typename) {
+    case Category.CERAMIC_WARE:
+      detailPath = `/ceramics/project/${project.id}`;
+      break;
+    case Category.PAINTING:
+      detailPath = `/paint/project/${project.id}`;
+      break;
+    case Category.WOOD_WORK:
+      detailPath = `/wood/project/${project.id}`;
+      break;
+    default:
+      detailPath = `/other/project/${project.id}`;
+      break;
+  }
   return (
-    <Link to={`../project/${project.id}`}>
+    <Link to={detailPath} data-testid="portfolio-item-link">
       <div className="portfolio-item">
         <div className="portfolio-item-icon">
           <img

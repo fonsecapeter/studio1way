@@ -15,10 +15,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class ProjectServiceTest {
+public class OtherProjectServiceTest {
 
     @InjectMocks
-    private ProjectService projectService;
+    private OtherProjectService projectService;
 
     @Mock
     private ProjectRepository projectRepository;
