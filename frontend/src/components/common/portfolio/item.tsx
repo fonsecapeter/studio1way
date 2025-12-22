@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { PortfolioIndexProjectFragment } from "./index";
 import { CATEGORY } from "../../../utils";
+import ImagePlaceholder from "../image/placeholder";
 
 export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioItemCeramicWare on CeramicWare {
@@ -59,9 +60,10 @@ export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
 
 interface CodeProps {
   readonly project: PortfolioIndexProjectFragment;
+  readonly iconPreloaded: boolean;
 }
 
-export const PortfolioItem = ({ project }: CodeProps) => {
+export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
   const iconSrc = project.icon.animation?.half ?? project.icon.half;
   let detailPath;
   switch (project.__typename) {
@@ -82,11 +84,17 @@ export const PortfolioItem = ({ project }: CodeProps) => {
     <Link to={detailPath} data-testid="portfolio-item-link">
       <div className="portfolio-item">
         <div className="portfolio-item-icon">
-          <img
-            className="portfolio-item-icon-image"
-            src={iconSrc}
-            alt={project.icon.alt}
-          />
+          {iconPreloaded ? (
+            <img
+              className="portfolio-item-icon-image"
+              src={iconSrc}
+              alt={project.icon.alt}
+            />
+          ) : (
+            <div className="portfolio-item-icon-image">
+              <ImagePlaceholder height={200} />
+            </div>
+          )}
         </div>
         <div className="portfolio-item-content">
           <h3 className="portfolio-item-title">{project.name}</h3>

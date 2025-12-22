@@ -13,7 +13,7 @@ export const FilterDropdown = ({
   selectedOptions,
   onChange,
 }: FilterDropDownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(selectedOptions.size > 0);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,29 +26,40 @@ export const FilterDropdown = ({
     }
     onChange(nextSelectedOptions);
   };
+
+  let prefix = "\u00a0\u00a0\u00a0";
+  if (
+    selectedOptions.size > 0 &&
+    selectedOptions.size < Object.keys(options).length
+  ) {
+    prefix = `(${selectedOptions.size})`;
+  }
   return (
-    <div className="filter-dropdown">
-      <button className="button-link" onClick={toggleDropdown}>
-        {isOpen ? "↑ " : "↓ "}
-        {name}
-        {isOpen ? " ↑" : " ↓"}
-      </button>
-      {isOpen && (
-        <div className="filter-dropdown-options">
-          {Object.entries(options).map(([option, label]) => (
-            <label key={option}>
-              <input
-                className="filter-dropdown-options-item"
-                type="checkbox"
-                value={option}
-                checked={selectedOptions.has(option)}
-                onChange={handleCheckboxChange}
-              />
-              {label}
-            </label>
-          ))}
-        </div>
-      )}
+    <div className="filter-dropdown-container">
+      <div className="filter-dropdown-prefix">{prefix}</div>
+      <div className="filter-dropdown">
+        <button className="button-link" onClick={toggleDropdown}>
+          {isOpen ? "↑ " : "↓ "}
+          {name}
+          {isOpen ? " ↑" : " ↓"}
+        </button>
+        {isOpen && (
+          <div className="filter-dropdown-options">
+            {Object.entries(options).map(([option, label]) => (
+              <label key={option}>
+                <input
+                  className="filter-dropdown-options-item"
+                  type="checkbox"
+                  value={option}
+                  checked={selectedOptions.has(option)}
+                  onChange={handleCheckboxChange}
+                />
+                {label}
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

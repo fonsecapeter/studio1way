@@ -72,12 +72,11 @@ describe("Portfolio", () => {
       expect(screen.getByText("Test Projects")).toBeInTheDocument();
     });
 
-    it("renders each project item", () => {
-      expect(screen.getByText("A Test Project")).toBeInTheDocument();
-      expect(screen.getByText("A Test Painting")).toBeInTheDocument();
-      expect(screen.getByText("A Test Cup")).toBeInTheDocument();
-      expect(screen.getByText("A Test Table")).toBeInTheDocument();
-      expect(screen.getAllByAltText("fake image").length).toBe(4);
+    it("renders each project item, one for mobile, one for desktop", () => {
+      expect(screen.queryAllByText("A Test Project").length).toBe(2);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Table").length).toBe(2);
     });
 
     describe("the department filter", () => {
@@ -90,21 +89,21 @@ describe("Portfolio", () => {
         await fireEvent.click(filterButton);
         const ceramicsSelector = screen.getByText("ceramics");
         await fireEvent.click(ceramicsSelector);
-        expect(screen.queryByText("A Test Project")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Painting")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Cup")).toBeInTheDocument();
-        expect(screen.queryByText("A Test Table")).not.toBeInTheDocument();
+        expect(screen.queryAllByText("A Test Project").length).toBe(0);
+        expect(screen.queryAllByText("A Test Painting").length).toBe(0);
+        expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+        expect(screen.queryAllByText("A Test Table").length).toBe(0);
         const woodSelector = screen.getByText("wood");
         await fireEvent.click(woodSelector);
-        expect(screen.queryByText("A Test Project")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Painting")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Cup")).toBeInTheDocument();
-        expect(screen.queryByText("A Test Table")).toBeInTheDocument();
+        expect(screen.queryAllByText("A Test Project").length).toBe(0);
+        expect(screen.queryAllByText("A Test Painting").length).toBe(0);
+        expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+        expect(screen.queryAllByText("A Test Table").length).toBe(2);
         await fireEvent.click(ceramicsSelector);
-        expect(screen.queryByText("A Test Project")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Painting")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Cup")).not.toBeInTheDocument();
-        expect(screen.queryByText("A Test Table")).toBeInTheDocument();
+        expect(screen.queryAllByText("A Test Project").length).toBe(0);
+        expect(screen.queryAllByText("A Test Painting").length).toBe(0);
+        expect(screen.queryAllByText("A Test Cup").length).toBe(0);
+        expect(screen.queryAllByText("A Test Table").length).toBe(2);
       });
     });
   });
@@ -128,18 +127,16 @@ describe("Portfolio", () => {
     });
 
     it("filters projects", async () => {
-      expect(screen.queryByText("A Test Project")).not.toBeInTheDocument();
-      expect(screen.queryByText("A Test Painting")).not.toBeInTheDocument();
-      expect(screen.queryByText("A Test Cup")).toBeInTheDocument();
-      expect(screen.queryByText("A Test Table")).not.toBeInTheDocument();
-      const filterButton = screen.getByText("↓ department ↓");
-      await fireEvent.click(filterButton);
+      expect(screen.queryAllByText("A Test Project").length).toBe(0);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(0);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Table").length).toBe(0);
       const ceramicsSelector = screen.getByText("ceramics");
       await fireEvent.click(ceramicsSelector);
-      expect(screen.queryByText("A Test Project")).toBeInTheDocument();
-      expect(screen.queryByText("A Test Painting")).toBeInTheDocument();
-      expect(screen.queryByText("A Test Cup")).toBeInTheDocument();
-      expect(screen.queryByText("A Test Table")).toBeInTheDocument();
+      expect(screen.queryAllByText("A Test Project").length).toBe(2);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Table").length).toBe(2);
     });
   });
 });

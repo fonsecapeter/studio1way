@@ -94,7 +94,7 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     <div>
       <div className="landing-title-row">
         <h1 className="page-title">{project.name}</h1>
-        <Link to="../projects">
+        <Link to="/portfolio">
           <button className="button-link">← PORTFOLIO</button>
         </Link>
       </div>

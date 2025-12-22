@@ -49,7 +49,7 @@ describe("PortfolioDetail", () => {
     it("renders a button back to the category porfolio", () => {
       const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
       expect(linkElement).toBeInTheDocument();
-      expect(linkElement.getAttribute("href")).toBe("/something/projects");
+      expect(linkElement.getAttribute("href")).toBe("/portfolio");
     });
 
     it("renders a carousel", () => {

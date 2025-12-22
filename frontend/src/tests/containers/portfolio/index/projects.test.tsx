@@ -125,10 +125,13 @@ describe("PorfolioPortfolioIndexContainer", () => {
   });
 
   it("passes projects to the Portfolio component", async () => {
-    const testCeramicWareEl = await screen.findByText("A Test CeramicWare");
-    const testWoodWorkEl = await screen.findByText("A Test WoodWork");
-    const testPaintingEl = await screen.findByText("A Test Painting");
-    const testProjectEl = await screen.findByText("A Test Project");
+    // get first bc there's one for mobile, one for desktop
+    const testCeramicWareEl = (
+      await screen.findAllByText("A Test CeramicWare")
+    )[0];
+    const testWoodWorkEl = (await screen.findAllByText("A Test WoodWork"))[0];
+    const testPaintingEl = (await screen.findAllByText("A Test Painting"))[0];
+    const testProjectEl = (await screen.findAllByText("A Test Project"))[0];
     expect(testCeramicWareEl).toBeInTheDocument();
     expect(testWoodWorkEl).toBeInTheDocument();
     expect(testPaintingEl).toBeInTheDocument();
