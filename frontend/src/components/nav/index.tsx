@@ -19,7 +19,7 @@ const Nav = () => {
   return (
     <nav id="nav" className="nav">
       {links.map((link) => (
-        <NavLink name={link} active={path === slugify(link)} key={link} />
+        <NavLink name={link} active={path.includes(slugify(link))} key={link} />
       ))}
     </nav>
   );

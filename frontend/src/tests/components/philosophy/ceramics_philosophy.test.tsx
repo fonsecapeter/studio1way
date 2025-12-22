@@ -24,7 +24,7 @@ describe("CeramicsPhilosophy", () => {
   it("links to portfolio", () => {
     expect(screen.getByText("PORTFOLIO →").parentElement).toHaveAttribute(
       "href",
-      "/ceramics/projects",
+      "/portfolio/?dept=ceramics",
     );
   });
 });

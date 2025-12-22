@@ -53,25 +53,6 @@ public class OtherProjectControllerTests {
     }
 
     @Test
-    public void testProjects() throws Exception {
-        String document =
-            """
-                query {
-                    otherProjects {
-                        id
-                    }
-                }
-            """;
-
-        GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.otherProjects").entityList(Project.class).hasSize(1);
-        resp
-            .path("data.otherProjects[0].id")
-            .entity(String.class)
-            .isEqualTo("test-project");
-    }
-
-    @Test
     public void testProjectByIdFound() throws Exception {
         String document =
             """

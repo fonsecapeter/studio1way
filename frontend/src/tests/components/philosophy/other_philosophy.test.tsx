@@ -24,7 +24,7 @@ describe("OtherPhilosophy", () => {
   it("links to portfolio", () => {
     expect(screen.getByText("PORTFOLIO →").parentElement).toHaveAttribute(
       "href",
-      "/other/projects",
+      "/portfolio/?dept=other",
     );
   });
 });

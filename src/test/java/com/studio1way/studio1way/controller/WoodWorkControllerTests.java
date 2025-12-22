@@ -57,22 +57,6 @@ public class WoodWorkControllerTests {
     }
 
     @Test
-    public void testWoodWorks() throws Exception {
-        String document =
-            """
-                query {
-                    woodWorks {
-                        id
-                    }
-                }
-            """;
-
-        GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.woodWorks").entityList(WoodWork.class).hasSize(1);
-        resp.path("data.woodWorks[0].id").entity(String.class).isEqualTo("test-woodWork");
-    }
-
-    @Test
     public void testWoodWorkByIdFound() throws Exception {
         String document =
             """

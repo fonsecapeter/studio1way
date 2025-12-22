@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import made4SkateboardingPath from "../../assets/img/web/other/made_4_skateboarding/50.jpg";
 import nodToVirgilPath from "../../assets/img/web/other/nod_to_virgil/50.jpg";
 import whiteShoePath from "../../assets/img/web/other/white_shoe/50.jpg";
+import { DEPARTMENT } from "../../utils";
 
 export const OtherPhilosophy = () => (
   <div>
     <div className="landing-title-row">
       <h1 className="page-title">Experimentation Philosophy</h1>
-      <Link to="projects">
+      <Link to={`/portfolio/?dept=${DEPARTMENT.OTHER}`}>
         <button className="button-link">PORTFOLIO →</button>
       </Link>
     </div>

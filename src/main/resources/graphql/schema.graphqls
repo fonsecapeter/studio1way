@@ -1,12 +1,8 @@
 type Query {
     projects: [Project]!
-    otherProjects: [OtherProject]!
     otherProject(id: ID!): OtherProject
-    paintings: [Painting]!
     painting(id: ID!): Painting
-    ceramicWares: [CeramicWare]!
     ceramicWare(id: ID!): CeramicWare
-    woodWorks: [WoodWork]!
     woodWork(id: ID!): WoodWork
 }
 

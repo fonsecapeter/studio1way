@@ -59,25 +59,6 @@ public class CeramicWareControllerTests {
     }
 
     @Test
-    public void testCeramicWares() throws Exception {
-        String document =
-            """
-                query {
-                    ceramicWares {
-                        id
-                    }
-                }
-            """;
-
-        GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.ceramicWares").entityList(CeramicWare.class).hasSize(1);
-        resp
-            .path("data.ceramicWares[0].id")
-            .entity(String.class)
-            .isEqualTo("test-ceramicWare");
-    }
-
-    @Test
     public void testCeramicWareByIdFound() throws Exception {
         String document =
             """

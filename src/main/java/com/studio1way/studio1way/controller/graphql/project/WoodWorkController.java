@@ -19,11 +19,6 @@ public class WoodWorkController {
     }
 
     @QueryMapping
-    public List<WoodWork> woodWorks() {
-        return woodWorkService.findAll();
-    }
-
-    @QueryMapping
     public WoodWork woodWork(@Argument String id) {
         return woodWorkService.findById(id);
     }
