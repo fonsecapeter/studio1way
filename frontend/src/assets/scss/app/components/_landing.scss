@@ -1,8 +1,17 @@
+@use "../../utils/variables";
+
 .landing {
   &-title-row {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  @media only screen and (min-width: variables.$responsive-width) {
+    &-title-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
   }
 }

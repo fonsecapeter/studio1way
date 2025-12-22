@@ -1,9 +1,23 @@
+@use "../../utils/cards";
+@use "../../utils/variables";
+
 .filter-dropdown {
   margin-bottom: 20px;
+  position: relative;
 
   &-options {
     display: flex;
     flex-direction: column;
     padding: 10px;
+
+    &-item {
+      @include cards.shadow-interactive-mini;
+    }
+  }
+
+  @media only screen and (min-width: variables.$responsive-width) {
+    &-options {
+      position: absolute;
+    }
   }
 }

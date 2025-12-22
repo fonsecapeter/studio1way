@@ -38,6 +38,7 @@ export const FilterDropdown = ({
           {Object.entries(options).map(([option, label]) => (
             <label key={option}>
               <input
+                className="filter-dropdown-options-item"
                 type="checkbox"
                 value={option}
                 checked={selectedOptions.has(option)}

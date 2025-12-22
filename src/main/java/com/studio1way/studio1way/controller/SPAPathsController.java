@@ -7,7 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(
     // Update changes in frontend/src/routes.tsx
-    value = { "/other/**", "/ceramics/**", "/paint/**", "/wood/**", "/the-studio/**", "/portfolio/**" }
+    value = {
+        "/other/**",
+        "/ceramics/**",
+        "/paint/**",
+        "/wood/**",
+        "/the-studio/**",
+        "/portfolio/**",
+    }
 )
 public class SPAPathsController {
 
