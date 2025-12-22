@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { gql } from "@apollo/client";
 import { useSearchParams } from "react-router-dom";
 import { PortfolioItem } from "./item";
@@ -21,6 +21,7 @@ import {
   CategoryDepartmentMapping,
   DepartmentType,
 } from "../../../utils";
+import preloadImages from "../image/preload";
 import { FilterDropdown } from "../filter_dropdown";
 
 export type PortfolioIndexProjectFragment =
@@ -65,6 +66,12 @@ export const PORTFOLIO_INDEX_WOOD_WORK_FRAGMENT = gql`
   ${PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT}
 `;
 
+interface PreloadGroup {
+  images: string[];
+  setIsPreloaded: CallableFunction;
+  delay: number;
+}
+
 interface PortfolioProps {
   readonly title: string;
   readonly projects: PortfolioIndexProjectFragment[];
@@ -93,6 +100,45 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
     });
   }, [selectedCategories]);
 
+  const preloadGroups: PreloadGroup[] = [];
+  let preloadGroupCount = 2;
+  if (projects.length > 32) {
+    preloadGroupCount = 5;
+  }
+  const [areGroupsPreloaded, setAreGroupsPreloaded] = useState(
+    Array(preloadGroupCount).fill(false),
+  );
+  const setIsGroupPreloaded = (idx: number) => {
+    return (isGroupPreloaded: boolean) =>
+      setAreGroupsPreloaded((prevAreGroupsPreloaded) => {
+        const newAreGroupsPreloaded = [...prevAreGroupsPreloaded];
+        newAreGroupsPreloaded[idx] = isGroupPreloaded;
+        return newAreGroupsPreloaded;
+      });
+  };
+  for (let idx = 0; idx < preloadGroupCount; idx++) {
+    preloadGroups.push({
+      images: [],
+      setIsPreloaded: setIsGroupPreloaded(idx),
+      delay: idx * 1000 + 500,
+    });
+  }
+  const groupId = (idx: number) =>
+    Math.floor(idx / Math.ceil(projects.length / preloadGroupCount));
+  projects.forEach((project, idx) => {
+    const iconSrc = project.icon.animation?.half ?? project.icon.half;
+    preloadGroups[groupId(idx)].images.push(iconSrc);
+  });
+  useEffect(() => {
+    preloadGroups.forEach((group) => {
+      preloadImages({
+        images: group.images,
+        setIsPreloaded: group.setIsPreloaded,
+        delay: group.delay,
+      });
+    });
+  }, []);
+
   return (
     <div>
       <div className="landing-title-row">
@@ -106,9 +152,41 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
       </div>
       <div className="portfolio-list">
         <div className="portfolio-column">
-          {filteredProjects.map((project) => (
-            <PortfolioItem project={project} key={project.name} />
+          {filteredProjects.map((project, idx) => (
+            <PortfolioItem
+              project={project}
+              key={project.name}
+              iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+            />
           ))}
+        </div>
+        <div className="portfolio-column-desktop">
+          {filteredProjects.map((project, idx) => {
+            if (idx % 2 === 0) {
+              return (
+                <PortfolioItem
+                  project={project}
+                  key={project.name}
+                  iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+                />
+              );
+            }
+            return "";
+          })}
+        </div>
+        <div className="portfolio-column-desktop">
+          {filteredProjects.map((project, idx) => {
+            if (idx % 2 !== 0) {
+              return (
+                <PortfolioItem
+                  project={project}
+                  key={project.name}
+                  iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+                />
+              );
+            }
+            return "";
+          })}
         </div>
       </div>
     </div>

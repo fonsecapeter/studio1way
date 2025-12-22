@@ -33,18 +33,27 @@
   }
 
   &-list {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 500px;
-    padding: 0 10px;
-
     &::after {
       clear: both;
       content: "";
       display: table;
+    }
+  }
+
+  &-column {
+    display: none;
+
+    &-desktop {
+      float: left;
+      margin: 0;
+      max-width: 340px;
+      padding: 0;
+
+      &::after {
+        clear: both;
+        content: "";
+        display: table;
+      }
     }
   }
 
@@ -74,6 +83,34 @@
     &-title {
       cursor: pointer;
       text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    // collapse into single column before major responsive layout change
+    &-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-column {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      max-width: 500px;
+      padding: 0 10px;
+
+      &-desktop {
+        display: none;
+      }
+    }
+
+    &-item {
+      margin-bottom: 25px;
+      max-width: variables.$max-responsive-content-width;
+      width: 100%;
     }
   }
 }

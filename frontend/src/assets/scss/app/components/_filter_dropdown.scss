@@ -3,7 +3,14 @@
 
 .filter-dropdown {
   margin-bottom: 20px;
-  position: relative;
+
+  &-container {
+    display: flex;
+  }
+
+  &-prefix {
+    padding: 4px;
+  }
 
   &-options {
     display: flex;
@@ -12,12 +19,6 @@
 
     &-item {
       @include cards.shadow-interactive-mini;
-    }
-  }
-
-  @media only screen and (min-width: variables.$responsive-width) {
-    &-options {
-      position: absolute;
     }
   }
 }

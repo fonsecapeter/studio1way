@@ -19,6 +19,7 @@ describe("PortfolioItem", () => {
                 animation: null,
               },
             }}
+            iconPreloaded={true}
           />
         </MemoryRouter>,
       );
@@ -58,6 +59,7 @@ describe("PortfolioItem", () => {
                 },
               },
             }}
+            iconPreloaded={true}
           />
         </MemoryRouter>,
       );
@@ -94,6 +96,7 @@ describe("PortfolioItem", () => {
                 animation: null,
               },
             }}
+            iconPreloaded={true}
           />
         </MemoryRouter>,
       );
@@ -107,7 +110,7 @@ describe("PortfolioItem", () => {
     });
   });
 
-  describe("with a WoodWork", () => {
+  describe("with a WoodWork that isnt yet preloaded", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
@@ -122,6 +125,7 @@ describe("PortfolioItem", () => {
                 animation: null,
               },
             }}
+            iconPreloaded={true}
           />
         </MemoryRouter>,
       );
@@ -132,6 +136,10 @@ describe("PortfolioItem", () => {
         "href",
         "/wood/project/a_test_table",
       );
+    });
+
+    it("renders an image placeholder instead of an icon", () => {
+      expect(screen.queryByAltText("fake image")).not.toBeInTheDocument();
     });
   });
 });
