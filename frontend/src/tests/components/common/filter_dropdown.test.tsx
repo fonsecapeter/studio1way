@@ -27,9 +27,9 @@ describe("FilterDropdown", () => {
     });
 
     it("renders no count prefix", () => {
-      expect(screen.queryByText("(1)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(2)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(3)")).not.toBeInTheDocument();
+      expect(screen.queryAllByText("(1)").length).toBe(0);
+      expect(screen.queryAllByText("(2)").length).toBe(0);
+      expect(screen.queryAllByText("(3)").length).toBe(0);
     });
 
     it("toggles dropdown when clicked", async () => {
@@ -70,9 +70,10 @@ describe("FilterDropdown", () => {
     });
 
     it("renders a count prefix", () => {
-      expect(screen.queryByText("(1)")).toBeInTheDocument();
-      expect(screen.queryByText("(2)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(3)")).not.toBeInTheDocument();
+      // one for mobile, one for desktop
+      expect(screen.queryAllByText("(1)").length).toBe(2);
+      expect(screen.queryAllByText("(2)").length).toBe(0);
+      expect(screen.queryAllByText("(3)").length).toBe(0);
     });
 
     it("starts with the dropdown open", () => {
@@ -112,9 +113,10 @@ describe("FilterDropdown", () => {
     });
 
     it("renders a count prefix", () => {
-      expect(screen.queryByText("(1)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(2)")).toBeInTheDocument();
-      expect(screen.queryByText("(3)")).not.toBeInTheDocument();
+      expect(screen.queryAllByText("(1)").length).toBe(0);
+      // one for mobile, one for desktop
+      expect(screen.queryAllByText("(2)").length).toBe(2);
+      expect(screen.queryAllByText("(3)").length).toBe(0);
     });
   });
 
@@ -135,9 +137,9 @@ describe("FilterDropdown", () => {
     });
 
     it("renders no count prefix", () => {
-      expect(screen.queryByText("(1)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(2)")).not.toBeInTheDocument();
-      expect(screen.queryByText("(3)")).not.toBeInTheDocument();
+      expect(screen.queryAllByText("(1)").length).toBe(0);
+      expect(screen.queryAllByText("(2)").length).toBe(0);
+      expect(screen.queryAllByText("(3)").length).toBe(0);
     });
   });
 });

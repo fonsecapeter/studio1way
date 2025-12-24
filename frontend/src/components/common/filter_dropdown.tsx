@@ -27,16 +27,16 @@ export const FilterDropdown = ({
     onChange(nextSelectedOptions);
   };
 
-  let prefix = "\u00a0\u00a0\u00a0";
+  let count = "\u00a0\u00a0\u00a0";
   if (
     selectedOptions.size > 0 &&
     selectedOptions.size < Object.keys(options).length
   ) {
-    prefix = `(${selectedOptions.size})`;
+    count = `(${selectedOptions.size})`;
   }
   return (
     <div className="filter-dropdown-container">
-      <div className="filter-dropdown-prefix">{prefix}</div>
+      <div className="filter-dropdown-count-desktop">{count}</div>
       <div className="filter-dropdown">
         <button className="button-link" onClick={toggleDropdown}>
           {name}
@@ -59,6 +59,7 @@ export const FilterDropdown = ({
           </div>
         )}
       </div>
+      <div className="filter-dropdown-count">{count}</div>
     </div>
   );
 };

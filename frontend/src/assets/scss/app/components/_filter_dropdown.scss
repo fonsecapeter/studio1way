@@ -8,8 +8,13 @@
     display: flex;
   }
 
-  &-prefix {
+  &-count {
+    display: inline;
     padding: 4px;
+
+    &-desktop {
+      display: none;
+    }
   }
 
   &-options {
@@ -19,6 +24,17 @@
 
     &-item {
       @include cards.shadow-interactive-mini;
+    }
+  }
+
+  @media only screen and (min-width: variables.$responsive-width) {
+    &-count {
+      display: none;
+
+      &-desktop {
+        display: inline;
+        padding: 4px;
+      }
     }
   }
 }

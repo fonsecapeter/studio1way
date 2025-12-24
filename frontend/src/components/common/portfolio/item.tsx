@@ -81,24 +81,26 @@ export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
       break;
   }
   return (
-    <Link to={detailPath} data-testid="portfolio-item-link">
-      <div className="portfolio-item">
-        <div className="portfolio-item-icon">
-          {iconPreloaded ? (
-            <img
-              className="portfolio-item-icon-image"
-              src={iconSrc}
-              alt={project.icon.alt}
-            />
-          ) : (
-            <div className="portfolio-item-icon-image">
-              <ImagePlaceholder height={200} />
-            </div>
-          )}
-        </div>
-        <div className="portfolio-item-content">
-          <h3 className="portfolio-item-title">{project.name}</h3>
-        </div>
+    <Link
+      to={detailPath}
+      data-testid="portfolio-item-link"
+      className="portfolio-item"
+    >
+      <div className="portfolio-item-icon">
+        {iconPreloaded ? (
+          <img
+            className="portfolio-item-icon-image"
+            src={iconSrc}
+            alt={project.icon.alt}
+          />
+        ) : (
+          <div className="portfolio-item-icon-image">
+            <ImagePlaceholder height={200} />
+          </div>
+        )}
+      </div>
+      <div className="portfolio-item-content">
+        <h3 className="portfolio-item-title">{project.name}</h3>
       </div>
     </Link>
   );
