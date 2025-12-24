@@ -23,7 +23,7 @@ describe("FilterDropdown", () => {
     });
 
     it("renders the name", () => {
-      expect(screen.getByText("↓ Test Filter ↓")).toBeInTheDocument();
+      expect(screen.getByText("Test Filter ↓")).toBeInTheDocument();
     });
 
     it("renders no count prefix", () => {
@@ -36,7 +36,7 @@ describe("FilterDropdown", () => {
       expect(screen.queryByText("Something")).not.toBeInTheDocument();
       expect(screen.queryByText("Another")).not.toBeInTheDocument();
       expect(screen.queryByText("One More")).not.toBeInTheDocument();
-      const button = screen.getByText("↓ Test Filter ↓");
+      const button = screen.getByText("Test Filter ↓");
       await fireEvent.click(button);
       expect(screen.queryByText("Something")).toBeInTheDocument();
       expect(screen.queryByText("Another")).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("FilterDropdown", () => {
     });
 
     it("adds option when selected", async () => {
-      const button = screen.getByText("↓ Test Filter ↓");
+      const button = screen.getByText("Test Filter ↓");
       await fireEvent.click(button);
       await fireEvent.click(screen.getByText("Something"));
       expect(mockOnChange).toHaveBeenCalledWith(new Set().add("something"));
@@ -76,7 +76,7 @@ describe("FilterDropdown", () => {
     });
 
     it("starts with the dropdown open", () => {
-      expect(screen.getByText("↑ Test Filter ↑")).toBeInTheDocument();
+      expect(screen.getByText("Test Filter ↑")).toBeInTheDocument();
       expect(screen.queryByText("Something")).toBeInTheDocument();
       expect(screen.queryByText("Another")).toBeInTheDocument();
       expect(screen.queryByText("One More")).toBeInTheDocument();

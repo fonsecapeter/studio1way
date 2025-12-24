@@ -144,7 +144,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
       <div className="landing-title-row">
         <h1 className="page-title">{title}</h1>
         <FilterDropdown
-          name="department"
+          name="DEPARTMENT"
           options={CategoryDepartmentMapping.toDepartment}
           selectedOptions={selectedCategories}
           onChange={setSelectedCategories}

@@ -39,7 +39,6 @@ export const FilterDropdown = ({
       <div className="filter-dropdown-prefix">{prefix}</div>
       <div className="filter-dropdown">
         <button className="button-link" onClick={toggleDropdown}>
-          {isOpen ? "↑ " : "↓ "}
           {name}
           {isOpen ? " ↑" : " ↓"}
         </button>

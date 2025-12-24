@@ -81,11 +81,11 @@ describe("Portfolio", () => {
 
     describe("the department filter", () => {
       it("exists", () => {
-        expect(screen.getByText("↓ department ↓"));
+        expect(screen.getByText("DEPARTMENT ↓"));
       });
 
       it("filters projects", async () => {
-        const filterButton = screen.getByText("↓ department ↓");
+        const filterButton = screen.getByText("DEPARTMENT ↓");
         await fireEvent.click(filterButton);
         const ceramicsSelector = screen.getByText("ceramics");
         await fireEvent.click(ceramicsSelector);
