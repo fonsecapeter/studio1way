@@ -31,6 +31,8 @@ const mocks = [
               animation: null,
             },
           ],
+          clayBody: "gray stoneware",
+          glaze: "clear",
         },
       },
     },

@@ -2,8 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
-import { PortfolioDetailOtherProjectFragment } from "../../../__generated__/types";
+import {
+  PortfolioDetailCeramicWareFragment,
+  PortfolioDetailOtherProjectFragment,
+  PortfolioDetailPaintingFragment,
+  PortfolioDetailWoodWorkFragment,
+} from "../../../__generated__/types";
 import Carousel from "../image/carousel";
+import { isCeramicWare, isPainting, isWoodWork } from "../../../utils";
 
 export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioDetailCeramicWare on CeramicWare {
@@ -22,6 +28,8 @@ export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
         alt
       }
     }
+    clayBody
+    glaze
   }
 `;
 
@@ -62,6 +70,9 @@ export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
         alt
       }
     }
+    medium
+    surface
+    varnished
   }
 `;
 
@@ -82,14 +93,33 @@ export const PORTFOLIO_DETAIL_WOOD_WORK_FRAGMENT = gql`
         alt
       }
     }
+    materials
+    finish
   }
 `;
 
 interface PortfolioDetailParams {
-  readonly project: PortfolioDetailOtherProjectFragment;
+  readonly project:
+    | PortfolioDetailCeramicWareFragment
+    | PortfolioDetailPaintingFragment
+    | PortfolioDetailWoodWorkFragment
+    | PortfolioDetailOtherProjectFragment;
 }
 
 export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
+  const properties = [project.date];
+  if (isCeramicWare(project)) {
+    properties.push(`${project.clayBody} with ${project.glaze} glaze`);
+  } else if (isPainting(project)) {
+    const paintingDetails = `${project.medium} on ${project.surface}`;
+    if (project.varnished) {
+      properties.push(paintingDetails + " (varnished)");
+    } else {
+      properties.push(paintingDetails);
+    }
+  } else if (isWoodWork(project)) {
+    properties.push(`${project.finish} on ${project.materials}`);
+  }
   return (
     <div>
       <div className="landing-title-row">
@@ -103,9 +133,11 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           <Carousel images={project.images} />
         </div>
       </div>
-      <div>
-        <p>{project.date}</p>
-      </div>
+      {properties.map((property, idx) => (
+        <p className="portfolio-detail-property" key={idx}>
+          {property}
+        </p>
+      ))}
       <p>{project.description}</p>
       <p>🚧 this part of the site under construction 🚧</p>
     </div>

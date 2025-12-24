@@ -1,3 +1,5 @@
+import { CeramicWare, Painting, WoodWork } from "./__generated__/types";
+
 class InvariantError extends Error {
   constructor(message: string) {
     super(message);
@@ -46,3 +48,15 @@ export const CategoryDepartmentMapping: CategoryDepartmentMappingType = {
     [DEPARTMENT.OTHER]: CATEGORY.OTHER,
   },
 };
+
+export function isCeramicWare(obj: any): obj is CeramicWare {
+  return obj.__typename === CATEGORY.CERAMIC_WARE;
+}
+
+export function isPainting(obj: any): obj is Painting {
+  return obj.__typename === CATEGORY.PAINTING;
+}
+
+export function isWoodWork(obj: any): obj is WoodWork {
+  return obj.__typename === CATEGORY.WOOD_WORK;
+}
