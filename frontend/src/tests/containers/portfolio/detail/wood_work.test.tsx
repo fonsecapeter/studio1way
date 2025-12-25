@@ -31,6 +31,8 @@ const mocks = [
               animation: null,
             },
           ],
+          materials: "7-ply ac fir",
+          finish: "linseed oil + beeswax",
         },
       },
     },
