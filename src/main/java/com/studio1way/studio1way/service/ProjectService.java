@@ -42,7 +42,7 @@ public class ProjectService {
         projects.addAll(ceramicWareRepository.findAll());
         projects.addAll(paintingRepository.findAll());
         projects.addAll(woodWorkRepository.findAll());
-        Collections.sort(projects, Comparator.comparing(Project::getDate));
+        Collections.sort(projects, Collections.reverseOrder());
         return projects;
     }
 }

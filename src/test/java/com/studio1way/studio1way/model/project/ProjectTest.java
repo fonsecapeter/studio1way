@@ -22,7 +22,7 @@ public class ProjectTest {
                 "test-project",
                 "Test Project",
                 new ProjectImage(
-                    "others/my_brain/main",
+                    "other/my_brain/main",
                     ProjectImage.Extension.JPG,
                     "test icon"
                 ),
@@ -31,7 +31,7 @@ public class ProjectTest {
                 "A test project.",
                 new ProjectImage[] {
                     new ProjectImage(
-                        "others/my_brain/main",
+                        "other/my_brain/main",
                         ProjectImage.Extension.JPG,
                         "test image"
                     ),
@@ -50,7 +50,7 @@ public class ProjectTest {
           "id": "test-project",
           "name": "Test Project",
           "icon": {
-            "path": "others/my_brain/main",
+            "path": "other/my_brain/main",
             "ext": "JPG",
             "alt": "test icon"
           },
@@ -64,7 +64,7 @@ public class ProjectTest {
           "description": "A test project.",
           "images": [
             {
-              "path": "others/my_brain/main",
+              "path": "other/my_brain/main",
               "ext": "JPG",
               "alt": "test image"
             }
@@ -124,7 +124,7 @@ public class ProjectTest {
                 project.setImages(
                     new ProjectImage[] {
                         new ProjectImage(
-                            "others/my_brain/main",
+                            "other/my_brain/main",
                             ProjectImage.Extension.PNG,
                             "path that exist but with a different ext"
                         ),
@@ -135,7 +135,7 @@ public class ProjectTest {
         project.setImages(
             new ProjectImage[] {
                 new ProjectImage(
-                    "others/my_brain/main",
+                    "other/my_brain/main",
                     ProjectImage.Extension.JPG,
                     "this exists and should work"
                 ),

@@ -1,0 +1,39 @@
+{
+  "id": "my-brain",
+  "name": "My Brain",
+  "icon": {
+    "path": "other/my_brain/main",
+    "ext": "JPG",
+    "alt": "peter\\"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/41763273/My-Brain",
+      "text": "behance"
+    }
+  ],
+  "date": "2016",
+  "description": "I used to run MRIs at UCSF.",
+  "images": [
+    {
+      "path": "other/my_brain/main",
+      "ext": "JPG",
+      "alt": "peter\\"
+    },
+    {
+      "path": "other/my_brain/main",
+      "ext": "JPG",
+      "alt": "peter\\"
+    },
+    {
+      "path": "other/my_brain/main",
+      "ext": "JPG",
+      "alt": "peter\\"
+    },
+    {
+      "path": "other/my_brain/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ]
+}

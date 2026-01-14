@@ -51,7 +51,7 @@ public class ProjectResourceLoader<T extends Project> {
             }
             projects.add(project);
         }
-        Collections.sort(projects);
+        Collections.sort(projects, Collections.reverseOrder());
         return projects;
     }
 }

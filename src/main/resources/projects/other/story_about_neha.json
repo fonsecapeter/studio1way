@@ -1,0 +1,19 @@
+{
+  "id": "story-about-neha",
+  "name": "A Story About Neha",
+  "icon": {
+    "path": "other/story_about_neha/main",
+    "ext": "JPG",
+    "alt": "book with a story about neha scrawled on the cover"
+  },
+  "links": [],
+  "date": "2022",
+  "description": "For those who don't know.",
+  "images": [
+    {
+      "path": "other/story_about_neha/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ]
+}

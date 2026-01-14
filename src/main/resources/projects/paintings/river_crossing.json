@@ -1,0 +1,36 @@
+{
+  "id": "river-crossing",
+  "name": "River Crossing",
+  "icon": {
+    "path": "paintings/river_crossing/main",
+    "ext": "JPG",
+    "alt": "picture of truck in river"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/181915019/River-Crossing",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "My dad drove us through a river when I was a kid.",
+  "images": [
+    {
+      "path": "paintings/river_crossing/main",
+      "ext": "JPG",
+      "alt": "picture of truck in river"
+    },
+    {
+      "path": "paintings/river_crossing/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "surface": "paper",
+  "medium": "OIL_PASTEL",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}

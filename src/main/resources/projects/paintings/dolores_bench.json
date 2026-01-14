@@ -1,0 +1,36 @@
+{
+  "id": "dolores-bench",
+  "name": "Dolores Bench",
+  "icon": {
+    "path": "paintings/dolores_bench/main",
+    "ext": "JPG",
+    "alt": "painting of a bench at dolores park"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/205132693/Dolores-Bench",
+      "text": "behance"
+    }
+  ],
+  "date": "2024-07-24",
+  "description": "A special place.",
+  "images": [
+    {
+      "path": "paintings/dolores_bench/main",
+      "ext": "JPG",
+      "alt": "painting of a bench at dolores park"
+    },
+    {
+      "path": "paintings/dolores_bench/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  },
+  "medium": "PASTEL",
+  "surface": "paper",
+  "varnished": false
+}

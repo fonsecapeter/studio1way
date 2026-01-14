@@ -1,0 +1,32 @@
+{
+  "id": "into-the-city",
+  "name": "Into the City",
+  "icon": {
+    "path": "paintings/into_the_city/main",
+    "ext": "JPG",
+    "alt": "painting of the bay bridge"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/184696705/Into-the-City",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "We ran as fast as we could into that city.",
+  "images": [
+    {
+      "path": "paintings/into_the_city/main",
+      "ext": "JPG",
+      "alt": "painting of the bay bridge"
+    },
+    {
+      "path": "paintings/into_the_city/main",
+      "ext": "JPG",
+      "alt": "the painting on a shelf"
+    }
+  ],
+  "medium": "WATERCOLOR",
+  "surface": "paper",
+  "varnished": false
+}

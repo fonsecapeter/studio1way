@@ -19,10 +19,10 @@ public class PaintingRepositoryTest {
     @Test
     public void testFindAll() {
         List<Painting> paintings = paintingRepository.findAll();
-        assertEquals(2, paintings.size());
+        assertEquals(12, paintings.size());
         // ordered by date DESC
-        assertEquals("v47-workshop", paintings.get(paintings.size() - 1).getId());
-        assertEquals("paris", paintings.get(paintings.size() - 2).getId());
+        assertEquals("sf-bay", paintings.get(paintings.size() - 1).getId());
+        assertEquals("one-ca", paintings.get(paintings.size() - 2).getId());
     }
 
     @Test

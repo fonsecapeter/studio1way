@@ -1,0 +1,41 @@
+{
+  "id": "step-stool",
+  "name": "Step Stool",
+  "icon": {
+    "path": "woodworks/step_stool/main",
+    "ext": "JPG",
+    "alt": "stool"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/166317739/Step-Stool",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "It's not fine woodworking, but it looks good and gets the job done.",
+  "images": [
+    {
+      "path": "woodworks/step_stool/main",
+      "ext": "JPG",
+      "alt": "stool"
+    },
+    {
+      "path": "woodworks/step_stool/in_situ",
+      "ext": "JPG",
+      "alt": "stool in perfectly sized corner"
+    },
+    {
+      "path": "woodworks/step_stool/signature",
+      "ext": "JPG",
+      "alt": "signature on bottom"
+    }
+  ],
+  "materials": "7-ply AC Fir",
+  "finish": "PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

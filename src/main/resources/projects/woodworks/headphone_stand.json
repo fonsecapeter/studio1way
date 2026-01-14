@@ -1,0 +1,36 @@
+{
+  "id": "headphone-stand",
+  "name": "Headphone Stand",
+  "icon": {
+    "path": "woodworks/headphone_stand/main",
+    "ext": "JPG",
+    "alt": "headphones on stand"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/180577907/Headphone-Stand",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "Made while on hold with customer service for a flight change.",
+  "images": [
+    {
+      "path": "woodworks/headphone_stand/main",
+      "ext": "JPG",
+      "alt": "headphones on stand"
+    },
+    {
+      "path": "woodworks/headphone_stand/signature",
+      "ext": "JPG",
+      "alt": "signature on bottom"
+    }
+  ],
+  "materials": "scrap wood",
+  "finish": "PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "vaporub",
+  "name": "VapoRub",
+  "icon": {
+    "path": "paintings/vaporub/main",
+    "ext": "JPG",
+    "alt": "painting of vaporub"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/123961329/VapoRub",
+      "text": "behance"
+    }
+  ],
+  "date": "2021",
+  "description": "Cures anything.",
+  "images": [
+    {
+      "path": "paintings/vaporub/main",
+      "ext": "JPG",
+      "alt": "painting of vaporub"
+    },
+    {
+      "path": "paintings/vaporub/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "medium": "ACRYLIC",
+  "surface": "canvas",
+  "varnished": false
+}

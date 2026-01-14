@@ -1,0 +1,36 @@
+{
+  "id": "tea-box",
+  "name": "Tea Box",
+  "icon": {
+    "path": "woodworks/tea_box/main",
+    "ext": "JPG",
+    "alt": "box of tea"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/180834495/Tea-Box",
+      "text": "behance"
+    }
+  ],
+  "date": "2013",
+  "description": "Some of my early work.",
+  "images": [
+    {
+      "path": "woodworks/tea_box/main",
+      "ext": "JPG",
+      "alt": "box of tea"
+    },
+    {
+      "path": "woodworks/tea_box/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "materials": "pine",
+  "finish": "VARNISH",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

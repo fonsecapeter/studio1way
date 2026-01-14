@@ -1,0 +1,19 @@
+{
+  "id": "artists-in-residence",
+  "name": "Artists In Residence",
+  "icon": {
+    "path": "other/artists_in_residence/main",
+    "ext": "PNG",
+    "alt": "title page over apartment building"
+  },
+  "links": [],
+  "date": "2023",
+  "description": "A meditation on feeling lost and making art.made in collaboration with Neha.",
+  "images": [
+    {
+      "path": "other/artists_in_residence/main",
+      "ext": "PNG",
+      "alt": ""
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "three-cities",
+  "name": "3 Cities",
+  "icon": {
+    "path": "paintings/three_cities/main",
+    "ext": "JPG",
+    "alt": "peter skateboarding with coffee"
+  },
+  "links": [],
+  "date": "2022",
+  "description": "A challenge between friends that got me to try daily vlogging for 3 days.",
+  "images": [
+    {
+      "path": "paintings/three_cities/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "surface": "paper",
+  "medium": "WATERCOLOR",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}

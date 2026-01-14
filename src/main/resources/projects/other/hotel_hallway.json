@@ -1,0 +1,48 @@
+{
+  "id": "hotel-hallway",
+  "name": "Hotel Hallway",
+  "icon": {
+    "path": "other/hotel_hallway/sign",
+    "ext": "JPG",
+    "alt": "hotel hallway sign"
+  },
+  "links": [
+    {
+      "url": "https://www.instagram.com/peternfonseca/p/C6dFBv_LN62",
+      "text": "instagram"
+    },
+    {
+      "url": "https://www.behance.net/gallery/196863355/Hotel-Hallway",
+      "text": "behance"
+    }
+  ],
+  "date": "2024",
+  "description": "My wife and I always wanted to open a hotel together, but we didn't want to uproot our lives to do it. We decided to make our apartment feel like one instead.",
+  "images": [
+    {
+      "path": "other/hotel_hallway/cafe_menu",
+      "ext": "JPG",
+      "alt": "cafe menu with all items priced at $0"
+    },
+    {
+      "path": "other/hotel_hallway/map",
+      "ext": "JPG",
+      "alt": "map of floorplan"
+    },
+    {
+      "path": "other/hotel_hallway/reception",
+      "ext": "JPG",
+      "alt": "metal reception sign on desk"
+    },
+    {
+      "path": "other/hotel_hallway/rstrm",
+      "ext": "JPG",
+      "alt": "restroom sign on door"
+    },
+    {
+      "path": "other/hotel_hallway/sign",
+      "ext": "JPG",
+      "alt": "hotel hallway sign"
+    }
+  ]
+}

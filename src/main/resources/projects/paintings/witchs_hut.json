@@ -1,0 +1,36 @@
+{
+  "id": "witchs-hut",
+  "name": "Witch\\",
+  "icon": {
+    "path": "paintings/witchs_hut/main",
+    "ext": "JPG",
+    "alt": "painting of hut on hill"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/143106685/Witchs-Hut",
+      "text": "behance"
+    }
+  ],
+  "date": "2022",
+  "description": "There's a comfort in loneliness.",
+  "images": [
+    {
+      "path": "paintings/witchs_hut/main",
+      "ext": "JPG",
+      "alt": "painting of hut on hill"
+    },
+    {
+      "path": "paintings/witchs_hut/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "surface": "paper",
+  "medium": "OIL_PASTEL",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}

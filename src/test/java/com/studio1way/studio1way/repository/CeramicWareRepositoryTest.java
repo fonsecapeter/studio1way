@@ -19,10 +19,10 @@ public class CeramicWareRepositoryTest {
     @Test
     public void testFindAll() {
         List<CeramicWare> ceramicWares = ceramicWareRepository.findAll();
-        assertEquals(2, ceramicWares.size());
+        assertEquals(4, ceramicWares.size());
         // ordered by date DESC
-        assertEquals("paint-set", ceramicWares.get(ceramicWares.size() - 1).getId());
-        assertEquals("espresso-cup", ceramicWares.get(ceramicWares.size() - 2).getId());
+        assertEquals("desk-set", ceramicWares.get(ceramicWares.size() - 1).getId());
+        assertEquals("paint-set", ceramicWares.get(ceramicWares.size() - 2).getId());
     }
 
     @Test

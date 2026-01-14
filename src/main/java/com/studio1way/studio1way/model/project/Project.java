@@ -114,7 +114,7 @@ public class Project implements Comparable<Project> {
     @Override
     public int compareTo(Project other) {
         // Newest first
-        return other.date.compareTo(date);
+        return -1 * other.date.compareTo(date);
     }
 
     @Override

@@ -1,0 +1,29 @@
+{
+  "id": "jewelry-box",
+  "name": "Jewelry Box",
+  "icon": {
+    "path": "other/jewelry_box/main",
+    "ext": "JPG",
+    "alt": "box with eyes painted on it"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/180700595/Jewelry-Box",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "All I did was paint some eyes on a box but am really proud of it.",
+  "images": [
+    {
+      "path": "other/jewelry_box/main",
+      "ext": "JPG",
+      "alt": "box with eyes painted on it"
+    },
+    {
+      "path": "other/jewelry_box/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ]
+}

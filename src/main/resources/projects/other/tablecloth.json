@@ -1,0 +1,29 @@
+{
+  "id": "tablecloth",
+  "name": "Tablecloth",
+  "icon": {
+    "path": "other/tablecloth/main",
+    "ext": "JPG",
+    "alt": "tablecloth with drawings on it"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/180754469/Tablecloth",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "Saved a few hundred bucks with this one.",
+  "images": [
+    {
+      "path": "other/tablecloth/main",
+      "ext": "JPG",
+      "alt": "tablecloth with drawings on it"
+    },
+    {
+      "path": "other/tablecloth/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ]
+}

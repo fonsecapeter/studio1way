@@ -85,10 +85,7 @@ public class ProjectResourceLoaderTest {
     @Test
     public void testSortsProjectsByDate() {
         List<Project> projectValues = new ArrayList(projects.values());
-        assertEquals(
-            "another-test-project",
-            projectValues.get(projects.size() - 1).getId()
-        );
-        assertEquals("test-project", projectValues.get(projects.size() - 2).getId());
+        assertEquals("test-project", projectValues.get(0).getId());
+        assertEquals("another-test-project", projectValues.get(1).getId());
     }
 }

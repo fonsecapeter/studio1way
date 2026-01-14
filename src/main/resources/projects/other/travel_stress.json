@@ -1,0 +1,19 @@
+{
+  "id": "travel-stress",
+  "name": "Travel Stress",
+  "icon": {
+    "path": "other/travel_stress/main",
+    "ext": "JPG",
+    "alt": "paper flags with typewritten destinations"
+  },
+  "links": [],
+  "date": "2023",
+  "description": "A movie about traveling.",
+  "images": [
+    {
+      "path": "other/travel_stress/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ]
+}

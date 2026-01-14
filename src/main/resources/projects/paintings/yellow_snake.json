@@ -1,0 +1,32 @@
+{
+  "id": "yellow-snake",
+  "name": "Yellow Snake",
+  "icon": {
+    "path": "paintings/yellow_snake/main",
+    "ext": "JPG",
+    "alt": "painting of snake"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/165219277/Yellow-Snake",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "Because I couldn't have the original.",
+  "images": [
+    {
+      "path": "paintings/yellow_snake/main",
+      "ext": "JPG",
+      "alt": "painting of snake"
+    },
+    {
+      "path": "paintings/yellow_snake/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "medium": "ACRYLIC",
+  "surface": "canvas",
+  "varnished": false
+}

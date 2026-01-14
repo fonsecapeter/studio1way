@@ -7,8 +7,8 @@
     "alt": "painting of Neha walking through Paris"
   },
   "links": [],
-  "date": "2025",
-  "description": "It was rainy.",
+  "date": "2024-11-16",
+  "description": "It was rainy",
   "images": [
     {
       "path": "paintings/paris/main",
@@ -16,7 +16,7 @@
       "alt": "painting of Neha walking through Paris"
     },
     {
-      "path": "paintings/paris/in_progress",
+      "path": "paintings/paris/main",
       "ext": "JPG",
       "alt": "workbench with paint supplies and painting"
     }
@@ -25,7 +25,7 @@
   "medium": "OIL",
   "varnished": false,
   "dimensions": {
-    "height": 12.5,
-    "width": 12
+    "height": 0.0,
+    "width": 0.0
   }
 }

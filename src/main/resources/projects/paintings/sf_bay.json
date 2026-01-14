@@ -1,0 +1,36 @@
+{
+  "id": "sf-bay",
+  "name": "SF Bay",
+  "icon": {
+    "path": "paintings/sf_bay/main",
+    "ext": "JPG",
+    "alt": "map of san francisco"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/123961867/SF-Bay",
+      "text": "behance"
+    }
+  ],
+  "date": "2019",
+  "description": "Where I live.",
+  "images": [
+    {
+      "path": "paintings/sf_bay/main",
+      "ext": "JPG",
+      "alt": "map of san francisco"
+    },
+    {
+      "path": "paintings/sf_bay/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "surface": "paper",
+  "medium": "OIL_PASTEL",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}

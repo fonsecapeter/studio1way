@@ -1,0 +1,54 @@
+{
+  "id": "desktop-status",
+  "name": "Desktop Status",
+  "icon": {
+    "path": "woodworks/desktop_status/main",
+    "ext": "JPG",
+    "alt": "display with painted letters",
+    "animation": {
+      "path": "woodworks/desktop_status/animation",
+      "alt": "display with painted letters"
+    }
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/165218955/Desktop-Status",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "Makes it easy to know if I can talk or not.",
+  "images": [
+    {
+      "path": "woodworks/desktop_status/main",
+      "ext": "JPG",
+      "alt": "close up of spinning analog display with hand-painted letters",
+      "animation": {
+        "path": "woodworks/desktop_status/animation",
+        "alt": "close up of spinning analog display with hand-painted letters"
+      }
+    },
+    {
+      "path": "woodworks/desktop_status/in_situ",
+      "ext": "JPG",
+      "alt": "analog display on desk that says away"
+    },
+    {
+      "path": "woodworks/desktop_status/plan",
+      "ext": "JPG",
+      "alt": "drawing of build plan"
+    },
+    {
+      "path": "woodworks/desktop_status/signature",
+      "ext": "JPG",
+      "alt": "signature on bottom"
+    }
+  ],
+  "materials": "plywood + aluminum",
+  "finish": "ACRYLIC_PAINT_AND_PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

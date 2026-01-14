@@ -1,0 +1,41 @@
+{
+  "id": "desk-set",
+  "name": "Desk Set",
+  "icon": {
+    "path": "ceramicwares/desk_set/main",
+    "ext": "JPG",
+    "alt": "cup and bowl"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/165218685/Ceramic-Desk-Set",
+      "text": "behance"
+    }
+  ],
+  "date": "2022-08-04",
+  "description": "Home office improvements.",
+  "images": [
+    {
+      "path": "ceramicwares/desk_set/main",
+      "ext": "JPG",
+      "alt": "cup and bowl"
+    },
+    {
+      "path": "ceramicwares/desk_set/in_situ",
+      "ext": "JPG",
+      "alt": "cup on desk"
+    },
+    {
+      "path": "ceramicwares/desk_set/plan",
+      "ext": "JPG",
+      "alt": "drawing of pen cup with design notes"
+    }
+  ],
+  "clayBody": "WHITE_STONEWARE",
+  "glaze": "cream",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

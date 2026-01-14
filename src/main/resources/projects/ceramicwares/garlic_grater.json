@@ -1,0 +1,41 @@
+{
+  "id": "garlic-grater",
+  "name": "Garlic Grater",
+  "icon": {
+    "path": "ceramicwares/garlic_grater/main",
+    "ext": "JPG",
+    "alt": "small bowl with grater on the bottom"
+  },
+  "links": [],
+  "date": "2024-07-22",
+  "description": "A gift for my mother-in-law",
+  "images": [
+    {
+      "path": "ceramicwares/garlic_grater/main",
+      "ext": "JPG",
+      "alt": "small bowl with grating pits"
+    },
+    {
+      "path": "ceramicwares/garlic_grater/underside",
+      "ext": "JPG",
+      "alt": "underside of bowl"
+    },
+    {
+      "path": "ceramicwares/garlic_grater/in_use",
+      "ext": "JPG",
+      "alt": "freshly grated garlic in bowl"
+    },
+    {
+      "path": "ceramicwares/garlic_grater/in_progress",
+      "ext": "JPG",
+      "alt": "clay building process"
+    }
+  ],
+  "clayBody": "WHITE_STONEWARE",
+  "glaze": "cream",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

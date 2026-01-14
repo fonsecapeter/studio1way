@@ -32,7 +32,7 @@ public class OtherProjectControllerTests {
             "test-project",
             "Test Project",
             new ProjectImage(
-                "others/my_brain/main",
+                "other/my_brain/main",
                 ProjectImage.Extension.JPG,
                 "test icon"
             ),
@@ -41,7 +41,7 @@ public class OtherProjectControllerTests {
             "A test project.",
             new ProjectImage[] {
                 new ProjectImage(
-                    "others/my_brain/main",
+                    "other/my_brain/main",
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),

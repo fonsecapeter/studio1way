@@ -1,0 +1,32 @@
+{
+  "id": "marrakesh",
+  "name": "Marrakesh",
+  "icon": {
+    "path": "paintings/marrakesh/main",
+    "ext": "JPG",
+    "alt": "picure of girl"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/177148519/Marrakesh",
+      "text": "behance"
+    }
+  ],
+  "date": "2023",
+  "description": "Made while on vacation.",
+  "images": [
+    {
+      "path": "paintings/marrakesh/main",
+      "ext": "JPG",
+      "alt": "picure of girl"
+    },
+    {
+      "path": "paintings/marrakesh/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "medium": "PASTEL",
+  "surface": "paper",
+  "varnished": false
+}
