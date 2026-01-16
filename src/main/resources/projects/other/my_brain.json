@@ -4,7 +4,11 @@
   "icon": {
     "path": "other/my_brain/main",
     "ext": "JPG",
-    "alt": "peter\\"
+    "alt": "peter's brain in plastic",
+    "animation": {
+      "path": "other/my_brain/animation",
+      "alt": "spinning plastic brain"
+    }
   },
   "links": [
     {
@@ -18,22 +22,21 @@
     {
       "path": "other/my_brain/main",
       "ext": "JPG",
-      "alt": "peter\\"
+      "alt": "peter's brain in plastic",
+      "animation": {
+        "path": "other/my_brain/animation",
+        "alt": "spinning plastic brain"
+      }
     },
     {
-      "path": "other/my_brain/main",
+      "path": "other/my_brain/in_situ",
       "ext": "JPG",
-      "alt": "peter\\"
+      "alt": "plastic brain on desk"
     },
     {
-      "path": "other/my_brain/main",
-      "ext": "JPG",
-      "alt": "peter\\"
-    },
-    {
-      "path": "other/my_brain/main",
-      "ext": "JPG",
-      "alt": ""
+      "path": "other/my_brain/render",
+      "ext": "PNG",
+      "alt": "digital 3D rendering of brain"
     }
   ]
 }

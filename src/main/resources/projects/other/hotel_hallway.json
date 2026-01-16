@@ -17,17 +17,12 @@
     }
   ],
   "date": "2024",
-  "description": "My wife and I always wanted to open a hotel together, but we didn't want to uproot our lives to do it. We decided to make our apartment feel like one instead.",
+  "description": "My wife and I always wanted to open a hotel together, but we didn't want to uproot our lives to do it. We decided to make our apartment feel like one instead. Made in collaboration with Neha.",
   "images": [
     {
-      "path": "other/hotel_hallway/cafe_menu",
+      "path": "other/hotel_hallway/sign",
       "ext": "JPG",
-      "alt": "cafe menu with all items priced at $0"
-    },
-    {
-      "path": "other/hotel_hallway/map",
-      "ext": "JPG",
-      "alt": "map of floorplan"
+      "alt": "hotel hallway sign"
     },
     {
       "path": "other/hotel_hallway/reception",
@@ -40,9 +35,14 @@
       "alt": "restroom sign on door"
     },
     {
-      "path": "other/hotel_hallway/sign",
+      "path": "other/hotel_hallway/map",
       "ext": "JPG",
-      "alt": "hotel hallway sign"
+      "alt": "map of floorplan"
+    },
+    {
+      "path": "other/hotel_hallway/cafe_menu",
+      "ext": "JPG",
+      "alt": "cafe menu with all items priced at $0"
     }
   ]
 }

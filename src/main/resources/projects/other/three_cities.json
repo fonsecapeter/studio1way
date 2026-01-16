@@ -13,14 +13,7 @@
     {
       "path": "paintings/three_cities/main",
       "ext": "JPG",
-      "alt": ""
+      "alt": "peter skateboarding with coffee"
     }
-  ],
-  "surface": "paper",
-  "medium": "WATERCOLOR",
-  "varnished": false,
-  "dimensions": {
-    "height": 0.0,
-    "width": 0.0
-  }
+  ]
 }

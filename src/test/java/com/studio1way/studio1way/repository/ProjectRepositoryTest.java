@@ -19,7 +19,7 @@ public class ProjectRepositoryTest {
     @Test
     public void testFindAll() {
         List<Project> projects = projectRepository.findAll();
-        assertEquals(14, projects.size());
+        assertEquals(15, projects.size());
         // ordered by date DESC
         assertEquals("2085", projects.get(projects.size() - 1).getId());
         assertEquals("my-brain", projects.get(projects.size() - 2).getId());

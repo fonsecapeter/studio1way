@@ -2,7 +2,7 @@
   "id": "studio-1way",
   "name": "Studio 1Way",
   "icon": {
-    "path": "other/studio_1way/main",
+    "path": "other/studio_1way/sign",
     "ext": "JPG",
     "alt": "one way sign"
   },
@@ -24,35 +24,35 @@
   "description": "Here in San Francisco.",
   "images": [
     {
-      "path": "other/studio_1way/main",
-      "ext": "JPG",
-      "alt": "clock on hand-made shelf"
-    },
-    {
-      "path": "other/studio_1way/main",
-      "ext": "JPG",
-      "alt": "one way art studio"
-    },
-    {
-      "path": "other/studio_1way/main",
-      "ext": "JPG",
-      "alt": "pieces of wood and labeled toolbox",
-      "neverOverlap": true
-    },
-    {
-      "path": "other/studio_1way/main",
-      "ext": "JPG",
-      "alt": "hand-saw mid-cut"
-    },
-    {
-      "path": "other/studio_1way/main",
+      "path": "other/studio_1way/sign",
       "ext": "JPG",
       "alt": "one way sign"
     },
     {
-      "path": "other/studio_1way/main",
+      "path": "other/studio_1way/inside",
+      "ext": "JPG",
+      "alt": "one way art studio"
+    },
+    {
+      "path": "other/studio_1way/shelf",
       "ext": "JPG",
       "alt": "shelf with supplies"
+    },
+    {
+      "path": "other/studio_1way/lumber",
+      "ext": "JPG",
+      "alt": "pieces of wood and labeled toolbox"
+    },
+    {
+      "path": "other/studio_1way/saw",
+      "ext": "JPG",
+      "alt": "hand-saw mid-cut",
+      "neverOverlap": true
+    },
+    {
+      "path": "other/studio_1way/clock",
+      "ext": "JPG",
+      "alt": "clock on hand-made shelf"
     }
   ]
 }

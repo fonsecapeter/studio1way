@@ -19,6 +19,11 @@
       "path": "paintings/into_the_city/main",
       "ext": "JPG",
       "alt": "painting of the bay bridge"
+    },
+    {
+      "path": "paintings/into_the_city/in_situ",
+      "ext": "JPG",
+      "alt": "the painting on a shelf"
     }
   ],
   "medium": "WATERCOLOR",

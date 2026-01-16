@@ -19,7 +19,7 @@ public class PaintingRepositoryTest {
     @Test
     public void testFindAll() {
         List<Painting> paintings = paintingRepository.findAll();
-        assertEquals(12, paintings.size());
+        assertEquals(11, paintings.size());
         // ordered by date DESC else id ASC
         assertEquals("one-ca", paintings.get(paintings.size() - 1).getId());
         assertEquals("sf-bay", paintings.get(paintings.size() - 2).getId());
