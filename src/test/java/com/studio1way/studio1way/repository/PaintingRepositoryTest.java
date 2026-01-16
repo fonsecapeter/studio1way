@@ -20,9 +20,9 @@ public class PaintingRepositoryTest {
     public void testFindAll() {
         List<Painting> paintings = paintingRepository.findAll();
         assertEquals(12, paintings.size());
-        // ordered by date DESC
-        assertEquals("sf-bay", paintings.get(paintings.size() - 1).getId());
-        assertEquals("one-ca", paintings.get(paintings.size() - 2).getId());
+        // ordered by date DESC else id ASC
+        assertEquals("one-ca", paintings.get(paintings.size() - 1).getId());
+        assertEquals("sf-bay", paintings.get(paintings.size() - 2).getId());
     }
 
     @Test
