@@ -10,6 +10,14 @@ import {
   PortfolioDetailWoodWorkFragment,
 } from "../../../../__generated__/types";
 
+jest.mock("../../../../components/common/image/preload", () => ({
+  ...jest.requireActual("../../../../components/common/image/preload"),
+  __esModule: true,
+  default: jest.fn((args) => {
+    args.setIsPreloaded(true);
+  }),
+}));
+
 describe("PortfolioDetail", () => {
   describe("when given a project", () => {
     let project: PortfolioDetailOtherProjectFragment = {

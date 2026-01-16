@@ -16,7 +16,6 @@ const ImageModal = ({
   if (!isOpen) {
     return null;
   }
-  // TODO fix gifs
   return (
     <div className="image-modal-background">
       <button className="image-modal-close-button" onClick={closeModal}>

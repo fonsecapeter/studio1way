@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import preloadImages from "./preload";
-import ImagePlaceholder from "./placeholder";
-import ImageModal from "./modal";
+import FullSizableImage from "./full_sizeable_image";
 import { invariant } from "../../../utils";
 import { ProjectImage } from "../../../__generated__/types";
 interface CarouselProps {
@@ -16,7 +15,6 @@ interface LaneImage {
 const Carousel = ({ images }: CarouselProps) => {
   const [selectedImage, selectImage] = useState(0);
   const [isPreloaded, setIsPreloaded] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   let mainImage: ProjectImage | null = null;
   let laneImages: LaneImage[] = [];
@@ -36,28 +34,27 @@ const Carousel = ({ images }: CarouselProps) => {
   invariant(mainImage !== null, "Carousel must have at least one image");
   const mainImageSrc = mainImage.animation?.full ?? mainImage.half;
   const mainImageAlt = mainImage.animation?.alt ?? mainImage.alt;
-  if (laneImages.length == 1) {
+  if (images.length == 1) {
+    useEffect(() => {
+      preloadImages({
+        images: [mainImageSrc],
+        setIsPreloaded,
+      });
+    }, []);
+
     return (
-      <>
-        <img
-          data-testid="carousel-main-image"
-          className="carousel-image-solo"
-          src={mainImageSrc}
-          alt={`${mainImageAlt} (large)`}
-          onClick={() => setIsModalOpen(true)}
-        />
-        <ImageModal
-          isOpen={isModalOpen}
-          closeModal={() => setIsModalOpen(false)}
-          withTopGap={mainImage.neverOverlap}
-        >
-          <img
-            className="image-modal-full-size-image"
-            src={mainImage.full}
-            alt={`${mainImage.alt}`}
-          />
-        </ImageModal>
-      </>
+      <FullSizableImage
+        smallSrc={mainImageSrc}
+        fullSrc={mainImage.full}
+        alt={`${mainImageAlt} (large)`}
+        dataTestId="carousel-main-image"
+        className="carousel-image-solo"
+        withTopGap={mainImage.neverOverlap}
+        isPreloaded={isPreloaded}
+        placeHolderHeight={220}
+        placeHolderWidth={300}
+        placeHolderClassName="carousel-image-solo"
+      />
     );
   }
   // preload main version of lane images on first load so they're ready
@@ -71,17 +68,17 @@ const Carousel = ({ images }: CarouselProps) => {
   return (
     <>
       <div className={mainImageContainerClass}>
-        {isPreloaded ? (
-          <img
-            className="carousel-image-main"
-            data-testid="carousel-main-image"
-            src={mainImageSrc}
-            alt={`${mainImageAlt} (large)`}
-            onClick={() => setIsModalOpen(true)}
-          />
-        ) : (
-          <ImagePlaceholder width={300} height={220} />
-        )}
+        <FullSizableImage
+          smallSrc={mainImageSrc}
+          fullSrc={mainImage.full}
+          alt={`${mainImageAlt} (large)`}
+          dataTestId="carousel-main-image"
+          className="carousel-image-main"
+          withTopGap={mainImage.neverOverlap}
+          isPreloaded={isPreloaded}
+          placeHolderHeight={220}
+          placeHolderWidth={300}
+        />
       </div>
       <div className="carousel-lane">
         {laneImages.map((laneImage, idx) => (
@@ -96,17 +93,6 @@ const Carousel = ({ images }: CarouselProps) => {
           />
         ))}
       </div>
-      <ImageModal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-        withTopGap={mainImage.neverOverlap}
-      >
-        <img
-          className="image-modal-full-size-image"
-          src={mainImage.full}
-          alt={`${mainImage.alt}`}
-        />
-      </ImageModal>
     </>
   );
 };

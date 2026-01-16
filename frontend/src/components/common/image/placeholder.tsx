@@ -6,6 +6,7 @@ interface ImagePlaceholderProps {
   width?: number;
   round?: boolean;
   sharpBottom?: boolean;
+  additionalClassName?: string;
 }
 
 interface PlaceHolderStyle {
@@ -27,6 +28,7 @@ const ImagePlaceholder = ({
   width,
   round = false,
   sharpBottom = false,
+  additionalClassName = "",
 }: ImagePlaceholderProps) => {
   // each row is 20px high, with 10px top + bottom padding each
   const numRows = Math.ceil((height - 1) / 20) - 1;
@@ -36,7 +38,10 @@ const ImagePlaceholder = ({
   }
   return (
     <div
-      className={`image-placeholder${round ? "-round" : sharpBottom ? "-sharp-bottom" : ""}`}
+      className={
+        `image-placeholder${round ? "-round" : sharpBottom ? "-sharp-bottom" : ""}` +
+        ` ${additionalClassName}`
+      }
       style={style}
     >
       {[...Array(numRows)].map((_, idx) => (
