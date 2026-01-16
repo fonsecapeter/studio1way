@@ -5,6 +5,7 @@ interface ImagePlaceholderProps {
   height: number;
   width?: number;
   round?: boolean;
+  sharpBottom?: boolean;
 }
 
 interface PlaceHolderStyle {
@@ -25,6 +26,7 @@ const ImagePlaceholder = ({
   height,
   width,
   round = false,
+  sharpBottom = false,
 }: ImagePlaceholderProps) => {
   // each row is 20px high, with 10px top + bottom padding each
   const numRows = Math.ceil((height - 1) / 20) - 1;
@@ -33,7 +35,10 @@ const ImagePlaceholder = ({
     style.width = `${width}px`;
   }
   return (
-    <div className={`image-placeholder${round ? "-round" : ""}`} style={style}>
+    <div
+      className={`image-placeholder${round ? "-round" : sharpBottom ? "-sharp-bottom" : ""}`}
+      style={style}
+    >
       {[...Array(numRows)].map((_, idx) => (
         <div
           className="image-placeholder-scrolling-arrow"

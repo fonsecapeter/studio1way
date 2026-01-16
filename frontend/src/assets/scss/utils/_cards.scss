@@ -63,6 +63,7 @@
 @mixin card-bottom {
   background: variables.$white;
   border-radius: 0 0 3px 3px;
+  color: variables.$black;
   margin-top: 0;
   padding: 6px;
 }

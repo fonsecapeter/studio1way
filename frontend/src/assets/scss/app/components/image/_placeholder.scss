@@ -15,6 +15,14 @@
     padding-top: 10px;
   }
 
+  &-sharp-bottom {
+    background-color: variables.$black;
+    border-radius: 4px 0;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
   &-scrolling-arrow {
     white-space: nowrap;
     animation: scroll 2s linear infinite;
