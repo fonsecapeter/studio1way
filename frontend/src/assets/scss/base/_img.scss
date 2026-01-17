@@ -1,3 +1,6 @@
+@use "../utils/cards";
+
 .full-width {
+  @include cards.shadow-interactive;
   width: 100%;
 }

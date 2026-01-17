@@ -4,6 +4,14 @@ import { render, screen } from "@testing-library/react";
 import OtherPhilosophy from "../../../components/philosophy/other_philosophy";
 import Department from "../../../components/common/department";
 
+jest.mock("../../../components/common/image/preload", () => ({
+  ...jest.requireActual("../../../components/common/image/preload"),
+  __esModule: true,
+  default: jest.fn((args) => {
+    args.setIsPreloaded(true);
+  }),
+}));
+
 describe("OtherPhilosophy", () => {
   beforeEach(() => {
     render(

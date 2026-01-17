@@ -4,6 +4,14 @@ import { render, screen } from "@testing-library/react";
 import WoodPhilosophy from "../../../components/philosophy/wood_philosophy";
 import Department from "../../../components/common/department";
 
+jest.mock("../../../components/common/image/preload", () => ({
+  ...jest.requireActual("../../../components/common/image/preload"),
+  __esModule: true,
+  default: jest.fn((args) => {
+    args.setIsPreloaded(true);
+  }),
+}));
+
 describe("WoodPhilosophy", () => {
   beforeEach(() => {
     render(

@@ -3,6 +3,14 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import StudioPhilosophy from "../../../components/philosophy/studio_philosophy";
 
+jest.mock("../../../components/common/image/preload", () => ({
+  ...jest.requireActual("../../../components/common/image/preload"),
+  __esModule: true,
+  default: jest.fn((args) => {
+    args.setIsPreloaded(true);
+  }),
+}));
+
 describe("StudioPhilosophy", () => {
   beforeEach(() => {
     render(

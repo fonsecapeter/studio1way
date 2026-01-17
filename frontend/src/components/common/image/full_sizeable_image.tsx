@@ -50,7 +50,7 @@ export const FullSizableImage = ({
           />
         </ImageModal>
       </>
-    )
+    );
   }
   return (
     <ImagePlaceholder
