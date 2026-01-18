@@ -95,7 +95,10 @@ export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
           />
         ) : (
           <div className="portfolio-item-icon-image">
-            <ImagePlaceholder height={200} sharpBottom={true} />
+            <ImagePlaceholder
+              height={200}
+              additionalClassName="portfolio-item-icon-image-placeholder"
+            />
           </div>
         )}
       </div>

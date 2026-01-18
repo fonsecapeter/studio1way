@@ -51,7 +51,6 @@ export const PaintPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>The term painting is used liberally within the studio.</p>
@@ -63,7 +62,6 @@ export const PaintPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>Of course there are your standard oil or acrylic paintings.</p>
@@ -75,7 +73,6 @@ export const PaintPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>But we also work in watercolors, pastels, sharpies, and whiteout.</p>
@@ -88,7 +85,6 @@ export const PaintPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
     </div>
   );

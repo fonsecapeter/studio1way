@@ -54,7 +54,6 @@ export const StudioPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -70,7 +69,6 @@ export const StudioPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>The studio itself may be limited to 10 square feet</p>
@@ -83,7 +81,6 @@ export const StudioPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>We have several departments:</p>
@@ -110,7 +107,6 @@ export const StudioPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>There isn't just one way, this is 1 Way.</p>
@@ -122,7 +118,6 @@ export const StudioPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
     </div>
   );

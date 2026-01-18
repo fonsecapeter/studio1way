@@ -3,14 +3,7 @@ import React from "react";
 
 interface ImagePlaceholderProps {
   height: number;
-  width?: number;
-  round?: boolean;
-  sharpBottom?: boolean;
   additionalClassName?: string;
-}
-
-interface PlaceHolderStyle {
-  width?: string;
 }
 
 const COLORS = {
@@ -25,25 +18,12 @@ const COLORS = {
 
 const ImagePlaceholder = ({
   height,
-  width,
-  round = false,
-  sharpBottom = false,
   additionalClassName = "",
 }: ImagePlaceholderProps) => {
   // each row is 20px high, with 10px top + bottom padding each
   const numRows = Math.ceil((height - 1) / 20) - 1;
-  const style: PlaceHolderStyle = {};
-  if (width) {
-    style.width = `${width}px`;
-  }
   return (
-    <div
-      className={
-        `image-placeholder${round ? "-round" : sharpBottom ? "-sharp-bottom" : ""}` +
-        ` ${additionalClassName}`
-      }
-      style={style}
-    >
+    <div className={`image-placeholder ${additionalClassName}`}>
       {[...Array(numRows)].map((_, idx) => (
         <div
           className="image-placeholder-scrolling-arrow"

@@ -77,6 +77,16 @@
         margin: auto;
         width: 100%;
         min-height: 100px;
+
+        &-placeholder {
+          @include cards.card-top;
+          background-color: variables.$black;
+          display: block;
+          margin: auto;
+          width: 100%;
+          min-height: 100px;
+          min-width: 300px;
+        }
       }
     }
 

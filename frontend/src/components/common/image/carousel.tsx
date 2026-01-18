@@ -52,7 +52,6 @@ const Carousel = ({ images }: CarouselProps) => {
         withTopGap={mainImage.neverOverlap}
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={300}
         placeHolderClassName="carousel-image-solo"
       />
     );
@@ -77,7 +76,7 @@ const Carousel = ({ images }: CarouselProps) => {
           withTopGap={mainImage.neverOverlap}
           isPreloaded={isPreloaded}
           placeHolderHeight={220}
-          placeHolderWidth={300}
+          placeHolderClassName="carousel-image-main-placeholder"
         />
       </div>
       <div className="carousel-lane">

@@ -11,6 +11,16 @@
       min-height: 180px;
       max-width: 100%;
 
+      &-placeholder {
+        @include cards.shadow-interactive;
+        border-radius: 3px;
+        display: block;
+        max-height: calc(80vw - 80px);
+        max-width: 100%;
+        min-height: 180px;
+        min-width: 300px;
+      }
+
       &-container {
         align-items: center;
         display: flex;

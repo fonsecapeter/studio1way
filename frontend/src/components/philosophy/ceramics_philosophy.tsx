@@ -55,7 +55,6 @@ export const CeramicsPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -77,7 +76,6 @@ export const CeramicsPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -92,7 +90,6 @@ export const CeramicsPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>But imperfections are cherished.</p>
@@ -108,7 +105,6 @@ export const CeramicsPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -123,7 +119,6 @@ export const CeramicsPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
     </div>
   );

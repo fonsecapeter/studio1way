@@ -11,7 +11,6 @@ interface ImageProps {
   withTopGap?: boolean;
   isPreloaded?: boolean;
   placeHolderHeight?: number;
-  placeHolderWidth?: number;
   placeHolderClassName?: string;
 }
 
@@ -19,15 +18,17 @@ export const FullSizableImage = ({
   smallSrc,
   fullSrc,
   alt,
-  dataTestId = null,
+  dataTestId = "",
   className = "",
   withTopGap = false,
   isPreloaded = true,
   placeHolderHeight = 0,
-  placeHolderWidth = 0,
   placeHolderClassName = "",
 }: ImageProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  if (!placeHolderClassName) {
+    placeHolderClassName = className;
+  }
   if (isPreloaded) {
     return (
       <>
@@ -56,7 +57,6 @@ export const FullSizableImage = ({
     <ImagePlaceholder
       additionalClassName={placeHolderClassName}
       height={placeHolderHeight}
-      width={placeHolderWidth}
     />
   );
 };

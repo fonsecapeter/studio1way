@@ -39,7 +39,6 @@ export const OtherPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -55,7 +54,6 @@ export const OtherPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>
@@ -73,7 +71,6 @@ export const OtherPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>

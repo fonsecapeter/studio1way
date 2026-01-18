@@ -51,7 +51,6 @@ export const WoodPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>In the studio, we work mostly with humble hand-tools.</p>
@@ -63,7 +62,6 @@ export const WoodPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>And equally humble materials, often reclaimed or salvaged.</p>
@@ -75,7 +73,6 @@ export const WoodPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>Work is left thoughtfully unpolished, but properly finished.</p>
@@ -87,7 +84,6 @@ export const WoodPhilosophy = () => {
         className="full-width"
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
-        placeHolderWidth={400}
       />
       <div className="philosophy-text">
         <p>It should be clear that this is a hand-made item.</p>
