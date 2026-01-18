@@ -21,6 +21,7 @@ const mocks = [
           name: "A Test Cup",
           date: "2025-11-29",
           description: "Another gray cup",
+          links: [],
           images: [
             {
               full: "test-100",

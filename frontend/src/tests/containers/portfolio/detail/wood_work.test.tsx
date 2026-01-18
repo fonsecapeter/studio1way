@@ -21,6 +21,7 @@ const mocks = [
           name: "A Test Shelf",
           date: "2025-11-29",
           description: "Can never have too many shelves",
+          links: [],
           images: [
             {
               full: "test-100",

@@ -25,6 +25,10 @@ describe("PortfolioDetail", () => {
       name: "A Test Project",
       date: "2025-06-12",
       description: "For which to run tests against",
+      links: [
+        { url: "http://example.com", text: "Example Link" },
+        { url: "http://anotherexample.com", text: "Example SecondLink" },
+      ],
       images: [
         {
           full: "test-100",
@@ -70,6 +74,20 @@ describe("PortfolioDetail", () => {
       const mainImageElement = screen.getByTestId("carousel-main-image");
       expect(mainImageElement).toHaveAttribute("src", "test-50");
     });
+
+    it("renders links", () => {
+      const linkElement = screen.getByRole("link", { name: "Example Link" });
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement).toHaveAttribute("href", "http://example.com");
+      const secondLinkElement = screen.getByRole("link", {
+        name: "Example SecondLink",
+      });
+      expect(secondLinkElement).toBeInTheDocument();
+      expect(secondLinkElement).toHaveAttribute(
+        "href",
+        "http://anotherexample.com",
+      );
+    });
   });
 
   describe("when given a CeramicWare", () => {
@@ -78,6 +96,7 @@ describe("PortfolioDetail", () => {
       name: "A Test Cup",
       date: "2025-06-12",
       description: "For which to run tests against",
+      links: [],
       images: [
         {
           full: "test-100",
@@ -120,6 +139,7 @@ describe("PortfolioDetail", () => {
       name: "A Test Painting",
       date: "2025-06-12",
       description: "For which to run tests against",
+      links: [],
       images: [
         {
           full: "test-100",
@@ -161,6 +181,7 @@ describe("PortfolioDetail", () => {
       name: "A Test Painting",
       date: "2025-06-12",
       description: "For which to run tests against",
+      links: [],
       images: [
         {
           full: "test-100",
@@ -204,6 +225,7 @@ describe("PortfolioDetail", () => {
       name: "A Test Table",
       date: "2025-06-12",
       description: "For which to run tests against",
+      links: [],
       images: [
         {
           full: "test-100",

@@ -21,6 +21,7 @@ const mocks = [
           name: "A Test Painting",
           date: "2025-11-29",
           description: "Painting of a test",
+          links: [],
           images: [
             {
               full: "test-100",

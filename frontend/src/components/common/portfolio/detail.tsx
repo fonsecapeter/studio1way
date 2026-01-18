@@ -16,6 +16,10 @@ export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
     name
     date
     description
+    links {
+      url
+      text
+    }
     images {
       full
       half
@@ -38,6 +42,10 @@ export const PORTFOLIO_DETAIL_OTHER_PROJECT_FRAGMENT = gql`
     name
     date
     description
+    links {
+      url
+      text
+    }
     images {
       full
       half
@@ -58,6 +66,10 @@ export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
     name
     date
     description
+    links {
+      url
+      text
+    }
     images {
       full
       half
@@ -81,6 +93,10 @@ export const PORTFOLIO_DETAIL_WOOD_WORK_FRAGMENT = gql`
     name
     date
     description
+    links {
+      url
+      text
+    }
     images {
       full
       half
@@ -120,6 +136,27 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
   } else if (isWoodWork(project)) {
     properties.push(`${project.finish} on ${project.materials}`);
   }
+
+  const linkClass = "portfolio-detail-link";
+  let links = null;
+  if (project.links.length > 0) {
+    links = (
+      <span>
+        <a href={project.links[0].url} className={linkClass} target="blank">
+          {project.links[0].text}
+        </a>
+        {project.links.slice(1).map((projectLink) => (
+          <span key={projectLink.url}>
+            <span className="portfolio-detail-dot">·</span>
+            <a href={projectLink.url} className={linkClass} target="blank">
+              {projectLink.text}
+            </a>
+          </span>
+        ))}
+      </span>
+    );
+  }
+
   return (
     <div>
       <div className="landing-title-row">
@@ -138,6 +175,7 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           {property}
         </p>
       ))}
+      <div>{links}</div>
       <p>{project.description}</p>
       <p>🚧 this part of the site under construction 🚧</p>
     </div>
