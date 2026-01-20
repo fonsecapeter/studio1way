@@ -58,6 +58,10 @@ export const PORTFOLIO_DETAIL_OTHER_PROJECT_FRAGMENT = gql`
         alt
       }
     }
+    video {
+      src
+      aspectRatio
+    }
   }
 `;
 
@@ -157,6 +161,26 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     );
   }
 
+  let media = null;
+  if (project.images.length > 0) {
+    media = (
+      <div className="portfolio-detail-media-carousel">
+        <Carousel images={project.images} />
+      </div>
+    );
+  } else if (project.__typename == "OtherProject" && project.video) {
+    media = (
+      <iframe
+        data-testid="portfolio-detail-vid"
+        className={`portfolio-detail-media-vid-${project.video.aspectRatio}`}
+        src={project.video.src}
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen={true}
+      ></iframe>
+    );
+  }
+
   return (
     <div>
       <div className="landing-title-row">
@@ -165,11 +189,7 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           <button className="button-link">← PORTFOLIO</button>
         </Link>
       </div>
-      <div className="portfolio-detail-media">
-        <div className="portfolio-detail-media-carousel">
-          <Carousel images={project.images} />
-        </div>
-      </div>
+      <div className="portfolio-detail-media">{media}</div>
       {properties.map((property, idx) => (
         <p className="portfolio-detail-property" key={idx}>
           {property}

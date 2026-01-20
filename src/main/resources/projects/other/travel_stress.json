@@ -9,11 +9,9 @@
   "links": [],
   "date": "2023",
   "description": "A movie about traveling.",
-  "images": [
-    {
-      "path": "other/travel_stress/main",
-      "ext": "JPG",
-      "alt": ""
-    }
-  ]
+  "images": [],
+  "video": {
+    "src": "https://www.youtube.com/embed/u5xZQ9aE_Dk?si=xuFDptgIVhGAh_2T",
+    "aspectRatio": "WIDE"
+  }
 }

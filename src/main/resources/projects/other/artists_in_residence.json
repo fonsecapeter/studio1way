@@ -9,11 +9,9 @@
   "links": [],
   "date": "2023",
   "description": "A meditation on feeling lost and making art. Made in collaboration with Neha.",
-  "images": [
-    {
-      "path": "other/artists_in_residence/main",
-      "ext": "PNG",
-      "alt": "Title page over apartment building"
-    }
-  ]
+  "images": [],
+  "video": {
+    "src": "https://www.youtube.com/embed/-qTctYg1rQ0?si=UAhlXcl6lyrTOJH7",
+    "aspectRatio": "FULL"
+  }
 }

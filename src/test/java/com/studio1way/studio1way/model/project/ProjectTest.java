@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
+import com.studio1way.studio1way.model.project.fields.ProjectVideo;
 import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 public class ProjectTest {
 
     private Project project;
+    private Project filmProject;
 
     @BeforeEach
     public void setUp() {
@@ -36,6 +38,27 @@ public class ProjectTest {
                         "test image"
                     ),
                 }
+            );
+        filmProject =
+            new Project(
+                "test-film-project",
+                "Test Film Project",
+                new ProjectImage(
+                    "other/my_brain/main",
+                    ProjectImage.Extension.JPG,
+                    "test icon"
+                ),
+                new ProjectLink[] { new ProjectLink("https://something.com", "example") },
+                "2025",
+                "A test project.",
+                new ProjectImage[] {
+                    new ProjectImage(
+                        "other/my_brain/main",
+                        ProjectImage.Extension.JPG,
+                        "test image"
+                    ),
+                },
+                new ProjectVideo("https://avideo.com", ProjectVideo.AspectRatio.WIDE)
             );
     }
 
@@ -73,6 +96,46 @@ public class ProjectTest {
         """;
         Project pojoProject = objectMapper.readValue(jsonProject, Project.class);
         assertTrue(pojoProject.equals(project));
+    }
+
+    @Test
+    public void testProjectWithVideoCanLoadFromJson() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
+        objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
+        String jsonProject =
+            """
+        {
+          "id": "test-film-project",
+          "name": "Test Film Project",
+          "icon": {
+            "path": "other/my_brain/main",
+            "ext": "JPG",
+            "alt": "test icon"
+          },
+          "links": [
+            {
+              "url": "https://something.com",
+              "text": "example"
+            }
+          ],
+          "date": "2025",
+          "description": "A test project.",
+          "images": [
+            {
+              "path": "other/my_brain/main",
+              "ext": "JPG",
+              "alt": "test image"
+            }
+          ],
+          "video": {
+            "src": "https://avideo.com",
+            "aspectRatio": "WIDE"
+          }
+        }
+        """;
+        Project pojoProject = objectMapper.readValue(jsonProject, Project.class);
+        assertTrue(pojoProject.equals(filmProject));
     }
 
     @Test

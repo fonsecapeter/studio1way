@@ -20,73 +20,148 @@ jest.mock("../../../../components/common/image/preload", () => ({
 
 describe("PortfolioDetail", () => {
   describe("when given a project", () => {
-    let project: PortfolioDetailOtherProjectFragment = {
-      __typename: "OtherProject",
-      name: "A Test Project",
-      date: "2025-06-12",
-      description: "For which to run tests against",
-      links: [
-        { url: "http://example.com", text: "Example Link" },
-        { url: "http://anotherexample.com", text: "Example SecondLink" },
-      ],
-      images: [
-        {
-          full: "test-100",
-          half: "test-50",
-          quarter: "test-25",
-          alt: "test-alt",
-          neverOverlap: false,
-          animation: null,
-        },
-      ],
-    };
+    describe("any project", () => {
+      let project: PortfolioDetailOtherProjectFragment = {
+        __typename: "OtherProject",
+        name: "A Test Project",
+        date: "2025-06-12",
+        description: "For which to run tests against",
+        links: [
+          { url: "http://example.com", text: "Example Link" },
+          { url: "http://anotherexample.com", text: "Example SecondLink" },
+        ],
+        images: [
+          {
+            full: "test-100",
+            half: "test-50",
+            quarter: "test-25",
+            alt: "test-alt",
+            neverOverlap: false,
+            animation: null,
+          },
+        ],
+      };
 
-    beforeEach(() => {
-      render(
-        <MemoryRouter initialEntries={["/other/project/a_test_project"]}>
-          <Routes>
-            <Route path="/other" element={<Department />}>
-              <Route
-                path="project/a_test_project"
-                element={<PortfolioDetail project={project} />}
-              />
-            </Route>
-          </Routes>
-        </MemoryRouter>,
-      );
-    });
-
-    it("renders the base project text fields", async () => {
-      expect(screen.getByText("A Test Project")).toBeInTheDocument();
-      expect(
-        screen.getByText("For which to run tests against"),
-      ).toBeInTheDocument();
-      expect(screen.getByText("2025-06-12")).toBeInTheDocument();
-    });
-
-    it("renders a button back to the category porfolio", () => {
-      const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
-      expect(linkElement).toBeInTheDocument();
-      expect(linkElement.getAttribute("href")).toBe("/portfolio");
-    });
-
-    it("renders a carousel", () => {
-      const mainImageElement = screen.getByTestId("carousel-main-image");
-      expect(mainImageElement).toHaveAttribute("src", "test-50");
-    });
-
-    it("renders links", () => {
-      const linkElement = screen.getByRole("link", { name: "Example Link" });
-      expect(linkElement).toBeInTheDocument();
-      expect(linkElement).toHaveAttribute("href", "http://example.com");
-      const secondLinkElement = screen.getByRole("link", {
-        name: "Example SecondLink",
+      beforeEach(() => {
+        render(
+          <MemoryRouter initialEntries={["/other/project/a_test_project"]}>
+            <Routes>
+              <Route path="/other" element={<Department />}>
+                <Route
+                  path="project/a_test_project"
+                  element={<PortfolioDetail project={project} />}
+                />
+              </Route>
+            </Routes>
+          </MemoryRouter>,
+        );
       });
-      expect(secondLinkElement).toBeInTheDocument();
-      expect(secondLinkElement).toHaveAttribute(
-        "href",
-        "http://anotherexample.com",
-      );
+
+      it("renders the base project text fields", async () => {
+        expect(screen.getByText("A Test Project")).toBeInTheDocument();
+        expect(
+          screen.getByText("For which to run tests against"),
+        ).toBeInTheDocument();
+        expect(screen.getByText("2025-06-12")).toBeInTheDocument();
+      });
+
+      it("renders a button back to the category porfolio", () => {
+        const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
+        expect(linkElement).toBeInTheDocument();
+        expect(linkElement.getAttribute("href")).toBe("/portfolio");
+      });
+
+      it("renders a carousel", () => {
+        const mainImageElement = screen.getByTestId("carousel-main-image");
+        expect(mainImageElement).toHaveAttribute("src", "test-50");
+      });
+    });
+
+    describe("with links", () => {
+      let project: PortfolioDetailOtherProjectFragment = {
+        __typename: "OtherProject",
+        name: "A Test Project",
+        date: "2025-06-12",
+        description: "For which to run tests against",
+        links: [
+          { url: "http://example.com", text: "Example Link" },
+          { url: "http://anotherexample.com", text: "Example SecondLink" },
+        ],
+        images: [
+          {
+            full: "test-100",
+            half: "test-50",
+            quarter: "test-25",
+            alt: "test-alt",
+            neverOverlap: false,
+            animation: null,
+          },
+        ],
+      };
+
+      beforeEach(() => {
+        render(
+          <MemoryRouter initialEntries={["/other/project/a_test_project"]}>
+            <Routes>
+              <Route path="/other" element={<Department />}>
+                <Route
+                  path="project/a_test_project"
+                  element={<PortfolioDetail project={project} />}
+                />
+              </Route>
+            </Routes>
+          </MemoryRouter>,
+        );
+      });
+
+      it("renders each link", () => {
+        const linkElement = screen.getByRole("link", { name: "Example Link" });
+        expect(linkElement).toBeInTheDocument();
+        expect(linkElement).toHaveAttribute("href", "http://example.com");
+        const secondLinkElement = screen.getByRole("link", {
+          name: "Example SecondLink",
+        });
+        expect(secondLinkElement).toBeInTheDocument();
+        expect(secondLinkElement).toHaveAttribute(
+          "href",
+          "http://anotherexample.com",
+        );
+      });
+    });
+
+    describe("with a video", () => {
+      let project: PortfolioDetailOtherProjectFragment = {
+        __typename: "OtherProject",
+        name: "A Test Project",
+        date: "2025-06-12",
+        description: "For which to run tests against",
+        links: [],
+        images: [],
+        video: { src: "https://avideo.com", aspectRatio: "16-9" },
+      };
+
+      beforeEach(() => {
+        render(
+          <MemoryRouter initialEntries={["/other/project/a_test_project"]}>
+            <Routes>
+              <Route path="/other" element={<Department />}>
+                <Route
+                  path="project/a_test_project"
+                  element={<PortfolioDetail project={project} />}
+                />
+              </Route>
+            </Routes>
+          </MemoryRouter>,
+        );
+      });
+
+      it("renders the video element with the correct aspect ratio", () => {
+        expect(screen.queryByTestId("carousel-main-image")).toBeNull();
+        expect(screen.getByTestId("portfolio-detail-vid")).toHaveAttribute(
+          "class",
+          "portfolio-detail-media-vid-16-9",
+        );
+      });
     });
   });
 

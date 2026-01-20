@@ -2,7 +2,7 @@ package com.studio1way.studio1way.model.project;
 
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
-import java.time.LocalDate;
+import com.studio1way.studio1way.model.project.fields.ProjectVideo;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -18,8 +18,29 @@ public class Project implements Comparable<Project> {
 
     private String description;
     private ProjectImage[] images;
+    private ProjectVideo video;
 
     public Project() {}
+
+    public Project(
+        String id,
+        String name,
+        ProjectImage icon,
+        ProjectLink[] links,
+        String date,
+        String description,
+        ProjectImage[] images,
+        ProjectVideo video
+    ) {
+        setId(id);
+        setName(name);
+        setIcon(icon);
+        setLinks(links);
+        setDate(date);
+        setDescription(description);
+        setImages(images);
+        setVideo(video);
+    }
 
     public Project(
         String id,
@@ -111,6 +132,14 @@ public class Project implements Comparable<Project> {
         this.images = images;
     }
 
+    public ProjectVideo getVideo() {
+        return video;
+    }
+
+    public void setVideo(ProjectVideo video) {
+        this.video = video;
+    }
+
     @Override
     public int compareTo(Project other) {
         // Newest first
@@ -133,7 +162,8 @@ public class Project implements Comparable<Project> {
             Arrays.equals(getLinks(), otherProject.getLinks()) &&
             Objects.equals(getDate(), otherProject.getDate()) &&
             Objects.equals(getDescription(), otherProject.getDescription()) &&
-            Arrays.equals(getImages(), otherProject.getImages())
+            Arrays.equals(getImages(), otherProject.getImages()) &&
+            Objects.equals(getVideo(), otherProject.getVideo())
         );
     }
 }

@@ -9,11 +9,9 @@
   "links": [],
   "date": "2022",
   "description": "A challenge between friends that got me to try daily vlogging for 3 days.",
-  "images": [
-    {
-      "path": "paintings/three_cities/main",
-      "ext": "JPG",
-      "alt": "peter skateboarding with coffee"
-    }
-  ]
+  "images": [],
+  "video": {
+    "src": "https://www.youtube.com/embed/videoseries?si=DSCik6f-aIWz6o-5&amp;list=PLZV4bTgIS1Vff5D7_jfhDFDq5nNgvLYVJ",
+    "aspectRatio": "WIDE"
+  }
 }
