@@ -32,7 +32,7 @@ export const WoodPhilosophy = () => {
         lumberPath100,
         roundedEdgesPath100,
       ],
-      setIsPreloaded: () => {},
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
 

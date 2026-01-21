@@ -20,7 +20,7 @@ export const OtherPhilosophy = () => {
     });
     preloadImages({
       images: [made4SkateboardingPath100, nodToVirgilPath100, whiteShoePath100],
-      setIsPreloaded: () => {},
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
 

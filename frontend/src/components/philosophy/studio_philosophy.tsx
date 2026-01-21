@@ -35,7 +35,7 @@ export const StudioPhilosophy = () => {
         studioClockPath100,
         studioOneWaySignPath100,
       ],
-      setIsPreloaded: () => {},
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
 

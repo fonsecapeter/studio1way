@@ -36,7 +36,7 @@ export const CeramicsPhilosophy = () => {
         inHandPath100,
         onShelfPath100,
       ],
-      setIsPreloaded: () => {},
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
 

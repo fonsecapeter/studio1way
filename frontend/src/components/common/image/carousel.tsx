@@ -56,12 +56,18 @@ const Carousel = ({ images }: CarouselProps) => {
       />
     );
   }
-  // preload main version of lane images on first load so they're ready
-  // for carousel clicking
   useEffect(() => {
     preloadImages({
-      images: laneImages.map((img) => img.image.half),
+      images: [mainImageSrc],
       setIsPreloaded,
+    });
+    preloadImages({
+      images: laneImages.map((img) => img.image.half),
+      setIsPreloaded: () => {}, // in background
+    });
+    preloadImages({
+      images: laneImages.map((img) => img.image.full),
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
   return (

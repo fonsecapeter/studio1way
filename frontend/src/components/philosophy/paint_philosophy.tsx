@@ -32,7 +32,7 @@ export const PaintPhilosophy = () => {
         parisInProgressPath100,
         qRCodePath100,
       ],
-      setIsPreloaded: () => {},
+      setIsPreloaded: () => {}, // in background
     });
   }, []);
 

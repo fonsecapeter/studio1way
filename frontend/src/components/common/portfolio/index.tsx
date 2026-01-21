@@ -108,19 +108,19 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const [areGroupsPreloaded, setAreGroupsPreloaded] = useState(
     Array(preloadGroupCount).fill(false),
   );
-  const setIsGroupPreloaded = (idx: number) => {
+  const setIsGroupPreloaded = (groupIdx: number) => {
     return (isGroupPreloaded: boolean) =>
       setAreGroupsPreloaded((prevAreGroupsPreloaded) => {
         const newAreGroupsPreloaded = [...prevAreGroupsPreloaded];
-        newAreGroupsPreloaded[idx] = isGroupPreloaded;
+        newAreGroupsPreloaded[groupIdx] = isGroupPreloaded;
         return newAreGroupsPreloaded;
       });
   };
-  for (let idx = 0; idx < preloadGroupCount; idx++) {
+  for (let groupIdx = 0; groupIdx < preloadGroupCount; groupIdx++) {
     preloadGroups.push({
       images: [],
-      setIsPreloaded: setIsGroupPreloaded(idx),
-      delay: idx * 1000 + 500,
+      setIsPreloaded: setIsGroupPreloaded(groupIdx),
+      delay: groupIdx * 1000 + 500,
     });
   }
   const groupId = (idx: number) =>
