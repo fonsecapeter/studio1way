@@ -36,7 +36,8 @@ public class OtherProjectServiceTest {
                 ProjectImage.Extension.JPG,
                 "test image"
             ),
-        }
+        },
+        "digital"
     );
 
     @BeforeEach

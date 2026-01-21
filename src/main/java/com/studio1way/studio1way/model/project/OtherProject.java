@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class OtherProject extends Project {
 
-    private ProjectVideo video;
     private String variety;
+    private ProjectVideo video;
 
     public OtherProject() {}
 
@@ -20,39 +20,11 @@ public class OtherProject extends Project {
         String date,
         String description,
         ProjectImage[] images,
-        ProjectVideo video,
-        String variety
-    ) {
-        super(id, name, icon, links, date, description, images);
-        setVideo(video);
-        setVariety(variety);
-    }
-
-    public OtherProject(
-        String id,
-        String name,
-        ProjectImage icon,
-        ProjectLink[] links,
-        String date,
-        String description,
-        ProjectImage[] images,
-        String variety
-    ) {
-        super(id, name, icon, links, date, description, images);
-        setVariety(variety);
-    }
-
-    public OtherProject(
-        String id,
-        String name,
-        ProjectImage icon,
-        ProjectLink[] links,
-        String date,
-        String description,
-        ProjectImage[] images,
+        String variety,
         ProjectVideo video
     ) {
         super(id, name, icon, links, date, description, images);
+        setVariety(variety);
         setVideo(video);
     }
 
@@ -63,9 +35,11 @@ public class OtherProject extends Project {
         ProjectLink[] links,
         String date,
         String description,
-        ProjectImage[] images
+        ProjectImage[] images,
+        String variety
     ) {
         super(id, name, icon, links, date, description, images);
+        setVariety(variety);
     }
 
     public ProjectVideo getVideo() {

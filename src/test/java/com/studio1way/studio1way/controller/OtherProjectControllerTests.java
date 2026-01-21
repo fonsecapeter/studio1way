@@ -45,7 +45,8 @@ public class OtherProjectControllerTests {
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),
-            }
+            },
+            "digital"
         );
         Mockito.when(projectService.findAll()).thenReturn(List.of(project));
         Mockito.when(projectService.findById(anyString())).thenReturn(null);

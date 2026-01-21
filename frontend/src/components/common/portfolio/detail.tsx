@@ -207,7 +207,6 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
       ))}
       <div>{links}</div>
       <p>{project.description}</p>
-      <p>🚧 this part of the site under construction 🚧</p>
     </div>
   );
 };

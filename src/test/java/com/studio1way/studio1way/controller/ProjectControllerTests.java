@@ -50,7 +50,8 @@ public class ProjectControllerTests {
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),
-            }
+            },
+            "digital"
         );
         CeramicWare ceramicWare = new CeramicWare(
             "test-ceramicWare",

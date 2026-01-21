@@ -40,6 +40,7 @@ describe("PortfolioDetail", () => {
             animation: null,
           },
         ],
+        variety: "digital",
       };
 
       beforeEach(() => {
@@ -97,6 +98,7 @@ describe("PortfolioDetail", () => {
             animation: null,
           },
         ],
+        variety: "digital",
       };
 
       beforeEach(() => {
@@ -137,8 +139,8 @@ describe("PortfolioDetail", () => {
         description: "For which to run tests against",
         links: [],
         images: [],
+        variety: "digital",
         video: { src: "https://avideo.com", aspectRatio: "16-9" },
-        variety: null,
       };
 
       beforeEach(() => {
@@ -173,8 +175,8 @@ describe("PortfolioDetail", () => {
         description: "For which to run tests against",
         links: [],
         images: [],
+        variety: "digital",
         video: null,
-        variety: "sculpture",
       };
 
       beforeEach(() => {
@@ -193,7 +195,7 @@ describe("PortfolioDetail", () => {
       });
 
       it("renders the variety", () => {
-        expect(screen.getByText("sculpture")).toBeInTheDocument();
+        expect(screen.getByText("digital")).toBeInTheDocument();
       });
     });
   });

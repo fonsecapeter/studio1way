@@ -59,8 +59,8 @@ type OtherProject implements Project {
     date: String!
     description: String!
     images: [ProjectImage!]!
+    variety: String!
     video: ProjectVideo
-    variety: String
 }
 
 interface Project {

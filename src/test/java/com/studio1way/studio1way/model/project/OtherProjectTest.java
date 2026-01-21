@@ -37,7 +37,8 @@ public class OtherProjectTest {
                         ProjectImage.Extension.JPG,
                         "test image"
                     ),
-                }
+                },
+                "digital"
             );
         filmProject =
             new OtherProject(
@@ -58,8 +59,8 @@ public class OtherProjectTest {
                         "test image"
                     ),
                 },
-                new ProjectVideo("https://avideo.com", ProjectVideo.AspectRatio.WIDE),
-                "YouTube"
+                "YouTube",
+                new ProjectVideo("https://avideo.com", ProjectVideo.AspectRatio.WIDE)
             );
     }
 
@@ -92,7 +93,8 @@ public class OtherProjectTest {
               "ext": "JPG",
               "alt": "test image"
             }
-          ]
+          ],
+          "variety": "digital"
         }
         """;
         OtherProject pojoProject = objectMapper.readValue(
@@ -132,11 +134,11 @@ public class OtherProjectTest {
               "alt": "test image"
             }
           ],
+          "variety": "YouTube",
           "video": {
             "src": "https://avideo.com",
             "aspectRatio": "WIDE"
-          },
-          "variety": "YouTube"
+          }
         }
         """;
         OtherProject pojoProject = objectMapper.readValue(

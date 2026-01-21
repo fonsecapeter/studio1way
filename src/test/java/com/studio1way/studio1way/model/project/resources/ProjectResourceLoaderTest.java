@@ -33,7 +33,8 @@ public class ProjectResourceLoaderTest {
                 ProjectImage.Extension.JPG,
                 "test image"
             ),
-        }
+        },
+        "digital"
     );
     private final OtherProject anotherTestProject = new OtherProject(
         "another-test-project",
@@ -58,7 +59,8 @@ public class ProjectResourceLoaderTest {
                     "a test animation"
                 )
             ),
-        }
+        },
+        "digital"
     );
 
     @BeforeEach
