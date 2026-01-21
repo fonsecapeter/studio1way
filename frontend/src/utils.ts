@@ -1,4 +1,9 @@
-import { CeramicWare, Painting, WoodWork } from "./__generated__/types";
+import {
+  CeramicWare,
+  Painting,
+  WoodWork,
+  OtherProject,
+} from "./__generated__/types";
 
 class InvariantError extends Error {
   constructor(message: string) {
@@ -59,4 +64,8 @@ export function isPainting(obj: any): obj is Painting {
 
 export function isWoodWork(obj: any): obj is WoodWork {
   return obj.__typename === CATEGORY.WOOD_WORK;
+}
+
+export function isOtherProject(obj: any): obj is OtherProject {
+  return obj.__typename === CATEGORY.OTHER;
 }

@@ -1,22 +1,23 @@
 package com.studio1way.studio1way.repository.project;
 
-import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.model.project.OtherProject;
 import com.studio1way.studio1way.repository.InMemoryReadOnlyRepository;
 import com.studio1way.studio1way.repository.project.resources.ProjectResourceLoader;
 import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProjectRepository extends InMemoryReadOnlyRepository<Project, String> {
+public class OtherProjectRepository
+    extends InMemoryReadOnlyRepository<OtherProject, String> {
 
-    public ProjectRepository(Map<String, Project> initialData) {
+    public OtherProjectRepository(Map<String, OtherProject> initialData) {
         super(initialData);
     }
 
-    public ProjectRepository() {
+    public OtherProjectRepository() {
         super(
-            new ProjectResourceLoader<Project>(
-                Project.class,
+            new ProjectResourceLoader<OtherProject>(
+                OtherProject.class,
                 "/app/src/main/resources/projects/other/"
             )
                 .allProjects()

@@ -9,7 +9,12 @@ import {
   PortfolioDetailWoodWorkFragment,
 } from "../../../__generated__/types";
 import Carousel from "../image/carousel";
-import { isCeramicWare, isPainting, isWoodWork } from "../../../utils";
+import {
+  isCeramicWare,
+  isPainting,
+  isWoodWork,
+  isOtherProject,
+} from "../../../utils";
 
 export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioDetailCeramicWare on CeramicWare {
@@ -62,6 +67,7 @@ export const PORTFOLIO_DETAIL_OTHER_PROJECT_FRAGMENT = gql`
       src
       aspectRatio
     }
+    variety
   }
 `;
 
@@ -128,6 +134,14 @@ interface PortfolioDetailParams {
 
 export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
   const properties = [project.date];
+  let media = null;
+  if (project.images.length > 0) {
+    media = (
+      <div className="portfolio-detail-media-carousel">
+        <Carousel images={project.images} />
+      </div>
+    );
+  }
   if (isCeramicWare(project)) {
     properties.push(`${project.clayBody} with ${project.glaze} glaze`);
   } else if (isPainting(project)) {
@@ -139,6 +153,22 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     }
   } else if (isWoodWork(project)) {
     properties.push(`${project.finish} on ${project.materials}`);
+  } else if (isOtherProject(project)) {
+    if (project.variety) {
+      properties.push(project.variety);
+    }
+    if (project.video) {
+      media = (
+        <iframe
+          data-testid="portfolio-detail-vid"
+          className={`portfolio-detail-media-vid-${project.video.aspectRatio}`}
+          src={project.video.src}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen={true}
+        ></iframe>
+      );
+    }
   }
 
   const linkClass = "portfolio-detail-link";
@@ -158,26 +188,6 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
           </span>
         ))}
       </span>
-    );
-  }
-
-  let media = null;
-  if (project.images.length > 0) {
-    media = (
-      <div className="portfolio-detail-media-carousel">
-        <Carousel images={project.images} />
-      </div>
-    );
-  } else if (project.__typename == "OtherProject" && project.video) {
-    media = (
-      <iframe
-        data-testid="portfolio-detail-vid"
-        className={`portfolio-detail-media-vid-${project.video.aspectRatio}`}
-        src={project.video.src}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen={true}
-      ></iframe>
     );
   }
 

@@ -60,6 +60,7 @@ type OtherProject implements Project {
     description: String!
     images: [ProjectImage!]!
     video: ProjectVideo
+    variety: String
 }
 
 interface Project {

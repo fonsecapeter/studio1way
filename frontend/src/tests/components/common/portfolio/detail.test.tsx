@@ -138,6 +138,7 @@ describe("PortfolioDetail", () => {
         links: [],
         images: [],
         video: { src: "https://avideo.com", aspectRatio: "16-9" },
+        variety: null,
       };
 
       beforeEach(() => {
@@ -161,6 +162,38 @@ describe("PortfolioDetail", () => {
           "class",
           "portfolio-detail-media-vid-16-9",
         );
+      });
+    });
+
+    describe("with a variety", () => {
+      let project: PortfolioDetailOtherProjectFragment = {
+        __typename: "OtherProject",
+        name: "A Test Project",
+        date: "2025-06-12",
+        description: "For which to run tests against",
+        links: [],
+        images: [],
+        video: null,
+        variety: "sculpture",
+      };
+
+      beforeEach(() => {
+        render(
+          <MemoryRouter initialEntries={["/other/project/a_test_project"]}>
+            <Routes>
+              <Route path="/other" element={<Department />}>
+                <Route
+                  path="project/a_test_project"
+                  element={<PortfolioDetail project={project} />}
+                />
+              </Route>
+            </Routes>
+          </MemoryRouter>,
+        );
+      });
+
+      it("renders the variety", () => {
+        expect(screen.getByText("sculpture")).toBeInTheDocument();
       });
     });
   });

@@ -3,8 +3,8 @@ package com.studio1way.studio1way.controller;
 import static org.mockito.ArgumentMatchers.anyString;
 
 import com.studio1way.studio1way.model.project.CeramicWare;
+import com.studio1way.studio1way.model.project.OtherProject;
 import com.studio1way.studio1way.model.project.Painting;
-import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.WoodWork;
 import com.studio1way.studio1way.model.project.fields.Project2Dimension;
 import com.studio1way.studio1way.model.project.fields.Project3Dimension;
@@ -33,7 +33,7 @@ public class ProjectControllerTests {
 
     @BeforeEach
     public void setUp() {
-        Project project = new Project(
+        OtherProject project = new OtherProject(
             "test-project",
             "Test Project",
             new ProjectImage(
@@ -136,7 +136,7 @@ public class ProjectControllerTests {
             """;
 
         GraphQlTester.Response resp = graphQlTester.document(document).execute();
-        resp.path("data.projects").entityList(Project.class).hasSize(4);
+        resp.path("data.projects").entityList(Object.class).hasSize(4);
         resp.path("data.projects[0].id").entity(String.class).isEqualTo("test-project");
         resp
             .path("data.projects[1].id")

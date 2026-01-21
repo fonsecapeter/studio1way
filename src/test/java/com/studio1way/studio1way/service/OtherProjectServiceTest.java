@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.model.project.OtherProject;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
-import com.studio1way.studio1way.repository.project.ProjectRepository;
+import com.studio1way.studio1way.repository.project.OtherProjectRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,12 +18,12 @@ import org.mockito.MockitoAnnotations;
 public class OtherProjectServiceTest {
 
     @InjectMocks
-    private OtherProjectService projectService;
+    private OtherProjectService otherProjectService;
 
     @Mock
-    private ProjectRepository projectRepository;
+    private OtherProjectRepository otherProjectRepository;
 
-    private Project project = new Project(
+    private OtherProject project = new OtherProject(
         "test-project",
         "Test Project",
         new ProjectImage("other/my_brain/main", ProjectImage.Extension.JPG, "test icon"),
@@ -42,27 +42,27 @@ public class OtherProjectServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        when(projectRepository.findAll()).thenReturn(List.of(project));
-        when(projectRepository.findById(anyString())).thenReturn(null);
-        when(projectRepository.findById("test-project")).thenReturn(project);
+        when(otherProjectRepository.findAll()).thenReturn(List.of(project));
+        when(otherProjectRepository.findById(anyString())).thenReturn(null);
+        when(otherProjectRepository.findById("test-project")).thenReturn(project);
     }
 
     @Test
     public void testFindAll() {
-        List<Project> projects = projectService.findAll();
+        List<OtherProject> projects = otherProjectService.findAll();
         assertEquals(1, projects.size());
         assertTrue(projects.get(0).equals(project));
     }
 
     @Test
     public void testFindByIdFound() {
-        Project loadedProject = projectService.findById("test-project");
+        OtherProject loadedProject = otherProjectService.findById("test-project");
         assertTrue(loadedProject.equals(project));
     }
 
     @Test
     public void testFindByIdNotFound() {
-        Project loadedProject = projectService.findById("something-bogus");
+        OtherProject loadedProject = otherProjectService.findById("something-bogus");
         assertNull(loadedProject);
     }
 }

@@ -1,8 +1,8 @@
 package com.studio1way.studio1way.config;
 
 import com.studio1way.studio1way.model.project.CeramicWare;
+import com.studio1way.studio1way.model.project.OtherProject;
 import com.studio1way.studio1way.model.project.Painting;
-import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.model.project.WoodWork;
 import graphql.schema.TypeResolver;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +32,7 @@ public class GraphQLConfig {
             if (env.getObject() instanceof Painting) {
                 return env.getSchema().getObjectType("Painting");
             }
-            if (env.getObject() instanceof Project) {
+            if (env.getObject() instanceof OtherProject) {
                 return env.getSchema().getObjectType("OtherProject");
             }
             throw new RuntimeException(

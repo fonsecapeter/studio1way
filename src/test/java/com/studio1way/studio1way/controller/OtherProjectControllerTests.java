@@ -2,7 +2,7 @@ package com.studio1way.studio1way.controller;
 
 import static org.mockito.ArgumentMatchers.anyString;
 
-import com.studio1way.studio1way.model.project.Project;
+import com.studio1way.studio1way.model.project.OtherProject;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.service.OtherProjectService;
@@ -28,7 +28,7 @@ public class OtherProjectControllerTests {
 
     @BeforeEach
     public void setUp() {
-        Project project = new Project(
+        OtherProject project = new OtherProject(
             "test-project",
             "Test Project",
             new ProjectImage(

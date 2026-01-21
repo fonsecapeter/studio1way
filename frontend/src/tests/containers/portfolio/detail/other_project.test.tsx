@@ -32,6 +32,8 @@ const mocks = [
               animation: null,
             },
           ],
+          video: null,
+          variety: null,
         },
       },
     },

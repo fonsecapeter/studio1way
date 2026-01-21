@@ -12,15 +12,15 @@ import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ProjectTest {
+public class OtherProjectTest {
 
-    private Project project;
-    private Project filmProject;
+    private OtherProject project;
+    private OtherProject filmProject;
 
     @BeforeEach
     public void setUp() {
         project =
-            new Project(
+            new OtherProject(
                 "test-project",
                 "Test Project",
                 new ProjectImage(
@@ -40,7 +40,7 @@ public class ProjectTest {
                 }
             );
         filmProject =
-            new Project(
+            new OtherProject(
                 "test-film-project",
                 "Test Film Project",
                 new ProjectImage(
@@ -58,7 +58,8 @@ public class ProjectTest {
                         "test image"
                     ),
                 },
-                new ProjectVideo("https://avideo.com", ProjectVideo.AspectRatio.WIDE)
+                new ProjectVideo("https://avideo.com", ProjectVideo.AspectRatio.WIDE),
+                "YouTube"
             );
     }
 
@@ -94,7 +95,10 @@ public class ProjectTest {
           ]
         }
         """;
-        Project pojoProject = objectMapper.readValue(jsonProject, Project.class);
+        OtherProject pojoProject = objectMapper.readValue(
+            jsonProject,
+            OtherProject.class
+        );
         assertTrue(pojoProject.equals(project));
     }
 
@@ -131,10 +135,14 @@ public class ProjectTest {
           "video": {
             "src": "https://avideo.com",
             "aspectRatio": "WIDE"
-          }
+          },
+          "variety": "YouTube"
         }
         """;
-        Project pojoProject = objectMapper.readValue(jsonProject, Project.class);
+        OtherProject pojoProject = objectMapper.readValue(
+            jsonProject,
+            OtherProject.class
+        );
         assertTrue(pojoProject.equals(filmProject));
     }
 

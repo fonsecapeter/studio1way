@@ -13,5 +13,6 @@
   "video": {
     "src": "https://www.youtube.com/embed/-qTctYg1rQ0?si=UAhlXcl6lyrTOJH7",
     "aspectRatio": "FULL"
-  }
+  },
+  "variety": "YouTube"
 }

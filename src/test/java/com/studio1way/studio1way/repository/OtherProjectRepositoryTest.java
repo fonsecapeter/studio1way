@@ -3,22 +3,22 @@ package com.studio1way.studio1way.repository;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.studio1way.studio1way.model.project.Project;
-import com.studio1way.studio1way.repository.project.ProjectRepository;
+import com.studio1way.studio1way.model.project.OtherProject;
+import com.studio1way.studio1way.repository.project.OtherProjectRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ProjectRepositoryTest {
+public class OtherProjectRepositoryTest {
 
     @Autowired
-    private ProjectRepository projectRepository;
+    private OtherProjectRepository otherProjectRepository;
 
     @Test
     public void testFindAll() {
-        List<Project> projects = projectRepository.findAll();
+        List<OtherProject> projects = otherProjectRepository.findAll();
         assertEquals(15, projects.size());
         // ordered by date DESC
         assertEquals("2085", projects.get(projects.size() - 1).getId());
@@ -27,13 +27,13 @@ public class ProjectRepositoryTest {
 
     @Test
     public void testFindByIdFound() {
-        Project project = projectRepository.findById("my-brain");
+        OtherProject project = otherProjectRepository.findById("my-brain");
         assertEquals("my-brain", project.getId());
     }
 
     @Test
     public void testFindByIdNotFound() {
-        Project project = projectRepository.findById("something-bogus");
+        OtherProject project = otherProjectRepository.findById("something-bogus");
         assertThat(project).isNull();
     }
 }
