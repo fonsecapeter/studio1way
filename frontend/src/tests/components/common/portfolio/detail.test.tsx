@@ -76,6 +76,16 @@ describe("PortfolioDetail", () => {
         const mainImageElement = screen.getByTestId("carousel-main-image");
         expect(mainImageElement).toHaveAttribute("src", "test-50");
       });
+
+      it("renders the category tag", async () => {
+        expect(screen.getByText("experiment")).toBeInTheDocument();
+      });
+
+      it("links to the category philosophy", async () => {
+        const linkElement = screen.getByRole("link", { name: "PHILOSOPHY →" });
+        expect(linkElement).toBeInTheDocument();
+        expect(linkElement.getAttribute("href")).toBe("/other");
+      });
     });
 
     describe("with links", () => {
@@ -241,6 +251,16 @@ describe("PortfolioDetail", () => {
         screen.getByText("gray stoneware with clear glaze"),
       ).toBeInTheDocument();
     });
+
+    it("renders the ceramicware tag", async () => {
+      expect(screen.getByText("ceramicware")).toBeInTheDocument();
+    });
+
+    it("links to the ceramics philosophy", async () => {
+      const linkElement = screen.getByRole("link", { name: "PHILOSOPHY →" });
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement.getAttribute("href")).toBe("/ceramics");
+    });
   });
 
   describe("when given an unvarnished Painting", () => {
@@ -282,6 +302,16 @@ describe("PortfolioDetail", () => {
 
     it("renders unvarnished paint properties", async () => {
       expect(screen.getByText("oil on canvas")).toBeInTheDocument();
+    });
+
+    it("renders the painting tag", async () => {
+      expect(screen.getByText("painting")).toBeInTheDocument();
+    });
+
+    it("links to the painting philosophy", async () => {
+      const linkElement = screen.getByRole("link", { name: "PHILOSOPHY →" });
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement.getAttribute("href")).toBe("/paint");
     });
   });
 
@@ -369,6 +399,16 @@ describe("PortfolioDetail", () => {
       expect(
         screen.getByText("linseed oil + beeswax on 7-ply ac fir"),
       ).toBeInTheDocument();
+    });
+
+    it("renders the woodwork tag", async () => {
+      expect(screen.getByText("woodwork")).toBeInTheDocument();
+    });
+
+    it("links to the wood philosophy", async () => {
+      const linkElement = screen.getByRole("link", { name: "PHILOSOPHY →" });
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement.getAttribute("href")).toBe("/wood");
     });
   });
 });

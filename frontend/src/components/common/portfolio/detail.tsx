@@ -133,8 +133,10 @@ interface PortfolioDetailParams {
 }
 
 export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
-  const properties = [project.date];
   let media = null;
+  let categoryTag = "experiment";
+  let philosophyPath = "/other";
+  const properties = [project.date];
   if (project.images.length > 0) {
     media = (
       <div className="portfolio-detail-media-carousel">
@@ -143,8 +145,12 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     );
   }
   if (isCeramicWare(project)) {
+    categoryTag = "ceramicware";
+    philosophyPath = "/ceramics";
     properties.push(`${project.clayBody} with ${project.glaze} glaze`);
   } else if (isPainting(project)) {
+    categoryTag = "painting";
+    philosophyPath = "/paint";
     const paintingDetails = `${project.medium} on ${project.surface}`;
     if (project.varnished) {
       properties.push(paintingDetails + " (varnished)");
@@ -152,11 +158,11 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
       properties.push(paintingDetails);
     }
   } else if (isWoodWork(project)) {
+    categoryTag = "woodwork";
+    philosophyPath = "/wood";
     properties.push(`${project.finish} on ${project.materials}`);
   } else if (isOtherProject(project)) {
-    if (project.variety) {
-      properties.push(project.variety);
-    }
+    properties.push(project.variety);
     if (project.video) {
       media = (
         <iframe
@@ -207,6 +213,10 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
       ))}
       <div>{links}</div>
       <p>{project.description}</p>
+      <p className="portfolio-detail-property">{categoryTag}</p>
+      <Link to={philosophyPath}>
+        <button className="button-link">PHILOSOPHY →</button>
+      </Link>
     </div>
   );
 };
