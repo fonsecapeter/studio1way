@@ -21,5 +21,11 @@
       "alt": "skateboard"
     }
   ],
-  "variety": "acrylic"
+  "surface": "skateboard",
+  "medium": "ACRYLIC",
+  "varnished": true,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
 }

@@ -21,5 +21,11 @@
       "alt": "box with eyes painted on it"
     }
   ],
-  "variety": "acrylic"
+  "surface": "steel box",
+  "medium": "ACRYLIC",
+  "varnished": true,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
 }

@@ -16,5 +16,11 @@
       "alt": "construction hard-hat with artist written in quotes"
     }
   ],
-  "variety": "acrylic + sharpie"
+  "surface": "hard-hat",
+  "medium": "ACRYLIC",
+  "varnished": true,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
 }

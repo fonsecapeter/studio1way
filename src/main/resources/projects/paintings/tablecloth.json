@@ -21,5 +21,11 @@
       "alt": "tablecloth with drawings on it"
     }
   ],
-  "variety": "fabric sharpie"
+  "surface": "fabric",
+  "medium": "SHARPIE",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
 }
