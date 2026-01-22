@@ -79,13 +79,16 @@ interface PortfolioProps {
 
 export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const [searchParams] = useSearchParams();
-  const initialDept = searchParams.get("dept") ?? "";
+  const initialDeptString = searchParams.get("dept") ?? "";
   const initialSelectedCategories: Set<CategoryType> = new Set();
-  if (initialDept in CategoryDepartmentMapping.toCategory) {
-    initialSelectedCategories.add(
-      CategoryDepartmentMapping.toCategory[initialDept as DepartmentType],
-    );
-  }
+  const intitialDepts = initialDeptString.split(",");
+  intitialDepts.forEach((dept) => {
+    if (dept in CategoryDepartmentMapping.toCategory) {
+      initialSelectedCategories.add(
+        CategoryDepartmentMapping.toCategory[dept as DepartmentType],
+      );
+    }
+  });
   const [selectedCategories, setSelectedCategories] = useState<
     Set<CategoryType>
   >(initialSelectedCategories);

@@ -108,7 +108,7 @@ describe("Portfolio", () => {
     });
   });
 
-  describe("with the dept query param", () => {
+  describe("with a single dept query param", () => {
     beforeEach(() => {
       render(
         <MemoryRouter initialEntries={["/something/projects?dept=ceramics"]}>
@@ -137,6 +137,40 @@ describe("Portfolio", () => {
       expect(screen.queryAllByText("A Test Painting").length).toBe(2);
       expect(screen.queryAllByText("A Test Cup").length).toBe(2);
       expect(screen.queryAllByText("A Test Table").length).toBe(2);
+    });
+  });
+
+  describe("with a comma-separated dept query param", () => {
+    beforeEach(() => {
+      render(
+        <MemoryRouter
+          initialEntries={["/something/projects?dept=ceramics,paint"]}
+        >
+          <Routes>
+            <Route path="/something" element={<Department />}>
+              <Route
+                path="projects"
+                element={
+                  <Portfolio title="Test Projects" projects={PROJECTS} />
+                }
+              />
+            </Route>
+          </Routes>
+        </MemoryRouter>,
+      );
+    });
+
+    it("filters projects", async () => {
+      expect(screen.queryAllByText("A Test Project").length).toBe(0);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Table").length).toBe(0);
+      const ceramicsSelector = screen.getByText("ceramics");
+      await fireEvent.click(ceramicsSelector);
+      expect(screen.queryAllByText("A Test Project").length).toBe(0);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(0);
+      expect(screen.queryAllByText("A Test Table").length).toBe(0);
     });
   });
 });
