@@ -60,6 +60,7 @@ const Carousel = ({ images }: CarouselProps) => {
     preloadImages({
       images: [mainImageSrc],
       setIsPreloaded,
+      delay: 5000,
     });
     preloadImages({
       images: laneImages.map((img) => img.image.half),
@@ -89,11 +90,15 @@ const Carousel = ({ images }: CarouselProps) => {
         {laneImages.map((laneImage, idx) => (
           <img
             className={
-              laneImage.selected ? `${laneImageClass}-selected` : laneImageClass
+              laneImage.selected
+                ? `${laneImageClass}-selected`
+                : isPreloaded
+                  ? laneImageClass
+                  : `${laneImageClass}-disabled`
             }
             src={laneImage.image.quarter}
             alt={`${laneImage.image.alt} (small)`}
-            onClick={() => selectImage(idx)}
+            onClick={isPreloaded ? () => selectImage(idx) : () => {}}
             key={idx}
           />
         ))}
