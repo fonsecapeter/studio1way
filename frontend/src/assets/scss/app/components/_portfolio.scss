@@ -37,6 +37,13 @@
   }
 
   &-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0;
+
     &::after {
       clear: both;
       content: "";
@@ -44,28 +51,11 @@
     }
   }
 
-  &-column {
-    display: none;
-
-    &-desktop {
-      float: left;
-      margin: 0;
-      max-width: 340px;
-
-      &::after {
-        clear: both;
-        content: "";
-        display: table;
-      }
-    }
-  }
-
   &-item {
     @include cards.shadow-interactive;
     float: left;
-    margin: 0 10px 20px;
-    width: 320px;
-    margin-bottom: 25px;
+    margin: 0 0 25px;
+    width: 330px;
 
     &-icon {
       @include cards.card-top;
@@ -102,25 +92,13 @@
   @media only screen and (max-width: 1000px) {
     // collapse into single column before major responsive layout change
     &-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    &-column {
       align-items: center;
-      display: flex;
-      flex-direction: column;
       margin: 0 auto;
       max-width: 500px;
-
-      &-desktop {
-        display: none;
-      }
     }
 
     &-item {
-      margin-bottom: 25px;
+      margin: 0 0 25px;
       max-width: variables.$max-responsive-content-width;
       width: 100%;
     }

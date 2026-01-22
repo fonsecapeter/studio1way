@@ -169,49 +169,15 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
         />
       </div>
       <div className="portfolio-list">
-        <div className="portfolio-column">
-          {filteredProjects.map((project, idx) => (
-            <PortfolioItem
-              {...(project.id === focusProjectId
-                ? { ref: focusProjectRef }
-                : {})}
-              project={project}
-              key={project.name}
-              iconPreloaded={areGroupsPreloaded[groupId(idx)]}
-              selectedPortfolioDepartments={selectedCategoryString}
-            />
-          ))}
-        </div>
-        <div className="portfolio-column-desktop">
-          {filteredProjects.map((project, idx) => {
-            if (idx % 2 === 0) {
-              return (
-                <PortfolioItem
-                  project={project}
-                  key={project.name}
-                  iconPreloaded={areGroupsPreloaded[groupId(idx)]}
-                  selectedPortfolioDepartments={selectedCategoryString}
-                />
-              );
-            }
-            return "";
-          })}
-        </div>
-        <div className="portfolio-column-desktop">
-          {filteredProjects.map((project, idx) => {
-            if (idx % 2 !== 0) {
-              return (
-                <PortfolioItem
-                  project={project}
-                  key={project.name}
-                  iconPreloaded={areGroupsPreloaded[groupId(idx)]}
-                  selectedPortfolioDepartments={selectedCategoryString}
-                />
-              );
-            }
-            return "";
-          })}
-        </div>
+        {filteredProjects.map((project, idx) => (
+          <PortfolioItem
+            {...(project.id === focusProjectId ? { ref: focusProjectRef } : {})}
+            project={project}
+            key={project.name}
+            iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+            selectedPortfolioDepartments={selectedCategoryString}
+          />
+        ))}
       </div>
     </div>
   );

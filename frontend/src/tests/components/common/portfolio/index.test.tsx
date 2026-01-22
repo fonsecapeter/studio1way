@@ -50,7 +50,7 @@ describe("Portfolio", () => {
     },
   ];
 
-  describe("when given a set of projects", () => {
+  describe("when given a list of projects", () => {
     beforeEach(() => {
       render(
         <MemoryRouter initialEntries={["/something/projects"]}>
@@ -72,11 +72,11 @@ describe("Portfolio", () => {
       expect(screen.getByText("Test Projects")).toBeInTheDocument();
     });
 
-    it("renders each project item, one for mobile, one for desktop", () => {
-      expect(screen.queryAllByText("A Test Project").length).toBe(2);
-      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
-      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
-      expect(screen.queryAllByText("A Test Table").length).toBe(2);
+    it("renders each project item", () => {
+      expect(screen.queryAllByText("A Test Project").length).toBe(1);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(1);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(1);
+      expect(screen.queryAllByText("A Test Table").length).toBe(1);
     });
 
     describe("the department filter", () => {
@@ -91,19 +91,19 @@ describe("Portfolio", () => {
         await fireEvent.click(ceramicsSelector);
         expect(screen.queryAllByText("A Test Project").length).toBe(0);
         expect(screen.queryAllByText("A Test Painting").length).toBe(0);
-        expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+        expect(screen.queryAllByText("A Test Cup").length).toBe(1);
         expect(screen.queryAllByText("A Test Table").length).toBe(0);
         const woodSelector = screen.getByText("wood");
         await fireEvent.click(woodSelector);
         expect(screen.queryAllByText("A Test Project").length).toBe(0);
         expect(screen.queryAllByText("A Test Painting").length).toBe(0);
-        expect(screen.queryAllByText("A Test Cup").length).toBe(2);
-        expect(screen.queryAllByText("A Test Table").length).toBe(2);
+        expect(screen.queryAllByText("A Test Cup").length).toBe(1);
+        expect(screen.queryAllByText("A Test Table").length).toBe(1);
         await fireEvent.click(ceramicsSelector);
         expect(screen.queryAllByText("A Test Project").length).toBe(0);
         expect(screen.queryAllByText("A Test Painting").length).toBe(0);
         expect(screen.queryAllByText("A Test Cup").length).toBe(0);
-        expect(screen.queryAllByText("A Test Table").length).toBe(2);
+        expect(screen.queryAllByText("A Test Table").length).toBe(1);
       });
     });
   });
@@ -129,14 +129,14 @@ describe("Portfolio", () => {
     it("filters projects", async () => {
       expect(screen.queryAllByText("A Test Project").length).toBe(0);
       expect(screen.queryAllByText("A Test Painting").length).toBe(0);
-      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(1);
       expect(screen.queryAllByText("A Test Table").length).toBe(0);
       const ceramicsSelector = screen.getByText("ceramics");
       await fireEvent.click(ceramicsSelector);
-      expect(screen.queryAllByText("A Test Project").length).toBe(2);
-      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
-      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
-      expect(screen.queryAllByText("A Test Table").length).toBe(2);
+      expect(screen.queryAllByText("A Test Project").length).toBe(1);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(1);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(1);
+      expect(screen.queryAllByText("A Test Table").length).toBe(1);
     });
   });
 
@@ -162,13 +162,13 @@ describe("Portfolio", () => {
 
     it("filters projects", async () => {
       expect(screen.queryAllByText("A Test Project").length).toBe(0);
-      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
-      expect(screen.queryAllByText("A Test Cup").length).toBe(2);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(1);
+      expect(screen.queryAllByText("A Test Cup").length).toBe(1);
       expect(screen.queryAllByText("A Test Table").length).toBe(0);
       const ceramicsSelector = screen.getByText("ceramics");
       await fireEvent.click(ceramicsSelector);
       expect(screen.queryAllByText("A Test Project").length).toBe(0);
-      expect(screen.queryAllByText("A Test Painting").length).toBe(2);
+      expect(screen.queryAllByText("A Test Painting").length).toBe(1);
       expect(screen.queryAllByText("A Test Cup").length).toBe(0);
       expect(screen.queryAllByText("A Test Table").length).toBe(0);
     });
