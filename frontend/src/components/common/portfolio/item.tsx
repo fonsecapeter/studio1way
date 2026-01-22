@@ -58,12 +58,17 @@ export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
   }
 `;
 
-interface CodeProps {
+interface PortfolioItemProps {
   readonly project: PortfolioIndexProjectFragment;
   readonly iconPreloaded: boolean;
+  readonly selectedPortfolioDepartments: string;
 }
 
-export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
+export const PortfolioItem = ({
+  project,
+  iconPreloaded,
+  selectedPortfolioDepartments,
+}: PortfolioItemProps) => {
   const iconSrc = project.icon.animation?.half ?? project.icon.half;
   let detailPath;
   switch (project.__typename) {
@@ -80,9 +85,15 @@ export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
       detailPath = `/experimental/project/${project.id}`;
       break;
   }
+  const link: { pathname: string; search?: string } = {
+    pathname: detailPath,
+  };
+  if (selectedPortfolioDepartments) {
+    link.search = `?dept=${selectedPortfolioDepartments}`;
+  }
   return (
     <Link
-      to={detailPath}
+      to={link}
       data-testid="portfolio-item-link"
       className="portfolio-item"
     >

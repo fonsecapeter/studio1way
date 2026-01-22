@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
 import { PORTFOLIO_DETAIL_EXPERIMENTAL_PROJECT_FRAGMENT } from "../../../components/common/portfolio/detail";
 import PortfolioDetail from "../../../components/common/portfolio/detail";
+import { DEPARTMENT } from "../../../utils";
 
 export const EXPERIMENTAL_PROJECT_BY_ID = gql`
   query experimentalProjectById($projectId: ID!) {
@@ -24,10 +25,18 @@ export const ExperimentalProjectDetailContainer = () => {
   const { loading, error, data } = useQuery(EXPERIMENTAL_PROJECT_BY_ID, {
     variables: { projectId },
   });
+  const [searchParams] = useSearchParams();
+  const selectedPortfolioDepartments =
+    searchParams.get("dept") ?? DEPARTMENT.EXPERIMENT;
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
-  return <PortfolioDetail project={data.experimentalProject} />;
+  return (
+    <PortfolioDetail
+      project={data.experimentalProject}
+      selectedPortfolioDepartments={selectedPortfolioDepartments}
+    />
+  );
 };
 
 export default ExperimentalProjectDetailContainer;

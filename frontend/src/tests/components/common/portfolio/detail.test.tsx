@@ -52,7 +52,12 @@ describe("PortfolioDetail", () => {
               <Route path="/experimental" element={<Department />}>
                 <Route
                   path="project/a_test_project"
-                  element={<PortfolioDetail project={project} />}
+                  element={
+                    <PortfolioDetail
+                      project={project}
+                      selectedPortfolioDepartments=""
+                    />
+                  }
                 />
               </Route>
             </Routes>
@@ -68,7 +73,7 @@ describe("PortfolioDetail", () => {
         expect(screen.getByText("2025-06-12")).toBeInTheDocument();
       });
 
-      it("renders a button back to the category porfolio", () => {
+      it("renders a button back to the porfolio", () => {
         const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
         expect(linkElement).toBeInTheDocument();
         expect(linkElement.getAttribute("href")).toBe("/portfolio");
@@ -87,6 +92,57 @@ describe("PortfolioDetail", () => {
         const linkElement = screen.getByRole("link", { name: "PHILOSOPHY →" });
         expect(linkElement).toBeInTheDocument();
         expect(linkElement.getAttribute("href")).toBe("/experimental");
+      });
+    });
+
+    describe("with selectedPortfolioDepartments", () => {
+      let project: PortfolioDetailExperimentalProjectFragment = {
+        __typename: "ExperimentalProject",
+        name: "A Test Project",
+        date: "2025-06-12",
+        description: "For which to run tests against",
+        links: [],
+        images: [
+          {
+            full: "test-100",
+            half: "test-50",
+            quarter: "test-25",
+            alt: "test-alt",
+            neverOverlap: false,
+            animation: null,
+          },
+        ],
+        variety: "digital",
+      };
+
+      beforeEach(() => {
+        render(
+          <MemoryRouter
+            initialEntries={["/experimental/project/a_test_project"]}
+          >
+            <Routes>
+              <Route path="/experimental" element={<Department />}>
+                <Route
+                  path="project/a_test_project"
+                  element={
+                    <PortfolioDetail
+                      project={project}
+                      selectedPortfolioDepartments="ceramics,paint"
+                    />
+                  }
+                />
+              </Route>
+            </Routes>
+          </MemoryRouter>,
+        );
+      });
+
+      it("fwds to the porfolio back button", () => {
+        const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
+        expect(linkElement).toBeInTheDocument();
+        expect(linkElement.getAttribute("href")).toBe(
+          "/portfolio?dept=ceramics,paint",
+        );
       });
     });
 
@@ -122,7 +178,12 @@ describe("PortfolioDetail", () => {
               <Route path="/experimental" element={<Department />}>
                 <Route
                   path="project/a_test_project"
-                  element={<PortfolioDetail project={project} />}
+                  element={
+                    <PortfolioDetail
+                      project={project}
+                      selectedPortfolioDepartments=""
+                    />
+                  }
                 />
               </Route>
             </Routes>
@@ -166,7 +227,12 @@ describe("PortfolioDetail", () => {
               <Route path="/experimental" element={<Department />}>
                 <Route
                   path="project/a_test_project"
-                  element={<PortfolioDetail project={project} />}
+                  element={
+                    <PortfolioDetail
+                      project={project}
+                      selectedPortfolioDepartments=""
+                    />
+                  }
                 />
               </Route>
             </Routes>
@@ -204,7 +270,12 @@ describe("PortfolioDetail", () => {
               <Route path="/experimental" element={<Department />}>
                 <Route
                   path="project/a_test_project"
-                  element={<PortfolioDetail project={project} />}
+                  element={
+                    <PortfolioDetail
+                      project={project}
+                      selectedPortfolioDepartments=""
+                    />
+                  }
                 />
               </Route>
             </Routes>
@@ -246,7 +317,12 @@ describe("PortfolioDetail", () => {
             <Route path="/ceramics" element={<Department />}>
               <Route
                 path="project/a_test_project"
-                element={<PortfolioDetail project={project} />}
+                element={
+                  <PortfolioDetail
+                    project={project}
+                    selectedPortfolioDepartments=""
+                  />
+                }
               />
             </Route>
           </Routes>
@@ -300,7 +376,12 @@ describe("PortfolioDetail", () => {
             <Route path="/ceramics" element={<Department />}>
               <Route
                 path="project/a_test_project"
-                element={<PortfolioDetail project={project} />}
+                element={
+                  <PortfolioDetail
+                    project={project}
+                    selectedPortfolioDepartments=""
+                  />
+                }
               />
             </Route>
           </Routes>
@@ -352,7 +433,12 @@ describe("PortfolioDetail", () => {
             <Route path="/ceramics" element={<Department />}>
               <Route
                 path="project/a_test_project"
-                element={<PortfolioDetail project={project} />}
+                element={
+                  <PortfolioDetail
+                    project={project}
+                    selectedPortfolioDepartments=""
+                  />
+                }
               />
             </Route>
           </Routes>
@@ -395,7 +481,12 @@ describe("PortfolioDetail", () => {
             <Route path="/ceramics" element={<Department />}>
               <Route
                 path="project/a_test_project"
-                element={<PortfolioDetail project={project} />}
+                element={
+                  <PortfolioDetail
+                    project={project}
+                    selectedPortfolioDepartments=""
+                  />
+                }
               />
             </Route>
           </Routes>

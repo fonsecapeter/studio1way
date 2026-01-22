@@ -20,6 +20,7 @@ describe("PortfolioItem", () => {
               },
             }}
             iconPreloaded={true}
+            selectedPortfolioDepartments=""
           />
         </MemoryRouter>,
       );
@@ -42,6 +43,36 @@ describe("PortfolioItem", () => {
     });
   });
 
+  describe("with selectedPortfolioDepartments", () => {
+    beforeEach(() => {
+      render(
+        <MemoryRouter>
+          <PortfolioItem
+            project={{
+              __typename: "ExperimentalProject",
+              id: "a_test_project",
+              name: "A Test Project",
+              icon: {
+                half: "test_img/50.png",
+                alt: "fake image",
+                animation: null,
+              },
+            }}
+            iconPreloaded={true}
+            selectedPortfolioDepartments="ceramics,paint"
+          />
+        </MemoryRouter>,
+      );
+    });
+
+    it("forwards in the link to the experiment detail page", () => {
+      expect(screen.getByTestId("portfolio-item-link")).toHaveAttribute(
+        "href",
+        "/experimental/project/a_test_project?dept=ceramics,paint",
+      );
+    });
+  });
+
   describe("with an animated icon CeramicWare", () => {
     beforeEach(() => {
       render(
@@ -60,6 +91,7 @@ describe("PortfolioItem", () => {
               },
             }}
             iconPreloaded={true}
+            selectedPortfolioDepartments=""
           />
         </MemoryRouter>,
       );
@@ -97,6 +129,7 @@ describe("PortfolioItem", () => {
               },
             }}
             iconPreloaded={true}
+            selectedPortfolioDepartments=""
           />
         </MemoryRouter>,
       );
@@ -126,6 +159,7 @@ describe("PortfolioItem", () => {
               },
             }}
             iconPreloaded={true}
+            selectedPortfolioDepartments=""
           />
         </MemoryRouter>,
       );

@@ -92,6 +92,9 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const [selectedCategories, setSelectedCategories] = useState<
     Set<CategoryType>
   >(initialSelectedCategories);
+  const selectedCategoryString = Array.from(selectedCategories)
+    .map((category) => CategoryDepartmentMapping.toDepartment[category])
+    .join(",");
 
   const filteredProjects = useMemo(() => {
     if (selectedCategories.size === 0) {
@@ -160,6 +163,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
               project={project}
               key={project.name}
               iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+              selectedPortfolioDepartments={selectedCategoryString}
             />
           ))}
         </div>
@@ -171,6 +175,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
                   project={project}
                   key={project.name}
                   iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+                  selectedPortfolioDepartments={selectedCategoryString}
                 />
               );
             }
@@ -185,6 +190,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
                   project={project}
                   key={project.name}
                   iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+                  selectedPortfolioDepartments={selectedCategoryString}
                 />
               );
             }

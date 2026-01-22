@@ -130,9 +130,13 @@ interface PortfolioDetailParams {
     | PortfolioDetailPaintingFragment
     | PortfolioDetailWoodWorkFragment
     | PortfolioDetailExperimentalProjectFragment;
+  readonly selectedPortfolioDepartments: string;
 }
 
-export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
+export const PortfolioDetail = ({
+  project,
+  selectedPortfolioDepartments,
+}: PortfolioDetailParams) => {
   let media = null;
   let categoryTag = "experiment";
   let philosophyPath = "/experimental";
@@ -197,11 +201,18 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     );
   }
 
+  const portfolioLink: { pathname: string; search?: string } = {
+    pathname: "/portfolio",
+  };
+  if (selectedPortfolioDepartments) {
+    portfolioLink.search = `?dept=${selectedPortfolioDepartments}`;
+  }
+
   return (
     <div>
       <div className="landing-title-row">
         <h1 className="page-title">{project.name}</h1>
-        <Link to="/portfolio">
+        <Link to={portfolioLink}>
           <button className="button-link">← PORTFOLIO</button>
         </Link>
       </div>
