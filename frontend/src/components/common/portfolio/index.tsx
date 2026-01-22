@@ -20,6 +20,7 @@ import {
   CategoryType,
   CategoryDepartmentMapping,
   DepartmentType,
+  DEPARTMENT,
 } from "../../../utils";
 import preloadImages from "../image/preload";
 import { FilterDropdown } from "../filter_dropdown";
@@ -93,9 +94,14 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const [selectedCategories, setSelectedCategories] = useState<
     Set<CategoryType>
   >(initialSelectedCategories);
-  const selectedCategoryString = Array.from(selectedCategories)
-    .map((category) => CategoryDepartmentMapping.toDepartment[category])
-    .join(",");
+  let selectedCategoryString = "";
+  if (selectedCategories.size) {
+    selectedCategoryString = Array.from(selectedCategories)
+      .map((category) => CategoryDepartmentMapping.toDepartment[category])
+      .join(",");
+  } else {
+    selectedCategoryString = `${DEPARTMENT.CERAMICS},${DEPARTMENT.EXPERIMENT},${DEPARTMENT.PAINT},${DEPARTMENT.WOOD}`;
+  }
 
   const filteredProjects = useMemo(() => {
     if (selectedCategories.size === 0) {
