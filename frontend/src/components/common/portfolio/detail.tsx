@@ -18,6 +18,7 @@ import {
 
 export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioDetailCeramicWare on CeramicWare {
+    id
     name
     date
     description
@@ -44,6 +45,7 @@ export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
 
 export const PORTFOLIO_DETAIL_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
   fragment PortfolioDetailExperimentalProject on ExperimentalProject {
+    id
     name
     date
     description
@@ -73,6 +75,7 @@ export const PORTFOLIO_DETAIL_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
 
 export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
   fragment PortfolioDetailPainting on Painting {
+    id
     name
     date
     description
@@ -100,6 +103,7 @@ export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
 
 export const PORTFOLIO_DETAIL_WOOD_WORK_FRAGMENT = gql`
   fragment PortfolioDetailWoodWork on WoodWork {
+    id
     name
     date
     description
@@ -205,7 +209,9 @@ export const PortfolioDetail = ({
     pathname: "/portfolio",
   };
   if (selectedPortfolioDepartments) {
-    portfolioLink.search = `?dept=${selectedPortfolioDepartments}`;
+    portfolioLink.search = `?dept=${selectedPortfolioDepartments}&focus=${project.id}`;
+  } else {
+    portfolioLink.search = `?focus=${project.id}`;
   }
 
   return (

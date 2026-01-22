@@ -23,6 +23,7 @@ describe("PortfolioDetail", () => {
     describe("any project", () => {
       let project: PortfolioDetailExperimentalProjectFragment = {
         __typename: "ExperimentalProject",
+        id: "a-test-project",
         name: "A Test Project",
         date: "2025-06-12",
         description: "For which to run tests against",
@@ -46,12 +47,12 @@ describe("PortfolioDetail", () => {
       beforeEach(() => {
         render(
           <MemoryRouter
-            initialEntries={["/experimental/project/a_test_project"]}
+            initialEntries={["/experimental/project/a-test-project"]}
           >
             <Routes>
               <Route path="/experimental" element={<Department />}>
                 <Route
-                  path="project/a_test_project"
+                  path="project/a-test-project"
                   element={
                     <PortfolioDetail
                       project={project}
@@ -73,10 +74,12 @@ describe("PortfolioDetail", () => {
         expect(screen.getByText("2025-06-12")).toBeInTheDocument();
       });
 
-      it("renders a button back to the porfolio", () => {
+      it("renders a button back to the porfolio with the project id", () => {
         const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
         expect(linkElement).toBeInTheDocument();
-        expect(linkElement.getAttribute("href")).toBe("/portfolio");
+        expect(linkElement.getAttribute("href")).toBe(
+          "/portfolio?focus=a-test-project",
+        );
       });
 
       it("renders a carousel", () => {
@@ -98,6 +101,7 @@ describe("PortfolioDetail", () => {
     describe("with selectedPortfolioDepartments", () => {
       let project: PortfolioDetailExperimentalProjectFragment = {
         __typename: "ExperimentalProject",
+        id: "a-test-project",
         name: "A Test Project",
         date: "2025-06-12",
         description: "For which to run tests against",
@@ -118,12 +122,12 @@ describe("PortfolioDetail", () => {
       beforeEach(() => {
         render(
           <MemoryRouter
-            initialEntries={["/experimental/project/a_test_project"]}
+            initialEntries={["/experimental/project/a-test-project"]}
           >
             <Routes>
               <Route path="/experimental" element={<Department />}>
                 <Route
-                  path="project/a_test_project"
+                  path="project/a-test-project"
                   element={
                     <PortfolioDetail
                       project={project}
@@ -141,7 +145,7 @@ describe("PortfolioDetail", () => {
         const linkElement = screen.getByRole("link", { name: "← PORTFOLIO" });
         expect(linkElement).toBeInTheDocument();
         expect(linkElement.getAttribute("href")).toBe(
-          "/portfolio?dept=ceramics,paint",
+          "/portfolio?dept=ceramics,paint&focus=a-test-project",
         );
       });
     });
@@ -149,6 +153,7 @@ describe("PortfolioDetail", () => {
     describe("with links", () => {
       let project: PortfolioDetailExperimentalProjectFragment = {
         __typename: "ExperimentalProject",
+        id: "a-test-project",
         name: "A Test Project",
         date: "2025-06-12",
         description: "For which to run tests against",
@@ -172,12 +177,12 @@ describe("PortfolioDetail", () => {
       beforeEach(() => {
         render(
           <MemoryRouter
-            initialEntries={["/experimental/project/a_test_project"]}
+            initialEntries={["/experimental/project/a-test-project"]}
           >
             <Routes>
               <Route path="/experimental" element={<Department />}>
                 <Route
-                  path="project/a_test_project"
+                  path="project/a-test-project"
                   element={
                     <PortfolioDetail
                       project={project}
@@ -209,6 +214,7 @@ describe("PortfolioDetail", () => {
     describe("with a video", () => {
       let project: PortfolioDetailExperimentalProjectFragment = {
         __typename: "ExperimentalProject",
+        id: "a-test-project",
         name: "A Test Project",
         date: "2025-06-12",
         description: "For which to run tests against",
@@ -221,12 +227,12 @@ describe("PortfolioDetail", () => {
       beforeEach(() => {
         render(
           <MemoryRouter
-            initialEntries={["/experimental/project/a_test_project"]}
+            initialEntries={["/experimental/project/a-test-project"]}
           >
             <Routes>
               <Route path="/experimental" element={<Department />}>
                 <Route
-                  path="project/a_test_project"
+                  path="project/a-test-project"
                   element={
                     <PortfolioDetail
                       project={project}
@@ -252,6 +258,7 @@ describe("PortfolioDetail", () => {
     describe("with a variety", () => {
       let project: PortfolioDetailExperimentalProjectFragment = {
         __typename: "ExperimentalProject",
+        id: "a-test-project",
         name: "A Test Project",
         date: "2025-06-12",
         description: "For which to run tests against",
@@ -264,12 +271,12 @@ describe("PortfolioDetail", () => {
       beforeEach(() => {
         render(
           <MemoryRouter
-            initialEntries={["/experimental/project/a_test_project"]}
+            initialEntries={["/experimental/project/a-test-project"]}
           >
             <Routes>
               <Route path="/experimental" element={<Department />}>
                 <Route
-                  path="project/a_test_project"
+                  path="project/a-test-project"
                   element={
                     <PortfolioDetail
                       project={project}
@@ -292,6 +299,7 @@ describe("PortfolioDetail", () => {
   describe("when given a CeramicWare", () => {
     let project: PortfolioDetailCeramicWareFragment = {
       __typename: "CeramicWare",
+      id: "a-test-project",
       name: "A Test Cup",
       date: "2025-06-12",
       description: "For which to run tests against",
@@ -312,11 +320,11 @@ describe("PortfolioDetail", () => {
 
     beforeEach(() => {
       render(
-        <MemoryRouter initialEntries={["/ceramics/project/a_test_project"]}>
+        <MemoryRouter initialEntries={["/ceramics/project/a-test-project"]}>
           <Routes>
             <Route path="/ceramics" element={<Department />}>
               <Route
-                path="project/a_test_project"
+                path="project/a-test-project"
                 element={
                   <PortfolioDetail
                     project={project}
@@ -350,6 +358,7 @@ describe("PortfolioDetail", () => {
   describe("when given an unvarnished Painting", () => {
     let project: PortfolioDetailPaintingFragment = {
       __typename: "Painting",
+      id: "a-test-project",
       name: "A Test Painting",
       date: "2025-06-12",
       description: "For which to run tests against",
@@ -371,11 +380,11 @@ describe("PortfolioDetail", () => {
 
     beforeEach(() => {
       render(
-        <MemoryRouter initialEntries={["/ceramics/project/a_test_project"]}>
+        <MemoryRouter initialEntries={["/ceramics/project/a-test-project"]}>
           <Routes>
             <Route path="/ceramics" element={<Department />}>
               <Route
-                path="project/a_test_project"
+                path="project/a-test-project"
                 element={
                   <PortfolioDetail
                     project={project}
@@ -407,6 +416,7 @@ describe("PortfolioDetail", () => {
   describe("when given a varnished Painting", () => {
     let project: PortfolioDetailPaintingFragment = {
       __typename: "Painting",
+      id: "a-test-project",
       name: "A Test Painting",
       date: "2025-06-12",
       description: "For which to run tests against",
@@ -428,11 +438,11 @@ describe("PortfolioDetail", () => {
 
     beforeEach(() => {
       render(
-        <MemoryRouter initialEntries={["/ceramics/project/a_test_project"]}>
+        <MemoryRouter initialEntries={["/ceramics/project/a-test-project"]}>
           <Routes>
             <Route path="/ceramics" element={<Department />}>
               <Route
-                path="project/a_test_project"
+                path="project/a-test-project"
                 element={
                   <PortfolioDetail
                     project={project}
@@ -456,6 +466,7 @@ describe("PortfolioDetail", () => {
   describe("when given a WoodWork", () => {
     let project: PortfolioDetailWoodWorkFragment = {
       __typename: "WoodWork",
+      id: "a-test-project",
       name: "A Test Table",
       date: "2025-06-12",
       description: "For which to run tests against",
@@ -476,11 +487,11 @@ describe("PortfolioDetail", () => {
 
     beforeEach(() => {
       render(
-        <MemoryRouter initialEntries={["/ceramics/project/a_test_project"]}>
+        <MemoryRouter initialEntries={["/ceramics/project/a-test-project"]}>
           <Routes>
             <Route path="/ceramics" element={<Department />}>
               <Route
-                path="project/a_test_project"
+                path="project/a-test-project"
                 element={
                   <PortfolioDetail
                     project={project}

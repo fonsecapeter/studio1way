@@ -18,6 +18,7 @@ const mocks = [
       data: {
         ceramicWare: {
           __typename: "CeramicWare",
+          id: "a-test-cup",
           name: "A Test Cup",
           date: "2025-11-29",
           description: "Another gray cup",

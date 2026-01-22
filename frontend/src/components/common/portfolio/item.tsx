@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import { PortfolioIndexProjectFragment } from "./index";
@@ -64,60 +64,66 @@ interface PortfolioItemProps {
   readonly selectedPortfolioDepartments: string;
 }
 
-export const PortfolioItem = ({
-  project,
-  iconPreloaded,
-  selectedPortfolioDepartments,
-}: PortfolioItemProps) => {
-  const iconSrc = project.icon.animation?.half ?? project.icon.half;
-  let detailPath;
-  switch (project.__typename) {
-    case CATEGORY.CERAMIC_WARE:
-      detailPath = `/ceramics/project/${project.id}`;
-      break;
-    case CATEGORY.PAINTING:
-      detailPath = `/paint/project/${project.id}`;
-      break;
-    case CATEGORY.WOOD_WORK:
-      detailPath = `/wood/project/${project.id}`;
-      break;
-    default:
-      detailPath = `/experimental/project/${project.id}`;
-      break;
-  }
-  const link: { pathname: string; search?: string } = {
-    pathname: detailPath,
-  };
-  if (selectedPortfolioDepartments) {
-    link.search = `?dept=${selectedPortfolioDepartments}`;
-  }
-  return (
-    <Link
-      to={link}
-      data-testid="portfolio-item-link"
-      className="portfolio-item"
-    >
-      <div className="portfolio-item-icon">
-        {iconPreloaded ? (
-          <img
-            className="portfolio-item-icon-image"
-            src={iconSrc}
-            alt={project.icon.alt}
-          />
-        ) : (
-          <div className="portfolio-item-icon-image">
-            <ImagePlaceholder
-              height={200}
-              additionalClassName="portfolio-item-icon-image-placeholder"
+export const PortfolioItem = forwardRef(
+  (
+    {
+      project,
+      iconPreloaded,
+      selectedPortfolioDepartments,
+    }: PortfolioItemProps,
+    ref: React.Ref<HTMLAnchorElement>,
+  ) => {
+    const iconSrc = project.icon.animation?.half ?? project.icon.half;
+    let detailPath;
+    switch (project.__typename) {
+      case CATEGORY.CERAMIC_WARE:
+        detailPath = `/ceramics/project/${project.id}`;
+        break;
+      case CATEGORY.PAINTING:
+        detailPath = `/paint/project/${project.id}`;
+        break;
+      case CATEGORY.WOOD_WORK:
+        detailPath = `/wood/project/${project.id}`;
+        break;
+      default:
+        detailPath = `/experimental/project/${project.id}`;
+        break;
+    }
+    const link: { pathname: string; search?: string } = {
+      pathname: detailPath,
+    };
+    if (selectedPortfolioDepartments) {
+      link.search = `?dept=${selectedPortfolioDepartments}`;
+    }
+    return (
+      <Link
+        to={link}
+        data-testid="portfolio-item-link"
+        className="portfolio-item"
+        ref={ref}
+      >
+        <div className="portfolio-item-icon">
+          {iconPreloaded ? (
+            <img
+              className="portfolio-item-icon-image"
+              src={iconSrc}
+              alt={project.icon.alt}
             />
-          </div>
-        )}
-      </div>
-      <div className="portfolio-item-content">
-        <h3 className="portfolio-item-title">{project.name}</h3>
-      </div>
-    </Link>
-  );
-};
+          ) : (
+            <div className="portfolio-item-icon-image">
+              <ImagePlaceholder
+                height={200}
+                additionalClassName="portfolio-item-icon-image-placeholder"
+              />
+            </div>
+          )}
+        </div>
+        <div className="portfolio-item-content">
+          <h3 className="portfolio-item-title">{project.name}</h3>
+        </div>
+      </Link>
+    );
+  },
+);
 
 export default PortfolioItem;

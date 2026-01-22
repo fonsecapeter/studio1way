@@ -18,6 +18,7 @@ const mocks = [
       data: {
         woodWork: {
           __typename: "WoodWork",
+          id: "a-test-shelf",
           name: "A Test Shelf",
           date: "2025-11-29",
           description: "Can never have too many shelves",

@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { gql } from "@apollo/client";
 import { useSearchParams } from "react-router-dom";
 import { PortfolioItem } from "./item";
@@ -80,6 +80,7 @@ interface PortfolioProps {
 export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const [searchParams] = useSearchParams();
   const initialDeptString = searchParams.get("dept") ?? "";
+  const focusProjectId = searchParams.get("focus") ?? "";
   const initialSelectedCategories: Set<CategoryType> = new Set();
   const intitialDepts = initialDeptString.split(",");
   intitialDepts.forEach((dept) => {
@@ -126,7 +127,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
     preloadGroups.push({
       images: [],
       setIsPreloaded: setIsGroupPreloaded(groupIdx),
-      delay: groupIdx * 1000 + 500,
+      delay: 0, // manually test with groupIdx * 1000 + 500
     });
   }
   const groupId = (idx: number) =>
@@ -145,6 +146,17 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
     });
   }, []);
 
+  const focusProjectRef = useRef<HTMLAnchorElement>(null);
+  useEffect(() => {
+    if (focusProjectRef.current) {
+      console.log("Scrolling to focus project");
+      focusProjectRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [areGroupsPreloaded]);
+
   return (
     <div>
       <div className="landing-title-row">
@@ -160,6 +172,9 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
         <div className="portfolio-column">
           {filteredProjects.map((project, idx) => (
             <PortfolioItem
+              {...(project.id === focusProjectId
+                ? { ref: focusProjectRef }
+                : {})}
               project={project}
               key={project.name}
               iconPreloaded={areGroupsPreloaded[groupId(idx)]}

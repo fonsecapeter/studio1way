@@ -18,6 +18,7 @@ const mocks = [
       data: {
         experimentalProject: {
           __typename: "ExperimentalProject",
+          id: "a-test-project",
           name: "A Test Project",
           date: "2025-11-29",
           description: "An experiment",

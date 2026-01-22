@@ -18,6 +18,7 @@ const mocks = [
       data: {
         painting: {
           __typename: "Painting",
+          id: "a-test-painting",
           name: "A Test Painting",
           date: "2025-11-29",
           description: "Painting of a test",
