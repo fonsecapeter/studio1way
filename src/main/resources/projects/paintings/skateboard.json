@@ -2,7 +2,7 @@
   "id": "skateboard",
   "name": "Skateboard",
   "icon": {
-    "path": "other/skateboard/main",
+    "path": "experiments/skateboard/main",
     "ext": "JPG",
     "alt": "skateboard"
   },
@@ -16,7 +16,7 @@
   "description": "Functional art.",
   "images": [
     {
-      "path": "other/skateboard/main",
+      "path": "experiments/skateboard/main",
       "ext": "JPG",
       "alt": "skateboard"
     }

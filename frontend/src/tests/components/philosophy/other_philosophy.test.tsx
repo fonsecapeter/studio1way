@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import OtherPhilosophy from "../../../components/philosophy/other_philosophy";
+import ExperimentationPhilosophy from "../../../components/philosophy/experimentation_philosophy";
 import Department from "../../../components/common/department";
 
 jest.mock("../../../components/common/image/preload", () => ({
@@ -12,13 +12,13 @@ jest.mock("../../../components/common/image/preload", () => ({
   }),
 }));
 
-describe("OtherPhilosophy", () => {
+describe("ExperimentationPhilosophy", () => {
   beforeEach(() => {
     render(
-      <MemoryRouter initialEntries={["/other"]}>
+      <MemoryRouter initialEntries={["/experimental"]}>
         <Routes>
-          <Route path="/other" element={<Department />}>
-            <Route index element={<OtherPhilosophy />} />
+          <Route path="/experimental" element={<Department />}>
+            <Route index element={<ExperimentationPhilosophy />} />
           </Route>
         </Routes>
       </MemoryRouter>,
@@ -32,7 +32,7 @@ describe("OtherPhilosophy", () => {
   it("links to portfolio", () => {
     expect(screen.getByText("PORTFOLIO →").parentElement).toHaveAttribute(
       "href",
-      "/portfolio/?dept=other",
+      "/portfolio/?dept=experimental",
     );
   });
 });

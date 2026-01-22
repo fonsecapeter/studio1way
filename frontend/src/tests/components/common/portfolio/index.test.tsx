@@ -9,7 +9,7 @@ import { CATEGORY } from "../../../../utils";
 describe("Portfolio", () => {
   const PROJECTS = [
     {
-      __typename: CATEGORY.OTHER,
+      __typename: CATEGORY.EXPERIMENTAL_PROJECT,
       id: "a_test_project",
       name: "A Test Project",
       icon: {

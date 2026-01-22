@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { gql } from "@apollo/client";
 import {
   PortfolioDetailCeramicWareFragment,
-  PortfolioDetailOtherProjectFragment,
+  PortfolioDetailExperimentalProjectFragment,
   PortfolioDetailPaintingFragment,
   PortfolioDetailWoodWorkFragment,
 } from "../../../__generated__/types";
@@ -13,7 +13,7 @@ import {
   isCeramicWare,
   isPainting,
   isWoodWork,
-  isOtherProject,
+  isExperimentalProject,
 } from "../../../utils";
 
 export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
@@ -42,8 +42,8 @@ export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
   }
 `;
 
-export const PORTFOLIO_DETAIL_OTHER_PROJECT_FRAGMENT = gql`
-  fragment PortfolioDetailOtherProject on OtherProject {
+export const PORTFOLIO_DETAIL_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
+  fragment PortfolioDetailExperimentalProject on ExperimentalProject {
     name
     date
     description
@@ -129,13 +129,13 @@ interface PortfolioDetailParams {
     | PortfolioDetailCeramicWareFragment
     | PortfolioDetailPaintingFragment
     | PortfolioDetailWoodWorkFragment
-    | PortfolioDetailOtherProjectFragment;
+    | PortfolioDetailExperimentalProjectFragment;
 }
 
 export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
   let media = null;
   let categoryTag = "experiment";
-  let philosophyPath = "/other";
+  let philosophyPath = "/experimental";
   const properties = [project.date];
   if (project.images.length > 0) {
     media = (
@@ -161,7 +161,7 @@ export const PortfolioDetail = ({ project }: PortfolioDetailParams) => {
     categoryTag = "woodwork";
     philosophyPath = "/wood";
     properties.push(`${project.finish} on ${project.materials}`);
-  } else if (isOtherProject(project)) {
+  } else if (isExperimentalProject(project)) {
     properties.push(project.variety);
     if (project.video) {
       media = (

@@ -1,0 +1,43 @@
+{
+  "id": "1way-dunks",
+  "name": "1Way Dunks",
+  "icon": {
+    "path": "experiments/1way_dunks/main",
+    "ext": "JPG",
+    "alt": "custom sneaker",
+    "animation": {
+      "path": "experiments/1way_dunks/animation",
+      "alt": "custom sneaker"
+    }
+  },
+  "links": [],
+  "date": "2024-11",
+  "description": "Custom sneaker deal in that the deal was I designed and bought them through NikeID.",
+  "images": [
+    {
+      "path": "experiments/1way_dunks/main",
+      "ext": "JPG",
+      "alt": "customer sneaker animation",
+      "animation": {
+        "path": "experiments/1way_dunks/animation",
+        "alt": "customer sneaker animation"
+      }
+    },
+    {
+      "path": "experiments/1way_dunks/inside",
+      "ext": "JPG",
+      "alt": "inside view"
+    },
+    {
+      "path": "experiments/1way_dunks/outside",
+      "ext": "JPG",
+      "alt": "outside view"
+    },
+    {
+      "path": "experiments/1way_dunks/back",
+      "ext": "JPG",
+      "alt": "back view with \"1WAY\" embroidered on pull-tab"
+    }
+  ],
+  "variety": "fashion"
+}

@@ -4,13 +4,13 @@ import { MemoryRouter } from "react-router-dom";
 import PortfolioItem from "../../../../components/common/portfolio/item";
 
 describe("PortfolioItem", () => {
-  describe("with a static icon OtherProject", () => {
+  describe("with a static icon ExperimentalProject", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
           <PortfolioItem
             project={{
-              __typename: "OtherProject",
+              __typename: "ExperimentalProject",
               id: "a_test_project",
               name: "A Test Project",
               icon: {
@@ -34,10 +34,10 @@ describe("PortfolioItem", () => {
       expect(iconElement).toHaveAttribute("src", "test_img/50.png");
     });
 
-    it("links to the other detail page", () => {
+    it("links to the experiment detail page", () => {
       expect(screen.getByTestId("portfolio-item-link")).toHaveAttribute(
         "href",
-        "/other/project/a_test_project",
+        "/experimental/project/a_test_project",
       );
     });
   });

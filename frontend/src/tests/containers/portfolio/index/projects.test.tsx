@@ -79,7 +79,7 @@ const mocks = [
             ],
           },
           {
-            __typename: "OtherProject",
+            __typename: "ExperimentalProject",
             id: "another-test-project",
             name: "A Test Project",
             icon: {

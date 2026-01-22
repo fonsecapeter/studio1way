@@ -1,7 +1,7 @@
 package com.studio1way.studio1way.config;
 
 import com.studio1way.studio1way.model.project.CeramicWare;
-import com.studio1way.studio1way.model.project.OtherProject;
+import com.studio1way.studio1way.model.project.ExperimentalProject;
 import com.studio1way.studio1way.model.project.Painting;
 import com.studio1way.studio1way.model.project.WoodWork;
 import graphql.schema.TypeResolver;
@@ -32,8 +32,8 @@ public class GraphQLConfig {
             if (env.getObject() instanceof Painting) {
                 return env.getSchema().getObjectType("Painting");
             }
-            if (env.getObject() instanceof OtherProject) {
-                return env.getSchema().getObjectType("OtherProject");
+            if (env.getObject() instanceof ExperimentalProject) {
+                return env.getSchema().getObjectType("ExperimentalProject");
             }
             throw new RuntimeException(
                 String.format(

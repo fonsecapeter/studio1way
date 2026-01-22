@@ -12,7 +12,7 @@ const Nav = () => {
     Ceramics: "/ceramics",
     Paint: "/paint",
     Wood: "/wood",
-    Other: "/other",
+    Other: "/experimental",
   };
   let currentPath = window.location.pathname;
   if (currentPath.length === 0 || currentPath === "/") {

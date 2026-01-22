@@ -18,8 +18,8 @@ export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
     name
   }
 `;
-export const PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT = gql`
-  fragment PortfolioItemOtherProject on OtherProject {
+export const PORTFOLIO_ITEM_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
+  fragment PortfolioItemExperimentalProject on ExperimentalProject {
     id
     icon {
       half
@@ -77,7 +77,7 @@ export const PortfolioItem = ({ project, iconPreloaded }: CodeProps) => {
       detailPath = `/wood/project/${project.id}`;
       break;
     default:
-      detailPath = `/other/project/${project.id}`;
+      detailPath = `/experimental/project/${project.id}`;
       break;
   }
   return (

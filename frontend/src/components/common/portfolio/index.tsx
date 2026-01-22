@@ -4,14 +4,14 @@ import { gql } from "@apollo/client";
 import { useSearchParams } from "react-router-dom";
 import { PortfolioItem } from "./item";
 import {
-  PortfolioIndexOtherProjectFragment,
+  PortfolioIndexExperimentalProjectFragment,
   PortfolioIndexPaintingFragment,
   PortfolioIndexCeramicWareFragment,
   PortfolioIndexWoodWorkFragment,
 } from "../../../__generated__/types";
 import {
   PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT,
-  PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT,
+  PORTFOLIO_ITEM_EXPERIMENTAL_PROJECT_FRAGMENT,
   PORTFOLIO_ITEM_PAINTING_FRAGMENT,
   PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT,
 } from "./item";
@@ -25,7 +25,7 @@ import preloadImages from "../image/preload";
 import { FilterDropdown } from "../filter_dropdown";
 
 export type PortfolioIndexProjectFragment =
-  | PortfolioIndexOtherProjectFragment
+  | PortfolioIndexExperimentalProjectFragment
   | PortfolioIndexPaintingFragment
   | PortfolioIndexCeramicWareFragment
   | PortfolioIndexWoodWorkFragment;
@@ -39,13 +39,13 @@ export const PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT = gql`
   ${PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT}
 `;
 
-export const PORTFOLIO_INDEX_OTHER_PROJECT_FRAGMENT = gql`
-  fragment PortfolioIndexOtherProject on OtherProject {
+export const PORTFOLIO_INDEX_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
+  fragment PortfolioIndexExperimentalProject on ExperimentalProject {
     id
-    ...PortfolioItemOtherProject
+    ...PortfolioItemExperimentalProject
   }
 
-  ${PORTFOLIO_ITEM_OTHER_PROJECT_FRAGMENT}
+  ${PORTFOLIO_ITEM_EXPERIMENTAL_PROJECT_FRAGMENT}
 `;
 
 export const PORTFOLIO_INDEX_PAINTING_FRAGMENT = gql`
@@ -95,7 +95,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
       return projects;
     }
     return projects.filter((project) => {
-      const projectType = project.__typename ?? CATEGORY.OTHER;
+      const projectType = project.__typename ?? CATEGORY.EXPERIMENTAL_PROJECT;
       return selectedCategories.has(projectType);
     });
   }, [selectedCategories]);

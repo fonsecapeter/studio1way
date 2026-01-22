@@ -1,9 +1,7 @@
 package com.studio1way.studio1way.controller;
 
-import static org.mockito.ArgumentMatchers.anyString;
-
 import com.studio1way.studio1way.model.project.CeramicWare;
-import com.studio1way.studio1way.model.project.OtherProject;
+import com.studio1way.studio1way.model.project.ExperimentalProject;
 import com.studio1way.studio1way.model.project.Painting;
 import com.studio1way.studio1way.model.project.WoodWork;
 import com.studio1way.studio1way.model.project.fields.Project2Dimension;
@@ -33,11 +31,11 @@ public class ProjectControllerTests {
 
     @BeforeEach
     public void setUp() {
-        OtherProject project = new OtherProject(
+        ExperimentalProject project = new ExperimentalProject(
             "test-project",
             "Test Project",
             new ProjectImage(
-                "other/my_brain/main",
+                "experiments/my_brain/main",
                 ProjectImage.Extension.JPG,
                 "test icon"
             ),
@@ -46,7 +44,7 @@ public class ProjectControllerTests {
             "A test project.",
             new ProjectImage[] {
                 new ProjectImage(
-                    "other/my_brain/main",
+                    "experiments/my_brain/main",
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),

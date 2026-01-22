@@ -2,7 +2,7 @@ package com.studio1way.studio1way.model.project.resources;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.studio1way.studio1way.model.project.OtherProject;
+import com.studio1way.studio1way.model.project.ExperimentalProject;
 import com.studio1way.studio1way.model.project.fields.ProjectAnimation;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class ProjectResourceLoaderTest {
 
-    private Map<String, OtherProject> projects;
-    private final OtherProject testProject = new OtherProject(
+    private Map<String, ExperimentalProject> projects;
+    private final ExperimentalProject testProject = new ExperimentalProject(
         "test-project",
         "Test Project",
         new ProjectImage(
@@ -36,7 +36,7 @@ public class ProjectResourceLoaderTest {
         },
         "digital"
     );
-    private final OtherProject anotherTestProject = new OtherProject(
+    private final ExperimentalProject anotherTestProject = new ExperimentalProject(
         "another-test-project",
         "Another Test Project",
         new ProjectImage(
@@ -66,8 +66,8 @@ public class ProjectResourceLoaderTest {
     @BeforeEach
     public void setUp() {
         projects =
-            new ProjectResourceLoader<OtherProject>(
-                OtherProject.class,
+            new ProjectResourceLoader<ExperimentalProject>(
+                ExperimentalProject.class,
                 "/app/src/test/resources/projects/"
             )
                 .allProjects();
@@ -76,17 +76,19 @@ public class ProjectResourceLoaderTest {
     @Test
     public void testLoadsProjectsFromJsonFiles() {
         assertEquals(2, projects.size());
-        OtherProject loadedTestProject = projects.get("test-project");
+        ExperimentalProject loadedTestProject = projects.get("test-project");
         assertNotNull(loadedTestProject);
         assertTrue(loadedTestProject.equals(testProject));
-        OtherProject anotherLoadedTestProject = projects.get("another-test-project");
+        ExperimentalProject anotherLoadedTestProject = projects.get(
+            "another-test-project"
+        );
         assertNotNull(anotherLoadedTestProject);
         assertTrue(anotherLoadedTestProject.equals(anotherTestProject));
     }
 
     @Test
     public void testSortsProjectsByDate() {
-        List<OtherProject> projectValues = new ArrayList(projects.values());
+        List<ExperimentalProject> projectValues = new ArrayList(projects.values());
         assertEquals("test-project", projectValues.get(0).getId());
         assertEquals("another-test-project", projectValues.get(1).getId());
     }

@@ -1,0 +1,43 @@
+{
+  "id": "my-brain",
+  "name": "My Brain",
+  "icon": {
+    "path": "experiments/my_brain/main",
+    "ext": "JPG",
+    "alt": "peter's brain in plastic",
+    "animation": {
+      "path": "experiments/my_brain/animation",
+      "alt": "spinning plastic brain"
+    }
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/41763273/My-Brain",
+      "text": "behance"
+    }
+  ],
+  "date": "2016",
+  "description": "I used to run MRIs at UCSF.",
+  "images": [
+    {
+      "path": "experiments/my_brain/main",
+      "ext": "JPG",
+      "alt": "peter's brain in plastic",
+      "animation": {
+        "path": "experiments/my_brain/animation",
+        "alt": "spinning plastic brain"
+      }
+    },
+    {
+      "path": "experiments/my_brain/in_situ",
+      "ext": "JPG",
+      "alt": "plastic brain on desk"
+    },
+    {
+      "path": "experiments/my_brain/render",
+      "ext": "PNG",
+      "alt": "digital 3D rendering of brain"
+    }
+  ],
+  "variety": "3D printing"
+}

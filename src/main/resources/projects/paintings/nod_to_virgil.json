@@ -2,7 +2,7 @@
   "id": "nod-to-virgil",
   "name": "Nod To Virgil",
   "icon": {
-    "path": "other/nod_to_virgil/main",
+    "path": "experiments/nod_to_virgil/main",
     "ext": "JPG",
     "alt": "construction hard-hat with artist written in quotes"
   },
@@ -11,7 +11,7 @@
   "description": "Modified 3%",
   "images": [
     {
-      "path": "other/nod_to_virgil/main",
+      "path": "experiments/nod_to_virgil/main",
       "ext": "JPG",
       "alt": "construction hard-hat with artist written in quotes"
     }

@@ -1,0 +1,30 @@
+{
+  "id": "crv-clinometer",
+  "name": "CR-V Clinometer",
+  "icon": {
+    "path": "experiments/crv_clinometer/main",
+    "ext": "JPG",
+    "alt": "clinometer"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/180590821/CR-V-Clinometer",
+      "text": "behance"
+    }
+  ],
+  "date": "2022",
+  "description": "Prevents rollover.",
+  "images": [
+    {
+      "path": "experiments/crv_clinometer/main",
+      "ext": "JPG",
+      "alt": "clinometer"
+    },
+    {
+      "path": "experiments/crv_clinometer/main",
+      "ext": "JPG",
+      "alt": ""
+    }
+  ],
+  "variety": "automotive"
+}

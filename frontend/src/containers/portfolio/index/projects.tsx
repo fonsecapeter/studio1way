@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
 import { PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT } from "../../../components/common/portfolio/index";
-import { PORTFOLIO_INDEX_OTHER_PROJECT_FRAGMENT } from "../../../components/common/portfolio/index";
+import { PORTFOLIO_INDEX_EXPERIMENTAL_PROJECT_FRAGMENT } from "../../../components/common/portfolio/index";
 import { PORTFOLIO_INDEX_PAINTING_FRAGMENT } from "../../../components/common/portfolio/index";
 import { PORTFOLIO_INDEX_WOOD_WORK_FRAGMENT } from "../../../components/common/portfolio/index";
 
@@ -13,14 +13,14 @@ export const PROJECTS = gql`
     projects {
       __typename
       ...PortfolioIndexCeramicWare
-      ...PortfolioIndexOtherProject
+      ...PortfolioIndexExperimentalProject
       ...PortfolioIndexPainting
       ...PortfolioIndexWoodWork
     }
   }
 
   ${PORTFOLIO_INDEX_CERAMIC_WARE_FRAGMENT}
-  ${PORTFOLIO_INDEX_OTHER_PROJECT_FRAGMENT}
+  ${PORTFOLIO_INDEX_EXPERIMENTAL_PROJECT_FRAGMENT}
   ${PORTFOLIO_INDEX_PAINTING_FRAGMENT}
   ${PORTFOLIO_INDEX_WOOD_WORK_FRAGMENT}
 `;

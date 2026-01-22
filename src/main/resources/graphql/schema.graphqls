@@ -1,6 +1,6 @@
 type Query {
     projects: [Project]!
-    otherProject(id: ID!): OtherProject
+    experimentalProject(id: ID!): ExperimentalProject
     painting(id: ID!): Painting
     ceramicWare(id: ID!): CeramicWare
     woodWork(id: ID!): WoodWork
@@ -51,7 +51,7 @@ type Painting implements Project {
     width: Float!
 }
 
-type OtherProject implements Project {
+type ExperimentalProject implements Project {
     id: ID!
     name: String!
     icon: ProjectImage!

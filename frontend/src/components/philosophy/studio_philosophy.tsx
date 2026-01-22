@@ -97,7 +97,7 @@ export const StudioPhilosophy = () => {
         </ul>
         <p>
           As well as a selection of{" "}
-          <Link to="/other">experimental, uncategoried pieces.</Link>
+          <Link to="/experimental">experimental, uncategoried pieces.</Link>
         </p>
       </div>
       <FullSizableImage

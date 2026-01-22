@@ -2,7 +2,7 @@
   "id": "tablecloth",
   "name": "Tablecloth",
   "icon": {
-    "path": "other/tablecloth/main",
+    "path": "experiments/tablecloth/main",
     "ext": "JPG",
     "alt": "tablecloth with drawings on it"
   },
@@ -16,7 +16,7 @@
   "description": "Saved a few hundred bucks with this one.",
   "images": [
     {
-      "path": "other/tablecloth/main",
+      "path": "experiments/tablecloth/main",
       "ext": "JPG",
       "alt": "tablecloth with drawings on it"
     }

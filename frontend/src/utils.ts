@@ -2,7 +2,7 @@ import {
   CeramicWare,
   Painting,
   WoodWork,
-  OtherProject,
+  ExperimentalProject,
 } from "./__generated__/types";
 
 class InvariantError extends Error {
@@ -22,7 +22,7 @@ export const enum CATEGORY {
   CERAMIC_WARE = "CeramicWare",
   PAINTING = "Painting",
   WOOD_WORK = "WoodWork",
-  OTHER = "OtherProject",
+  EXPERIMENTAL_PROJECT = "ExperimentalProject",
 }
 export type CategoryType = `${CATEGORY}`;
 
@@ -30,7 +30,7 @@ export const enum DEPARTMENT {
   CERAMICS = "ceramics",
   PAINT = "paint",
   WOOD = "wood",
-  OTHER = "other",
+  EXPERIMENT = "experimental",
 }
 export type DepartmentType = `${DEPARTMENT}`;
 
@@ -44,13 +44,13 @@ export const CategoryDepartmentMapping: CategoryDepartmentMappingType = {
     [CATEGORY.CERAMIC_WARE]: DEPARTMENT.CERAMICS,
     [CATEGORY.PAINTING]: DEPARTMENT.PAINT,
     [CATEGORY.WOOD_WORK]: DEPARTMENT.WOOD,
-    [CATEGORY.OTHER]: DEPARTMENT.OTHER,
+    [CATEGORY.EXPERIMENTAL_PROJECT]: DEPARTMENT.EXPERIMENT,
   },
   toCategory: {
     [DEPARTMENT.CERAMICS]: CATEGORY.CERAMIC_WARE,
     [DEPARTMENT.PAINT]: CATEGORY.PAINTING,
     [DEPARTMENT.WOOD]: CATEGORY.WOOD_WORK,
-    [DEPARTMENT.OTHER]: CATEGORY.OTHER,
+    [DEPARTMENT.EXPERIMENT]: CATEGORY.EXPERIMENTAL_PROJECT,
   },
 };
 
@@ -66,6 +66,6 @@ export function isWoodWork(obj: any): obj is WoodWork {
   return obj.__typename === CATEGORY.WOOD_WORK;
 }
 
-export function isOtherProject(obj: any): obj is OtherProject {
-  return obj.__typename === CATEGORY.OTHER;
+export function isExperimentalProject(obj: any): obj is ExperimentalProject {
+  return obj.__typename === CATEGORY.EXPERIMENTAL_PROJECT;
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(
     // Update changes in frontend/src/routes.tsx
     value = {
-        "/other/**",
+        "/experimental/**",
         "/ceramics/**",
         "/paint/**",
         "/wood/**",

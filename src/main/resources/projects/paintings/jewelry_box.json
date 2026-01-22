@@ -2,7 +2,7 @@
   "id": "jewelry-box",
   "name": "Jewelry Box",
   "icon": {
-    "path": "other/jewelry_box/main",
+    "path": "experiments/jewelry_box/main",
     "ext": "JPG",
     "alt": "box with eyes painted on it"
   },
@@ -16,7 +16,7 @@
   "description": "All I did was paint some eyes on a box but am really proud of it.",
   "images": [
     {
-      "path": "other/jewelry_box/main",
+      "path": "experiments/jewelry_box/main",
       "ext": "JPG",
       "alt": "box with eyes painted on it"
     }
