@@ -50,29 +50,4 @@ describe("NavLink", () => {
       );
     });
   });
-
-  describe("when given an absolute url", () => {
-    beforeEach(() => {
-      render(
-        <MemoryRouter>
-          <NavLink name="Test" to="https://example.com" active={false} />
-        </MemoryRouter>,
-      );
-    });
-
-    it("renders the name", () => {
-      expect(screen.getByText("Test")).toBeInTheDocument();
-    });
-
-    it("links to the given destination", () => {
-      expect(screen.getByText("Test")).toHaveAttribute(
-        "href",
-        "https://example.com",
-      );
-    });
-
-    it("opens in a new tab", () => {
-      expect(screen.getByText("Test")).toHaveAttribute("target", "_blank");
-    });
-  });
 });

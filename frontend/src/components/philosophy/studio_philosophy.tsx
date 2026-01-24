@@ -43,8 +43,8 @@ export const StudioPhilosophy = () => {
     <div>
       <div className="landing-title-row">
         <h1 className="page-title">The Studio of P. Fonseca</h1>
-        <a href="https://peternfonseca.com" target="_blank">
-          <button className="button-link">↑ about the artist ↑</button>
+        <a href="https://peternfonseca.com">
+          <button className="button-link">about the artist</button>
         </a>
       </div>
       <FullSizableImage

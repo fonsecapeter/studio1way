@@ -29,8 +29,9 @@ describe("StudioPhilosophy", () => {
   });
 
   it("links to personal website", () => {
-    expect(
-      screen.getByText("↑ about the artist ↑").parentElement,
-    ).toHaveAttribute("href", "https://peternfonseca.com");
+    expect(screen.getByText("about the artist").parentElement).toHaveAttribute(
+      "href",
+      "https://peternfonseca.com",
+    );
   });
 });

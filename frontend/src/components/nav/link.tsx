@@ -17,11 +17,7 @@ export const NavLink = ({ name, to, active }: NavLinkProps) => {
     return <span className="nav-link-active">{text}</span>;
   }
   return (
-    <Link
-      className="nav-link"
-      to={to}
-      target={to.startsWith("http") ? "_blank" : undefined}
-    >
+    <Link className="nav-link" to={to}>
       {text}
     </Link>
   );
