@@ -7,7 +7,7 @@
       @include cards.shadow-interactive;
       border-radius: 3px;
       display: block;
-      max-height: calc(80vw - 80px);
+      max-height: min(480px, calc(80vw - 80px));
       min-height: 180px;
       max-width: 100%;
 

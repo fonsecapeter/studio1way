@@ -1,0 +1,41 @@
+{
+  "id": "loquat-slab-table",
+  "name": "Loquat Slab Table",
+  "icon": {
+    "path": "woodworks/loquat_slab_table/main",
+    "ext": "JPG",
+    "alt": "table made of a stump on a cinder block"
+  },
+  "links": [],
+  "date": "2025-01-13",
+  "description": "On 2024-12-13, A huge storm hit SF and we got our first ever tornado warning. It took down beautiful bronze loquat tree on our street, a slice of which made the perfect side table.",
+  "images": [
+    {
+      "path": "woodworks/loquat_slab_table/main",
+      "ext": "JPG",
+      "alt": "table made of a stump on a cinder block"
+    },
+    {
+      "path": "woodworks/loquat_slab_table/process",
+      "ext": "JPG",
+      "alt": "chiseling bark off the stump"
+    },
+    {
+      "path": "woodworks/loquat_slab_table/slices",
+      "ext": "JPG",
+      "alt": "tree cross-cut into slices on the sidewalk"
+    },
+    {
+      "path": "woodworks/loquat_slab_table/fallen",
+      "ext": "JPG",
+      "alt": "tree fallen across the sidewalk"
+    }
+  ],
+  "materials": "bronze loquat + cinder block",
+  "finish": "PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

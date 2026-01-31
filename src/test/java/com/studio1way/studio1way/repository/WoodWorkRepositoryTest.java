@@ -19,7 +19,7 @@ public class WoodWorkRepositoryTest {
     @Test
     public void testFindAll() {
         List<WoodWork> woodWorks = woodWorkRepository.findAll();
-        assertEquals(6, woodWorks.size());
+        assertEquals(7, woodWorks.size());
         // ordered by date DESC
         assertEquals("shop-class-shelf", woodWorks.get(woodWorks.size() - 1).getId());
         assertEquals("tea-box", woodWorks.get(woodWorks.size() - 2).getId());
