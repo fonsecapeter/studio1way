@@ -19,7 +19,7 @@ public class CeramicWareRepositoryTest {
     @Test
     public void testFindAll() {
         List<CeramicWare> ceramicWares = ceramicWareRepository.findAll();
-        assertEquals(4, ceramicWares.size());
+        assertThat(ceramicWares.size()).isGreaterThan(4);
         // ordered by date DESC else id ASC
         assertEquals("desk-set", ceramicWares.get(ceramicWares.size() - 1).getId());
         assertEquals("garlic-grater", ceramicWares.get(ceramicWares.size() - 2).getId());

@@ -1,0 +1,46 @@
+{
+  "id": "red-stripe-cup",
+  "name": "Red Stripe Cup",
+  "icon": {
+    "path": "ceramicwares/red_stripe_cup/main",
+    "ext": "JPG",
+    "alt": "espresso pouring into cup with a red stripe around the rim"
+  },
+  "links": [
+    {
+      "url": "https://www.behance.net/gallery/165218685/Ceramic-Desk-Set",
+      "text": "behance"
+    }
+  ],
+  "date": "2025-04-10",
+  "description": "Classic gray cup with a stylish red stripe around the rim.",
+  "images": [
+    {
+      "path": "ceramicwares/red_stripe_cup/main",
+      "ext": "JPG",
+      "alt": "espresso pouring into cup with a red stripe around the rim"
+    },
+    {
+      "path": "ceramicwares/red_stripe_cup/inside",
+      "ext": "JPG",
+      "alt": "cup in hand"
+    },
+    {
+      "path": "ceramicwares/red_stripe_cup/stamp",
+      "ext": "JPG",
+      "alt": "upside-down cup in hand"
+    },
+    {
+      "path": "ceramicwares/red_stripe_cup/row",
+      "ext": "JPG",
+      "alt": "row of three cups"
+    }
+  ],
+  "clayBody": "GRAY_STONEWARE",
+  "glaze": "clear",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}

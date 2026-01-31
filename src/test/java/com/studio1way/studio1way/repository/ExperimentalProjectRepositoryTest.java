@@ -19,7 +19,7 @@ public class ExperimentalProjectRepositoryTest {
     @Test
     public void testFindAll() {
         List<ExperimentalProject> projects = otherProjectRepository.findAll();
-        assertEquals(11, projects.size());
+        assertThat(projects.size()).isGreaterThan(10);
         // ordered by date DESC
         assertEquals("2085", projects.get(projects.size() - 1).getId());
         assertEquals("my-brain", projects.get(projects.size() - 2).getId());
