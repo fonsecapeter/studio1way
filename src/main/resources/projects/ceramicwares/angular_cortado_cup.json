@@ -1,8 +1,8 @@
 {
-  "id": "espresso-cup",
-  "name": "Espresso Cup",
+  "id": "angular-cortado-cup",
+  "name": "Angular Cortado Cup",
   "icon": {
-    "path": "ceramicwares/espresso_cup/main",
+    "path": "ceramicwares/angular_cortado_cup/main",
     "ext": "JPG",
     "alt": "small angular cup"
   },
@@ -11,17 +11,17 @@
   "description": "A gift for my dad",
   "images": [
     {
-      "path": "ceramicwares/espresso_cup/main",
+      "path": "ceramicwares/angular_cortado_cup/main",
       "ext": "JPG",
       "alt": "small angular cup"
     },
     {
-      "path": "ceramicwares/espresso_cup/stamp",
+      "path": "ceramicwares/angular_cortado_cup/stamp",
       "ext": "JPG",
       "alt": "underside stamped with 1way makers mark"
     },
     {
-      "path": "ceramicwares/espresso_cup/leather_hard",
+      "path": "ceramicwares/angular_cortado_cup/leather_hard",
       "ext": "JPG",
       "alt": "clay cup right after trimming stage"
     }

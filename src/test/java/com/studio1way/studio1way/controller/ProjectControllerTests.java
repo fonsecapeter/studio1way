@@ -55,7 +55,7 @@ public class ProjectControllerTests {
             "test-ceramicWare",
             "Test CeramicWare",
             new ProjectImage(
-                "ceramicwares/espresso_cup/main",
+                "ceramicwares/angular_cortado_cup/main",
                 ProjectImage.Extension.JPG,
                 "test icon"
             ),
@@ -64,7 +64,7 @@ public class ProjectControllerTests {
             "A test ceramicWare.",
             new ProjectImage[] {
                 new ProjectImage(
-                    "ceramicwares/espresso_cup/main",
+                    "ceramicwares/angular_cortado_cup/main",
                     ProjectImage.Extension.JPG,
                     "test image"
                 ),
