@@ -1,0 +1,46 @@
+{
+  "id": "laptop-garage",
+  "name": "Laptop Garage",
+  "icon": {
+    "path": "woodworks/laptop_garage/main",
+    "ext": "JPG",
+    "alt": "wooden stand for monitor over a laptop"
+  },
+  "links": [],
+  "date": "2025-05-07",
+  "description": "A clear desk is a clear mind.",
+  "images": [
+    {
+      "path": "woodworks/laptop_garage/main",
+      "ext": "JPG",
+      "alt": "wooden stand for monitor over a laptop"
+    },
+    {
+      "path": "woodworks/laptop_garage/overhead",
+      "ext": "JPG",
+      "alt": "overhead view with keyboard"
+    },
+    {
+      "path": "woodworks/laptop_garage/side",
+      "ext": "JPG",
+      "alt": "side view showing laptop underneath"
+    },
+    {
+      "path": "woodworks/laptop_garage/cable",
+      "ext": "JPG",
+      "alt": "close up of cable management hole"
+    },
+    {
+      "path": "woodworks/laptop_garage/solo",
+      "ext": "JPG",
+      "alt": "wood stand without monitor, keyboard, laptop, or anything else"
+    }
+  ],
+  "materials": "7-ply AC Fir",
+  "finish": "PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
