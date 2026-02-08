@@ -1,0 +1,36 @@
+{
+  "id": "wood-dept-shelving",
+  "name": "Wood Department Shelving",
+  "icon": {
+    "path": "woodworks/wood_dept_shelving/main",
+    "ext": "JPG",
+    "alt": "chaotically organized woodworking tools on shelving"
+  },
+  "links": [],
+  "date": "2025-08-21",
+  "description": "A place for everything and everything in its place.",
+  "images": [
+    {
+      "path": "woodworks/wood_dept_shelving/main",
+      "ext": "JPG",
+      "alt": "chaotically organized woodworking tools on shelving"
+    },
+    {
+      "path": "woodworks/wood_dept_shelving/arrows",
+      "ext": "JPG",
+      "alt": "highlighted view of tools hanging on shelving with green and white arrows painted on them"
+    },
+    {
+      "path": "woodworks/wood_dept_shelving/hook",
+      "ext": "JPG",
+      "alt": "closeup of handmade clay hook"
+    }
+  ],
+  "materials": "scrap wood",
+  "finish": "PASTE_WAX",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
