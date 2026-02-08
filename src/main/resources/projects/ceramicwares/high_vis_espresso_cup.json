@@ -1,0 +1,41 @@
+{
+  "id": "high-vis-espresso-cup",
+  "name": "High Visibility Espresso Cup",
+  "icon": {
+    "path": "ceramicwares/high_vis_espresso_cup/main",
+    "ext": "JPG",
+    "alt": "small white and red checkered cup on a shelf"
+  },
+  "links": [],
+  "date": "2025-11-30",
+  "description": "Inspired by the red and white checkered pattern of those small buildings I see at every airport, this cup is hand painted with the same pattern to be easily spotted in a crowded workplace – signaling good things to come.",
+  "images": [
+    {
+      "path": "ceramicwares/high_vis_espresso_cup/main",
+      "ext": "JPG",
+      "alt": "small white and red checkered cup on a crowded studio shelf"
+    },
+    {
+      "path": "ceramicwares/high_vis_espresso_cup/solo",
+      "ext": "JPG",
+      "alt": "small white and red checkered cup alone on a shelf"
+    },
+    {
+      "path": "ceramicwares/high_vis_espresso_cup/stamp",
+      "ext": "JPG",
+      "alt": "underside of small white and red checkered cup stamped with 1way makers mark"
+    },
+    {
+      "path": "ceramicwares/high_vis_espresso_cup/example",
+      "ext": "JPG",
+      "alt": "red and white checkered airport building taken from a plane window"
+    }
+  ],
+  "clayBody": "GRAY_STONEWARE",
+  "glaze": "clear",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
