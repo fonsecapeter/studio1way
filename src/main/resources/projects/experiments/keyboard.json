@@ -1,0 +1,40 @@
+{
+  "id": "keyboard",
+  "name": "Keyboard",
+  "icon": {
+    "path": "experiments/keyboard/arrows",
+    "ext": "JPG",
+    "alt": "mechanical keyboard next to coffee with arrow keys popped off"
+  },
+  "links": [],
+  "date": "2025-08-07",
+  "description": "From the 1Way Computer Company",
+  "images": [
+    {
+      "path": "experiments/keyboard/arrows",
+      "ext": "JPG",
+      "alt": "mechanical keyboard next to coffee with arrow keys popped off"
+    },
+    {
+      "path": "experiments/keyboard/overhead",
+      "ext": "JPG",
+      "alt": "overhead view of mechanical keyboard"
+    },
+    {
+      "path": "experiments/keyboard/front",
+      "ext": "JPG",
+      "alt": "angled front view of mechanical keyboard"
+    },
+    {
+      "path": "experiments/keyboard/left",
+      "ext": "JPG",
+      "alt": "angled left corner view of mechanical keyboard"
+    },
+    {
+      "path": "experiments/keyboard/process",
+      "ext": "JPG",
+      "alt": "keyboard in pieces with soldering iron"
+    }
+  ],
+  "variety": "electronics"
+}
