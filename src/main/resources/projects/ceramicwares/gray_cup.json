@@ -1,0 +1,41 @@
+{
+  "id": "gray-cup",
+  "name": "Gray Cup",
+  "icon": {
+    "path": "ceramicwares/gray_cup/chemex",
+    "ext": "JPG",
+    "alt": "small gray cup near chemex coffee maker"
+  },
+  "links": [],
+  "date": "2025-03-16",
+  "description": "The classic. Comes in various shapes and sizes.",
+  "images": [
+    {
+      "path": "ceramicwares/gray_cup/chemex",
+      "ext": "JPG",
+      "alt": "small gray cup near chemex coffee maker"
+    },
+    {
+      "path": "ceramicwares/gray_cup/solo",
+      "ext": "JPG",
+      "alt": "small gray cup filled with coffee but otherwise alone on a table"
+    },
+    {
+      "path": "ceramicwares/gray_cup/empty",
+      "ext": "JPG",
+      "alt": "small gray cup without anything in it on a table"
+    },
+    {
+      "path": "ceramicwares/gray_cup/trio",
+      "ext": "JPG",
+      "alt": "underside of 3 gray cups stamped with 1way makers mark"
+    }
+  ],
+  "clayBody": "GRAY_STONEWARE",
+  "glaze": "clear",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
