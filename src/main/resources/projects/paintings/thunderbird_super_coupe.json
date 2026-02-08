@@ -1,0 +1,36 @@
+{
+  "id": "thunderbird-super-coupe",
+  "name": "Thunderbird Super Coupe",
+  "icon": {
+    "path": "paintings/thunderbird_super_coupe/main",
+    "ext": "JPG",
+    "alt": "painting of black car on a country road"
+  },
+  "links": [],
+  "date": "2025-06-09",
+  "description": "A childhood memory",
+  "images": [
+    {
+      "path": "paintings/thunderbird_super_coupe/main",
+      "ext": "JPG",
+      "alt": "painting of black car on a country road"
+    },
+    {
+      "path": "paintings/thunderbird_super_coupe/easel",
+      "ext": "JPG",
+      "alt": "the painting on an easel"
+    },
+    {
+      "path": "paintings/thunderbird_super_coupe/process",
+      "ext": "JPG",
+      "alt": "paint supplies used to create the painting"
+    }
+  ],
+  "surface": "canvas",
+  "medium": "OIL",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}
