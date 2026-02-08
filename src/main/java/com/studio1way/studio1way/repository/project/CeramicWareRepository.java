@@ -16,11 +16,11 @@ public class CeramicWareRepository
 
     public CeramicWareRepository() {
         super(
-            new ProjectResourceLoader<CeramicWare>(
-                CeramicWare.class,
-                "/app/src/main/resources/projects/ceramicwares/"
-            )
-                .allProjects()
+            new ProjectResourceLoader<CeramicWare>()
+                .allProjects(
+                    CeramicWare.class,
+                    "/app/src/main/resources/projects/ceramicwares/"
+                )
         );
     }
 }

@@ -16,11 +16,11 @@ public class ExperimentalProjectRepository
 
     public ExperimentalProjectRepository() {
         super(
-            new ProjectResourceLoader<ExperimentalProject>(
-                ExperimentalProject.class,
-                "/app/src/main/resources/projects/experiments/"
-            )
-                .allProjects()
+            new ProjectResourceLoader<ExperimentalProject>()
+                .allProjects(
+                    ExperimentalProject.class,
+                    "/app/src/main/resources/projects/experiments/"
+                )
         );
     }
 }

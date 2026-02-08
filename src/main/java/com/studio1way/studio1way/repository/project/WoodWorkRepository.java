@@ -15,11 +15,11 @@ public class WoodWorkRepository extends InMemoryReadOnlyRepository<WoodWork, Str
 
     public WoodWorkRepository() {
         super(
-            new ProjectResourceLoader<WoodWork>(
-                WoodWork.class,
-                "/app/src/main/resources/projects/woodworks/"
-            )
-                .allProjects()
+            new ProjectResourceLoader<WoodWork>()
+                .allProjects(
+                    WoodWork.class,
+                    "/app/src/main/resources/projects/woodworks/"
+                )
         );
     }
 }

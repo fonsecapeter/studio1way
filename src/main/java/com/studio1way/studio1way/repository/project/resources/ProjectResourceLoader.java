@@ -7,26 +7,22 @@ import com.studio1way.studio1way.model.project.Project;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import org.springframework.cache.annotation.Cacheable;
 
 public class ProjectResourceLoader<T extends Project> {
 
-    private final Class<T> resourceType;
-    private final String resourceDir;
+    public ProjectResourceLoader() {}
 
-    public ProjectResourceLoader(Class<T> resourceType, String resourceDir) {
-        this.resourceType = resourceType;
-        this.resourceDir = resourceDir;
-    }
-
-    public Map<String, T> allProjects() {
+    @Cacheable(value = "projects", key = "#resourceDir")
+    public Map<String, T> allProjects(Class<T> resourceType, String resourceDir) {
         LinkedHashMap<String, T> projects = new LinkedHashMap<>();
-        for (T project : loadProjects()) {
+        for (T project : loadProjects(resourceType, resourceDir)) {
             projects.put(project.getId(), project);
         }
         return projects;
     }
 
-    private List<T> loadProjects() {
+    private List<T> loadProjects(Class<T> resourceType, String resourceDir) {
         List<T> projects = new ArrayList<T>();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);

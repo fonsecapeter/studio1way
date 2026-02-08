@@ -16,11 +16,11 @@ public class PaintingRepository extends InMemoryReadOnlyRepository<Painting, Str
 
     public PaintingRepository() {
         super(
-            new ProjectResourceLoader<Painting>(
-                Painting.class,
-                "/app/src/main/resources/projects/paintings/"
-            )
-                .allProjects()
+            new ProjectResourceLoader<Painting>()
+                .allProjects(
+                    Painting.class,
+                    "/app/src/main/resources/projects/paintings/"
+                )
         );
     }
 }

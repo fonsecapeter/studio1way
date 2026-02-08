@@ -66,11 +66,11 @@ public class ProjectResourceLoaderTest {
     @BeforeEach
     public void setUp() {
         projects =
-            new ProjectResourceLoader<ExperimentalProject>(
-                ExperimentalProject.class,
-                "/app/src/test/resources/projects/"
-            )
-                .allProjects();
+            new ProjectResourceLoader<ExperimentalProject>()
+                .allProjects(
+                    ExperimentalProject.class,
+                    "/app/src/test/resources/projects/"
+                );
     }
 
     @Test
