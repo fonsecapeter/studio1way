@@ -1,0 +1,36 @@
+{
+  "id": "safety-espresso-cup",
+  "name": "Safety Espresso Cup",
+  "icon": {
+    "path": "ceramicwares/safety_espresso_cup/main",
+    "ext": "JPG",
+    "alt": "small gray cup with yellow and black safety stripe around the rim pictured in front of a similarly clad bicycle"
+  },
+  "links": [],
+  "date": "2025-11-30",
+  "description": "Workwear but a cup – just as at home on a jobsite as your stand-up desk.",
+  "images": [
+    {
+      "path": "ceramicwares/safety_espresso_cup/main",
+      "ext": "JPG",
+      "alt": "small gray cup with yellow and black safety stripe around the rim pictured in front of a similarly clad bicycle"
+    },
+    {
+      "path": "ceramicwares/safety_espresso_cup/solo",
+      "ext": "JPG",
+      "alt": "small gray cup with yellow and black safety stripe around the rim pictured alone on a shelf"
+    },
+    {
+      "path": "ceramicwares/safety_espresso_cup/stamp",
+      "ext": "JPG",
+      "alt": "underside of 2 cups with 1way makers mark stamped on them"
+    }
+  ],
+  "clayBody": "GRAY_STONEWARE",
+  "glaze": "clear",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
