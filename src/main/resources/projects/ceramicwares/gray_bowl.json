@@ -1,0 +1,31 @@
+{
+  "id": "gray-bowl",
+  "name": "Gray Bowl",
+  "icon": {
+    "path": "ceramicwares/gray_bowl/pomegranate",
+    "ext": "JPG",
+    "alt": "small gray bowl with pomegranate seeds in it"
+  },
+  "links": [],
+  "date": "2025-03-16",
+  "description": "The classic in bowl form.",
+  "images": [
+    {
+      "path": "ceramicwares/gray_bowl/pomegranate",
+      "ext": "JPG",
+      "alt": "small gray bowl with pomegranate seeds in it"
+    },
+    {
+      "path": "ceramicwares/gray_bowl/stamp",
+      "ext": "JPG",
+      "alt": "underside of gray bowl stamped with 1way makers mark"
+    }
+  ],
+  "clayBody": "GRAY_STONEWARE",
+  "glaze": "clear",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
