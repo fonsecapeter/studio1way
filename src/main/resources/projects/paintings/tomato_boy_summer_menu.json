@@ -1,0 +1,41 @@
+{
+  "id": "tomato-boy-summer-menu",
+  "name": "Tomato Boy Summer Menu",
+  "icon": {
+    "path": "paintings/tomato_boy_summer_menu/tomato",
+    "ext": "JPG",
+    "alt": "close up of a small painted tomato"
+  },
+  "links": [],
+  "date": "2025-07-15",
+  "description": "Menu for my birthday party. Made in collaboration with Neha.",
+  "images": [
+    {
+      "path": "paintings/tomato_boy_summer_menu/menus",
+      "ext": "JPG",
+      "alt": "handmade menu for a tomato themed birthday party"
+    },
+    {
+      "path": "paintings/tomato_boy_summer_menu/process",
+      "ext": "JPG",
+      "alt": "a mess of painting supplies used to create the menu"
+    },
+    {
+      "path": "paintings/tomato_boy_summer_menu/tomato",
+      "ext": "JPG",
+      "alt": "close up of a small painted tomato"
+    },
+    {
+      "path": "paintings/tomato_boy_summer_menu/party",
+      "ext": "JPG",
+      "alt": "photo of some of the food we served on that menu"
+    }
+  ],
+  "surface": "canvas",
+  "medium": "OIL",
+  "varnished": false,
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0
+  }
+}
