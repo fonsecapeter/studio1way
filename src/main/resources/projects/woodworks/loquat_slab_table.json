@@ -8,7 +8,7 @@
   },
   "links": [],
   "date": "2025-01-13",
-  "description": "On 2024-12-13, A huge storm hit SF and we got our first ever tornado warning. It took down beautiful bronze loquat tree on our street, a slice of which made the perfect side table.",
+  "description": "On 2024-12-13, A huge storm hit SF and we got our first ever tornado warning. It took down a beautiful tree on our street, a slice of which made the perfect side table.",
   "images": [
     {
       "path": "woodworks/loquat_slab_table/main",
@@ -31,7 +31,7 @@
       "alt": "tree fallen across the sidewalk"
     }
   ],
-  "materials": "bronze loquat + cinder block",
+  "materials": "bronze loquat",
   "finish": "PASTE_WAX",
   "dimensions": {
     "height": 0.0,
