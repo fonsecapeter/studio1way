@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.repository.project;
 
+import com.studio1way.studio1way.AppRoot;
 import com.studio1way.studio1way.model.project.WoodWork;
 import com.studio1way.studio1way.repository.InMemoryReadOnlyRepository;
 import com.studio1way.studio1way.repository.project.resources.ProjectResourceLoader;
@@ -18,7 +19,7 @@ public class WoodWorkRepository extends InMemoryReadOnlyRepository<WoodWork, Str
             new ProjectResourceLoader<WoodWork>()
                 .allProjects(
                     WoodWork.class,
-                    "/app/src/main/resources/projects/woodworks/"
+                    AppRoot.PATH + "/src/main/resources/projects/woodworks/"
                 )
         );
     }

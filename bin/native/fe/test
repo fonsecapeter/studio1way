@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Run frontend unit tests natively 🧪️
+set -e -o pipefail
+
+source "$(dirname "$0")/../env"
+
+(cd "$REPO_ROOT/frontend" && npm run test)

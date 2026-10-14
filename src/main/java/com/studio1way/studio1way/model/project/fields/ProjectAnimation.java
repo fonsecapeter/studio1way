@@ -1,12 +1,13 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import com.studio1way.studio1way.AppRoot;
 import java.io.File;
 import java.util.Objects;
 
 public class ProjectAnimation {
 
     private final String IMG_PATH = "/img/projects";
-    private final String ABS_PATH = "/app/frontend/src/assets/";
+    private final String ABS_PATH = AppRoot.PATH + "/frontend/src/assets/";
     private final String EXTENSION = "gif";
 
     private String path;

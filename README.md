@@ -29,3 +29,14 @@ Requires [docker](https://www.docker.com/community-edition)
 - `bin/test`
 - `bin/fe/test`
 - See other commands at `bin/list`
+
+### Without Docker (native)
+
+Needs JDK 21 + Node 20 on your PATH. The app reads its data from the
+checkout itself — `bin/native/*` sets `APP_ROOT` to the repo root (it
+defaults to `/app`, the Docker layout) plus the env docker-compose
+would normally inject.
+
+- `bin/native/up` — build + run (site at `http://localhost:8080`)
+- `bin/native/test` and `bin/native/fe/test`
+- See other commands at `bin/native/list`
