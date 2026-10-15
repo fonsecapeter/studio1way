@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.repository.project;
 
+import com.studio1way.studio1way.AppRoot;
 import com.studio1way.studio1way.model.project.CeramicWare;
 import com.studio1way.studio1way.repository.InMemoryReadOnlyRepository;
 import com.studio1way.studio1way.repository.project.resources.ProjectResourceLoader;
@@ -19,7 +20,7 @@ public class CeramicWareRepository
             new ProjectResourceLoader<CeramicWare>()
                 .allProjects(
                     CeramicWare.class,
-                    "/app/src/main/resources/projects/ceramicwares/"
+                    AppRoot.PATH + "/src/main/resources/projects/ceramicwares/"
                 )
         );
     }

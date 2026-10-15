@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# List native commands 📋
+set -eu -o pipefail
+
+printf "\n$(tput setaf 6)native:$(tput sgr0)\n"
+
+for file in bin/native/*; do
+  if [ -d $file ]; then
+    continue
+  fi
+  name=$( \
+    echo $file \
+    | sed 's@bin\/@@g' \
+  )
+  description=$( \
+    cat "$file" | \
+    head -n 2 | \
+    tail -n 1 | \
+    sed 's/# //'\
+  )
+  if [[ "${description}" == 'Helper' ]]; then
+    continue
+  fi
+  printf \
+    "  $(tput setaf 2)%.24s$(tput sgr0)%s\n" \
+    "${name}$(tput setaf 8)............................" \
+    "${description}"
+done
+
+"$(dirname "$0")/fe/list"

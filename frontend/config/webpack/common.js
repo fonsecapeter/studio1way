@@ -9,7 +9,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".x"],
   },
-  context: "/app/frontend",
+  context: resolve(__dirname, "../.."),
   entry: [
     "./src/index.tsx",
   ],
@@ -70,7 +70,7 @@ module.exports = {
   output: {
     filename: "js/[name].[contenthash].bundle.min.js",
     chunkFilename: "js/[name].[contenthash].bundle.min.js",
-    path: "/app/src/main/resources/static",
+    path: resolve(__dirname, "../../../src/main/resources/static"),
     publicPath: "/",
   },
   optimization: {
