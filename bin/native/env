@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Helper
+# Shared environment for the native (no-Docker) commands: the repo root
+# as APP_ROOT, plus the env docker-compose would normally inject.
+
+NATIVE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$NATIVE_DIR/../.." && pwd)"
+RUNTIME_DIR="$REPO_ROOT/.native"
+
+export APP_ROOT="$REPO_ROOT"
+export PORT="${PORT:-8081}"
+export API_URL="${API_URL:-http://127.0.0.1:8081}"
+export DEV_PROXY_TARGET="${DEV_PROXY_TARGET:-http://127.0.0.1:8081}"
+
+cd "$REPO_ROOT"

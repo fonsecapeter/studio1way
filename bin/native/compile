@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Compile natively (backend jar + frontend deps) 🔨
+set -eu -o pipefail
+
+source "$(dirname "$0")/env"
+
+./mvnw package -DskipTests
+if [ ! -d frontend/node_modules ]; then
+  (cd frontend && npm install)
+fi

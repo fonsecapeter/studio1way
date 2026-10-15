@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Console output (native) 📓
+set -eu -o pipefail
+
+source "$(dirname "$0")/env"
+
+echo "Stop following output with ^C"
+tail -f "$RUNTIME_DIR/web.log" "$RUNTIME_DIR/frontend.log"

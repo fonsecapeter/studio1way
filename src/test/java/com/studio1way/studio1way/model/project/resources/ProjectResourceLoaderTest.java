@@ -2,6 +2,7 @@ package com.studio1way.studio1way.model.project.resources;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.studio1way.studio1way.AppRoot;
 import com.studio1way.studio1way.model.project.ExperimentalProject;
 import com.studio1way.studio1way.model.project.fields.ProjectAnimation;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
@@ -69,7 +70,7 @@ public class ProjectResourceLoaderTest {
             new ProjectResourceLoader<ExperimentalProject>()
                 .allProjects(
                     ExperimentalProject.class,
-                    "/app/src/test/resources/projects/"
+                    AppRoot.PATH + "/src/test/resources/projects/"
                 );
     }
 

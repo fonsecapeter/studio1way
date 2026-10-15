@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.repository.project;
 
+import com.studio1way.studio1way.AppRoot;
 import com.studio1way.studio1way.model.project.Painting;
 import com.studio1way.studio1way.model.project.Project;
 import com.studio1way.studio1way.repository.InMemoryReadOnlyRepository;
@@ -19,7 +20,7 @@ public class PaintingRepository extends InMemoryReadOnlyRepository<Painting, Str
             new ProjectResourceLoader<Painting>()
                 .allProjects(
                     Painting.class,
-                    "/app/src/main/resources/projects/paintings/"
+                    AppRoot.PATH + "/src/main/resources/projects/paintings/"
                 )
         );
     }

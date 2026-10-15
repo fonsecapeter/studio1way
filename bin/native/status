@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Check native app health 🌡
+set -eu -o pipefail
+
+source "$(dirname "$0")/env"
+
+for name in web frontend; do
+  pidfile="$RUNTIME_DIR/$name.pid"
+  if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
+    echo "$name: running (pid $(cat "$pidfile"))"
+  else
+    echo "$name: not running"
+  fi
+done
+echo "site: http://localhost:8080"
+echo "api:  http://localhost:8081"

@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.repository.project;
 
+import com.studio1way.studio1way.AppRoot;
 import com.studio1way.studio1way.model.project.ExperimentalProject;
 import com.studio1way.studio1way.repository.InMemoryReadOnlyRepository;
 import com.studio1way.studio1way.repository.project.resources.ProjectResourceLoader;
@@ -19,7 +20,7 @@ public class ExperimentalProjectRepository
             new ProjectResourceLoader<ExperimentalProject>()
                 .allProjects(
                     ExperimentalProject.class,
-                    "/app/src/main/resources/projects/experiments/"
+                    AppRoot.PATH + "/src/main/resources/projects/experiments/"
                 )
         );
     }
