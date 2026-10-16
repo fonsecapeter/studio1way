@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+"""Scaffold a new Studio 1Way project from a JSON spec.
+
+Part of the add-project skill (.agents/skills/add-project). Reads a spec
+(file path arg, or stdin) describing the project, then:
+  - creates frontend/src/assets/img/projects/<cat>/<snake_id>/<image>/ dirs
+  - copies each source photo in as 100.<ext>
+  - runs the repo's bin/resize-img on each image dir (needs ImageMagick)
+  - writes src/main/resources/projects/<cat>/<snake_id>.json
+
+Enum values are parsed from the Java model classes at run time, so this
+script cannot drift from the code. Refuses to overwrite an existing
+project. Fails loudly on any problem. Repo root is derived from this
+file's location (env STUDIO1WAY_REPO overrides, for tests).
+"""
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(
+    os.environ.get("STUDIO1WAY_REPO") or Path(__file__).resolve().parents[4]
+)
+JSON_ROOT = REPO / "src/main/resources/projects"
+IMAGE_ROOT = REPO / "frontend/src/assets/img/projects"
+MODEL = REPO / "src/main/java/com/studio1way/studio1way/model/project"
+
+CATEGORIES = ("ceramicwares", "paintings", "woodworks", "experiments")
+REQUIRED_FIELDS = {
+    "ceramicwares": ["clayBody", "glaze"],
+    "paintings": ["surface", "medium", "varnished"],
+    "woodworks": ["materials", "finish"],
+    "experiments": ["variety"],
+}
+FIELD_ORDER = {
+    "ceramicwares": ["clayBody", "glaze", "dimensions"],
+    "paintings": ["surface", "medium", "varnished", "dimensions"],
+    "woodworks": ["materials", "finish", "dimensions"],
+    "experiments": ["variety"],
+}
+
+
+def fail(msg):
+    print(f"scaffold-project: error: {msg}", file=sys.stderr)
+    sys.exit(1)
+
+
+def parse_enum(java_file, enum_name):
+    try:
+        src = (MODEL / java_file).read_text()
+    except OSError as exc:
+        fail(f"cannot read model class {java_file}: {exc}")
+    match = re.search(rf"enum\s+{enum_name}\s*\{{(.*?)\}}", src, re.DOTALL)
+    if not match:
+        fail(f"enum {enum_name} not found in {java_file}")
+    values = re.findall(r"([A-Z][A-Z0-9_]*)\s*\(", match.group(1))
+    if not values:
+        fail(f"enum {enum_name} in {java_file} parsed to no values")
+    return values
+
+
+def load_enums():
+    return {
+        "clayBody": parse_enum("CeramicWare.java", "ClayBody"),
+        "medium": parse_enum("Painting.java", "Medium"),
+        "finish": parse_enum("WoodWork.java", "Finish"),
+        "ext": parse_enum("fields/ProjectImage.java", "Extension"),
+        "aspectRatio": parse_enum("fields/ProjectVideo.java", "AspectRatio"),
+    }
+
+
+def kebab(name):
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+def snake(name):
+    return kebab(name).replace("-", "_")
+
+
+def main():
+    if not (REPO / "bin/resize-img").is_file():
+        fail(f"repo not found at {REPO} (no bin/resize-img)")
+    enums = load_enums()
+
+    raw = open(sys.argv[1]).read() if len(sys.argv) > 1 else sys.stdin.read()
+    try:
+        spec = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        fail(f"spec is not valid JSON: {exc}")
+
+    category = spec.get("category", "")
+    if category not in CATEGORIES:
+        fail(f"category must be one of {list(CATEGORIES)}; got {category!r}")
+    name = (spec.get("name") or "").strip()
+    if not name:
+        fail("spec.name is required (the project's title)")
+    description = spec.get("description")
+    if description is None:
+        fail("spec.description is required (the artist writes this; never invent one)")
+    date = spec.get("date") or ""
+    if not re.fullmatch(r"\d{4}(-\d{2}(-\d{2})?)?", date):
+        fail(f"date must match yyyy[-mm[-dd]]; got {date!r}")
+    images = spec.get("images") or []
+    if not images and not (category == "experiments" and spec.get("video")):
+        fail("spec.images must list at least one image "
+             "(only a video-only experiment may have none)")
+    fields = spec.get("fields") or {}
+    for key in REQUIRED_FIELDS[category]:
+        if key not in fields:
+            fail(f"{category} projects require fields.{key} (ask the requester)")
+    for key in ("clayBody", "medium", "finish"):
+        if key in fields and fields[key] not in enums[key]:
+            fail(f"fields.{key} must be one of {enums[key]}; got {fields[key]!r}")
+
+    pid = kebab(name)
+    pdir = snake(name)
+    json_path = JSON_ROOT / category / (pdir + ".json")
+    proj_img_root = IMAGE_ROOT / category / pdir
+    if json_path.exists() or proj_img_root.exists():
+        fail(f"project already exists: {json_path} or {proj_img_root}")
+
+    if not shutil.which("magick"):
+        fail("ImageMagick `magick` not on PATH. Install ImageMagick 7 "
+             "(or make `magick` available) and retry.")
+
+    def img_obj(entry, path):
+        obj = {"path": path, "ext": entry["ext"], "alt": entry["alt"]}
+        if entry.get("neverOverlap"):
+            obj["neverOverlap"] = True
+        if entry.get("animation"):
+            obj["animation"] = {
+                "path": f"{category}/{pdir}/animation",
+                "alt": entry["animation"]["alt"],
+            }
+        return obj
+
+    prepared = []
+    icon_count = 0
+    raw_images = list(images)
+    icon_spec = spec.get("icon")
+    if icon_spec:
+        # A standalone icon that is not part of images[] (the video
+        # projects do this, e.g. artists-in-residence: images is empty
+        # and the icon is its own image).
+        if any(e.get("icon") for e in raw_images):
+            fail("spec.icon given AND an image marked icon; choose one")
+        raw_images.append(dict(icon_spec, icon=True, _icon_only=True))
+    for entry in raw_images:
+        src = entry.get("src") or ""
+        if not os.path.isfile(src):
+            fail(f"image source not found: {src}")
+        ext = os.path.splitext(src)[1].lstrip(".").upper()
+        if ext == "JPEG":
+            ext = "JPG"
+        if ext not in enums["ext"]:
+            fail(f"unsupported image extension {ext!r} (from {src})")
+        if not entry.get("alt"):
+            fail(f"image {entry.get('name')!r} needs alt text")
+        if not entry.get("name"):
+            fail("every image needs a name (its directory name, e.g. main, solo)")
+        entry = dict(entry, ext=ext)
+        if entry.get("icon"):
+            icon_count += 1
+        prepared.append(entry)
+    if icon_count > 1:
+        fail("at most one image may be marked icon")
+    if icon_count == 0:
+        prepared[0]["icon"] = True
+
+    resize = str(REPO / "bin" / "resize-img")
+    for entry in prepared:
+        dest_dir = proj_img_root / entry["name"]
+        os.makedirs(dest_dir)
+        dest = dest_dir / ("100." + entry["ext"].lower())
+        shutil.copyfile(entry["src"], dest)
+        run = subprocess.run([resize, str(dest_dir)], capture_output=True, text=True)
+        if run.returncode != 0:
+            fail(f"bin/resize-img failed for {dest_dir}: {run.stderr.strip()}")
+        if entry.get("animation"):
+            anim_src = entry["animation"].get("src") or ""
+            if not os.path.isfile(anim_src):
+                fail(f"animation source not found: {anim_src}")
+            animation_dir = proj_img_root / "animation"
+            os.makedirs(animation_dir, exist_ok=True)
+            shutil.copyfile(anim_src, animation_dir / "100.gif")
+            # Animations are a 2-size set (ProjectAnimation serves only
+            # 100 full + 50 half), so no bin/resize-img here: it would
+            # also write a 25.gif that nothing references.
+            run = subprocess.run(
+                ["magick", str(animation_dir / "100.gif"),
+                 "-resize", "50%", str(animation_dir / "50.gif")],
+                capture_output=True, text=True)
+            if run.returncode != 0:
+                fail(f"magick resize failed for animation: {run.stderr.strip()}")
+
+    icon_entry = next(e for e in prepared if e.get("icon"))
+    project = {
+        "id": pid,
+        "name": name,
+        "icon": img_obj(icon_entry, f"{category}/{pdir}/{icon_entry['name']}"),
+        "links": spec.get("links") or [],
+        "date": date,
+        "description": description,
+        "images": [
+            img_obj(e, f"{category}/{pdir}/{e['name']}")
+            for e in prepared if not e.get("_icon_only")
+        ],
+    }
+    for key in FIELD_ORDER[category]:
+        if key in fields:
+            project[key] = fields[key]
+    if category == "experiments" and spec.get("video"):
+        video = spec["video"]
+        if video.get("aspectRatio") not in enums["aspectRatio"]:
+            fail(f"video.aspectRatio must be one of {enums['aspectRatio']}")
+        project["video"] = video
+
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(json_path, "w") as fh:
+        json.dump(project, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    created = [json_path]
+    for root, _dirs, files in os.walk(proj_img_root):
+        created += [Path(root) / f for f in sorted(files)]
+    print(f"scaffolded {category}/{pid}:")
+    for path in sorted(created):
+        print(" ", path.relative_to(REPO))
+
+
+if __name__ == "__main__":
+    main()

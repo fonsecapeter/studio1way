@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""Validate one Studio 1Way project the way the app will see it.
+
+Part of the add-project skill (.agents/skills/add-project).
+
+Usage: check-project <category> <project-id-kebab>
+
+Checks the project JSON plus every file it references: required keys per
+category, enum values (parsed from the Java model classes, so they
+cannot drift), the yyyy[-mm[-dd]] date, and the image files for the
+icon, every image (100/50/25), and any animation (100/50). Prints every
+problem and exits non-zero if any exist. Repo root is derived from this
+file's location (env STUDIO1WAY_REPO overrides, for tests).
+"""
+import json
+import os
+import re
+import sys
+from pathlib import Path
+
+REPO = Path(
+    os.environ.get("STUDIO1WAY_REPO") or Path(__file__).resolve().parents[4]
+)
+JSON_ROOT = REPO / "src/main/resources/projects"
+IMAGE_ROOT = REPO / "frontend/src/assets/img/projects"
+MODEL = REPO / "src/main/java/com/studio1way/studio1way/model/project"
+
+CATEGORIES = ("ceramicwares", "paintings", "woodworks", "experiments")
+REQUIRED = {
+    "ceramicwares": ["clayBody", "glaze", "dimensions"],
+    "paintings": ["surface", "medium", "varnished"],
+    "woodworks": ["materials", "finish", "dimensions"],
+    "experiments": ["variety"],
+}
+
+
+def fail(msg):
+    print(f"check-project: error: {msg}", file=sys.stderr)
+    sys.exit(1)
+
+
+def parse_enum(java_file, enum_name):
+    try:
+        src = (MODEL / java_file).read_text()
+    except OSError as exc:
+        fail(f"cannot read model class {java_file}: {exc}")
+    match = re.search(rf"enum\s+{enum_name}\s*\{{(.*?)\}}", src, re.DOTALL)
+    if not match:
+        fail(f"enum {enum_name} not found in {java_file}")
+    values = re.findall(r"([A-Z][A-Z0-9_]*)\s*\(", match.group(1))
+    if not values:
+        fail(f"enum {enum_name} in {java_file} parsed to no values")
+    return values
+
+
+def main():
+    if len(sys.argv) != 3:
+        fail("usage: check-project <category> <project-id-kebab>")
+    category, pid = sys.argv[1], sys.argv[2]
+    if category not in CATEGORIES:
+        fail(f"category must be one of {list(CATEGORIES)}")
+    enums = {
+        "clayBody": parse_enum("CeramicWare.java", "ClayBody"),
+        "medium": parse_enum("Painting.java", "Medium"),
+        "finish": parse_enum("WoodWork.java", "Finish"),
+        "aspectRatio": parse_enum("fields/ProjectVideo.java", "AspectRatio"),
+    }
+    json_path = JSON_ROOT / category / (pid.replace("-", "_") + ".json")
+    if not json_path.is_file():
+        fail(f"no such project file: {json_path}")
+    try:
+        project = json.loads(json_path.read_text())
+    except json.JSONDecodeError as exc:
+        fail(f"{json_path} is not valid JSON: {exc}")
+
+    problems = []
+    if project.get("id") != pid:
+        problems.append(f"id is {project.get('id')!r}, expected {pid!r}")
+    for key in ("id", "name", "icon", "links", "date", "description", "images"):
+        if key not in project:
+            problems.append(f"missing key: {key}")
+    for key in REQUIRED[category]:
+        if key not in project:
+            problems.append(f"missing {category} key: {key}")
+    for key in ("clayBody", "medium", "finish"):
+        if key in project and project[key] not in enums[key]:
+            problems.append(f"{key}={project[key]!r} not in {enums[key]}")
+    if "date" in project and not re.fullmatch(
+        r"\d{4}(-\d{2}(-\d{2})?)?", str(project["date"])
+    ):
+        problems.append(f"date {project['date']!r} does not match yyyy[-mm[-dd]]")
+    if "dimensions" in project:
+        want = {"height", "width"} if category == "paintings" else {"height", "width", "depth"}
+        if set(project["dimensions"]) != want:
+            problems.append(
+                f"dimensions keys {sorted(project['dimensions'])} != {sorted(want)}"
+            )
+
+    def check_image(img, label):
+        if not isinstance(img, dict) or "path" not in img or "ext" not in img:
+            problems.append(f"{label}: malformed image entry {img!r}")
+            return
+        ext = str(img["ext"]).lower()
+        base = IMAGE_ROOT / img["path"]
+        for size in (100, 50, 25):
+            if not (base / f"{size}.{ext}").is_file():
+                problems.append(f"{label}: missing file {base}/{size}.{ext}")
+        if "animation" in img:
+            abase = IMAGE_ROOT / img["animation"]["path"]
+            # ProjectAnimation only ever serves 100 (full) and 50 (half);
+            # its valid() checks exactly those two. No 25.gif exists.
+            for size in (100, 50):
+                if not (abase / f"{size}.gif").is_file():
+                    problems.append(f"{label} animation: missing file {abase}/{size}.gif")
+
+    if isinstance(project.get("icon"), dict):
+        check_image(project["icon"], "icon")
+    for i, img in enumerate(project.get("images") or []):
+        check_image(img, f"images[{i}]")
+    if "video" in project:
+        video = project["video"]
+        if category != "experiments":
+            problems.append("video is only used on experiments")
+        if video.get("aspectRatio") not in enums["aspectRatio"]:
+            problems.append(f"video.aspectRatio {video.get('aspectRatio')!r} invalid")
+        if not str(video.get("src", "")).startswith("https://"):
+            problems.append("video.src should be an https embed URL")
+
+    if problems:
+        for problem in problems:
+            print(f"check-project: {category}/{pid}: {problem}", file=sys.stderr)
+        sys.exit(1)
+    print(f"check-project: {category}/{pid} OK "
+          f"({len(project.get('images') or [])} images, all sizes present)")
+
+
+if __name__ == "__main__":
+    main()
