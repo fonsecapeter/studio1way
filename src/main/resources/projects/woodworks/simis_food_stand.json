@@ -1,0 +1,36 @@
+{
+  "id": "simis-food-stand",
+  "name": "Simi's Food Stand",
+  "icon": {
+    "path": "woodworks/simis_food_stand/main",
+    "ext": "JPG",
+    "alt": "the food stand straight on, a white bowl and a steel bowl set into its bamboo top"
+  },
+  "links": [],
+  "date": "2026-05-31",
+  "description": "repairs added up to a rebuild, not sure if he even noticed",
+  "images": [
+    {
+      "path": "woodworks/simis_food_stand/main",
+      "ext": "JPG",
+      "alt": "the food stand straight on, a white bowl and a steel bowl set into its bamboo top"
+    },
+    {
+      "path": "woodworks/simis_food_stand/simi",
+      "ext": "JPG",
+      "alt": "Simi eating from the food stand"
+    },
+    {
+      "path": "woodworks/simis_food_stand/studio",
+      "ext": "JPG",
+      "alt": "raised wooden pet bowl stand with two bowl cutouts on a workbench, bottle of tung oil beside it"
+    }
+  ],
+  "materials": "bamboo + plywood",
+  "finish": "TUNG_OIL",
+  "dimensions": {
+    "height": 0.0,
+    "width": 0.0,
+    "depth": 0.0
+  }
+}
