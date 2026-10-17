@@ -65,7 +65,10 @@ the pattern as single-purpose "Add <project>" commits.
    text for each photo.
 2. Build a spec JSON and run the scaffolder:
    `scripts/scaffold-project <spec.json>` (paths relative to this skill
-   folder). Spec keys: `category`, `name`, `date`, `description`,
+   folder). Spec keys: `category`, `name`, optional `id` (overrides
+   the id derived from the name — possessives derive wrong, e.g.
+   "Simi's Food Stand" → simi-s-food-stand vs simis-food-stand),
+   `date`, `description`,
    `links`, `fields` (the category fields), `video`, `images`
    (`{name, src, alt, icon?, animation? {src, alt}, neverOverlap?}`),
    plus an optional standalone `icon` (same shape as an image) for
