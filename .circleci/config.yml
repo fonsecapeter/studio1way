@@ -87,6 +87,45 @@ jobs:
           command: |
             docker run "studio1way/frontend:${CIRCLE_SHA1}" npm run test-ci
 
+  screenshots:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build prod image
+          command: docker build --target=prod -t "studio1way/web:prod_${CIRCLE_SHA1:0}" .
+      - run:
+          name: Boot the site and wait for it
+          command: |
+            docker run -d --name site -e PORT=8080 "studio1way/web:prod_${CIRCLE_SHA1:0}"
+            CODE=000
+            for i in $(seq 1 36); do
+              CODE=$(docker run --rm --network container:site curlimages/curl:latest -s -o /dev/null -w '%{http_code}' http://localhost:8080/wood || echo 000)
+              echo "probe $i: HTTP $CODE"
+              if [ "$CODE" = "200" ]; then
+                echo "site is up"
+                break
+              fi
+              sleep 5
+            done
+            if [ "$CODE" != "200" ]; then
+              echo "site never came up — logs:"
+              docker logs site 2>&1 | tail -40
+              exit 1
+            fi
+      - run:
+          name: Screenshot the wood page
+          command: |
+            mkdir -p screenshots
+            docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/wood.png http://localhost:8080/wood
+            docker cp shots:/tmp/wood.png screenshots/wood.png
+            ls -la screenshots/
+      - store_artifacts:
+          path: screenshots
+          destination: screenshots
+
   deploy:
     docker:
       - image: cimg/base:2023.08
@@ -119,6 +158,7 @@ workflows:
       - test-frontend:
           requires:
             - build-frontend
+      - screenshots
       - build-web-prod:
           requires:
             - test-web
