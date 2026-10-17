@@ -181,6 +181,9 @@ jobs:
       - store_artifacts:
           path: screenshots
           destination: screenshots
+      - run:
+          name: Post screenshots to the PR
+          command: .agents/skills/preview-screenshots/scripts/post-previews
 
   deploy:
     docker:
