@@ -101,12 +101,16 @@ jobs:
           command: |
             docker run -d --name site -e PORT=8080 "studio1way/web:prod_${CIRCLE_SHA1:0}"
             for i in $(seq 1 36); do
-              if docker run --rm --network container:site curlimages/curl:latest -sf -o /dev/null http://localhost:8080/woodworks; then
+              CODE=$(docker run --rm --network container:site curlimages/curl:latest -s -o /dev/null -w '%{http_code}' http://localhost:8080/woodworks || echo 000)
+              echo "probe $i: HTTP $CODE"
+              if [ "$CODE" = "200" ]; then
                 echo "site is up"
                 break
               fi
               sleep 5
             done
+            echo "--- site logs:"
+            docker logs site 2>&1 | tail -40
             docker run --rm --network container:site curlimages/curl:latest -sf -o /dev/null http://localhost:8080/woodworks
       - run:
           name: Screenshot the woodworks page
