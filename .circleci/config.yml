@@ -119,7 +119,7 @@ jobs:
           name: Screenshot the wood page
           command: |
             mkdir -p screenshots
-            docker run --name shots --network container:site chromedp/headless-shell:156.0.8078.36 --no-sandbox --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/wood.png http://localhost:8080/wood
+            docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/wood.png http://localhost:8080/wood
             docker cp shots:/tmp/wood.png screenshots/wood.png
             ls -la screenshots/
       - store_artifacts:
