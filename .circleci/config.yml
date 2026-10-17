@@ -116,12 +116,68 @@ jobs:
               exit 1
             fi
       - run:
-          name: Screenshot the wood page
+          name: Choose pages from the diff
           command: |
             mkdir -p screenshots
-            docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/wood.png http://localhost:8080/wood
-            docker cp shots:/tmp/wood.png screenshots/wood.png
+            PAGES=screenshots/pages.txt
+            : > "$PAGES"
+            add_page() {
+              grep -qx "$1 $2" "$PAGES" || echo "$1 $2" >> "$PAGES"
+            }
+            add_project() {
+              base=$(basename "$1" .json)
+              id="${base//_/-}"
+              add_page "$2" "$3"
+              add_page "$2/project/$id" "$3__project__$id"
+            }
+            git fetch origin main
+            CHANGED=$(git diff --name-only origin/main...HEAD || echo "")
+            echo "changed files:"
+            echo "$CHANGED"
+            BLAST=0
+            for f in $CHANGED; do
+              case "$f" in
+                src/main/resources/projects/woodworks/*.json) add_project "$f" /wood wood ;;
+                src/main/resources/projects/ceramicwares/*.json) add_project "$f" /ceramics ceramics ;;
+                src/main/resources/projects/paintings/*.json) add_project "$f" /paint paint ;;
+                src/main/resources/projects/experiments/*.json) add_project "$f" /experimental experimental ;;
+                frontend/*|src/main/java/*|pom.xml) BLAST=1 ;;
+              esac
+            done
+            if [ "$BLAST" = 1 ]; then
+              add_page / home
+              add_page /ceramics ceramics
+              add_page /paint paint
+              add_page /wood wood
+              add_page /experimental experimental
+            fi
+            head -8 "$PAGES" > "$PAGES.tmp" && mv "$PAGES.tmp" "$PAGES"
+            echo "pages to capture:"
+            cat "$PAGES"
+      - run:
+          name: Screenshot the chosen pages
+          command: |
+            OK=0
+            TOTAL=0
+            while read -r path file; do
+              [ -z "$path" ] && continue
+              TOTAL=$((TOTAL + 1))
+              for attempt in 1 2; do
+                docker rm -f shots > /dev/null 2>&1 || true
+                docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/shot.png "http://localhost:8080$path" || true
+                if docker cp shots:/tmp/shot.png "screenshots/$file.png" 2>/dev/null && [ -s "screenshots/$file.png" ]; then
+                  echo "captured $path -> $file.png"
+                  OK=$((OK + 1))
+                  break
+                fi
+                echo "attempt $attempt failed for $path"
+              done
+            done < screenshots/pages.txt
             ls -la screenshots/
+            echo "captured $OK of $TOTAL pages"
+            if [ "$TOTAL" -gt 0 ] && [ "$OK" -eq 0 ]; then
+              exit 1
+            fi
       - store_artifacts:
           path: screenshots
           destination: screenshots
