@@ -70,6 +70,7 @@ def main():
     if not matched:
         print("no artifacts matched the captured pages - nothing to post")
         return 0
+    lines += ["- Tony (Muse)"]
     comment_body = "\n".join(lines)
 
     token = os.environ.get("GITHUB_COMMENT_TOKEN", "")
