@@ -157,13 +157,27 @@ jobs:
       - run:
           name: Screenshot the chosen pages
           command: |
+            OK=0
+            TOTAL=0
             while read -r path file; do
               [ -z "$path" ] && continue
-              docker rm -f shots > /dev/null 2>&1 || true
-              docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/shot.png "http://localhost:8080$path"
-              docker cp shots:/tmp/shot.png "screenshots/$file.png"
+              TOTAL=$((TOTAL + 1))
+              for attempt in 1 2; do
+                docker rm -f shots > /dev/null 2>&1 || true
+                docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/shot.png "http://localhost:8080$path" || true
+                if docker cp shots:/tmp/shot.png "screenshots/$file.png" 2>/dev/null && [ -s "screenshots/$file.png" ]; then
+                  echo "captured $path -> $file.png"
+                  OK=$((OK + 1))
+                  break
+                fi
+                echo "attempt $attempt failed for $path"
+              done
             done < screenshots/pages.txt
             ls -la screenshots/
+            echo "captured $OK of $TOTAL pages"
+            if [ "$TOTAL" -gt 0 ] && [ "$OK" -eq 0 ]; then
+              exit 1
+            fi
       - store_artifacts:
           path: screenshots
           destination: screenshots
