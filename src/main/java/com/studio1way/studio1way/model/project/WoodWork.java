@@ -10,7 +10,8 @@ public class WoodWork extends Project {
     public enum Finish {
         PASTE_WAX("linseed oil + beesewax"),
         VARNISH("varnish"),
-        ACRYLIC_PAINT_AND_PASTE_WAX("acrylic paint + linseed oil + beesewax");
+        ACRYLIC_PAINT_AND_PASTE_WAX("acrylic paint + linseed oil + beesewax"),
+        TUNG_OIL("tung oil");
 
         private final String value;
 
