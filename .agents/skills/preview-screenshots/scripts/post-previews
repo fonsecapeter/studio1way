@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""Post (or update) the preview-screenshots comment on this build's PR.
+
+Runs as the last step of the CI screenshots job. Reads
+screenshots/pages.txt (page path -> file base name), looks up this
+build's CircleCI artifacts, and posts one PR comment embedding the
+images. Re-runs update the same comment in place (found via an HTML
+marker). Exits 0 without posting when there is nothing to post, when
+the build is not for a PR, or when GITHUB_COMMENT_TOKEN is not set
+(the comment body is printed instead, for the job log).
+
+Environment: CIRCLE_BUILD_NUM, CIRCLE_PULL_REQUEST,
+CIRCLE_PROJECT_USERNAME, CIRCLE_PROJECT_REPONAME,
+GITHUB_COMMENT_TOKEN.
+"""
+
+import json
+import os
+import sys
+import urllib.request
+
+MARKER = "<!-- preview-screenshots -->"
+GITHUB_API = "https://api.github.com"
+
+
+def fetch_json(url, token=None, method="GET", body=None):
+    req = urllib.request.Request(url, method=method)
+    req.add_header("Accept", "application/json")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    data = None
+    if body is not None:
+        data = json.dumps(body).encode()
+        req.add_header("Content-Type", "application/json")
+    with urllib.request.urlopen(req, data=data, timeout=30) as resp:
+        return json.loads(resp.read().decode())
+
+
+def main():
+    pages_file = "screenshots/pages.txt"
+    if not os.path.exists(pages_file):
+        print("no pages.txt - nothing to post")
+        return 0
+    pages = []
+    for line in open(pages_file):
+        parts = line.split()
+        if len(parts) == 2:
+            pages.append((parts[0], parts[1]))
+    if not pages:
+        print("no pages captured - nothing to post")
+        return 0
+
+    user = os.environ["CIRCLE_PROJECT_USERNAME"]
+    repo = os.environ["CIRCLE_PROJECT_REPONAME"]
+    build = os.environ["CIRCLE_BUILD_NUM"]
+    artifacts = fetch_json(
+        f"https://circleci.com/api/v1.1/project/gh/{user}/{repo}/{build}/artifacts"
+    )
+    by_path = {a["path"]: a["url"] for a in artifacts}
+
+    lines = [MARKER, "**Preview screenshots**", ""]
+    matched = 0
+    for path, base in pages:
+        url = by_path.get(f"screenshots/{base}.png")
+        if not url:
+            print(f"no artifact found for {path} - skipping it")
+            continue
+        lines += [f"`{path}`", f"![{path}]({url})", ""]
+        matched += 1
+    if not matched:
+        print("no artifacts matched the captured pages - nothing to post")
+        return 0
+    comment_body = "\n".join(lines)
+
+    token = os.environ.get("GITHUB_COMMENT_TOKEN", "")
+    if not token:
+        print("GITHUB_COMMENT_TOKEN is not set - would have posted:")
+        print(comment_body)
+        return 0
+
+    pr_url = os.environ.get("CIRCLE_PULL_REQUEST", "")
+    if not pr_url:
+        print("not a pull-request build - not posting")
+        return 0
+    pr = pr_url.rstrip("/").split("/")[-1]
+
+    comments = fetch_json(
+        f"{GITHUB_API}/repos/{user}/{repo}/issues/{pr}/comments?per_page=100",
+        token=token,
+    )
+    existing = next((c for c in comments if MARKER in c.get("body", "")), None)
+    if existing:
+        updated = fetch_json(
+            existing["url"], token=token, method="PATCH", body={"body": comment_body}
+        )
+        print(f"updated preview comment: {updated['html_url']}")
+    else:
+        created = fetch_json(
+            f"{GITHUB_API}/repos/{user}/{repo}/issues/{pr}/comments",
+            token=token,
+            method="POST",
+            body={"body": comment_body},
+        )
+        print(f"posted preview comment: {created['html_url']}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
