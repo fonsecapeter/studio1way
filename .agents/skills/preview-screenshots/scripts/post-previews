@@ -32,8 +32,12 @@ def fetch_json(url, token=None, method="GET", body=None):
     if body is not None:
         data = json.dumps(body).encode()
         req.add_header("Content-Type", "application/json")
-    with urllib.request.urlopen(req, data=data, timeout=30) as resp:
-        return json.loads(resp.read().decode())
+    try:
+        with urllib.request.urlopen(req, data=data, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode(errors="replace")[:500]
+        raise SystemExit(f"{method} {url} failed: HTTP {e.code}: {detail}")
 
 
 def main():
