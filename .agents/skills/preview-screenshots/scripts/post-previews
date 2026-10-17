@@ -79,11 +79,25 @@ def main():
         print(comment_body)
         return 0
 
+    pr = ""
     pr_url = os.environ.get("CIRCLE_PULL_REQUEST", "")
-    if not pr_url:
-        print("not a pull-request build - not posting")
+    if pr_url:
+        pr = pr_url.rstrip("/").split("/")[-1]
+    elif os.environ.get("CIRCLE_PR_NUMBER"):
+        pr = os.environ["CIRCLE_PR_NUMBER"]
+    else:
+        # CIRCLE_PULL_REQUEST is not set on every PR build (it depends
+        # on the GitHub integration); look the PR up by branch instead.
+        branch = os.environ.get("CIRCLE_BRANCH", "")
+        pulls = fetch_json(
+            f"{GITHUB_API}/repos/{user}/{repo}/pulls?state=open&head={user}:{branch}",
+            token=token,
+        )
+        if pulls:
+            pr = str(pulls[0]["number"])
+    if not pr:
+        print("could not determine the pull request for this build - not posting")
         return 0
-    pr = pr_url.rstrip("/").split("/")[-1]
 
     comments = fetch_json(
         f"{GITHUB_API}/repos/{user}/{repo}/issues/{pr}/comments?per_page=100",
