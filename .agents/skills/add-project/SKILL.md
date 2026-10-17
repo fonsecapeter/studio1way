@@ -57,6 +57,15 @@ the pattern as single-purpose "Add <project>" commits.
 - **Image directory names** are short content words (`main`, `solo`,
   `side`, `process`, `stamp`). The icon is the `main` image unless told
   otherwise.
+- **A value that doesn't exist yet** (a new finish, medium, clay body):
+  adds are otherwise data-only, but this is the one sanctioned code
+  change. Add the value to the enum in the model class
+  (`UPPER_SNAKE("display string")`, e.g. `TUNG_OIL("tung oil")` in
+  `WoodWork.Finish`) and let it ride in the same commit. The scripts
+  parse the enums from the Java sources at runtime, so the checker
+  accepts the new value immediately, and the frontend renders the
+  API's display string — no frontend or codegen changes. Call the
+  exception out in the PR description.
 
 ## Workflow
 
@@ -65,7 +74,10 @@ the pattern as single-purpose "Add <project>" commits.
    text for each photo.
 2. Build a spec JSON and run the scaffolder:
    `scripts/scaffold-project <spec.json>` (paths relative to this skill
-   folder). Spec keys: `category`, `name`, `date`, `description`,
+   folder). Spec keys: `category`, `name`, optional `id` (overrides
+   the id derived from the name — possessives derive wrong, e.g.
+   "Simi's Food Stand" → simi-s-food-stand vs simis-food-stand),
+   `date`, `description`,
    `links`, `fields` (the category fields), `video`, `images`
    (`{name, src, alt, icon?, animation? {src, alt}, neverOverlap?}`),
    plus an optional standalone `icon` (same shape as an image) for

@@ -76,10 +76,6 @@ def kebab(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-def snake(name):
-    return kebab(name).replace("-", "_")
-
-
 def main():
     if not (REPO / "bin/resize-img").is_file():
         fail(f"repo not found at {REPO} (no bin/resize-img)")
@@ -115,8 +111,14 @@ def main():
         if key in fields and fields[key] not in enums[key]:
             fail(f"fields.{key} must be one of {enums[key]}; got {fields[key]!r}")
 
-    pid = kebab(name)
-    pdir = snake(name)
+    # An explicit spec.id wins over the derived one (e.g. a possessive
+    # title: "Simi's Food Stand" derives simi-s-food-stand, but the
+    # project's id is simis-food-stand). The file/dir name always
+    # pairs with the final id: kebab id -> snake_case path.
+    pid = spec.get("id") or kebab(name)
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", pid):
+        fail(f"id must be kebab-case; got {pid!r}")
+    pdir = pid.replace("-", "_")
     json_path = JSON_ROOT / category / (pdir + ".json")
     proj_img_root = IMAGE_ROOT / category / pdir
     if json_path.exists() or proj_img_root.exists():
