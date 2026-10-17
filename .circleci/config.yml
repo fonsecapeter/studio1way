@@ -100,8 +100,9 @@ jobs:
           name: Boot the site and wait for it
           command: |
             docker run -d --name site -e PORT=8080 "studio1way/web:prod_${CIRCLE_SHA1:0}"
+            CODE=000
             for i in $(seq 1 36); do
-              CODE=$(docker run --rm --network container:site curlimages/curl:latest -s -o /dev/null -w '%{http_code}' http://localhost:8080/woodworks || echo 000)
+              CODE=$(docker run --rm --network container:site curlimages/curl:latest -s -o /dev/null -w '%{http_code}' http://localhost:8080/wood || echo 000)
               echo "probe $i: HTTP $CODE"
               if [ "$CODE" = "200" ]; then
                 echo "site is up"
@@ -109,15 +110,17 @@ jobs:
               fi
               sleep 5
             done
-            echo "--- site logs:"
-            docker logs site 2>&1 | tail -40
-            docker run --rm --network container:site curlimages/curl:latest -sf -o /dev/null http://localhost:8080/woodworks
+            if [ "$CODE" != "200" ]; then
+              echo "site never came up — logs:"
+              docker logs site 2>&1 | tail -40
+              exit 1
+            fi
       - run:
-          name: Screenshot the woodworks page
+          name: Screenshot the wood page
           command: |
             mkdir -p screenshots
-            docker run --name shots --network container:site chromedp/headless-shell:156.0.8078.36 --no-sandbox --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/woodworks.png http://localhost:8080/woodworks
-            docker cp shots:/tmp/woodworks.png screenshots/woodworks.png
+            docker run --name shots --network container:site chromedp/headless-shell:156.0.8078.36 --no-sandbox --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/wood.png http://localhost:8080/wood
+            docker cp shots:/tmp/wood.png screenshots/wood.png
             ls -la screenshots/
       - store_artifacts:
           path: screenshots
