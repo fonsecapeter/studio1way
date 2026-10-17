@@ -57,6 +57,15 @@ the pattern as single-purpose "Add <project>" commits.
 - **Image directory names** are short content words (`main`, `solo`,
   `side`, `process`, `stamp`). The icon is the `main` image unless told
   otherwise.
+- **A value that doesn't exist yet** (a new finish, medium, clay body):
+  adds are otherwise data-only, but this is the one sanctioned code
+  change. Add the value to the enum in the model class
+  (`UPPER_SNAKE("display string")`, e.g. `TUNG_OIL("tung oil")` in
+  `WoodWork.Finish`) and let it ride in the same commit. The scripts
+  parse the enums from the Java sources at runtime, so the checker
+  accepts the new value immediately, and the frontend renders the
+  API's display string — no frontend or codegen changes. Call the
+  exception out in the PR description.
 
 ## Workflow
 
