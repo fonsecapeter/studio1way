@@ -87,6 +87,10 @@ jobs:
           command: |
             docker run "studio1way/frontend:${CIRCLE_SHA1}" npm run test-ci
 
+  # Preview screenshots for PRs: captures the pages the branch changes
+  # and posts them to the PR (bin/ci/post-previews). Posting uses the
+  # GITHUB_COMMENT_TOKEN env var - a fine-grained token, this repo
+  # only, Issues + Pull requests read/write (both are required).
   screenshots:
     docker:
       - image: cimg/base:2023.08
@@ -181,6 +185,9 @@ jobs:
       - store_artifacts:
           path: screenshots
           destination: screenshots
+      - run:
+          name: Post screenshots to the PR
+          command: bin/ci/post-previews
 
   deploy:
     docker:

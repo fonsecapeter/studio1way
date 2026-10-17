@@ -90,3 +90,6 @@ the pattern as single-purpose "Add <project>" commits.
    unavailable): the resource loader loads every project at startup, so
    green tests mean the JSON parses and every image validates.
 4. Commit as one single-purpose commit: `Add <name lowercase>`.
+5. Open a PR. CI captures preview screenshots of the new project's
+   detail page and its category list and posts them to the PR as a
+   comment (the screenshots job in `.circleci/config.yml`).
