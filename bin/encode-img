@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Generate WebP/AVIF versions of project images 📸
+# arg = image dir (with a 100.jpg or 100.png), or --all for every project photo
+set -eu -o pipefail
+
+cd "$(dirname "$0")/.."
+node frontend/tools/encode-image.mjs "$@"
