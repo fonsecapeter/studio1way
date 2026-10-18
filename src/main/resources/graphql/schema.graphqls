@@ -87,6 +87,8 @@ type ProjectImage {
     full: String!
     half: String!
     quarter: String!
+    width: Int
+    height: Int
     alt: String!
     neverOverlap: Boolean!
     animation: ProjectAnimation

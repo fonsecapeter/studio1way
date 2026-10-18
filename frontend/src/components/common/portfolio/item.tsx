@@ -4,12 +4,15 @@ import { gql } from "@apollo/client";
 import { PortfolioIndexProjectFragment } from "./index";
 import { CATEGORY } from "../../../utils";
 import ImagePlaceholder from "../image/placeholder";
+import ResponsiveImage from "../image/responsive_image";
 
 export const PORTFOLIO_ITEM_CERAMIC_WARE_FRAGMENT = gql`
   fragment PortfolioItemCeramicWare on CeramicWare {
     id
     icon {
-      half
+      quarter
+      width
+      height
       alt
       animation {
         half
@@ -22,7 +25,9 @@ export const PORTFOLIO_ITEM_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
   fragment PortfolioItemExperimentalProject on ExperimentalProject {
     id
     icon {
-      half
+      quarter
+      width
+      height
       alt
       animation {
         half
@@ -35,7 +40,9 @@ export const PORTFOLIO_ITEM_PAINTING_FRAGMENT = gql`
   fragment PortfolioItemPainting on Painting {
     id
     icon {
-      half
+      quarter
+      width
+      height
       alt
       animation {
         half
@@ -48,7 +55,9 @@ export const PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT = gql`
   fragment PortfolioItemWoodWork on WoodWork {
     id
     icon {
-      half
+      quarter
+      width
+      height
       alt
       animation {
         half
@@ -73,7 +82,7 @@ export const PortfolioItem = forwardRef(
     }: PortfolioItemProps,
     ref: React.Ref<HTMLAnchorElement>,
   ) => {
-    const iconSrc = project.icon.animation?.half ?? project.icon.half;
+    const iconSrc = project.icon.animation?.half ?? project.icon.quarter;
     let detailPath;
     switch (project.__typename) {
       case CATEGORY.CERAMIC_WARE:
@@ -104,11 +113,21 @@ export const PortfolioItem = forwardRef(
       >
         <div className="portfolio-item-icon">
           {iconPreloaded ? (
-            <img
-              className="portfolio-item-icon-image"
-              src={iconSrc}
-              alt={project.icon.alt}
-            />
+            project.icon.animation ? (
+              <img
+                className="portfolio-item-icon-image"
+                src={iconSrc}
+                alt={project.icon.alt}
+              />
+            ) : (
+              <ResponsiveImage
+                className="portfolio-item-icon-image"
+                src={project.icon.quarter}
+                alt={project.icon.alt}
+                width={project.icon.width}
+                height={project.icon.height}
+              />
+            )
           ) : (
             <div className="portfolio-item-icon-image">
               <ImagePlaceholder

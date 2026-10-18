@@ -20,7 +20,8 @@ the pattern as single-purpose "Add <project>" commits.
 - **Images**: `frontend/src/assets/img/projects/<category>/<snake_case>/<image_name>/`
   holding `100.<ext>`, `50.<ext>`, `25.<ext>`. The source photo is the 100;
   `bin/resize-img <dir>` generates the other two (needs ImageMagick's
-  `magick` and `tree` on PATH).
+  `magick` and `tree` on PATH). Then `bin/encode-img <dir>` writes the
+  WebP/AVIF derivatives the site serves (and re-encodes the JPEG tiers).
 - **Common fields**: `id`, `name`, `icon` (one of the images, or a
   standalone image for video projects), `links` (`[{url, text}]`, usually
   `[]`), `date` (`yyyy`, `yyyy-mm`, or `yyyy-mm-dd`; when the piece was

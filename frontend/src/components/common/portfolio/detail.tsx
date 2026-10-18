@@ -30,6 +30,8 @@ export const PORTFOLIO_DETAIL_CERAMIC_WARE_FRAGMENT = gql`
       full
       half
       quarter
+      width
+      height
       alt
       neverOverlap
       animation {
@@ -57,6 +59,8 @@ export const PORTFOLIO_DETAIL_EXPERIMENTAL_PROJECT_FRAGMENT = gql`
       full
       half
       quarter
+      width
+      height
       alt
       neverOverlap
       animation {
@@ -87,6 +91,8 @@ export const PORTFOLIO_DETAIL_PAINTING_FRAGMENT = gql`
       full
       half
       quarter
+      width
+      height
       alt
       neverOverlap
       animation {
@@ -115,6 +121,8 @@ export const PORTFOLIO_DETAIL_WOOD_WORK_FRAGMENT = gql`
       full
       half
       quarter
+      width
+      height
       alt
       neverOverlap
       animation {

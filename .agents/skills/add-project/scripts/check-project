@@ -105,6 +105,12 @@ def main():
         for size in (100, 50, 25):
             if not (base / f"{size}.{ext}").is_file():
                 problems.append(f"{label}: missing file {base}/{size}.{ext}")
+            for derivative in ("webp", "avif"):
+                if not (base / f"{size}.{derivative}").is_file():
+                    problems.append(
+                        f"{label}: missing derivative {base}/{size}.{derivative}"
+                        " (run bin/encode-img)"
+                    )
         if "animation" in img:
             abase = IMAGE_ROOT / img["animation"]["path"]
             # ProjectAnimation only ever serves 100 (full) and 50 (half);
