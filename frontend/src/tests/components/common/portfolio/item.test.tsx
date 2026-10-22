@@ -14,7 +14,9 @@ describe("PortfolioItem", () => {
               id: "a_test_project",
               name: "A Test Project",
               icon: {
-                half: "test_img/50.png",
+                quarter: "test_img/25.png",
+                width: 1000,
+                height: 750,
                 alt: "fake image",
                 animation: null,
               },
@@ -32,7 +34,7 @@ describe("PortfolioItem", () => {
 
     it("renders the icon", () => {
       const iconElement = screen.getByAltText("fake image");
-      expect(iconElement).toHaveAttribute("src", "test_img/50.png");
+      expect(iconElement).toHaveAttribute("src", "test_img/25.png");
     });
 
     it("links to the experiment detail page", () => {
@@ -53,7 +55,9 @@ describe("PortfolioItem", () => {
               id: "a_test_project",
               name: "A Test Project",
               icon: {
-                half: "test_img/50.png",
+                quarter: "test_img/25.png",
+                width: 1000,
+                height: 750,
                 alt: "fake image",
                 animation: null,
               },
@@ -83,7 +87,9 @@ describe("PortfolioItem", () => {
               id: "a_test_cup",
               name: "A Test Cup",
               icon: {
-                half: "test_cup_img/50.png",
+                quarter: "test_cup_img/25.png",
+                width: 1000,
+                height: 750,
                 alt: "fake cup image",
                 animation: {
                   half: "test_cup_img/animation/50.gif",
@@ -123,7 +129,9 @@ describe("PortfolioItem", () => {
               id: "a_test_painting",
               name: "A Test Painting",
               icon: {
-                half: "test_painting/50.png",
+                quarter: "test_painting/25.png",
+                width: 1000,
+                height: 750,
                 alt: "fake painting",
                 animation: null,
               },
@@ -153,7 +161,9 @@ describe("PortfolioItem", () => {
               id: "a_test_table",
               name: "A Test Table",
               icon: {
-                half: "test_table/50.png",
+                quarter: "test_table/25.png",
+                width: 1000,
+                height: 750,
                 alt: "fake table image",
                 animation: null,
               },

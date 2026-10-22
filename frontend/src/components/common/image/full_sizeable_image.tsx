@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ImageModal from "./modal";
 import ImagePlaceholder from "./placeholder";
+import ResponsiveImage, { ImageTiers } from "./responsive_image";
 
 interface ImageProps {
   smallSrc: string;
@@ -12,6 +13,9 @@ interface ImageProps {
   isPreloaded?: boolean;
   placeHolderHeight?: number;
   placeHolderClassName?: string;
+  tiers?: ImageTiers;
+  width?: number | null;
+  height?: number | null;
 }
 
 export const FullSizableImage = ({
@@ -24,6 +28,9 @@ export const FullSizableImage = ({
   isPreloaded = true,
   placeHolderHeight = 0,
   placeHolderClassName = "",
+  tiers,
+  width,
+  height,
 }: ImageProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   if (!placeHolderClassName) {
@@ -32,23 +39,44 @@ export const FullSizableImage = ({
   if (isPreloaded) {
     return (
       <>
-        <img
-          data-testid={dataTestId}
-          className={className}
-          src={smallSrc}
-          alt={alt}
-          onClick={() => setIsModalOpen(true)}
-        />
+        {tiers ? (
+          <ResponsiveImage
+            dataTestId={dataTestId}
+            className={className}
+            src={smallSrc}
+            tiers={tiers}
+            width={width}
+            height={height}
+            alt={alt}
+            onClick={() => setIsModalOpen(true)}
+          />
+        ) : (
+          <img
+            data-testid={dataTestId}
+            className={className}
+            src={smallSrc}
+            alt={alt}
+            onClick={() => setIsModalOpen(true)}
+          />
+        )}
         <ImageModal
           isOpen={isModalOpen}
           closeModal={() => setIsModalOpen(false)}
           withTopGap={withTopGap}
         >
-          <img
-            className="image-modal-full-size-image"
-            src={fullSrc}
-            alt={alt}
-          />
+          {tiers ? (
+            <ResponsiveImage
+              className="image-modal-full-size-image"
+              src={fullSrc}
+              alt={alt}
+            />
+          ) : (
+            <img
+              className="image-modal-full-size-image"
+              src={fullSrc}
+              alt={alt}
+            />
+          )}
         </ImageModal>
       </>
     );

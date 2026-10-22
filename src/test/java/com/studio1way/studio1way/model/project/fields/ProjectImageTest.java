@@ -3,6 +3,7 @@ package com.studio1way.studio1way.model.project.fields;
 import static graphql.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,19 @@ public class ProjectImageTest {
             "/img/projects/paintings/v47_workshop/main/25.jpg",
             image.getQuarter()
         );
+    }
+
+    @Test
+    public void testDimensionsComeFromTheMasterFile() {
+        assertEquals(3302, image.getWidth());
+        assertEquals(2483, image.getHeight());
+    }
+
+    @Test
+    public void testDimensionsAreNullForMissingFiles() {
+        image.setPath("some/fake/path");
+        assertNull(image.getWidth());
+        assertNull(image.getHeight());
     }
 
     @Test

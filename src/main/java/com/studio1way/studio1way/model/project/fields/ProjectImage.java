@@ -2,7 +2,12 @@ package com.studio1way.studio1way.model.project.fields;
 
 import com.studio1way.studio1way.AppRoot;
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Objects;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 public class ProjectImage {
 
@@ -31,6 +36,9 @@ public class ProjectImage {
     private String alt;
     private Boolean neverOverlap = false;
     private ProjectAnimation animation;
+    private Integer width;
+    private Integer height;
+    private boolean dimensionsLoaded = false;
 
     public ProjectImage() {}
 
@@ -117,6 +125,39 @@ public class ProjectImage {
 
     public String getQuarter() {
         return String.format("%s/%s/25.%s", IMG_PATH, path, ext.toString());
+    }
+
+    public Integer getWidth() {
+        loadDimensions();
+        return width;
+    }
+
+    public Integer getHeight() {
+        loadDimensions();
+        return height;
+    }
+
+    private void loadDimensions() {
+        if (dimensionsLoaded) {
+            return;
+        }
+        dimensionsLoaded = true;
+        File file = new File(String.format("%s/%s", ABS_PATH, getFull()));
+        if (!file.exists()) {
+            return;
+        }
+        try (ImageInputStream in = ImageIO.createImageInputStream(file)) {
+            Iterator<ImageReader> readers = ImageIO.getImageReaders(in);
+            if (readers.hasNext()) {
+                ImageReader reader = readers.next();
+                reader.setInput(in);
+                width = reader.getWidth(0);
+                height = reader.getHeight(0);
+                reader.dispose();
+            }
+        } catch (IOException e) {
+            // Dimensions only feed layout hints; a missing size is fine.
+        }
     }
 
     public Boolean valid() {

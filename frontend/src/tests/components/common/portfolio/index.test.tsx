@@ -13,7 +13,9 @@ describe("Portfolio", () => {
       id: "a_test_project",
       name: "A Test Project",
       icon: {
-        half: "test_img/50.png",
+        quarter: "test_img/25.png",
+        width: 1000,
+        height: 750,
         alt: "fake image",
         animation: null,
       },
@@ -23,7 +25,9 @@ describe("Portfolio", () => {
       id: "a_test_painting",
       name: "A Test Painting",
       icon: {
-        half: "test_img/50.png",
+        quarter: "test_img/25.png",
+        width: 1000,
+        height: 750,
         alt: "fake image",
         animation: null,
       },
@@ -33,7 +37,9 @@ describe("Portfolio", () => {
       id: "a_test_cup",
       name: "A Test Cup",
       icon: {
-        half: "test_img/50.png",
+        quarter: "test_img/25.png",
+        width: 1000,
+        height: 750,
         alt: "fake image",
         animation: null,
       },
@@ -43,7 +49,9 @@ describe("Portfolio", () => {
       id: "a_test_table",
       name: "A Test Table",
       icon: {
-        half: "test_img/50.png",
+        quarter: "test_img/25.png",
+        width: 1000,
+        height: 750,
         alt: "fake image",
         animation: null,
       },

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import preloadImages from "./preload";
 import FullSizableImage from "./full_sizeable_image";
+import ResponsiveImage from "./responsive_image";
 import { invariant } from "../../../utils";
 import { ProjectImage } from "../../../__generated__/types";
 interface CarouselProps {
@@ -34,6 +35,13 @@ const Carousel = ({ images }: CarouselProps) => {
   invariant(mainImage !== null, "Carousel must have at least one image");
   const mainImageSrc = mainImage.animation?.full ?? mainImage.half;
   const mainImageAlt = mainImage.animation?.alt ?? mainImage.alt;
+  const mainImageTiers = mainImage.animation
+    ? undefined
+    : {
+        quarter: mainImage.quarter,
+        half: mainImage.half,
+        full: mainImage.full,
+      };
   if (images.length == 1) {
     useEffect(() => {
       preloadImages({
@@ -53,6 +61,9 @@ const Carousel = ({ images }: CarouselProps) => {
         isPreloaded={isPreloaded}
         placeHolderHeight={220}
         placeHolderClassName="carousel-image-solo"
+        tiers={mainImageTiers}
+        width={mainImage.width}
+        height={mainImage.height}
       />
     );
   }
@@ -84,11 +95,14 @@ const Carousel = ({ images }: CarouselProps) => {
           isPreloaded={isPreloaded}
           placeHolderHeight={220}
           placeHolderClassName="carousel-image-main-placeholder"
+          tiers={mainImageTiers}
+          width={mainImage.width}
+          height={mainImage.height}
         />
       </div>
       <div className="carousel-lane">
         {laneImages.map((laneImage, idx) => (
-          <img
+          <ResponsiveImage
             className={
               laneImage.selected
                 ? `${laneImageClass}-selected`
@@ -99,6 +113,8 @@ const Carousel = ({ images }: CarouselProps) => {
             src={laneImage.image.quarter}
             alt={`${laneImage.image.alt} (small)`}
             onClick={isPreloaded ? () => selectImage(idx) : () => {}}
+            width={laneImage.image.width}
+            height={laneImage.image.height}
             key={idx}
           />
         ))}
