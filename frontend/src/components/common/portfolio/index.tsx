@@ -139,7 +139,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
   const groupId = (idx: number) =>
     Math.floor(idx / Math.ceil(projects.length / preloadGroupCount));
   projects.forEach((project, idx) => {
-    const iconSrc = project.icon.animation?.half ?? project.icon.half;
+    const iconSrc = project.icon.animation?.half ?? project.icon.quarter;
     preloadGroups[groupId(idx)].images.push(iconSrc);
   });
   useEffect(() => {
