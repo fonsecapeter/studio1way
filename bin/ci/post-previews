@@ -2,11 +2,12 @@
 """Post (or update) the preview-screenshots comment on this build's PR.
 
 Reads screenshots/pages.txt (page path -> file base name), looks up this
-build's CircleCI artifacts, and posts one PR comment embedding the
-images. Re-runs update the same comment in place (found via an HTML
-marker). Exits 0 without posting when there is nothing to post, when
-the build is not for a PR, or when GITHUB_COMMENT_TOKEN is not set
-(the comment body is printed instead, for the job log).
+build's CircleCI artifacts, and posts one PR comment embedding each
+page's desktop and mobile screenshots. Re-runs update the same comment
+in place (found via an HTML marker). Exits 0 without posting when there
+is nothing to post, when the build is not for a PR, or when
+GITHUB_COMMENT_TOKEN is not set (the comment body is printed instead,
+for the job log).
 
 Environment: CIRCLE_BUILD_NUM, CIRCLE_PULL_REQUEST,
 CIRCLE_PROJECT_USERNAME, CIRCLE_PROJECT_REPONAME,
@@ -64,11 +65,16 @@ def main():
     lines = [MARKER, "**Preview screenshots**", ""]
     matched = 0
     for path, base in pages:
-        url = by_path.get(f"screenshots/{base}.png")
-        if not url:
-            print(f"no artifact found for {path} - skipping it")
+        shots = []
+        for label, suffix in (("Desktop", "desktop"), ("Mobile", "mobile")):
+            url = by_path.get(f"screenshots/{base}--{suffix}.png")
+            if not url:
+                print(f"no {suffix} artifact found for {path} - skipping it")
+                continue
+            shots += [label, f"![{path} ({suffix})]({url})"]
+        if not shots:
             continue
-        lines += [f"`{path}`", f"![{path}]({url})", ""]
+        lines += [f"`{path}`"] + shots + [""]
         matched += 1
     if not matched:
         print("no artifacts matched the captured pages - nothing to post")
