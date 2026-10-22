@@ -150,10 +150,9 @@ jobs:
             done
             if [ "$BLAST" = 1 ]; then
               add_page / home
-              add_page /ceramics ceramics
-              add_page /paint paint
+              add_page /portfolio portfolio
+              add_page /wood/project/simis-food-stand wood__project__simis-food-stand
               add_page /wood wood
-              add_page /experimental experimental
             fi
             head -8 "$PAGES" > "$PAGES.tmp" && mv "$PAGES.tmp" "$PAGES"
             echo "pages to capture:"
