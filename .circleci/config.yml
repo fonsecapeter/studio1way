@@ -138,22 +138,39 @@ jobs:
             CHANGED=$(git diff --name-only origin/main...HEAD || echo "")
             echo "changed files:"
             echo "$CHANGED"
-            BLAST=0
+            add_detail() {
+              add_page /wood/project/simis-food-stand wood__project__simis-food-stand
+            }
             for f in $CHANGED; do
               case "$f" in
                 src/main/resources/projects/woodworks/*.json) add_project "$f" /wood wood ;;
                 src/main/resources/projects/ceramicwares/*.json) add_project "$f" /ceramics ceramics ;;
                 src/main/resources/projects/paintings/*.json) add_project "$f" /paint paint ;;
                 src/main/resources/projects/experiments/*.json) add_project "$f" /experimental experimental ;;
-                frontend/*|src/main/java/*|pom.xml) BLAST=1 ;;
+                *components/common/portfolio/detail.tsx|*containers/portfolio/detail/*) add_detail ;;
+                *components/common/portfolio/*|*containers/portfolio/index/*) add_page /portfolio portfolio ;;
+                *components/common/image/*) add_page /portfolio portfolio; add_detail ;;
+                *components/philosophy/*) add_page /wood wood ;;
+                *assets/scss/app/components/_portfolio.scss) add_page /portfolio portfolio ;;
+                *assets/scss/app/components/image/_carousel.scss|*assets/scss/app/components/image/_modal.scss) add_detail ;;
+                *assets/scss/app/components/image/*) add_page /portfolio portfolio ;;
+                *assets/scss/app/components/_philosophy.scss) add_page /wood wood ;;
+                src/main/java/*) add_page /portfolio portfolio; add_detail ;;
               esac
             done
-            if [ "$BLAST" = 1 ]; then
-              add_page / home
-              add_page /portfolio portfolio
-              add_page /wood/project/simis-food-stand wood__project__simis-food-stand
-              add_page /wood wood
+            if [ -f preview-pages.txt ]; then
+              while read -r extra; do
+                case "$extra" in
+                  ""|\#*) continue ;;
+                esac
+                ebase=$(echo "$extra" | sed -e 's|^/$|home|' -e 's|^/||' -e 's|/|__|g')
+                add_page "$extra" "$ebase"
+              done < preview-pages.txt
             fi
+            add_page / home
+            add_page /portfolio portfolio
+            add_detail
+            add_page /wood wood
             head -8 "$PAGES" > "$PAGES.tmp" && mv "$PAGES.tmp" "$PAGES"
             echo "pages to capture:"
             cat "$PAGES"
@@ -178,7 +195,7 @@ jobs:
               [ -z "$path" ] && continue
               TOTAL=$((TOTAL + 2))
               capture "$path" "$file--desktop.png" "1440,1100" && OK=$((OK + 1))
-              capture "$path" "$file--mobile.png" "390,844" && OK=$((OK + 1))
+              capture "$path" "$file--mobile.png" "390,2400" && OK=$((OK + 1))
             done < screenshots/pages.txt
             ls -la screenshots/
             echo "captured $OK of $TOTAL screenshots"
