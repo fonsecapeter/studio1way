@@ -67,11 +67,9 @@ export const PORTFOLIO_INDEX_WOOD_WORK_FRAGMENT = gql`
   ${PORTFOLIO_ITEM_WOOD_WORK_FRAGMENT}
 `;
 
-interface PreloadGroup {
-  images: string[];
-  setIsPreloaded: CallableFunction;
-  delay: number;
-}
+// Icons load in capped batches as their items approach the viewport,
+// so a tall screen can never queue the whole list at once.
+const ICON_BATCH_SIZE = 8;
 
 interface PortfolioProps {
   readonly title: string;
@@ -113,46 +111,132 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
     });
   }, [selectedCategories]);
 
-  const preloadGroups: PreloadGroup[] = [];
-  let preloadGroupCount = 2;
-  if (projects.length > 32) {
-    preloadGroupCount = 5;
-  }
-  const [areGroupsPreloaded, setAreGroupsPreloaded] = useState(
-    Array(preloadGroupCount).fill(false),
+  const iconSrcFor = (project: PortfolioIndexProjectFragment) =>
+    project.icon.animation?.half ?? project.icon.quarter;
+  const projectsById = useMemo(
+    () => new Map(projects.map((project) => [project.id, project])),
+    [projects],
   );
-  const setIsGroupPreloaded = (groupIdx: number) => {
-    return (isGroupPreloaded: boolean) =>
-      setAreGroupsPreloaded((prevAreGroupsPreloaded) => {
-        const newAreGroupsPreloaded = [...prevAreGroupsPreloaded];
-        newAreGroupsPreloaded[groupIdx] = isGroupPreloaded;
-        return newAreGroupsPreloaded;
+
+  const [loadedProjectIds, setLoadedProjectIds] = useState<Set<string>>(
+    new Set(),
+  );
+  const loadedProjectIdsRef = useRef<Set<string>>(new Set());
+  const queuedProjectIds = useRef<Set<string>>(new Set());
+  const loadQueue = useRef<string[]>([]);
+  const batchInFlight = useRef(false);
+  const itemElements = useRef<Map<string, HTMLElement>>(new Map());
+  const elementProjectIds = useRef<Map<HTMLElement, string>>(new Map());
+  const itemRefCallbacks = useRef<
+    Map<string, (el: HTMLElement | null) => void>
+  >(new Map());
+  const observer = useRef<IntersectionObserver | null>(null);
+  const focusProjectRef = useRef<HTMLAnchorElement>(null);
+
+  const pumpLoadQueueRef = useRef<() => void>(() => {});
+  pumpLoadQueueRef.current = () => {
+    if (batchInFlight.current) {
+      return;
+    }
+    const batch = loadQueue.current.splice(0, ICON_BATCH_SIZE);
+    if (batch.length === 0) {
+      return;
+    }
+    batchInFlight.current = true;
+    const images = batch
+      .map((projectId) => projectsById.get(projectId))
+      .filter((project) => project !== undefined)
+      .map((project) => iconSrcFor(project));
+    Promise.resolve(
+      preloadImages({ images, setIsPreloaded: () => {}, delay: 0 }),
+    )
+      .catch(() => undefined)
+      .finally(() => {
+        batchInFlight.current = false;
+        const nextLoaded = new Set(loadedProjectIdsRef.current);
+        batch.forEach((projectId) => nextLoaded.add(projectId));
+        loadedProjectIdsRef.current = nextLoaded;
+        setLoadedProjectIds(nextLoaded);
+        pumpLoadQueueRef.current();
       });
   };
-  for (let groupIdx = 0; groupIdx < preloadGroupCount; groupIdx++) {
-    preloadGroups.push({
-      images: [],
-      setIsPreloaded: setIsGroupPreloaded(groupIdx),
-      delay: 0, // manually test with groupIdx * 1000 + 500
-    });
-  }
-  const groupId = (idx: number) =>
-    Math.floor(idx / Math.ceil(projects.length / preloadGroupCount));
-  projects.forEach((project, idx) => {
-    const iconSrc = project.icon.animation?.half ?? project.icon.quarter;
-    preloadGroups[groupId(idx)].images.push(iconSrc);
-  });
-  useEffect(() => {
-    preloadGroups.forEach((group) => {
-      preloadImages({
-        images: group.images,
-        setIsPreloaded: group.setIsPreloaded,
-        delay: group.delay,
+
+  const pumpScheduled = useRef(false);
+  const enqueueProject = (projectId: string) => {
+    if (
+      loadedProjectIdsRef.current.has(projectId) ||
+      queuedProjectIds.current.has(projectId)
+    ) {
+      return;
+    }
+    queuedProjectIds.current.add(projectId);
+    loadQueue.current.push(projectId);
+    if (!pumpScheduled.current) {
+      pumpScheduled.current = true;
+      Promise.resolve().then(() => {
+        pumpScheduled.current = false;
+        pumpLoadQueueRef.current();
       });
-    });
+    }
+  };
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      return;
+    }
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          const projectId = elementProjectIds.current.get(
+            entry.target as HTMLElement,
+          );
+          if (projectId) {
+            observer.current?.unobserve(entry.target);
+            enqueueProject(projectId);
+          }
+        });
+      },
+      { rootMargin: "800px 0px" },
+    );
+    itemElements.current.forEach((element) =>
+      observer.current?.observe(element),
+    );
+    return () => observer.current?.disconnect();
   }, []);
 
-  const focusProjectRef = useRef<HTMLAnchorElement>(null);
+  const registerItem = (project: PortfolioIndexProjectFragment) => {
+    const existing = itemRefCallbacks.current.get(project.id);
+    if (existing) {
+      return existing;
+    }
+    const callback = (element: HTMLElement | null) => {
+      if (project.id === focusProjectId) {
+        focusProjectRef.current = element as HTMLAnchorElement | null;
+      }
+      if (element) {
+        itemElements.current.set(project.id, element);
+        elementProjectIds.current.set(element, project.id);
+        if (observer.current) {
+          observer.current.observe(element);
+        } else if (typeof IntersectionObserver === "undefined") {
+          enqueueProject(project.id);
+        }
+      } else {
+        const previous = itemElements.current.get(project.id);
+        if (previous) {
+          elementProjectIds.current.delete(previous);
+        }
+        itemElements.current.delete(project.id);
+      }
+    };
+    itemRefCallbacks.current.set(project.id, callback);
+    return callback;
+  };
+
+  const focusProjectLoaded = loadedProjectIds.has(focusProjectId);
   useEffect(() => {
     if (focusProjectRef.current) {
       console.log("Scrolling to focus project");
@@ -161,7 +245,7 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
         block: "center",
       });
     }
-  }, [areGroupsPreloaded]);
+  }, [filteredProjects, focusProjectLoaded]);
 
   return (
     <div>
@@ -175,12 +259,12 @@ export const Portfolio = ({ title, projects }: PortfolioProps) => {
         />
       </div>
       <div className="portfolio-list">
-        {filteredProjects.map((project, idx) => (
+        {filteredProjects.map((project) => (
           <PortfolioItem
-            {...(project.id === focusProjectId ? { ref: focusProjectRef } : {})}
+            ref={registerItem(project)}
             project={project}
             key={project.name}
-            iconPreloaded={areGroupsPreloaded[groupId(idx)]}
+            iconPreloaded={loadedProjectIds.has(project.id)}
             selectedPortfolioDepartments={selectedCategoryString}
           />
         ))}
