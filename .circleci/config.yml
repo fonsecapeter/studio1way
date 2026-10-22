@@ -163,22 +163,26 @@ jobs:
           command: |
             OK=0
             TOTAL=0
-            while read -r path file; do
-              [ -z "$path" ] && continue
-              TOTAL=$((TOTAL + 1))
+            capture() {
               for attempt in 1 2; do
                 docker rm -f shots > /dev/null 2>&1 || true
-                docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=1440,1100 --virtual-time-budget=15000 --screenshot=/tmp/shot.png "http://localhost:8080$path" || true
-                if docker cp shots:/tmp/shot.png "screenshots/$file.png" 2>/dev/null && [ -s "screenshots/$file.png" ]; then
-                  echo "captured $path -> $file.png"
-                  OK=$((OK + 1))
-                  break
+                docker run --name shots --network container:site zenika/alpine-chrome:124 --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --window-size=$3 --virtual-time-budget=15000 --screenshot=/tmp/shot.png "http://localhost:8080$1" || true
+                if docker cp shots:/tmp/shot.png "screenshots/$2" 2>/dev/null && [ -s "screenshots/$2" ]; then
+                  echo "captured $1 -> $2"
+                  return 0
                 fi
-                echo "attempt $attempt failed for $path"
+                echo "attempt $attempt failed for $1 ($2)"
               done
+              return 1
+            }
+            while read -r path file; do
+              [ -z "$path" ] && continue
+              TOTAL=$((TOTAL + 2))
+              capture "$path" "$file--desktop.png" "1440,1100" && OK=$((OK + 1))
+              capture "$path" "$file--mobile.png" "390,844" && OK=$((OK + 1))
             done < screenshots/pages.txt
             ls -la screenshots/
-            echo "captured $OK of $TOTAL pages"
+            echo "captured $OK of $TOTAL screenshots"
             if [ "$TOTAL" -gt 0 ] && [ "$OK" -eq 0 ]; then
               exit 1
             fi
