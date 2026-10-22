@@ -38,6 +38,21 @@ including a developer's Mac — prefer Docker.
 Commits authored from Muse carry a
 `Co-authored-by: Tony (Muse) <tony@muse.local>` trailer.
 
+## PR preview screenshots
+
+CI captures the pages a diff touches (project data → that project;
+components and styles → the pages that render them) plus a core set
+(home, portfolio index, a sample project detail, a department page),
+at desktop and mobile widths, and posts them as a PR comment.
+
+For extra pages on a specific PR, add routes to `preview-pages.txt`
+at the repo root, one per line. It only adds pages. Reset the file
+to its comment-only state when the PR is done.
+
+Read the screenshots before calling a PR done: they are the check
+that the change renders as expected and nothing else regressed.
+Green CI is not visual proof.
+
 ## Skills
 
 - Adding a portfolio project: `.agents/skills/add-project/SKILL.md`
