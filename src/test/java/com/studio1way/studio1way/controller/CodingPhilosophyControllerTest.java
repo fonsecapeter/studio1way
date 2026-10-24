@@ -26,7 +26,7 @@ public class CodingPhilosophyControllerTest {
             .andExpect(
                 MockMvcResultMatchers
                     .content()
-                    .string(containsString("Under construction"))
+                    .string(containsString("Coding Philosophy"))
             );
     }
 }
