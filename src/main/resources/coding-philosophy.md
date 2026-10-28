@@ -1,20 +1,24 @@
 # Studio 1Way — Coding Philosophy
 
-Code is read far more often than it is written — usually by me,
-later, having forgotten all of this. So the first rule is that
-code should explain itself.
+Code is read more often than it's written — usually by me,
+later, having forgotten what I was doing. So code should be
+well organized and self explanatory.
+
+Code is a means to an end, so these are principles to guide
+not rules that can't be broken. If something can be faster
+or done faster, exceptions should be made with intention.
 
 ## Functions over classes
 
-I reach for simple functions first. A function takes data in,
-returns data out, and can be understood — and tested — on its
-own. Classes earn their place only when the language or the
-framework leaves no choice: an exception, an error boundary.
+Prefer immutable to mutable.
 
-What I'm avoiding is shared mutable state. It makes code hard
-to reason about, because anything can change anything. Data is
-immutable by default; state lives in as few places as possible
-and changes in obvious ways.
+Reach for simple functions first. A function takes data in,
+returns data out, and can be understood and tested on its
+own.
+
+Classes are also useful but are too easily overcomplicated
+with shared mutable state, which can make systems harder to
+to reason about.
 
 ## One job, done simply
 
@@ -27,24 +31,32 @@ stranger can follow beats the elegant one only I can.
 
 ## Small public surfaces
 
+Private by default.
+
 A public API is a promise. Keep it minimal: few entry points,
-obvious names, no surprises. Internals can change whenever;
-the surface shouldn't have to. Most of a system should be
-private by default.
+obvious names, no surprises. Internals can change more freely,
+the surface shouldn't have to.
 
 ## Tests are the spec
 
+Every public API should have unit tests.
+
 Tests document what the system does, in sentences. Read down
-the test names and you should be able to reconstruct the
-behavior — that's the RSpec lesson I never gave up. Test
-behavior, not implementation, so the insides can change without
-the spec lying.
+the test names and you should be able to understand exactly
+how to use it. Frameworks like Ruby's RSpec make it hard not to
+do this, most test framework make it easy not to, but all support
+this style of testing.
+
+This will encourage simple and easy to use public APIs and leave
+tests that are more resilient to change. Unit test everything, 
+end to end / integration test only a handful of things. Brittle
+tests are more cost than benefit.
 
 ## Types and names over comments
 
 Annotate types. Name things precisely. Let the code carry the
-meaning, and save comments for the why: the constraint or the
-surprise the code itself can't show.
+meaning, and comment as little as possible. The goal is to need
+no comments at all (except docstrings).
 
 ## Fail loudly and specifically
 
@@ -52,11 +64,28 @@ Errors are part of the design. Raise specific, typed failures
 and handle them at the boundary, where a person can be told
 something useful. A vague error helps no one at 2 AM.
 
-## Principles, not laws
+## Solve for the problem you have
 
-All of this is the standard I aspire to — not rules that can
-never bend. A real-world benefit or a deadline can justify an
-exception, and shipping the pragmatic thing is sometimes just
-right. But the exception should be a conscious choice, made
-knowing what it costs, not the default because it was easier
-to type. Deviate on purpose; come back to the standard.
+Think ahead about what you might need next, and write in ways
+that facilitate growth. But don't solve a problem you don't have
+yet. The world changes fast and you may never actually have it.
+More often, you'll have a different more critical problem first.
+
+Complexity is the enemy of quick simple changes, and general
+futureproofing usually bites harder with it than whatever comes
+in the future.
+
+## In a big codebase, minimize blast radius
+
+Despite all efforts, systems will be imperfect. Or at least
+they'll be complicated and hard to understand quickly. Its easy
+to break something on accident not covered or possible to cover
+with automated tests. Be thoughtful to add changes in ways that
+dont threaten existing functionality.
+
+Use shared libraries before inventing something new.
+
+Refactors should happen but they should happen with intent.
+
+First make sure all existing behavior is tested and captured.
+Then change and ensure tests continue to pass.
