@@ -75,6 +75,14 @@ Complexity is the enemy of quick simple changes, and general
 futureproofing usually bites harder with it than whatever comes
 in the future.
 
+## Prefer a single source of truth
+
+When the same thing lives in multiple places, it’s easy to
+miss and go stale.
+
+Sometimes duplication is the smaller problem in front of
+you, but usually it isn’t.
+
 ## In a big codebase, minimize blast radius
 
 Despite all efforts, systems will be imperfect. Or at least
