@@ -106,4 +106,7 @@ the pattern as single-purpose "Add <project>" commits.
 4. Commit as one single-purpose commit: `Add <name lowercase>`.
 5. Open a PR. CI captures preview screenshots of the new project's
    detail page and its category list and posts them to the PR as a
-   comment (the screenshots job in `.circleci/config.yml`).
+   comment (the screenshots job in `.circleci/config.yml`). If the
+   PR needs pages beyond the automatic set, add routes to
+   `preview-pages.txt` (usage in CONTRIBUTING.md, "PR preview
+   screenshots").

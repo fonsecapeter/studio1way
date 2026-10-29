@@ -1,9 +1,5 @@
 # Extra pages for CI preview screenshots, one route per line.
 # Pages listed here are captured in addition to the pages CI picks
 # from the diff and the core set — this file only ever adds pages.
-# Add routes for a PR that needs specific coverage, and reset this
-# file to just these comments when the PR is done: anything left
-# here keeps being captured on every later PR.
-/paint/project/yellow-snake
-/ceramics/project/red-stripe-cup
-/wood/project/poplar-shelf
+# Usage (when to add routes, when to reset): see CONTRIBUTING.md,
+# "PR preview screenshots".
