@@ -4,3 +4,6 @@
 # Add routes for a PR that needs specific coverage, and reset this
 # file to just these comments when the PR is done: anything left
 # here keeps being captured on every later PR.
+/paint/project/yellow-snake
+/ceramics/project/red-stripe-cup
+/wood/project/poplar-shelf
