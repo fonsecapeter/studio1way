@@ -66,6 +66,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.studio1way.studio1way.Studio1wayApplication</mainClass>
+				</configuration>
 			</plugin>
 			<plugin>
 			    <groupId>com.hubspot.maven.plugins</groupId>
