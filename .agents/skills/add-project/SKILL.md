@@ -68,6 +68,19 @@ the pattern as single-purpose "Add <project>" commits.
   API's display string — no frontend or codegen changes. Call the
   exception out in the PR description.
 
+## Testing
+
+- **No per-project unit tests.** A project is data — a row in a
+  JSON database. The system around it (the loader, validation,
+  sorting, the API) is unit-tested once, with fixtures, and the
+  app loads and validates every real project JSON at startup, so
+  a malformed row fails the suite on its own. A new project is
+  verified by `check-project`, the green suite, and CI's preview
+  screenshots.
+- A project that introduces a new system capability (the first
+  video, the first animation) earns a test for the *capability*,
+  at the system level — not a test for the row.
+
 ## Workflow
 
 1. Collect the inputs: category, title, the artist's description, the
