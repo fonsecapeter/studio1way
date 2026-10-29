@@ -8,9 +8,9 @@ import java.util.Objects;
 public class WoodWork extends Project {
 
     public enum Finish {
-        PASTE_WAX("linseed oil + beesewax"),
+        PASTE_WAX("linseed oil + beeswax"),
         VARNISH("varnish"),
-        ACRYLIC_PAINT_AND_PASTE_WAX("acrylic paint + linseed oil + beesewax"),
+        ACRYLIC_PAINT_AND_PASTE_WAX("acrylic paint + linseed oil + beeswax"),
         TUNG_OIL("tung oil");
 
         private final String value;
