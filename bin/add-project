@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Add a project to the portfolio 🎨
+set -eu -o pipefail
+
+source "$(dirname "${BASH_SOURCE[0]}")/native/env"
+
+JAR="$REPO_ROOT/target/studio1way-0.0.1-SNAPSHOT.jar"
+
+# Rebuild through the existing local build flow when the jar is
+# missing or older than the sources that go into it. All behavior
+# lives in the entrypoint; this script only builds when needed and
+# hands over.
+if [ ! -f "$JAR" ]; then
+  STALE="yes"
+else
+  STALE="$(find "$REPO_ROOT/src/main" "$REPO_ROOT/pom.xml" -newer "$JAR" -print -quit)"
+fi
+if [ -n "$STALE" ]; then
+  echo "bin/add-project: building the app jar..." >&2
+  bash "$REPO_ROOT/bin/native/compile"
+fi
+
+exec java -cp "$JAR" \
+  -Dloader.main=com.studio1way.projectadmin.ProjectAdminApplication \
+  org.springframework.boot.loader.launch.PropertiesLauncher "$@"
