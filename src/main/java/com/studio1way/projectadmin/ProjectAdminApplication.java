@@ -8,6 +8,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class ProjectAdminApplication {
 
     public static void main(String[] args) {
+        if (args.length > 0) {
+            System.exit(ProjectAdminCli.run(args, System.out, System.err));
+        }
         new SpringApplicationBuilder(ProjectAdminApplication.class)
             .web(WebApplicationType.NONE)
             .run(args)

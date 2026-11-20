@@ -1,0 +1,36 @@
+type Mutation {
+    createExperimentalProject(input: CreateExperimentalProjectInput!): ExperimentalProject
+}
+
+input CreateExperimentalProjectInput {
+    name: String!
+    date: String!
+    description: String!
+    variety: String!
+    id: ID
+    video: ProjectVideoInput
+    links: [ProjectLinkInput!]
+    images: [ProjectImageInput!]!
+}
+
+input ProjectVideoInput {
+    src: String!
+    aspectRatio: VideoAspectRatio!
+}
+
+input ProjectLinkInput {
+    url: String!
+    text: String!
+}
+
+input ProjectImageInput {
+    sourcePath: String!
+    name: String!
+    alt: String!
+    icon: Boolean
+}
+
+enum VideoAspectRatio {
+    WIDE
+    FULL
+}
