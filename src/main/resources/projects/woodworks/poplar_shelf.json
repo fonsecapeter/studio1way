@@ -16,6 +16,21 @@
       "alt": "poplar shelf behind the couch, styled with books, a wine bottle, and a reception sign"
     },
     {
+      "path": "woodworks/poplar_shelf/pencil",
+      "ext": "JPG",
+      "alt": "close-up of the pencil line at the base of a shelf divider, with the reception sign and bell"
+    },
+    {
+      "path": "woodworks/poplar_shelf/corner",
+      "ext": "JPG",
+      "alt": "the end of the shelf behind the couch, with the reception sign and bell below"
+    },
+    {
+      "path": "woodworks/poplar_shelf/dowels",
+      "ext": "JPG",
+      "alt": "dowel pegs sticking out of a poplar board on the workbench"
+    },
+    {
       "path": "woodworks/poplar_shelf/empty",
       "ext": "JPG",
       "alt": "the empty shelf behind the couch, Simi asleep on the chaise"
@@ -24,11 +39,6 @@
       "path": "woodworks/poplar_shelf/detail",
       "ext": "JPG",
       "alt": "top-down close-up of the shelf's grain and plugged holes"
-    },
-    {
-      "path": "woodworks/poplar_shelf/dowels",
-      "ext": "JPG",
-      "alt": "dowel pegs sticking out of a poplar board on the workbench"
     },
     {
       "path": "woodworks/poplar_shelf/jeep",
