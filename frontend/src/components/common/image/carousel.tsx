@@ -33,6 +33,7 @@ const Carousel = ({ images }: CarouselProps) => {
     }
   });
   invariant(mainImage !== null, "Carousel must have at least one image");
+  invariant(images.length <= 6, "Carousel must have at most 6 images");
   const mainImageSrc = mainImage.animation?.full ?? mainImage.half;
   const mainImageAlt = mainImage.animation?.alt ?? mainImage.alt;
   const mainImageTiers = mainImage.animation
