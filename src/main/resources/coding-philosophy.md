@@ -83,6 +83,15 @@ miss and go stale.
 Sometimes duplication is the smaller problem in front of
 you, but usually it isn’t.
 
+## Match existing conventions
+
+Take the time to understand the conventions already in the
+repo, and match them.
+
+Conversely, don't blindly follow a bad pattern if you
+genuinely have a better one, but consider if you're missing
+something or a wider refactor as a follow up is in order.
+
 ## In a big codebase, minimize blast radius
 
 Despite all efforts, systems will be imperfect. Or at least
