@@ -65,6 +65,26 @@ describe("Crousel", () => {
     neverOverlap: true,
     animation: null,
   };
+  const IMAGE_6 = {
+    full: "test/6/100.png",
+    half: "test/6/50.png",
+    quarter: "test/6/25.png",
+    width: 1200,
+    height: 900,
+    alt: "test image 6",
+    neverOverlap: false,
+    animation: null,
+  };
+  const IMAGE_7 = {
+    full: "test/7/100.png",
+    half: "test/7/50.png",
+    quarter: "test/7/25.png",
+    width: 1200,
+    height: 900,
+    alt: "test image 7",
+    neverOverlap: false,
+    animation: null,
+  };
 
   describe("with 0 image", () => {
     it("throws", () => {
@@ -192,6 +212,51 @@ describe("Crousel", () => {
         "class",
         "carousel-lane-image-mini",
       );
+    });
+  });
+
+  describe("with 6 images", () => {
+    it("displays mini lane images for all images", () => {
+      render(
+        <Carousel
+          images={[IMAGE_1, IMAGE_2, IMAGE_3, IMAGE_4, IMAGE_5, IMAGE_6]}
+        />,
+      );
+      const laneImage1Element = screen.getByAltText("test image 1 (small)");
+      const laneImage6Element = screen.getByAltText("test image 6 (small)");
+      expect(laneImage1Element).toHaveAttribute(
+        "class",
+        "carousel-lane-image-mini-selected",
+      );
+      expect(laneImage6Element).toHaveAttribute(
+        "class",
+        "carousel-lane-image-mini",
+      );
+      expect(laneImage6Element).toHaveAttribute("src", "test/6/25.png");
+    });
+  });
+
+  describe("with 7 images", () => {
+    it("throws", () => {
+      const errorSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+      expect(() => {
+        render(
+          <Carousel
+            images={[
+              IMAGE_1,
+              IMAGE_2,
+              IMAGE_3,
+              IMAGE_4,
+              IMAGE_5,
+              IMAGE_6,
+              IMAGE_7,
+            ]}
+          />,
+        );
+      }).toThrow("Carousel must have at most 6 images");
+      errorSpy.mockRestore();
     });
   });
 });
