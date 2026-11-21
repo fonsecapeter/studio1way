@@ -2,43 +2,33 @@
   "id": "poplar-shelf",
   "name": "Poplar Shelf",
   "icon": {
-    "path": "woodworks/poplar_shelf/main",
+    "path": "woodworks/poplar_shelf/in_situ",
     "ext": "JPG",
-    "alt": "poplar shelf behind the couch, styled with books, a wine bottle, and a reception sign"
+    "alt": "poplar shelf in place behind the couch, styled with the reception bell, Simi asleep on the chaise"
   },
   "links": [],
   "date": "2026-10-25",
   "description": "a request from neha and a graduation from construction grade. keeping the nicks and pencil lines though",
   "images": [
     {
-      "path": "woodworks/poplar_shelf/main",
+      "path": "woodworks/poplar_shelf/in_situ",
       "ext": "JPG",
-      "alt": "poplar shelf behind the couch, styled with books, a wine bottle, and a reception sign"
+      "alt": "poplar shelf in place behind the couch, styled with the reception bell, Simi asleep on the chaise"
     },
     {
-      "path": "woodworks/poplar_shelf/empty",
+      "path": "woodworks/poplar_shelf/pencil_line",
       "ext": "JPG",
-      "alt": "the empty shelf behind the couch, Simi asleep on the chaise"
+      "alt": "a pencil line kept in the shelf's top board"
     },
     {
-      "path": "woodworks/poplar_shelf/detail",
+      "path": "woodworks/poplar_shelf/corner",
       "ext": "JPG",
-      "alt": "top-down close-up of the shelf's grain and plugged holes"
+      "alt": "close-up of the shelf corner, with the reception sign and bell"
     },
     {
-      "path": "woodworks/poplar_shelf/dowels",
+      "path": "woodworks/poplar_shelf/making",
       "ext": "JPG",
-      "alt": "dowel pegs sticking out of a poplar board on the workbench"
-    },
-    {
-      "path": "woodworks/poplar_shelf/jeep",
-      "ext": "JPG",
-      "alt": "poplar boards loaded diagonally in the back of a Jeep"
-    },
-    {
-      "path": "woodworks/poplar_shelf/sketch",
-      "ext": "JPG",
-      "alt": "hand-drawn sketch of the shelf with its measurements"
+      "alt": "dowel pins in poplar boards on the workbench, mallet alongside"
     }
   ],
   "materials": "poplar",

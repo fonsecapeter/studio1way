@@ -26,10 +26,12 @@ public class ProjectAdminIsolationTests {
 
     @Test
     public void publicContextContainsNoAuthoringBeans() {
-        boolean hasAuthoringBean = Arrays.stream(context.getBeanDefinitionNames())
+        boolean hasAuthoringBean = Arrays
+            .stream(context.getBeanDefinitionNames())
             .map(context::getType)
-            .anyMatch(
-                type -> type != null && type.getPackageName().startsWith("com.studio1way.projectadmin")
+            .anyMatch(type ->
+                type != null &&
+                type.getPackageName().startsWith("com.studio1way.projectadmin")
             );
 
         assertThat(hasAuthoringBean).isFalse();
