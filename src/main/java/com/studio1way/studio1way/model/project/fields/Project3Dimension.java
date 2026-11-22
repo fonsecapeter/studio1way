@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Objects;
 
 public class Project3Dimension extends Project2Dimension {
@@ -21,6 +22,15 @@ public class Project3Dimension extends Project2Dimension {
 
     public void setDepth(Float depth) {
         this.depth = depth;
+    }
+
+    @Override
+    public ObjectNode toResourceJson() {
+        ObjectNode node = super.toResourceJson();
+        if (depth != null) {
+            node.put("depth", depth);
+        }
+        return node;
     }
 
     public boolean equals(Object other) {

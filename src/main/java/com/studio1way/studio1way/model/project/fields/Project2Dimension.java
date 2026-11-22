@@ -1,5 +1,7 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Objects;
 
 public class Project2Dimension {
@@ -30,6 +32,17 @@ public class Project2Dimension {
 
     public void setWidth(Float width) {
         this.width = width;
+    }
+
+    public ObjectNode toResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        if (height != null) {
+            node.put("height", height);
+        }
+        if (width != null) {
+            node.put("width", width);
+        }
+        return node;
     }
 
     public boolean equals(Object other) {

@@ -1,6 +1,7 @@
 package com.studio1way.studio1way.model.project.fields;
 
-import com.studio1way.studio1way.AppRoot;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -10,9 +11,6 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
 public class ProjectImage {
-
-    private final String IMG_PATH = "/img/projects";
-    private final String ABS_PATH = AppRoot.PATH + "/frontend/src/assets/";
 
     public enum Extension {
         JPG("jpg"),
@@ -116,15 +114,19 @@ public class ProjectImage {
     }
 
     public String getFull() {
-        return String.format("%s/%s/100.%s", IMG_PATH, path, ext.toString());
+        return ProjectImagePaths.tierPath(path, ProjectImagePaths.FULL, ext.toString());
     }
 
     public String getHalf() {
-        return String.format("%s/%s/50.%s", IMG_PATH, path, ext.toString());
+        return ProjectImagePaths.tierPath(path, ProjectImagePaths.HALF, ext.toString());
     }
 
     public String getQuarter() {
-        return String.format("%s/%s/25.%s", IMG_PATH, path, ext.toString());
+        return ProjectImagePaths.tierPath(
+            path,
+            ProjectImagePaths.QUARTER,
+            ext.toString()
+        );
     }
 
     public Integer getWidth() {
@@ -142,7 +144,11 @@ public class ProjectImage {
             return;
         }
         dimensionsLoaded = true;
-        File file = new File(String.format("%s/%s", ABS_PATH, getFull()));
+        File file = ProjectImagePaths.tierFile(
+            path,
+            ProjectImagePaths.FULL,
+            ext.toString()
+        );
         if (!file.exists()) {
             return;
         }
@@ -165,10 +171,30 @@ public class ProjectImage {
             return false;
         }
         return (
-            new File(String.format("%s/%s", ABS_PATH, getFull())).exists() ||
-            new File(String.format("%s/%s", ABS_PATH, getHalf())).exists() ||
-            new File(String.format("%s/%s", ABS_PATH, getQuarter())).exists()
+            ProjectImagePaths
+                .tierFile(path, ProjectImagePaths.FULL, ext.toString())
+                .exists() ||
+            ProjectImagePaths
+                .tierFile(path, ProjectImagePaths.HALF, ext.toString())
+                .exists() ||
+            ProjectImagePaths
+                .tierFile(path, ProjectImagePaths.QUARTER, ext.toString())
+                .exists()
         );
+    }
+
+    public ObjectNode toResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("path", path);
+        node.put("ext", ext.name());
+        node.put("alt", alt);
+        if (Boolean.TRUE.equals(neverOverlap)) {
+            node.put("neverOverlap", true);
+        }
+        if (animation != null) {
+            node.set("animation", animation.toResourceJson());
+        }
+        return node;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.studio1way.studio1way.model.project.fields;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Objects;
 
 public class ProjectLink {
@@ -28,6 +30,13 @@ public class ProjectLink {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public ObjectNode toResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("url", url);
+        node.put("text", text);
+        return node;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
@@ -66,6 +67,19 @@ public class WoodWork extends Project {
 
     public void setFinish(Finish finish) {
         this.finish = finish;
+    }
+
+    @Override
+    public ObjectNode toResourceJson() {
+        ObjectNode node = baseResourceJson();
+        node.put("materials", materials);
+        if (finish != null) {
+            node.put("finish", finish.name());
+        }
+        if (dimensions != null) {
+            node.set("dimensions", dimensions.toResourceJson());
+        }
+        return node;
     }
 
     public Project3Dimension getDimensions() {

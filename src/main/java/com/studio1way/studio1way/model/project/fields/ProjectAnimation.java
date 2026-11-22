@@ -1,13 +1,11 @@
 package com.studio1way.studio1way.model.project.fields;
 
-import com.studio1way.studio1way.AppRoot;
-import java.io.File;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Objects;
 
 public class ProjectAnimation {
 
-    private final String IMG_PATH = "/img/projects";
-    private final String ABS_PATH = AppRoot.PATH + "/frontend/src/assets/";
     private final String EXTENSION = "gif";
 
     private String path;
@@ -37,18 +35,27 @@ public class ProjectAnimation {
     }
 
     public String getFull() {
-        return String.format("%s/%s/100.%s", IMG_PATH, path, EXTENSION);
+        return ProjectImagePaths.tierPath(path, ProjectImagePaths.FULL, EXTENSION);
     }
 
     public String getHalf() {
-        return String.format("%s/%s/50.%s", IMG_PATH, path, EXTENSION);
+        return ProjectImagePaths.tierPath(path, ProjectImagePaths.HALF, EXTENSION);
     }
 
     public Boolean valid() {
         return (
-            new File(String.format("%s/%s", ABS_PATH, getFull())).exists() &&
-            new File(String.format("%s/%s", ABS_PATH, getHalf())).exists()
+            ProjectImagePaths
+                .tierFile(path, ProjectImagePaths.FULL, EXTENSION)
+                .exists() &&
+            ProjectImagePaths.tierFile(path, ProjectImagePaths.HALF, EXTENSION).exists()
         );
+    }
+
+    public ObjectNode toResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("path", path);
+        node.put("alt", alt);
+        return node;
     }
 
     @Override

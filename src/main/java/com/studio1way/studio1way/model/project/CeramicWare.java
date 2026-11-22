@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.studio1way.studio1way.model.project.fields.Project3Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
@@ -65,6 +66,19 @@ public class CeramicWare extends Project {
 
     public void setGlaze(String glaze) {
         this.glaze = glaze;
+    }
+
+    @Override
+    public ObjectNode toResourceJson() {
+        ObjectNode node = baseResourceJson();
+        if (clayBody != null) {
+            node.put("clayBody", clayBody.name());
+        }
+        node.put("glaze", glaze);
+        if (dimensions != null) {
+            node.set("dimensions", dimensions.toResourceJson());
+        }
+        return node;
     }
 
     public Project3Dimension getDimensions() {
