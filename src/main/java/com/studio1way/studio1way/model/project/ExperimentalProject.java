@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import com.studio1way.studio1way.model.project.fields.ProjectVideo;
@@ -40,6 +41,16 @@ public class ExperimentalProject extends Project {
     ) {
         super(id, name, icon, links, date, description, images);
         setVariety(variety);
+    }
+
+    @Override
+    public ObjectNode toResourceJson() {
+        ObjectNode node = baseResourceJson();
+        node.put("variety", variety);
+        if (video != null) {
+            node.set("video", video.toResourceJson());
+        }
+        return node;
     }
 
     public ProjectVideo getVideo() {

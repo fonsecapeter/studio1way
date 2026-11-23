@@ -1,5 +1,6 @@
 package com.studio1way.studio1way.model.project;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.studio1way.studio1way.model.project.fields.Project2Dimension;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
@@ -79,6 +80,20 @@ public class Painting extends Project {
 
     public void setVarnished(Boolean varnished) {
         this.varnished = varnished;
+    }
+
+    @Override
+    public ObjectNode toResourceJson() {
+        ObjectNode node = baseResourceJson();
+        if (dimensions != null) {
+            node.set("dimensions", dimensions.toResourceJson());
+        }
+        if (medium != null) {
+            node.put("medium", medium.name());
+        }
+        node.put("surface", surface);
+        node.put("varnished", varnished);
+        return node;
     }
 
     public Project2Dimension getDimensions() {

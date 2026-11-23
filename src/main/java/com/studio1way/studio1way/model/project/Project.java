@@ -1,5 +1,8 @@
 package com.studio1way.studio1way.model.project;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.studio1way.studio1way.model.project.fields.ProjectImage;
 import com.studio1way.studio1way.model.project.fields.ProjectLink;
 import java.util.Arrays;
@@ -91,6 +94,30 @@ public abstract class Project implements Comparable<Project> {
 
     public ProjectImage[] getImages() {
         return images;
+    }
+
+    public abstract ObjectNode toResourceJson();
+
+    protected ObjectNode baseResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("id", id);
+        node.put("name", name);
+        node.set("icon", icon.toResourceJson());
+        ArrayNode linksNode = node.putArray("links");
+        if (links != null) {
+            for (ProjectLink link : links) {
+                linksNode.add(link.toResourceJson());
+            }
+        }
+        node.put("date", date);
+        node.put("description", description);
+        ArrayNode imagesNode = node.putArray("images");
+        if (images != null) {
+            for (ProjectImage image : images) {
+                imagesNode.add(image.toResourceJson());
+            }
+        }
+        return node;
     }
 
     public void setImages(ProjectImage[] images) {

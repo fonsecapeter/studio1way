@@ -1,6 +1,7 @@
 package com.studio1way.studio1way.model.project.fields;
 
-import java.io.File;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Objects;
 
 public class ProjectVideo {
@@ -48,6 +49,15 @@ public class ProjectVideo {
 
     public void setAspectRatio(AspectRatio aspectRatio) {
         this.aspectRatio = aspectRatio;
+    }
+
+    public ObjectNode toResourceJson() {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("src", src);
+        if (aspectRatio != null) {
+            node.put("aspectRatio", aspectRatio.name());
+        }
+        return node;
     }
 
     @Override
