@@ -1,5 +1,6 @@
 type Mutation {
     createExperimentalProject(input: CreateExperimentalProjectInput!): ExperimentalProject
+    createWoodWork(input: CreateWoodWorkInput!): WoodWork
 }
 
 input CreateExperimentalProjectInput {
@@ -11,6 +12,24 @@ input CreateExperimentalProjectInput {
     video: ProjectVideoInput
     links: [ProjectLinkInput!]
     images: [ProjectImageInput!]!
+}
+
+input CreateWoodWorkInput {
+    name: String!
+    date: String!
+    description: String!
+    materials: String!
+    finish: WoodWorkFinish!
+    dimensions: Project3DimensionInput!
+    id: ID
+    links: [ProjectLinkInput!]
+    images: [ProjectImageInput!]!
+}
+
+input Project3DimensionInput {
+    height: Float!
+    width: Float!
+    depth: Float!
 }
 
 input ProjectVideoInput {
@@ -28,6 +47,13 @@ input ProjectImageInput {
     name: String!
     alt: String!
     icon: Boolean
+}
+
+enum WoodWorkFinish {
+    PASTE_WAX
+    VARNISH
+    ACRYLIC_PAINT_AND_PASTE_WAX
+    TUNG_OIL
 }
 
 enum VideoAspectRatio {

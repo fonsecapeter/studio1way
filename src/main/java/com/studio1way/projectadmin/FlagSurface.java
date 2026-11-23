@@ -9,16 +9,73 @@ import graphql.schema.GraphQLNamedType;
 import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.GraphQLType;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The flag surface of one category's create input, derived from the
+ * authoring schema. One traversal builds a node tree; --describe
+ * renders it and the create driver flattens it into flag specs, so
+ * the documented flags and the accepted flags cannot drift apart.
+ */
 public final class FlagSurface {
 
     private FlagSurface() {}
 
-    public static String describe(Category category, GraphQLSchema schema) {
+    public sealed interface FlagNode {
+        record Scalar(
+            String flag,
+            List<String> path,
+            String typeName,
+            boolean required,
+            boolean repeatable,
+            List<String> enumValues
+        )
+            implements FlagNode {}
+
+        record Group(
+            String flag,
+            String fieldName,
+            boolean required,
+            boolean repeatable,
+            List<FlagNode> children
+        )
+            implements FlagNode {}
+    }
+
+    public record FlagSpec(
+        String flag,
+        List<String> path,
+        String typeName,
+        boolean required,
+        List<String> enumValues,
+        String groupField,
+        String groupFirstField
+    ) {
+        public boolean isGroupItem() {
+            return groupField != null;
+        }
+
+        public String field() {
+            return path.get(path.size() - 1);
+        }
+    }
+
+    public static List<FlagNode> nodes(Category category, GraphQLSchema schema) {
         GraphQLInputObjectType input = (GraphQLInputObjectType) schema.getType(
             category.inputTypeName()
         );
+        return buildNodes(input, "", List.of());
+    }
+
+    public static List<FlagSpec> specs(Category category, GraphQLSchema schema) {
+        List<FlagSpec> specs = new ArrayList<>();
+        flatten(nodes(category, schema), null, null, specs);
+        return specs;
+    }
+
+    public static String describe(Category category, GraphQLSchema schema) {
         StringBuilder out = new StringBuilder();
         out
             .append("Flags for ")
@@ -26,57 +83,132 @@ public final class FlagSurface {
             .append(" (derived from ")
             .append(category.inputTypeName())
             .append("):\n\n");
-        for (GraphQLInputObjectField field : input.getFieldDefinitions()) {
-            appendField(out, field, "", "  ");
+        for (FlagNode node : nodes(category, schema)) {
+            appendNode(out, node, "  ");
         }
         out.append("\nExample:\n  ").append(category.exampleCommand()).append("\n");
         return out.toString();
     }
 
-    private static void appendField(
-        StringBuilder out,
-        GraphQLInputObjectField field,
-        String prefix,
-        String indent
+    private static void flatten(
+        List<FlagNode> nodes,
+        String groupField,
+        String groupFirstField,
+        List<FlagSpec> out
     ) {
-        boolean required = field.getType() instanceof GraphQLNonNull;
-        GraphQLType core = required
-            ? ((GraphQLNonNull) field.getType()).getWrappedType()
-            : field.getType();
-        String flag = prefix + kebab(field.getName());
-
-        if (core instanceof GraphQLList list) {
-            GraphQLType element = unwrapNonNull(list.getWrappedType());
-            if (element instanceof GraphQLInputObjectType inputObject) {
-                String groupFlag = singular(flag);
-                appendGroupHeader(out, indent, groupFlag, required, true);
-                appendSubFields(out, inputObject, groupFlag, indent);
-            } else {
-                appendScalar(
-                    out,
-                    indent,
-                    flag,
-                    (GraphQLNamedType) element,
-                    required,
-                    true
+        for (FlagNode node : nodes) {
+            if (node instanceof FlagNode.Scalar scalar) {
+                out.add(
+                    new FlagSpec(
+                        scalar.flag(),
+                        scalar.path(),
+                        scalar.typeName(),
+                        scalar.required(),
+                        scalar.enumValues(),
+                        groupField,
+                        groupFirstField
+                    )
                 );
+            } else if (node instanceof FlagNode.Group group) {
+                if (group.repeatable()) {
+                    String firstField = group
+                        .children()
+                        .stream()
+                        .filter(child -> child instanceof FlagNode.Scalar)
+                        .map(child -> {
+                            List<String> path = ((FlagNode.Scalar) child).path();
+                            return path.get(path.size() - 1);
+                        })
+                        .findFirst()
+                        .orElse(null);
+                    flatten(group.children(), group.fieldName(), firstField, out);
+                } else {
+                    flatten(group.children(), groupField, groupFirstField, out);
+                }
             }
-        } else if (core instanceof GraphQLInputObjectType inputObject) {
-            appendGroupHeader(out, indent, flag, required, false);
-            appendSubFields(out, inputObject, flag, indent);
-        } else {
-            appendScalar(out, indent, flag, (GraphQLNamedType) core, required, false);
         }
     }
 
-    private static void appendSubFields(
-        StringBuilder out,
-        GraphQLInputObjectType inputObject,
-        String flag,
-        String indent
+    private static List<FlagNode> buildNodes(
+        GraphQLInputObjectType input,
+        String prefix,
+        List<String> pathPrefix
     ) {
-        for (GraphQLInputObjectField subField : inputObject.getFieldDefinitions()) {
-            appendField(out, subField, flag + "-", indent + "  ");
+        List<FlagNode> nodes = new ArrayList<>();
+        for (GraphQLInputObjectField field : input.getFieldDefinitions()) {
+            boolean required = field.getType() instanceof GraphQLNonNull;
+            GraphQLType core = required
+                ? ((GraphQLNonNull) field.getType()).getWrappedType()
+                : field.getType();
+            String flag = prefix + kebab(field.getName());
+            List<String> path = new ArrayList<>(pathPrefix);
+            path.add(field.getName());
+
+            if (core instanceof GraphQLList list) {
+                GraphQLType element = unwrapNonNull(list.getWrappedType());
+                if (element instanceof GraphQLInputObjectType inputObject) {
+                    String groupFlag = singular(flag);
+                    nodes.add(
+                        new FlagNode.Group(
+                            groupFlag,
+                            field.getName(),
+                            required,
+                            true,
+                            buildNodes(inputObject, groupFlag + "-", path)
+                        )
+                    );
+                } else {
+                    nodes.add(
+                        new FlagNode.Scalar(
+                            flag,
+                            path,
+                            ((GraphQLNamedType) element).getName(),
+                            required,
+                            true,
+                            enumValues(element)
+                        )
+                    );
+                }
+            } else if (core instanceof GraphQLInputObjectType inputObject) {
+                nodes.add(
+                    new FlagNode.Group(
+                        flag,
+                        field.getName(),
+                        required,
+                        false,
+                        buildNodes(inputObject, flag + "-", path)
+                    )
+                );
+            } else {
+                nodes.add(
+                    new FlagNode.Scalar(
+                        flag,
+                        path,
+                        ((GraphQLNamedType) core).getName(),
+                        required,
+                        false,
+                        enumValues(core)
+                    )
+                );
+            }
+        }
+        return nodes;
+    }
+
+    private static void appendNode(StringBuilder out, FlagNode node, String indent) {
+        if (node instanceof FlagNode.Scalar scalar) {
+            appendScalar(out, indent, scalar);
+        } else if (node instanceof FlagNode.Group group) {
+            appendGroupHeader(
+                out,
+                indent,
+                group.flag(),
+                group.required(),
+                group.repeatable()
+            );
+            for (FlagNode child : group.children()) {
+                appendNode(out, child, indent + "  ");
+            }
         }
     }
 
@@ -106,36 +238,38 @@ public final class FlagSurface {
     private static void appendScalar(
         StringBuilder out,
         String indent,
-        String flag,
-        GraphQLNamedType type,
-        boolean required,
-        boolean repeatable
+        FlagNode.Scalar scalar
     ) {
         out
             .append(indent)
             .append("--")
-            .append(flag)
+            .append(scalar.flag())
             .append(" <")
-            .append(type.getName())
+            .append(scalar.typeName())
             .append(">");
-        if (required) {
+        if (scalar.required()) {
             out.append(" (required)");
         }
-        if (repeatable) {
+        if (scalar.repeatable()) {
             out.append(" (repeatable)");
         }
-        if (type instanceof GraphQLEnumType enumType) {
+        if (!scalar.enumValues().isEmpty()) {
             out.append(" (one of: ");
-            out.append(
-                enumType
-                    .getValues()
-                    .stream()
-                    .map(GraphQLEnumValueDefinition::getName)
-                    .collect(Collectors.joining(", "))
-            );
+            out.append(String.join(", ", scalar.enumValues()));
             out.append(")");
         }
         out.append("\n");
+    }
+
+    private static List<String> enumValues(GraphQLType type) {
+        if (type instanceof GraphQLEnumType enumType) {
+            return enumType
+                .getValues()
+                .stream()
+                .map(GraphQLEnumValueDefinition::getName)
+                .collect(Collectors.toList());
+        }
+        return List.of();
     }
 
     private static GraphQLType unwrapNonNull(GraphQLType type) {

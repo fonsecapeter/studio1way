@@ -27,6 +27,20 @@ public class AuthoringSchemaTests {
     }
 
     @Test
+    public void authoringSchemaHasACreateWoodWorkMutationWithTheFinishEnum() {
+        assertThat(
+            AuthoringSchema
+                .graphQlSource()
+                .schema()
+                .getMutationType()
+                .getFieldDefinition("createWoodWork")
+        )
+            .isNotNull();
+        assertThat(AuthoringSchema.graphQlSource().schema().getType("WoodWorkFinish"))
+            .isNotNull();
+    }
+
+    @Test
     public void authoringSchemaHasAMutationTypeWithCreateExperimentalProject() {
         assertThat(AuthoringSchema.graphQlSource().schema().getMutationType())
             .isNotNull();
