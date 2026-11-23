@@ -27,12 +27,13 @@ public class ProjectAdminCliTests {
     }
 
     @Test
-    public void helpIsAShortIntroductionListingOnlyExperimentForDescribe() {
+    public void helpIsAShortIntroductionListingDescribeCommands() {
         Run run = run("--help");
 
         assertThat(run.exitCode()).isZero();
         assertThat(run.out()).contains("bin/add-project create <category> [flags]");
         assertThat(run.out()).contains("bin/add-project --describe experiment");
+        assertThat(run.out()).contains("bin/add-project --describe woodwork");
         assertThat(run.out()).doesNotContain("CreateExperimentalProjectInput");
         assertThat(run.out()).doesNotContain("WIDE");
     }
@@ -53,11 +54,27 @@ public class ProjectAdminCliTests {
     }
 
     @Test
-    public void describeWithAnUnknownCategoryFailsAndListsSupportedCategories() {
+    public void describeWoodWorkPrintsTheSchemaDerivedFlagSurfaceAndAnExample() {
         Run run = run("--describe", "woodwork");
 
+        assertThat(run.exitCode()).isZero();
+        assertThat(run.out()).contains("--materials <String> (required)");
+        assertThat(run.out())
+            .contains(
+                "--finish <WoodWorkFinish> (required) (one of: PASTE_WAX, VARNISH, ACRYLIC_PAINT_AND_PASTE_WAX, TUNG_OIL)"
+            );
+        assertThat(run.out()).contains("--dimensions-height <Float> (required)");
+        assertThat(run.out()).contains("--dimensions-width <Float> (required)");
+        assertThat(run.out()).contains("--dimensions-depth <Float> (required)");
+        assertThat(run.out()).contains("bin/add-project create woodwork");
+    }
+
+    @Test
+    public void describeWithAnUnknownCategoryFailsAndListsSupportedCategories() {
+        Run run = run("--describe", "bogus");
+
         assertThat(run.exitCode()).isEqualTo(1);
-        assertThat(run.err()).contains("Unknown category: woodwork");
+        assertThat(run.err()).contains("Unknown category: bogus");
         assertThat(run.err()).contains("experiment");
     }
 
@@ -70,8 +87,34 @@ public class ProjectAdminCliTests {
     }
 
     @Test
-    public void unsupportedArgumentsFail() {
+    public void createExperimentIsNotSupportedYet() {
         Run run = run("create", "experiment");
+
+        assertThat(run.exitCode()).isEqualTo(1);
+        assertThat(run.err())
+            .contains("Create is not supported yet for category: experiment");
+    }
+
+    @Test
+    public void createWithAnUnknownFlagFailsAndListsValidFlags() {
+        Run run = run("create", "woodwork", "--bogus", "x");
+
+        assertThat(run.exitCode()).isEqualTo(1);
+        assertThat(run.err()).contains("Unknown flag: --bogus");
+        assertThat(run.err()).contains("--finish");
+    }
+
+    @Test
+    public void createWithAMissingFlagValueFails() {
+        Run run = run("create", "woodwork", "--name");
+
+        assertThat(run.exitCode()).isEqualTo(1);
+        assertThat(run.err()).contains("Flag --name expects a value");
+    }
+
+    @Test
+    public void unsupportedArgumentsFail() {
+        Run run = run("frobnicate");
 
         assertThat(run.exitCode()).isEqualTo(1);
         assertThat(run.err()).contains("Unsupported arguments");
