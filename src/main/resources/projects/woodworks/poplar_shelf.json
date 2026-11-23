@@ -29,6 +29,16 @@
       "path": "woodworks/poplar_shelf/making",
       "ext": "JPG",
       "alt": "dowel pins in poplar boards on the workbench, mallet alongside"
+    },
+    {
+      "path": "woodworks/poplar_shelf/jeep",
+      "ext": "JPG",
+      "alt": "poplar boards loaded diagonally in the back of a Jeep"
+    },
+    {
+      "path": "woodworks/poplar_shelf/sketch",
+      "ext": "JPG",
+      "alt": "hand-drawn sketch of the shelf with its measurements"
     }
   ],
   "materials": "poplar",
