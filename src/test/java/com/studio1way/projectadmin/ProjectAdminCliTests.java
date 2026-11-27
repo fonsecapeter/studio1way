@@ -87,12 +87,12 @@ public class ProjectAdminCliTests {
     }
 
     @Test
-    public void createExperimentIsNotSupportedYet() {
-        Run run = run("create", "experiment");
+    public void createExperimentWithAnUnknownFlagFailsAndListsValidFlags() {
+        Run run = run("create", "experiment", "--bogus", "x");
 
         assertThat(run.exitCode()).isEqualTo(1);
-        assertThat(run.err())
-            .contains("Create is not supported yet for category: experiment");
+        assertThat(run.err()).contains("Unknown flag: --bogus");
+        assertThat(run.err()).contains("--variety");
     }
 
     @Test
