@@ -1,0 +1,34 @@
+{
+  "id": "test-experiment",
+  "name": "Test Experiment",
+  "icon": {
+    "path": "experiments/test_experiment/in_situ",
+    "ext": "JPG",
+    "alt": "the test experiment in place"
+  },
+  "links": [],
+  "date": "2026-11-28",
+  "description": "Throwaway demo of the experiment create flow. Not a real project.",
+  "images": [
+    {
+      "path": "experiments/test_experiment/in_situ",
+      "ext": "JPG",
+      "alt": "the test experiment in place"
+    },
+    {
+      "path": "experiments/test_experiment/corner",
+      "ext": "JPG",
+      "alt": "corner detail of the test experiment"
+    },
+    {
+      "path": "experiments/test_experiment/making",
+      "ext": "JPG",
+      "alt": "making the test experiment"
+    }
+  ],
+  "variety": "installation",
+  "video": {
+    "src": "https://example.com/embed/test",
+    "aspectRatio": "WIDE"
+  }
+}
