@@ -8,8 +8,8 @@ public enum Category {
         "experiments",
         "createExperimentalProject",
         "CreateExperimentalProjectInput",
-        false,
-        null,
+        true,
+        "/experimental",
         "bin/add-project create experiment --name \"Hotel Hallway\" --date 2024-11" +
         " --description \"A hallway run like a hotel.\" --variety installation" +
         " --image-source-path ~/Downloads/hallway.jpg --image-name hallway" +

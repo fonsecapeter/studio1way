@@ -30,10 +30,15 @@ public final class AuthoringSchema {
                 wiring.type(
                     "Mutation",
                     builder ->
-                        builder.dataFetcher(
-                            "createWoodWork",
-                            new CreateWoodWorkFetcher(derivatives)
-                        )
+                        builder
+                            .dataFetcher(
+                                "createWoodWork",
+                                new CreateWoodWorkFetcher(derivatives)
+                            )
+                            .dataFetcher(
+                                "createExperimentalProject",
+                                new CreateExperimentalProjectFetcher(derivatives)
+                            )
                 )
             )
             .build();
